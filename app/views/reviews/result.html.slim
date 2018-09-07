@@ -1,0 +1,25 @@
+- content_for :banner_wrapper do
+  = render partial: 'search_input'
+.container
+  .row#reviews-result-contents
+    .col-md-8
+      #search-result-tips
+        | Search results for  
+        - if params[:address].present?
+          = "\"#{params[:address]}\" "
+          | in #{current_city.name}, #{current_city.state}
+        - else
+          | #{current_city.name}, #{current_city.state}
+      = render "prompt"
+      .result-reviews.white-background
+        - @reviews.each do |review|
+          = render 'review_detail', review: review, display_photo: true
+        .paginate
+          - if mobile?
+            = paginate @reviews,  window: 1
+          - else
+            = paginate @reviews,  window: 3
+    .col-md-4
+      - unless mobile?
+        = render 'shared/maps/reviews'
+

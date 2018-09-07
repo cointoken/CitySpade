@@ -1,0 +1,30 @@
+#profile.global-container.row
+  .container
+    h1.title Room Wishlist
+    .row
+      = render partial: '/accounts/sidebar'
+      .col-md-9.row.wishlist-wrapper
+        .wishlist
+          - @rooms.each do |room|
+            .row
+              .listing.row
+                - if room.photos.size == 0
+                  .col-md-4.listing_img  style="background-image: url('/assets/default.jpg')"
+                - else
+                  .col-md-4.listing_img  style="background-image: url(#{room.photos.first.url})"
+                .col-md-8.listing-content
+                  h3
+                    = link_to room.title, room
+                  strong
+                    | #{room.street_address}
+                  br
+                  strong
+                    | #{PoliticalArea.find(room.political_area_id).short_name}
+                  strong.pull-right
+                    = number_to_currency(room.price_month, precision: 0)
+                      | / month
+      = paginate @rooms
+
+
+
+

@@ -1,0 +1,11 @@
+- if @type == "broker"
+  - agent_name = @listing.broker.name
+  - agent_id = @listing.broker.id
+- else
+  - agent_name = @listing.agent.name
+  - agent_id = @listing.agent.id
+
+= render 'shared/contact_email', { agent_name: agent_name, agent_tel: display_tel(@listing),
+  agent_id: agent_id, url: listing_url(@listing),
+  listing_id: @listing.id, name: current_account.try(:name), type: @type,
+  email: current_account.try(:email), tel: current_account.try(:phone_tel), add_class: 'mobile'}

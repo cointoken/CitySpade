@@ -1,0 +1,10 @@
+.modal.fade#contactagentmodal tabindex="-1" role="dialog" style="background: rgba(255, 255, 255, 0.85)"
+  button.closeContact type="button" class="close hidden-xs" data-dismiss="modal"
+    = image_tag 'social/No.png'
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close.visible-xs type="button" data-dismiss="modal" X
+        h4.modal-title.center Contact Agent
+      .modal-body
+          = render "agents/form_contact_agent"

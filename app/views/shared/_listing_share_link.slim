@@ -1,0 +1,16 @@
+- url ||= nil; collect_url ||= nil
+- %w{ twitter facebook }.each do |s|
+  = link_to share_link(s, url), data:{count: 'none'}, target: "_blank", :onclick=>"window.open(this.href,'_blank', 'height=600, width=600');return false;", class: "#{s}-share-button" do
+    div class="listing-share-#{s} #{s == "facebook" ? nil : "btn"}"
+      - if s == "twitter"
+        i
+        span.share-label Tweet
+      - else
+        span.share-label Share
+- if collect_url
+  = link_to collect_url, class: "shared #{collect_class}", remote: true, data:{reverse_url: reverse_url} do
+    div.collect-heart
+      i.fa.fa-heart
+    div.collect-num
+      = obj.try(:collect_num) || 0
+.pull-right.fb-like data-href=full_url data-layout="button" data-action='like' data-show-faces='false' data-share='false'

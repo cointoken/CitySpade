@@ -1,0 +1,39 @@
+.row
+  .box.col-md-12
+    .cell
+      =form_tag admin_bookings_path, method: :get do
+        .field.fieldset.center
+          h3 Booking
+          .input-text
+            = text_field_tag :name, params[:name], placeholder: "Name", class: "col-md-5 first-name"
+            = text_field_tag :email, params[:email], placeholder: "Email", class: "col-md-5"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    .cell
+      strong Showing Bookings
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              | Name
+            th
+              | Email
+            th
+              | Date
+            th
+              | Time Slot
+        tbody
+          -@bookings.each do |booking|
+            tr
+              td = booking.name
+              td = booking.email
+              td = booking.show_date.date
+              - slot = booking.time_slot
+              td = "#{slot.start_time} - #{slot.end_time}"
+
+      = paginate @bookings

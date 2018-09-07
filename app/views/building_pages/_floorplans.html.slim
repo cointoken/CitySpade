@@ -1,0 +1,11 @@
+ .row
+  - floorplan.each_with_index do |studio, index|
+    .col-sm-4.col-xs-12
+      .fplan-thumb
+        a.fplan href="#{studio.image.url}" data-fancybox-type="iframe" download=""
+          = image_tag studio.image.thumb.url
+        .caption
+          p.price 
+            | $#{studio.price}/month
+          p.type
+            | #{studio.apt_type(x)}

@@ -1,0 +1,19 @@
+#facebook_modal[class="modal-backdrop fade in"]
+  #inner_modal[class="modal-dialog"]
+    .modal-header#facebook_modal-header
+      a.close href= roomsearch_path data-dismiss='modal' class='close' aria-hidden='true' &times;
+      h3.modal-title
+        | USER VERIFICATION 
+    .modal-body#facebook_modal-body
+      = link_to account_omniauth_authorize_path(:facebook), class: 'signup-facebook', target: '_blank' do
+        img src=asset_path('signup_facebook.jpg')
+      div
+        p
+          | We ask that you login via Facebook to write / contact a post 
+          | so we may ensure the quality of the forum.
+        p
+          | We will NOT post anything on your page without 
+          | your permission and all your information will be 
+          | kept private.
+        p#facebookModalPrivacy = link_to 'Our Privacy Policy', static_page_path('privacy'), target: '_blank'
+

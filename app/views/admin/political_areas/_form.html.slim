@@ -1,0 +1,7 @@
+= simple_form_for [:admin, @political_area] do |f|
+  .field
+    = f.input :long_name, readonly: true
+  .field
+    = f.input :second_name
+  .form-actions
+    = f.submit 'Save', class: 'btn btn-primary'

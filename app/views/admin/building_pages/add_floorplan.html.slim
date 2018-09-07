@@ -1,0 +1,39 @@
+.container#build-floorplan
+  h3 
+    | Add new floorplans for #{@building.address}
+  
+  .saved-data
+    table.table.table-hover.table-responsive
+      thead
+        tr
+          th
+            | ID
+          th
+            | Floorplan
+          th
+            | Beds
+          th
+            | Baths
+          th
+            | Price
+          th
+            | Sqft
+      tbody#floorplan-table
+        -@building.floorplans.each do |floorplan|
+          = render 'show_floorplans', floorplan: floorplan
+          
+  .new-form
+    = form_for Floorplan.new, url: create_floorplan_admin_building_page_path(@building) do |f|
+      .floorplans.form-inline
+        = render 'floorplan_fields', f: f
+        //.links
+          = link_to_add_association '+Add Floorplan', f, :floorplans
+
+      //.submit-button
+        = f.button "SAVE", type: "button", class: "btn btn-lg floor-submit"
+        //button.btn.btn-lg.floor-submit
+          | SAVE
+
+javascript:
+  App.AdminSection();
+

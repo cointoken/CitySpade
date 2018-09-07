@@ -1,0 +1,31 @@
+<% if @review.account.blank? %>
+    $("#sign_in").modal('toggle');
+<% else %>
+    if(gon.page_protected)
+      {
+        $("#review-show-share3").modal('hide');
+        $("#review-show-share4").modal('show');
+        $("#to_review_your_page").attr('href', '<%= session[:redirect_to]%>');
+      }else{
+        /**
+        * review unit pop
+        */
+        var ads_flag = true;
+        <%if true%>
+            /* check expired*/
+            ads_flag = false;
+        <% end %>
+        var ads = $("#ads-unit");
+        var url = "<%= session[:redirect_to]%>";
+        if(ads_flag && ads.length > 0)
+          {
+            ads.modal().on('hidden', function(){
+              val = ads.find('input[name="review[unit]"]').val();
+              $.ajax({url: url,type: 'patch', data:{'review[unit]': val}});
+              window.location.href=url;
+            })
+          }else{
+            window.location.href=url;
+          }
+      }
+    <% end %>

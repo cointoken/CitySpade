@@ -1,0 +1,7 @@
+<script type='text/tmpl' id='tmpl-photo'>
+  <div class='uploadImg'>
+    <img class='deleteIcon' src="<%= image_path('uploadify-cancel.png')%>" alt="deletePic">
+    <img class='img' src="${small_url}" alt="pic">
+    <input type='hidden' class='photo-delete-url' data-id="${id}" data-target='#uploadify-photo-${id}' value="${delete_url}">
+  </div>
+</script>

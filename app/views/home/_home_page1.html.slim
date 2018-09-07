@@ -1,0 +1,57 @@
+.home-page1.container-fluid#home_page1
+  .home-head
+    .heading
+      img src=asset_path("home/rentopia.png")
+      h1
+        = t('home_page.index.customize')
+      h1 style="margin-bottom: 15vh; color: #2fcbc9"
+        = t('home_page.index.with_city')
+    .heading-bottom.center
+      =link_to t('home_page.index.link_learn_more'), new_search_for_me_path, class:"right-link center"
+
+.center.home-page2#home-page2
+  p style="margin-top: 9%; margin-bottom: 4%"
+    = t('home_page.index.one_stop')
+  .row
+    .col-md-6
+      .img-box
+        img src=asset_path("home/Artboard.png")
+        .container
+          h1
+            = t('home_page.index.real_time')
+          a2
+            = t('home_page.index.our_profess')
+    .col-md-6
+      .img-box
+        img src=asset_path("home/Artboard Copy.png")
+        .container
+          h1
+            = t('home_page.index.no_fee_rent')
+          a2
+            = t('home_page.index.broker_fee')
+
+  p style="margin-top: 9%; margin-bottom: 4%"
+    = t('home_page.index.none_stop')
+  .row
+    .col-md-6
+      .img-box
+        img src=asset_path("home/Artboard Copy 2.png")
+        .container
+          h1
+            = t('home_page.index.worry_free')
+          a2
+            = t('home_page.index.we_know_u')
+    .col-md-6
+      .img-box
+        img src=asset_path("home/Artboard Copy 3.png")
+        .container
+          h1
+            = t('home_page.index.all_around')
+          a2
+            = t('home_page.index.moving_help')
+
+coffee:
+  $(document).ready ->
+    width = $('.col-md-6').width();
+    $('.img-box').css("width", width);
+    $('.img-box').css("height", width);

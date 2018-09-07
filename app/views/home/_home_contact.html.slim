@@ -1,0 +1,91 @@
+
+  - if mobile?
+    .row
+      .col-xs-5
+        .picwechat#wechat
+          = image_tag ("newhome/wechat.png"), data: {toggle: 'popover'}
+      .col-xs-7
+        .textwechat
+          .h5
+            = link_to  "WechatID: ", "weixin://contacts/cityspade1"
+          .h5
+            = link_to  "cityspade1", "weixin://contacts/cityspade1"
+    .row
+      .col-xs-5
+        .pictele#tele
+          = image_tag ("newhome/tele.png")
+      .col-xs-7
+        .texttele
+          .h5
+            = link_to  "Phone: ", "tel:+16465524238"
+          .h5
+            = link_to  "+16465524238", "tel:+16465524238"
+    .row
+      .col-xs-5
+        .picmail#mail
+          = image_tag ("newhome/mail.jpg")
+      .col-xs-7
+        .textmail
+          .h5
+            = link_to  "Email: ", "mailto:contact@cityspade.com"
+          .h5
+            = link_to  "contact@cityspade.com", "mailto:contact@cityspade.com"
+
+  - else
+    .row
+      .col-md-2.hidden-xs
+      .col-xs-12.col-md-8#pic
+        .row
+          .col-sm-4.col-xs-12
+            .picwechat#wechat
+              = image_tag ("newhome/wechat.png"), data: {toggle: 'popover'}
+
+          .col-sm-4.col-xs-12
+            .pictele#tele
+              = image_tag ("newhome/tele.png")
+
+          .col-sm-4.col-xs-12
+            .picmail#mail
+              = image_tag ("newhome/mail.jpg")
+
+        .row
+          .col-sm-4.col-xs-12
+            .textwechat
+              button.flash-detail data-toggle="modal" data-target="#homewechat-modal"
+                .h5 WechatID:
+                .h5 cityspade1
+              #homewechat-modal.modal.fade
+                .modal-dialog
+                  .modal-content
+                    .modal-header
+                      button type="button" class="close" data-dismiss="modal" &times;
+                      h4.modal-title Scan the QR code below to message us on WeChat
+                    .modal-body
+                      = image_tag "newhome/qr3.png"
+
+          .col-sm-4.col-xs-12
+            .texttele
+              form[method="get" action="tel:6465524238"]
+                button[type="submit"]
+                  .h5 Phone:
+                  .h5 646-552-4238
+              /button.flash-detail data-toggle="tooltip" data-target="#homephone-tooltrip"
+                .h5#link
+                  = link_to  "Tele: ", "tel:6465524238"
+                .h5#link
+                  = link_to  "646-552-4238", "tel:6465524238"
+
+
+
+          .col-sm-4.col-xs-12
+            .textmail
+              form[method="get" action="mailto:contact@cityspade.com"]
+                button[type="submit"]
+                  .h5 Email:
+                  .h5 contact@cityspade.com
+              /button.flash-detail data-toggle="modal" data-target="#homephone-modal"
+                .h5#link
+                  = link_to "Mail:", "email:contact@cityspade.com"
+                .h5#link
+                  = link_to "contact@cityspade.com", "mailto:contact@cityspade.com"
+      .col-md-2.hidden-xs

@@ -1,0 +1,105 @@
+doctype html
+html.no-js lang='en' prefix="og: http://ogp.me/ns#"
+  head
+    title
+      - if content_for? :custom_title
+        = yield :custom_title
+      - else
+        = full_title
+    = render_rebots_status
+
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    meta property="og:title" content=title
+    meta property='og:url' content=full_url
+    meta property='og:type' content='website'
+    meta property='og:site_name' content='CitySpade'
+    meta content=Settings.omniauth.facebook_id property='fb:app_id'
+    meta name="keywords" content=seo_keywords
+    meta name='application-name' content='CitySpade'
+    meta [
+      name='description'
+      content="#{seo_description}" 
+    ]
+
+    = yield :seo
+    = include_gon
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = render_link_canonical
+    script type="text/javascript" src="https://js.squareup.com/v2/paymentform"
+    link href=asset_path("city-fav.png") rel="shortcut icon"
+
+  body [
+    class="featured ltr preset1 menu-home responsive bg hfeed clearfix \
+      fix-header com_content mega #{controller_name} #{action_name} \
+      #{page_status_class}"
+
+    data-header-resize='0'
+    data-small-header='22'
+    data-big-header='70'
+    data-logo-height='22'
+    id="#{controller_name}-#{action_name}"
+  ]
+    .body-innerwrapper
+      = yield :custom_top
+      = render 'layouts/header'
+      = render 'shared/notice'
+
+      - if content_for? :banner_wrapper
+        section#sp-banner-wrapper
+          .row#banner
+            = yield :banner_wrapper
+
+      = content_for?(:content) ? yield(:content) : yield
+
+      - unless current_account
+        = render "shared/sign_up_modal"
+        = render "shared/sign_in_modal"
+
+      - if !current_account || !current_account.logined_facebook?
+        = render "shared/login_facebook"
+
+      /= render "home/flashsale_modal"
+
+      / Render iPad/GoPro promo modal
+      / - if has_ads?
+      /   = render 'shared/ads_gift'
+      .loading-modal
+      = render 'layouts/footer'
+      
+      #profile-overlay
+        button#profClose type="button" class="close hidden-xs"
+          = image_tag 'icons/close_btn.png'
+        .acc-overlay
+          ul
+            li
+              a href=edit_account_path Edit Profile
+            li
+              a href=account_saved_wishlist_path(flag: Settings.listing_flags.rental) My Favorites
+            //li
+              a href="#" My Applications
+            li
+              a href=destroy_account_session_path  data-method='delete' Sign Out
+
+    - if iphone? and cookies["app-ban"].blank?
+      .app-bban
+        = link_to "https://itunes.apple.com/de/app/cityspade/id873629059?mt=8",
+            id: "aban-id",
+            class: "aban" \
+          do
+
+          = image_tag "cityspade_apple.png", class: "cityspade-apple-img"
+          .text
+            p.p1
+              | App is more faster.
+            p.p2
+              | Saving more flow.
+          .btn.aban-btn
+            | Open it
+
+        a class="x" onclick="$('.app-bban').remove();document.cookie='app-ban=1';"
+
+javascript:
+  window.App.ProfileOverlay();

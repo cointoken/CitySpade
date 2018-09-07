@@ -1,0 +1,174 @@
+/ iPad and GoPro gift promo html
+
+.modal.hide.fade#ads-gift [
+  style='padding: 18px; \
+    background: none; \
+    height: 565px; \
+    width: 770px; \
+    border:0; \
+    border-radius: 0; \
+    left: 40%;top: 5%;'
+  data-backdrop='static'
+]
+  button [
+    type="button"
+    class='close'
+    data-dismiss="modal"
+    aria-hidden="true"
+    style="background:white; \
+      opacity:1; \
+      height: 28px; \
+      width:28px; \
+      border-radius: 50%; \
+      margin-right: -45px; \
+      margin-top: -12px; \
+      z-index:1200; \
+      position: relative;"
+  ] &times;
+
+  .modal-body style="\
+      background: url(#{image_path('ads/vscocam-bg.jpg')}) no-repeat; \
+      background-size: 100% 395px; \
+      background-position: 0px 90px; \
+      font-weight: bold; \
+      font-size: 32px; \
+      color: white; \
+      padding-top: 160px; \
+      line-height: 32px; \
+      text-align: center; \
+      height: 565px; \
+      width: 770px;"
+
+    .header style="background: #fff; \
+        height: 90px; \
+        position: absolute; \
+        left: 0; \
+        top: 0; \
+        width: 100%;"
+
+      p style="color: #506982; \
+          font-size: 28px; \
+          font-family: Helvetica Neue; \
+          font-weight: bold; \
+          vertical-align: middle; \
+          line-height: 90px;"
+      | WRITE an apartment review for a chance to win a PRIZE!
+
+    .gifts style="width: 100%;text-align:center;margin:-25px auto;"
+      .gift style="color: #fff;
+          text-shadow: 1px 1px 1px #000; \
+          font-size: 40px; \
+          font-family: Helvetica Neue; \
+          display: inline-block; \
+          font-weight: bold; \
+          padding: 0; \
+          width: 233px;"
+
+        .gift-name style="width: 100%;padding: 10px 0;"
+          | iPad Mini
+
+        .gift-info style="width: 160px;margin: auto auto;"
+
+          .gift-num style="color: #fff; \
+            text-shadow: 1px 1px 1px #000; \
+            font-size: 22px; \
+            font-family: Helvetica Neue; \
+            font-weight: 200; \
+            padding-top: 5px;"
+            | 200 Words
+
+      .gift style="color: #fff; \
+        text-shadow: 1px 1px 1px #000; \
+        font-size: 40px; \
+        font-family: Helvetica Neue; \
+        display: inline-block; \
+        font-weight: bold; \
+        padding: 0 10px; \
+        width: 250px; \
+        border-left: 1px solid; \
+        border-right: 1px solid;"
+
+        .gift-name style="width: 100%;padding: 10px 0;"
+          | GoPro Hero3
+
+        .gift-info style="width: 160px;margin: auto auto;"
+          .gift-num style="color: #fff; \
+            font-size: 22px; \
+            font-family: Helvetica Neue; \
+            font-weight: 400; \
+            padding-top: 5px;"
+            | 150 Words
+
+      .gift style="color: #fff; \
+        text-shadow: 1px 1px 1px #000; \
+        font-size: 40px; \
+        font-family: Helvetica Neue; \
+        display: inline-block; \
+        font-weight: bold; \
+        padding: 0;width: 233px;"
+
+        .gift-name style="width: 100%;padding: 10px 0;"
+          | UrBeats
+
+        .gift-info style="width:160px;margin:auto auto;"
+          .gift-num style="color: #fff; \
+            text-shadow: 1px 1px 1px #000; \
+            font-size: 22px; \
+            font-family: Helvetica Neue; \
+            font-weight: 400;padding-top: 5px;"
+            | 100 Words
+
+    .icon style="margin: 85px 0 10px 0; \
+      width: 100%; \
+      height: 50px; \
+      text-align: center;"
+
+      i style="width: 55px; \
+      height: 50px; \
+      display: block; \
+      margin: auto auto; \
+      background: url(#{image_path('ads/gift.png')});"
+
+    .primary-info style="color: #fff; \
+      text-shadow: 1px 1px 1px #000; \
+      font-size: 25px; \
+      font-family: Avenir; \
+      font-weight: normal; \
+      padding-bottom: 10px;"
+      | Win a prize with just one review.
+
+    .sub-info style="color: #b5e1ff; \
+      text-shadow: 1px 1px 1px #000; \
+      font-size: 17px; \
+      font-family: 'Avenir Book'; \
+      line-height: 23px;"
+
+      p
+        | Write a review for your apartment on CitySpade.com
+        br
+        | and be entered to win one of three prize!
+        br
+        | Double your chances by sharing your review on Facebook with
+        span style='color: #29bcb8;'
+          | "#CitySpadeRaffle"
+
+    .footer style="width: 100%; \
+      height: 90px; \
+      background: #29bcb8; \
+      position: absolute; \
+      bottom: 0; \
+      left: 0;"
+
+      = link_to new_review_path + "?from=index",
+        style: 'display: inline-block;margin: 20px auto;',
+        data:{dismiss: 'modal'},
+        'aria-hidden' => true,
+        target: '_blank',
+        onclick:"$(\"#ads-gift\").modal(\"hide\"); \
+          window.open(\"#{new_review_path}?from=index\")",
+        onMouseOver:"\
+          $(this).find('img').attr('src', '#{image_path('ads/gift-btn.png')}')",
+        onMouseOut: "\
+          $(this).find('img').attr('src', '#{image_path('ads/gift-btn1.png')}')" \
+      do
+        = image_tag 'ads/gift-btn1.png'

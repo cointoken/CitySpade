@@ -1,0 +1,32 @@
+.box
+  .cell
+    = link_to 'New', new_admin_inbox_path, class: 'pull-right'
+    h3 Inboxes
+  table.table.table-striped
+    thead
+      tr
+        th
+          = sortable "title", "Title"
+        th User Read
+        th User Received
+        th
+        th
+        th
+          = sortable "created_at", "Created At"
+    tbody
+      - @inboxes.each do |inbox|
+        tr
+          td
+            = link_to inbox.title, admin_inbox_path(inbox)
+          td
+            = inbox.user_read_number
+          td
+            = inbox.user_receive_number
+          td
+            = link_to 'Edit', edit_admin_inbox_path(inbox)
+          td
+            = link_to 'Destroy', admin_inbox_path(inbox), data: {:confirm => 'Are you sure?'}, :method => :delete
+          td
+            = inbox.created_at.strftime("%Y/%m/%d")
+
+  = paginate @inboxes

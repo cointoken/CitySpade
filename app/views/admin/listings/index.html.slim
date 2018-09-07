@@ -1,0 +1,89 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_listings_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Listings
+          .input-text
+            = select_tag :broker, options_for_select(render_error_sign_site(Spider::Sites::Base.descendants.map{|s|s.to_s.split("::").last}.select{|s| s !~ /base/i}),selected: params[:broker]), include_blank: true,  placeholder: 'Broker Name', id: "broker", class: 'col-md-5'
+            = text_field_tag :id, params[:id], placeholder: 'Listing Id', class: "col-md-5"
+            = text_field_tag :begin_created_at, params[:begin_created_at], placeholder: 'Begin Created At', class: 'datetimepicker col-md-5'
+            = text_field_tag :end_created_at, params[:end_created_at], placeholder: 'End Created At', class: 'datetimepicker col-md-5'
+            = text_field_tag :begin_updated_at, params[:begin_updated_at], placeholder: 'Begin Updated At', class: 'datetimepicker col-md-5'
+            = text_field_tag :end_updated_at, params[:end_updated_at], placeholder: 'End Updated At', class: 'datetimepicker col-md-5'
+          .radio-btns
+            label.radio.list-inline
+              | All listings
+              = radio_button_tag :image, '0', params[:image] == '0'
+            label.radio.list-inline
+              | Image Enable
+              = radio_button_tag :image, '1', params[:image] == '1'
+            label.radio.list-inline
+              | Image Disable
+              = radio_button_tag :image, '2', params[:image] == '2'
+            | &nbsp;&nbsp;&nbsp;&nbsp;
+            label.radio.list-inline
+              = check_box_tag :only_contacted_agent, '1', params[:only_contacted_agent] == '1'
+              | Only Contacted Agent
+            label.radio.list-inline
+            = check_box_tag :broker, 'cityspade', params[:broker] == 'cityspade'
+            | Cityspade exclusive
+
+
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+.row
+  .box.col-md-12
+    .cell
+      Strong Listings |
+      p.list-inline
+        span.total
+          |  Total: #{@listings.total_count} 
+        | | Contacted Agent Times:&nbsp;
+        = PageView.where(page_type: 'ContactAgent').where(page_id: @listings.pluck(:id)).sum(:num)
+      p
+        span.text-warning
+          | Transport Line&nbsp;&nbsp;Calculated:#{@cals[:line_cal]}&nbsp;&nbsp;Not Calculated: #{@cals[:line_not_cal]} 
+        | |
+        span.text-info
+          |  Transport Score&nbsp;&nbsp;Calculated:#{@cals[:score_cal]}&nbsp;&nbsp;Not Calculated: #{@cals[:score_not_cal]}
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "id", "ID"
+            th
+              = sortable "title", "Title"
+            th Image number
+            th
+              = sortable "broker_name", "Broker"
+            th Type
+            th
+              = sortable "price", "Price"
+            th Contacted Agent Times
+            th
+              = sortable "created_at", "Created at"
+            th
+              = sortable "updated_at", "Updated at"
+            th Set Expired
+        tbody
+          - @listings.each do |listing|
+            tr
+              td = link_to listing.id, listing, target: '_blank'
+              td = link_to listing.address_title, listing.origin_url, target: '_blank'
+              td = listing.images.count
+              td = listing.broker_site_name
+              td = listing.is_rental? ? 'Rental' : 'Sale'
+              td = listing.price
+              td = PageView.where(page_type: 'ContactAgent').where(page_id: listing.id).sum(:num)
+              td = listing.created_at.to_s(:db)
+              td = listing.updated_at.to_s(:db)
+              - if listing.contact_name == 'cityspade'
+                td = link_to "Edit", edit_listing_path(listing)
+              td
+                = link_to "Delete", admin_listing_path(listing), method: :delete, data:{confirm: 'Do you want to expired the listing ?'}, class: 'btn btn-danger'
+                = link_to "Diable Target Url", admin_listing_path(listing, target: :url), method: :delete, data:{confirm: 'Do you want to expired the listing ?'}, class: 'btn btn-danger'
+      = paginate @listings

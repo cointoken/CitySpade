@@ -1,0 +1,51 @@
+head
+  script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/selectize.js"
+  link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.css"
+
+#mailTemplate
+  h4.title Send E-mail to Building
+  = form_tag admin_mailbuilding_path, method: 'post' do
+    .mail-body
+      = hidden_field_tag 'mail_build[client_id]', @client.id
+      = hidden_field_tag 'mail_build[client_docs][]', '', multiple: true
+      .row.mail-fields
+        = label_tag 'mail_build[from_email]', class: "col-sm-2 control-label" 
+          | From:
+        .col-sm-10
+          = text_field_tag 'mail_build[from_email]', nil, placeholder: 'From:', class: "form-control col-sm-10", required: true
+      .row.mail-fields
+        = label_tag 'mail_build[to_email]', class: "col-sm-2 control-label" 
+          | To:
+        .col-sm-10.control-group
+          = select_tag 'mail_build[to_email]', nil, class: "email-select", required: true, multiple: true
+      .row.mail-fields
+        = label_tag 'mail_build[subject]', class: "col-sm-2 control-label" 
+          | Subject
+        .col-sm-10
+          = text_field_tag 'mail_build[subject]', nil, placeholder: 'Subject', class: "form-control col-sm-10", required: true
+      .row.mail-fields
+        .col-sm-10.col-sm-offset-2
+          = text_area_tag 'mail_build[msg_body]', nil, placeholder: 'Enter your message here...', rows: 10, class: "form-control", required: true
+      .row.mail-fields
+        .col-sm-10.col-sm-offset-2
+          span Attachment Size:  
+          span.fsize 0
+          span.mb
+            |  MB
+      .row.mail-fields
+        .col-sm-10.col-sm-offset-2
+          - @docs.each do |doc|
+            ul
+              li.row
+
+                = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", target: "_blank", class: "col-sm-8"
+                button type="button" class="btn btn-primary add-doc col-sm-2" data-id="#{doc.id}" Add
+                button type="button" class="btn btn-danger rem-doc col-sm-2" data-id="#{doc.id}" disabled="true" Remove
+  
+    .mail-footer
+      = submit_tag "Send", class: "btn btn-primary"
+      //button type="button" class="btn btn-default" data-dismiss="modal" Send
+
+javascript:
+  App.ClientApplyAdmin();
+  App.AdminSection();

@@ -1,0 +1,64 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_roommates_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Roommates
+          .input-text.triple-input
+            = number_field_tag :id, params[:id], min: 1, placeholder: "ID", class: "col-md-5"
+            = text_field_tag :borough, params[:borough], placeholder: 'Borough', class: 'col-md-5'
+
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+.row
+  .box.col-md-12
+    .cell
+      Strong Roommates
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "id", "ID"
+            th
+              = sortable "expired", "Expired"
+            th Account
+            th Contacted
+            th
+              = sortable "gender", "Gender"
+            th
+              = sortable "title", "Title"
+            th
+              = sortable "borough", "Borough"
+            th
+              = sortable "location", "location"
+            th
+              = sortable "num_roommates", "Num Roommates"
+            th
+              = sortable "created_at", "Created"
+        tbody
+          - @roommates.each do |post|
+            tr
+              td
+                = post.id
+              td = post.expired?
+              th = post.account.try :name
+              td = post.contacted
+              td = post.gender
+              td = post.title
+              td = post.borough
+              td = post.location
+              th = post.num_roommates
+              th = post.created_at.strftime("%A, %B %d, %Y at %l%p")
+              td = link_to "Edit", edit_admin_roommate_path(post),class: 'btn btn-info'
+              td = link_to "Expire", expire_admin_roommate_path(post),
+                  method: :post,
+                  data:{confirm: 'Do you want to expire the roommate request ?'},
+                  class: 'btn btn-info'
+              td = link_to "Delete", admin_roommate_path(post),
+                  method: :delete,
+                  data:{confirm: 'Do you want to expired the listing ?'},
+                  class: 'btn btn-danger'
+    = paginate @roommates

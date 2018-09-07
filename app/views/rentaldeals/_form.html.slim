@@ -1,0 +1,68 @@
+#book-showing.modal.fade role="dialog"
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" &times;
+        h4.modal-title SCHEDULE A SHOWING
+
+      .modal-body
+        = form_tag '/bookshowing', id: "showing_form", remote: true do
+          .book-date
+            -today = Date.today
+            -first = today.beginning_of_week(:sunday)
+            -last = today.end_of_week(:sunday)
+            .slider-1
+              -(first..last).each do |i|
+                .day
+                  span.week = i.strftime("%a")
+                  .date
+                    -if i<today
+                      = radio_button_tag 'date', i.strftime("%m/%d/%Y"), false, disabled: true
+                    -else
+                      = radio_button_tag 'date', i.strftime("%m/%d/%Y"), false
+                    label for="date_#{i.strftime("%m_%d_%Y")}" #{i.strftime("%m/%d")}
+              span.glyphicon.glyphicon-chevron-right.next
+
+            .slider-2
+              - next_first = last+1
+              - next_last = (last+1).end_of_week(:sunday)
+              span.glyphicon.glyphicon-chevron-left.prev
+              -(next_first..next_last).each do |i|
+                .day
+                  span.week = i.strftime("%a")
+                  .date
+                    = radio_button_tag 'date', i.strftime("%m/%d/%Y"), false
+                    label for="date_#{i.strftime("%m_%d_%Y")}" #{i.strftime("%m/%d")}
+
+          .book-time
+            = radio_button_tag 'time', '1', false, disabled: true
+            = label_tag 'time_1', '10AM - 12PM'
+            = radio_button_tag 'time', '2', false, disabled: true
+            = label_tag 'time_2', '12PM - 2PM'
+            = radio_button_tag 'time', '3', false, disabled: true
+            = label_tag 'time_3', '2PM - 5PM'
+
+          .error-field
+          .appointment
+          .time
+            .row
+              .col-sm-4
+              .col-sm-8
+
+          .details
+            .row
+              .col-sm-4
+                label
+                  | Name:
+              .col-sm-8
+                = text_field_tag 'name', nil, required: true
+            .row
+              .col-sm-4
+                = label_tag 'email', 'Email:'
+              .col-sm-8
+                = email_field_tag 'email', nil, required: true
+          .submit-button
+            = submit_tag 'SUBMIT'
+
+
+

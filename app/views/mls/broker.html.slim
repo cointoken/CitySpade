@@ -1,0 +1,53 @@
+= form_tag mls_broker_path, method: :get, style: "width:100%;text-align:center;" do
+  h4 style="text-align:center;"
+    | Search Listings' count
+  .input-text style="margin-top: 10px;"
+    label
+      | Model :
+    = select_tag :model, options_for_select(["RealtyMx", "nyc", "boston", "philadelphia"], params[:model])
+    label
+      | Broker Name :
+    = text_field_tag :broker_name, params[:broker_name]
+    label
+      | No Fee Date :
+    = text_field_tag :date, params[:date]
+  .searchbtn style="margin-top: 10px;"
+    = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+hr
+br
+
+table border="1" style="text-align:center;width:100%;"
+  tbody
+    tr
+      th style="color:#fff;background:#777;"
+        - model = params[:model] || "RealtyMx"
+        = "#{model.upcase} FEED"
+      th
+        | Active Listings
+      th
+        | Added Today
+      th
+        | Expired Today
+      th
+        | Active No-Fee
+      th
+        | Added No-Fee(default: Today)
+      th
+        | Expired No-Fee(default: Today)
+    - @brokers.each do |broker|
+      tr
+        td
+          = broker.name
+        td
+          = link_to broker.listings.count, broker_listings_path(broker.id), target: "_blank"
+        td
+          = link_to broker.added_listings.count, broker_listings_path(broker.id, {status: "added"}), target: "_blank"
+        td
+          = link_to broker.expired_listings.count, broker_listings_path(broker.id, {status: "expired"}), target: "_blank"
+        td
+          = link_to broker.no_fee_listings.count, broker_listings_path(broker.id, {no_fee: true}), target: "_blank"
+        td
+          = link_to broker.added_no_fee_listings(params[:date]).count, broker_listings_path(broker.id, {status: "added", no_fee: true, date: params[:date]}), target: "_blank"
+        td
+          = link_to broker.expired_no_fee_listings(params[:date]).count, broker_listings_path(broker.id, {status: "expired", no_fee: true, date: params[:date]}), target: "_blank"

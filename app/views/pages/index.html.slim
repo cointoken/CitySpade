@@ -1,0 +1,15 @@
+#pages.global-container
+  .container
+    h1 Static Pages Panle
+    - @pages.each do |page|
+      .page
+        h3
+          = link_to page.name, page
+        .content
+          = simple_format truncate(page.content, length: 300)
+        - if current_account.present? and not current_account.role?(:user)  
+          = link_to 'Edit', edit_page_path(page)
+          = link_to 'Edit Raw', edit_page_path(page, direct_edit: true)
+    - if current_account.present? and not current_account.role?(:user)
+      = link_to 'New Page', new_page_path    
+

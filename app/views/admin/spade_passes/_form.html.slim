@@ -1,0 +1,79 @@
+= simple_form_for [:admin, @spade_pass] do |f|
+  .field
+    = f.label :title
+    = f.text_field :title
+  br
+
+  .field
+    = f.label :zipcode
+    = f.text_field :zipcode
+  br
+
+  / .field
+  /   = f.label :city
+  /   = f.text_field :city, readonly: !@spade_pass.new_record?
+  / br
+
+  / .field
+  /   = f.label :borough
+  /   = f.select :borough, SpadePass.boroughs, readonly: !@spade_pass.new_record?
+  br
+
+  .field
+    = f.label :street_address
+    = f.text_field :street_address, readonly: !@spade_pass.new_record?
+  br
+
+  .field
+    = f.label :spade_pass_type
+    = f.text_field :spade_pass_type
+  br
+
+  .field
+    = f.label :contact_tel
+    = f.text_field :contact_tel
+  br
+
+  .field.sepcial_offers_field
+    = f.label :special_offers
+    = f.text_field :special_offers
+  br
+    .offers_tags
+      - if @spade_pass.present? && @spade_pass.special_offers_array.present?
+        - @spade_pass.special_offers_array.each do |offer|
+          span.tag
+            = offer
+  br
+  .field
+    = f.input :discounts_expired_date, as: :date, html5: true
+  br
+
+  .field
+    = f.label :description
+    = f.text_area :description
+  br
+
+  .field
+    = f.label :rank
+    = f.number_field :rank
+  br
+
+  .field
+    = f.input :is_recommended, as: :radio_buttons
+  br
+
+    .form-actions
+      = f.submit 'Save', class: 'btn btn-primary'
+
+javascript:
+  App.AdminSection();
+
+scss:
+  .tag {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    background: #29bcb8;
+    color: #fff;
+  }

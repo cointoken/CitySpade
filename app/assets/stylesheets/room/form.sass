@@ -1,0 +1,206 @@
+@import 'modules'
+
+#roomForm, #roommateForm
+  max-width: 500px
+  width: 95%
+
+  .uploadify-button
+    background: url(asset_path("sublet/upload.png"))
+
+  .aside-text
+    height: 0
+    width: 0
+
+    span
+      color: #1D9896
+      width: 130px
+      position: relative
+      left: -150px
+      display: inline-block
+      font-size: 1.3em
+      font-weight: bold
+      top: 10px
+      text-transform: uppercase
+
+      @media screen and (max-width: 768px)
+        display: none
+
+  input[type="text"], select, textarea
+    width: 100%
+    height: 45px
+    font-size: 1.2em
+    transition: 0.2s ease-in all
+    color: #313131
+    background: white
+
+    &:focus, &:hover
+      outline: none
+      border-color: $link-color
+
+  input[type="text"], select
+    border-top: none
+    border-bottom: 2px solid #313131
+    border-left: none
+    border-right: none
+
+  textarea
+    height: 200px
+    border: 2px solid #313131
+
+  label
+    display: inline-block
+    font-size: 1.2em
+    color: #313131
+    letter-spacing: 0.5px
+    text-transform: capitalize
+    margin-top: 10px
+
+    @media screen and (max-width: 768px)
+      font-size: 1em
+
+    input[type="checkbox"], input[type="radio"]
+      margin-left: 10px
+      margin-right: 10px
+      display: none
+
+      &[disabled]:hover + .styled-checkbox
+        background-position: 50% 0
+
+      &:checked
+        & + .styled-checkbox
+          background-position: left top
+
+    .styled-checkbox
+      display: inline-block
+      height: 20px
+      width: 20px
+      background: url(asset_path('sublet/checkbox_sprites.png')) no-repeat
+      background-size: 300% 100%
+      background-position: 50% 0
+      cursor: pointer
+      vertical-align: sub
+      margin: 0 10px
+
+      @media screen and (max-width: 768px)
+        height: 30px
+        width: 30px
+        vertical-align: bottom
+
+    &:hover .styled-checkbox
+      background-position: right 0
+
+  .input-group
+    .input-group-addon
+      border: none
+      border-radius: 0
+      background: none
+      font-family: 'Avenir'
+      font-size: 1.2em
+
+  .aligned-checklist
+    width: 140px
+    margin-left: auto
+    margin-right: auto
+    display: block
+
+    label
+      text-transform: capitalize
+      font-weight: normal
+
+  .room-pet-label, .checkbox-label
+    text-transform: capitalize
+    font-weight: normal
+
+    &.disabled-pet
+      text-decoration: line-through
+      opacity: 0.7
+
+  .middle-text
+    font-weight: bold
+    font-size: 1.3em
+    letter-spacing: 1px
+    margin-top: 8px
+    text-align: center
+
+  .divider
+    margin-top: 25px
+
+    @media screen and (max-width: 768px)
+      display: none
+
+  #roomImageForm
+    width: 390px
+    position: relative
+
+    #file_upload-queue
+      position: absolute
+      top: 0
+      .uploadify-queue-item
+        @include width-height(120px,120px)
+        overflow: hidden
+        span
+          font-weight: normal
+          font-size: 15px
+          margin: 0
+
+    #file_upload,
+    .uploadImg,
+    .uploadify-queue-item
+      margin-bottom: 10px
+      margin-right: 10px
+      float: left
+
+    .uploadImg
+      @include width-height(118px,118px)
+      border: 1px solid #bcbcbc
+      overflow: hidden
+      position: relative
+
+      .deleteIcon
+        position: absolute
+        top: 2px
+        right: 2px
+        cursor: pointer
+
+      .img
+        @include width-height(118px,118px)
+
+    &.show-uploadify
+      display: none
+      position: absolute
+      top: -100px
+      left: 50%
+      margin-left: -195px
+      background: white
+      width: 390px
+      z-index: 1010
+      padding: 10px 0 60px 10px
+      #file_upload-queue
+        top: 10px
+
+  #roomFormSubmit, input[type="submit"]
+    background: $link-color
+    border: none
+    color: white
+    font-size: 1.5em
+    font-family: 'Avenir'
+    font-weight: normal
+    text-transform: uppercase
+    display: block
+    margin-left: auto
+    margin-right: auto
+    margin-bottom: 40px
+    letter-spacing: 1px
+    padding-left: 15px
+    padding-right: 15px
+
+  .middle-text
+    font-weight: bold
+    font-size: 1.3em
+    letter-spacing: 1px
+    margin-top: 8px
+    text-align: center
+
+@media screen and (max-width: 768px)
+  #file_upload
+    margin: 0 auto

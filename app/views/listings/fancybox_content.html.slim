@@ -1,0 +1,55 @@
+.container-fluid
+  .col-sm-9
+    .listing-address #{@listing.display_title}
+    .listing-hood #{full_neighborhood(@listing)}
+
+  .col-sm-3.center
+    - if @listing.is_flash_sale
+      .listing-cash-back Special Promotion
+
+    - elsif @listing.no_fee
+      .listing-no-fee NO-FEE
+
+.container-fluid.no-padding
+  = render 'listings/fancybox_content/image_carousel'
+
+.container-fluid
+  .listing-price =number_to_currency(@listing.price, precision: 0)
+
+  .row
+    .col-sm-6.center
+      b
+        ' Cost-Efficiency:
+      br
+      .rating-number =display_score(@listing, :score_price)
+
+    .col-sm-6.center
+      b
+        ' Transportation:
+        br
+      .rating-number =display_score(@listing, :score_transport)
+
+  .row.bottom-link-bar
+    .col-sm-3.bed-and-bath
+      .center-block
+        = image_tag 'sublet/bed.png', title: display_beds(@listing),
+          height: "25px", width: "25px"
+        span =display_beds(@listing)
+
+    .col-sm-3.bed-and-bath
+      .center-block
+        = image_tag 'sublet/bath.png', title: display_baths(@listing),
+          height: "25px", width: "25px"
+        span =display_baths(@listing)
+
+    .col-sm-2.guarantor
+      - if @listing.guarantor
+        .center-block
+          =image_tag 'logo/guarantor_logo.png', width: "32px", class: "guarantor-logo-fbox"
+      
+    .col-sm-4
+      = link_to "View Full Listing", @listing,
+        class: "full-listing-link pull-right"
+
+javascript:
+  App.Guarantor();

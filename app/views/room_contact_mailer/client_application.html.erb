@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+</head>
+<body>
+<div class="container">
+  <h3> Basic Info: </h3>
+  <p>First Name: <%= @info[:first_name] %></p>
+  <p>Last Name: <%= @info[:last_name] %></p>
+  <p>Date of Birth: <%= @info[:dob] %></p>
+  <p>SSN: <%= @info[:ssn] %></p>
+  <p>phone: <%= @info[:phone] %></p>
+  <p>email: <%= @info[:email] %></p>
+  <p>building: <%= @info[:building] %></p>
+  <p>unit: <%= @info[:unit] %></p>
+  <h3> Current Address: </h3>
+  <p>Street: <%= @info[:current_addr] %></p>
+  <p>Landlord: <%= @info[:current_landlord] %></p>
+  <p>Landlord phone: <%= @info[:current_landlord_ph] %></p>
+  <p>Current rent/month: <%= @info[:current_rent] %></p>
+  <h3> Income Source: </h3>
+  <p>Position: <%= @info[:position] %></p>
+  <p>Company / School: <%= @info[:company] %></p>
+  <p>Start date: <%= @info[:start_date] %></p>
+  <p>Salary: <%= @info[:salary] %></p>
+  <h3> Pets: </h3>
+  <% if @info.has_pets? %>
+    <p>Type: <%= @info[:pet] %></p>
+    <p>Breed: <%= @info[:breed] %></p>
+    <p>Name: <%= @info[:pet_name] %></p>
+    <p>Age: <%= @info[:pet_age] %></p>
+    <p>Weight: <%= @info[:pet_weight] %></p>
+  <% end %>
+  <h3> Emergency Contact: </h3>
+  <p>Name: <%= @info[:emergency_name] %></p>
+  <p>Address: <%= @info[:emergency_addr] %></p>
+  <p>Phone: <%= @info[:emergency_phone] %></p>
+  <p>Relationship: <%= @info[:emergency_relation] %></p>
+  <h3>Additional Info: </h3>
+  <p>Referral: <%= @info[:referral] %></p>
+  <p><strong>Guarantor status: </strong></p>
+  <% @info.guarantor_status.each do |status| %>
+    <p><%= status %></p>
+  <% end %>
+</div>

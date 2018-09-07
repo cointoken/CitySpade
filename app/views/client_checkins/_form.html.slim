@@ -1,0 +1,34 @@
+= form_for @client, html:{class: "form-checkin", multipart: true} do |f|
+    .form-group.pad-group
+      label 
+        | *Legal Name:
+      = f.text_field :first_name, class: "name", placeholder: "First name", required: true
+      = f.text_field :last_name, placeholder: "Last name", required: true
+
+    .client-roommates.form-inline
+      = link_to_add_association '+', f, :client_roommates,'data-association-insertion-traversal' => "children",'data-association-insertion-method' => "append", class: "hidden-xs add_roommate"
+      = f.fields_for :client_roommates do |client_roommate|
+        = render 'client_roommate_fields', f: client_roommate
+      .links.visible-xs
+        = link_to_add_association '+', f, :client_roommates, class: "add_roommate"
+
+    .form-group.pad-group
+      = f.label :email, "*E-Mail:"
+      = f.email_field :email, class: "email", required: true
+
+    .form-group.pad-group
+      = f.label :phone, "*Phone Number:"
+      = f.telephone_field :phone, class: "phone", required: true, maxlength: 14
+    
+    - if @building_edit
+      .checkin-building
+        = f.fields_for :checkin_buildings do |building|
+          = render 'checkin_building_fields', f: building
+        .links
+          = link_to_add_association 'Add Building', f, :checkin_buildings, class: "add_building"
+
+    .submit-button
+      = f.submit "SAVE"
+
+javascript:
+  App.ClientCheckin();

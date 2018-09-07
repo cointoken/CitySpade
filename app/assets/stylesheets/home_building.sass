@@ -1,0 +1,191 @@
+@import 'modules'
+
+.newhome-flashsales
+  padding-top: 20px
+  padding-left: 0px
+  padding-right: 0px
+
+  .flash-heading
+    margin-bottom: 15px
+    font-family: Avenir
+    a
+      font-size: 30px
+    p
+      font-size: 20px
+      font-weight: bold
+
+#homepicture
+  .row
+    display: block
+  .row.homebuilding
+    .span
+      font-family: Avenir
+      color: white
+      position: absolute
+      bottom: 0px
+      left: 0px
+      font-size: 80px
+      font-weight: bold
+      background: rgb(0, 0, 0)
+      background: rgba(0, 0, 0, 0.8)  
+      width: 100%
+      height: 100%
+      display: none
+      .text
+        font-family: Avenir
+        font-size: 20px
+        color: white
+        opacity: 0
+        text-align: center
+        padding-top: 100px
+    .pic
+      img
+        width: 100%
+        height: 500px
+        vertical-align: middle  
+        opacity: 1
+      &:hover
+        .text
+          opacity: 1
+        .span 
+          display: block
+  .flash-see-more
+    .fa
+      margin-left: 7px
+      vertical-align: middle
+.net
+  h3
+    font-size: 12px
+    text-align: center
+
+.home-contact.container-fluid
+  background: #f3f3f4
+  .row
+    height: 110px
+    @media (max-width: 768px)
+      margin-left: 0
+      margin-right: 0
+    .col-xs-12.col-md-8#pic
+      text-align: center
+      .col-sm-4
+        .picwechat
+          img[alt="Wechat"]
+            width: 65px
+            height: 65px
+            vertical-align: middle
+            margin-bottom: 25px
+            text-align: center
+            cursor: pointer
+        .pictele
+          img[alt="Tele"]
+            width: 65px
+            height: 65px
+            vertical-align: middle
+            margin-bottom: 25px
+            text-align: center
+            cursor: pointer            
+        .picmail
+          img
+            width: 65px
+            height: 65px
+            vertical-align: middle
+            margin-bottom: 25px
+            text-align: center
+            cursor: pointer
+
+      .col-sm-4
+        .textwechat
+          button
+            border-radius: 8px
+            text-align: center
+            width: 180px
+            height: 80px
+            .h5
+              font-size: 14px
+              a:not(.btn) 
+                color: #000000     
+          #homewechat-modal.modal.fade
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  h4.modal-title
+                    position: align-center
+                  .close
+                    width: 40px
+                    height: 40px
+                    margin-top: -3px
+                    margin-left: 28px
+                .modal-body
+                  position: relative
+                  padding: 38px
+                  img
+                    text-align: center
+                    width: 250px
+                    height: 250px
+        .texttele
+          button
+            border-radius: 8px
+            text-align: center
+            width: 180px
+            height: 80px 
+            .h5#link
+              font-size: 14px
+              a:not(.btn) 
+                color: #000000 
+        .textmail  
+          button
+            border-radius: 8px
+            text-align: center
+            width: 180px
+            height: 80px
+            .h5
+              font-size: 14px
+              a:not(.btn) 
+                color: #000000       
+        
+  @media (max-width: 768px)
+    .row
+      height: 90px
+      width: 300px
+      .picwechat
+        text-align: center
+        img
+          width: 65px
+          height: 65px
+      .textwechat
+        text-align: center 
+        .h5
+          font-size: 14px       
+    .row
+      height: 90px
+      width: 300px
+      .pictele
+        text-align: center
+        img
+          width: 65px
+          height: 65px
+      .texttele
+        text-align: center
+        .h5
+          font-size: 14px       
+    .row
+      height: 90px
+      width: 300px
+      .picmail
+        text-align: center
+        img
+          width: 65px
+          height: 65px
+      .textmail
+        text-align: center
+        .h5
+          font-size: 14px  
+          
+
+
+  
+
+
+
+
+

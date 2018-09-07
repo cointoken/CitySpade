@@ -1,0 +1,150 @@
+.row
+  .row.homebuilding
+    .pic
+    
+    =image_tag ("newhome/505.png")
+
+    .span
+      .text
+        .details
+          p The 505
+        .nei
+          p Midtown West
+        .flat
+          p 1 Bedroom, 1 Bath
+        .price
+          p $3375
+          
+.row
+  .row.homebuilding
+    .p
+      =image_tag ("newhome/535.jpg")
+      .span
+        .text  
+          .details
+            p The 535
+          .nei
+            p Midtown West
+          .flat
+            p 1 Bedroom, 1 Bath
+          .price
+            p $35
+.row
+  .row.homebuilding
+    .p
+      =image_tag ("newhome/nash.png")
+      .span
+        .text  
+          .details
+            p The Nash Studio
+          .nei
+            p Midtown East
+          .flat
+            p Studio, 1 Bath
+          .price
+            p $2861
+.row
+  .row.homebuildi
+    .pic
+      =image_tag ("newhome/gehry.jpg")
+      .span
+        .text  
+          .details
+            p NY by Gehry
+          .nei
+            p Financial District
+          .flat
+            p Studio, 1 Bath
+          .price
+            p $31
+.row
+  .row.homebuildi
+    .pic
+      =image_tag ("newhome/EOS1.jpg")
+      .span
+        .text  
+          .details
+            p The EOS
+          .nei
+            p Korean Town
+          .flat
+            p Studio, 1 Bath
+          .price
+            p $35
+.row
+  .row.homebuilding
+    .pic
+      =image_tag ("newhome/enclave1.jpg")
+      .span
+        .text  
+          .details
+            p Enclave
+          .nei
+            p Columbia University
+          .flat
+            p 1 Bedroom, 1 Bath
+          .price
+            p $329
+.row
+  .row.homebuilding
+    .pic
+      =image_tag ("newhome/linc1.jpg")
+      .span
+        .text  
+          .details
+            p Linc LIC
+          .nei
+            p Long Island City
+          .flat
+            p 1 Bedroom, 1 Bath
+          .price
+            p $29
+.row
+  .row.homebuildi
+    .pic
+      =image_tag ("newhome/citytower1.jpg") 
+      .span
+        .text  
+          .details
+            p City Tower
+          .nei
+            p Downtown Brooklyn
+          .flat
+            p 1 Bedroom, 1 Bath
+          .price
+            p $28
+.row
+  .row.homebuilding
+    .pic
+      =image_tag ("newhome/m2.jpg") 
+      .span
+        .text  
+          .details
+            p M2 Marbella
+          .nei
+            p Newport
+          .flat
+            p 1 Bedroom, 1 Bath
+          .price
+            p $2952
+
+
+
+
+
+
+
+
+.flash-see-more.center
+  h3
+     |  The price advertised is net effective rent.
+  
+
+coffee:
+  $(document).ready ->
+    if !gon.mobiled
+      App.ListingItemSetup();
+
+
+
+

@@ -1,0 +1,9 @@
+<% if params[:callback] %>
+    <%== "#{params[:callback]}(#{@data.to_json})"%>
+<% elsif params[:element_id].present?%>
+    element = jQuery("<%= params[:element_id]%>");
+  element.attr('data-lat', <%= @data[:lat]%>);
+  element.attr('data-lng', <%= @data[:lng]%>);
+<% else %>
+    gon.local = {'lat': <%= @data[:lat]%>, 'lng': <%= @data[:lng]%>};
+<% end %>

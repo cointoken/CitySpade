@@ -1,0 +1,94 @@
+/* * --------------------------------------------------------------------
+  # Package - JoomlaMan JMNewsPro
+  # Version 1.0
+  # --------------------------------------------------------------------
+  # Author - JoomlaMan http://www.joomlaman.com
+  # Copyright © 2012 - 2013 JoomlaMan.com. All Rights Reserved.
+  # @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
+  # Websites: http://www.JoomlaMan.com
+  ---------------------------------------------------------------------* */
+.layout1 {
+    padding: 20px 0;
+    position: relative;
+	color: #E5E5E5;
+}
+.layout1  .slide-item-image{
+    border: 1px solid #ebebeb;
+    padding: 2px;
+}
+.layout1  .slide-item-title{
+  margin: 10px 0;
+}
+.layout1  .slide-item-title a:hover, span.slide-item-readmore a:hover{
+	color: #FE8F0A;
+}
+.layout1  .slide-item-title a, span.slide-item-readmore a{
+	color: #FFC92B;
+	font-size:16px;
+}
+.layout1 .slide-item-desc {
+	font-size:12px;
+	padding-bottom:10px;
+}
+.layout1 .jmnewspro-prev,.layout1 .jmnewspro-next{
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: -99px;
+    top: 75px;
+    width: 20px;
+}
+.layout1 .jmnewspro-prev{
+    background: url("../images/button.png") no-repeat scroll 0 -40px transparent;
+}
+.layout1 .jmnewspro-next{
+    background: url("../images/button.png") no-repeat scroll 0 0 transparent;
+    right: 0;
+}
+.layout1 .slide-inner{
+    padding:0 !important;
+}
+.layout1 .slide-inner .padding{
+}
+.layout1 .bx-wrapper {
+    position: relative;
+    margin: 0 auto 0;
+    padding: 0;
+    *zoom: 1;
+}
+.layout1 .bx-wrapper img {
+    max-width: 100%;
+    display: block;
+}
+/** THEME
+===================================*/
+.layout1 .bx-pager ul{
+    list-style-type: none !important;
+    margin: 3px 0 0 !important;
+    padding: 0 !important;
+    float: left;
+}
+.layout1 .bx-pager ul li {
+    float: left;
+    width: 8px;
+    height: 8px;
+    margin: 0 4px 0 0 !important;
+}
+.layout1 .bx-pager ul li a{
+    background: url('../images/interface.png') no-repeat 50% 0;
+    text-indent: -999em;
+    cursor: pointer;
+    display: block;
+    width: 8px;
+    height: 8px;
+    overflow: hidden;
+}
+.layout1 .bx-pager ul li a:hover, .bx-pager ul li a.active {
+    background-position: 50% -8px;
+}
+.layout1 .bx-wrapper .bx-controls-direction{
+    display: none;
+}
+				

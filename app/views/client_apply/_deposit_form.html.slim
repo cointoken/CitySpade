@@ -1,0 +1,6 @@
+form id="nonce-form" novalidate="" action="/apply/dep_payment" method="put"
+  input type="hidden" id="card-nonce" name="nonce"
+  input type="hidden" id="app_id" name="appid" value="#{@application.id}"
+  button.payment type="button" id="pay-by-card" onclick="this.disabled = true"
+    | Pay Deposit
+

@@ -1,0 +1,74 @@
+.container.room-detail-container
+  hr
+  .row.center.room-detail-icons
+    .col-xs-4
+      = image_tag "sublet/bed.png"
+      br
+      span
+        ' #{pluralize(@room.rooms_available, "Room")} in a
+        ' #{@room.bedrooms == 0 ? "Studio" : "#{@room.bedrooms}-Bedroom" }
+        | Apartment
+
+
+    - if @room.room_detail.pets_allowed.include?("Dog")
+      .col-xs-4
+        = image_tag 'sublet/dog.jpg', alt: "Dog"
+        br
+        span
+          | Dogs Allowed
+
+    - else
+      .col-xs-4
+        .strikethrough
+          = image_tag 'sublet/dog.jpg', alt: "Dog"
+        br
+        span
+          | Dogs Not Allowed
+
+    - if @room.room_detail.pets_allowed.include?("Cat")
+      .col-xs-4
+        = image_tag 'sublet/cat.jpg', alt: "Cat"
+        br
+        span
+          | Cats Allowed
+
+    - else
+      .col-xs-4
+        .strikethrough
+          = image_tag 'sublet/cat.jpg', alt: "Cat"
+        br
+        span
+          | Cats Not Allowed
+
+  h4 Description
+
+  .row.centered-columns.left-align-text
+    .room-description.col-sm-11
+      div
+        p == @room.room_detail.description
+
+  - if @room.room_detail.amenities.any?
+
+    hr
+    h4 Amenities
+
+    .row.centered-columns.left-align-text
+      .col-sm-8
+        - @room.room_detail.amenities.each do |amenity|
+          .col-xs-6
+            .row.room-amenity
+              .col-sm-5.col-xs-6
+                = image_tag "sublet/amenities/#{amenity.downcase}.jpg",
+                  class: "pull-right"
+              .col-sm-7.col-xs-6
+                span
+                  = amenity
+
+  - if @subway_marker
+    hr
+    h4 Subway Lines
+
+    .row.centered-columns.left-align-text.room-subway-lines
+      .col-sm-8.col-xs-12
+        = render_subway_lines(@subway_marker)
+

@@ -1,0 +1,53 @@
+#nearby-reviews-border
+  h3.nearby_reviews_title Related Reviews:
+  hr
+  #myCarousel.carousel.slide
+    #nearby-reviews.carousel-inner
+      - nearby_reviews.each_with_index do |review, index|
+        - if index == 0
+          .item.clearfix.active
+            div.image
+              - review_image = review.photos.blank? ? "review_default_#{index}.jpg" : review.photos.first.image.small.url
+              = link_to venue_review_path(review.listing_venue_param(@listing.id)), target: "_blank" do
+                .image-label
+                  = pluralize(review.venue.try(:reviews_count), 'review')
+                = image_tag review_image, class:'relatedImg', alt: "Related Review #{review.title}", title: "Related Review #{review.title}"
+              / - overall_quality = review.venue.round_rating(:overall_quality) || review.overall_quality
+              / - if overall_quality
+              /   .rating-all-items.square-star
+              /     - 5.times do |t|
+              /       = content_tag :i,nil ,class: "fa fa-square-star #{t < overall_quality ? "selected" : nil} #{overall_quality - t == 0.5 ? "half" : nil }"
+              = render_average_overall_quality(review.venue, type: 'listing')
+              p
+                = "#{review.distance_to(listing).round(2)} miles"
+
+            div.comment
+              = link_to review.address, venue_review_path(review.listing_venue_param(@listing.id)),target: "_blank"
+              p
+                = "#{review.city}, #{review.state}, #{review.zipcode}"
+              .nearby-review-comment
+                p
+                  = short_comment(review, 130, false)
+
+        - else
+          .item.clearfix
+            div.image
+              - review_image = review.photos.blank? ? "review_default_#{index}.jpg" : review.photos.first.image.small.url
+              = link_to venue_review_path(review.listing_venue_param(@listing.id)), target: "_blank" do
+                .image-label
+                  = pluralize(review.venue.reviews_count, 'review')
+                = image_tag review_image, class:'relatedImg', alt: "Related Review #{review.title}", title: "Related Review #{review.title}"
+              = render_average_overall_quality(review.venue, type: 'listing')
+              p
+                = "#{review.distance_to(listing).round(2)} miles"
+
+            div.comment
+              = link_to review.address, venue_review_path(review.venue_param),target: "_blank"
+              p
+                = "#{review.city}, #{review.state}, #{review.zipcode}"
+              .nearby-review-comment
+                p
+                  = short_comment(review, 130, false)
+
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>

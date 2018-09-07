@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body width="100%" style="text-align:center;margin:0;padding:0" bgcolor="#fff">
+    <table cellpadding=0 cellspacing=0 border=0 width='100%'>
+      <tr>
+        <td align='center' style='padding: 15px 30px'>
+          <table cellspacing=0 cellpadding=0 border=0 align='center' width=700>
+            <tr>
+              <td style='width: 100%; height:60px'>
+                <table cellspacing=0 cellpadding=0 border=0 align='center' width=700>
+                  <tr>
+                    <td align='left' style='padding-left: 20px'>
+                      <%= link_to "https://www.cityspade.com" do%>
+                        <%= image_tag 'logo/City-logo2.png', alt: 'CitySpade', style: "width:35%"%>
+                      <% end %>
+                    </td>
+                    <td valign='middle' align= 'right' style= 'padding-right: 20px'>
+                      <%= Time.now.strftime("%b %d, %Y")%>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style='width:100%; height: 200px'>
+                <%= image_tag 'mail/recommend-banner.jpg'%>
+              </td>
+            </tr>
+            <tr>
+              <td style='width:100%; height: 98px'>
+                <div style='margin: 15px 18px; border: 1px solid #29bcb8;height: 55px;line-height:26px;padding:5px;font-size:16px;font-weight: bold;color:#29bcb8;text-align:center'>
+                  Hi <%= @account.first_name%>!<br>
+                  We found these apartments for you!
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="">
+                <table cellspacing=0 cellpadding=0 border=0 align='center' width='100%' style='padding-left:18px;'>
+                  <%2.times.each do |i|%>
+                    <tr>
+                      <%3.times.each do |j|%>
+                        <%l = @recommend_records[i * 3 + j]%>
+                        <%next unless l%>
+                        <td width='33.3%' valign='top'>
+                          <%= image_tag l.image_url, style: 'height:146px;width: 210px;max-height:146px' %>
+                          <div style='font-size:1.1em;margin: 8px 0;'><b><%= l.title%></b></div>
+                          <div style='color: #888;margin:8px 0;font-size: 14px;width:94%;'><%= "#{l.neighborhood_name}, #{l.city_name}, #{l.zipcode}" %></div>
+                        </td>
+                      <%end%>
+                    </tr>
+                    <tr>
+                      <%3.times.each do |j|%>
+                        <%l = @recommend_records[i * 3 + j]%>
+                        <%next unless l%>
+                        <td width='33.3%' valign='top'>
+                          <%
+                              beds_baths = "#{l.beds == 0 ? 'Studio': l.beds.to_i.to_s + ' Bedroom' + "#{l.beds > 1 ? 's': ''}"}, #{l.baths % 1 == 0 ? l.baths.to_i : l.baths} Bath#{l.baths > 1 ? 's':''}"
+                            %>
+                          <div style='color: #888;margin-bottom:8px;font-size:14px;'><%= beds_baths %></div>
+                          <div style='font-size: 1.1em; color: #29bcb8;margin:8px 0'>
+                            <b>
+                              <%= number_to_currency(l.price, precision: 0)%></span>
+                          </b>
+                          <div style='text-align:center;margin: 15px 0 20px 0;width: 190px'>
+                            <%= link_to 'Click for details', listing_url(l), style: 'font-size: 17px;padding: 5px 10px;border-radius: 5px; border: 1px solid #29bcb8; text-decoration: none;background:#f1f9f9;color: #29bcb8'%>
+                          </div>
+                        </td>
+                      <%end%>
+                    </tr>
+                  <%end%>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td align='center'>
+                <%= image_tag 'mail/recommend-bt-banner.jpg', style: 'margin-top: 15px'%>
+              </td>
+            </tr>
+            <tr>
+              <td align='center'>
+                <div style='margin-top: 20px;text-align:center'>
+                  <a href="https://twitter.com/cityspade.com" style='text-decoration: none'>
+                    <%= image_tag 'mail/twitter.png'%>
+                  </a>
+                  <a href="https://facebook.com/cityspade" style='text-decoration: none'>
+                    <%= image_tag 'mail/facebook.png'%>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style='margin: 20px 18px 50px 18px; background: #eee;text-align:center;font-size: 12px; line-height: 24px;padding:10px 0'>
+                  You are receiving this message because you are a member of CitySpade. <a href='https://www.cityspade.com/privacy' style='color: #29bcb8;text-decoration: none'>Click here</a> to view our privacy policy.<br>
+                  CitySpade 147 Prince Street #17 Brooklyn, NY 11201
+                  <br>
+                  <%= link_to "Unsubscribe",
+                    unsubscribe_mail_notify_url(
+                        email: @account.email,
+                        token: @account.hex_api_key
+                    ),
+                    target: "_blank"
+                  %>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

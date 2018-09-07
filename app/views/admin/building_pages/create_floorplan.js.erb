@@ -1,0 +1,8 @@
+<% if @floorplan.errors.empty? %>
+  $('.new-form p').remove();
+  $('#floorplan-table').append("<%= j render(partial: 'show_floorplans', locals: {floorplan: @floorplan}) %>");
+<% else %>
+  <% @floorplan.errors.full_messages.each do |msg| %>
+    $('.new-form').prepend("<p>*<%= msg %></p>");
+  <% end %>
+<% end %>

@@ -1,0 +1,51 @@
+.review-list
+  .info-details
+    h4.list-inline
+      = link_to_review review
+    - if current_account_own?(review)
+      .pull-right
+        = link_to review, method: :delete do
+          .font16
+            i.fa.fa-trash-o
+            | &nbsp;Destroy
+      .pull-right
+        = link_to edit_review_path(review) do
+          .font16
+            i.fa.fa-edit
+            | &nbsp;Edit &nbsp;&nbsp;
+
+  .clear
+
+  .clearfix.loc-time
+    .reviews-rating
+      - if review.venue.overall_quality && review.venue.overall_quality > 0
+        .rating-result
+          .rating-all-items
+            - rating = review.venue.round_rating :overall_quality
+            - 5.times do |t|
+              = content_tag :i,nil ,class: "fa fa-square-star-big #{t < rating ? "selected" : nil} #{rating - t == 0.5 ? "half" : nil }"
+      .reviews-count
+        ="#{pluralize(review.venue.reviews_count.to_i, "Review")}"
+    .location.pull-left
+      = review.location
+    .time.time-ago-display.pull-right data-time=review.created_at.to_i
+      = time_ago_display(review.created_at)
+  - if display_photo && review.photos.present?
+    .img-list
+      - review.photos.limit(2).each_with_index do |img, i|
+        = link_to_review review, image_tag(img.thumb, class: 'review-img thumb', alt: review.img_title(i))
+  p
+    == short_comment(review)
+  div.type
+    | #
+    = review.review_type_name
+  .user-info.clearfix
+    = image_tag review.account.try(:small_image_url), class: 'avatar-35 circle'
+    div.user-name
+      = review.display_name
+    div.share.pull-right
+      .btn-group
+        - if current_account.try :collect?, review
+          = render 'shared/share_link_min', obj: review, collect_url: uncollect_review_path(review), collect_class: 'uncollect', reverse_url: collect_review_path(review), text: review.collect_num, url: review_url(review)
+        - else
+          = render 'shared/share_link_min', obj: review, collect_url: collect_review_path(review), collect_class: 'collect', reverse_url: uncollect_review_path(review),text: review.collect_num, url: review_url(review)

@@ -1,0 +1,12 @@
+<script type='text/tmpl' id='tmpl-review-place'>
+  <div class='place'>
+    <p class='pull-left'>
+    Where do you get ${place_type}
+    </p>
+    <%= image_tag 'remove.png', class: 'remove'%>
+    <input name="review[review_places_attributes][][place_type]" type="hidden" value="${place_type}">
+    <input name="review[review_places_attributes][][name]" type="text">
+    <p class="place-about-title">Say something about it?</p>
+    <textarea name="review[review_places_attributes][][comment]"></textarea>
+  </div>
+</script>

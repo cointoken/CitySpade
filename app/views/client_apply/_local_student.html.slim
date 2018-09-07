@@ -1,0 +1,69 @@
+= f.fields_for :documents, Document.new do |doc_f|
+  .form-group
+    = doc_f.label :photo_id, "Photo ID"
+    .button.file-upload
+      = doc_f.file_field :photo_id, multiple: true, name: "client_apply[documents_attributes][photo_id][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+      i.fa.fa-upload
+      span Upload Files
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "photo_id").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+  .form-group
+    = doc_f.label :green_card, "Green Card"
+    .button.file-upload
+      = doc_f.file_field :green_card, multiple: true, name: "client_apply[documents_attributes][green_card][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+      i.fa.fa-upload
+      span Upload Files
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "green_card").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+
+  .form-group
+    = doc_f.label :bank_statement, "Bank Statement"
+    .button.file-upload
+      = doc_f.file_field :bank_statement, multiple: true, name: "client_apply[documents_attributes][bank_statement][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+      i.fa.fa-upload
+      span Upload Files
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "bank_statement").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+  .form-group
+    = doc_f.label :school_letter, "School Acceptance Letter"
+    .button.file-upload
+      = doc_f.file_field :school_letter, multiple: true, name: "client_apply[documents_attributes][school_letter][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+      i.fa.fa-upload
+      span Upload Files
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "school_letter").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    
+  .form-group
+    = doc_f.label :other, "Other Documents"
+    .button.file-upload
+      = doc_f.file_field :other, multiple: true, name: "client_apply[documents_attributes][other][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+      i.fa.fa-upload
+      span Upload Files
+    .row
+      - if @update_flag
+        - @documents.where(doc_type: "other").each do |doc|
+          .col-sm-10
+            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+          .col-sm-2
+            = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+

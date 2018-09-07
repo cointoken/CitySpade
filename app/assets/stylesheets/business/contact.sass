@@ -1,0 +1,50 @@
+@import 'modules'
+
+#contact
+  #contact-googlemap-img
+    height: 350px
+  .container
+    @include global-font
+    padding: 30px 0
+  .contact-title
+    @include margin-padding(0 0 10px,10px 0)
+    border-bottom: 1px solid #E8E8E8
+    text-transform: uppercase
+  ul
+    list-style: none outside none
+    margin: 0
+    padding-left: 0px
+    li
+      color: red
+  .contact-links
+    margin-top: 20px
+  #contact-form
+    .star
+      margin-left: 3px
+    .actions
+      margin-top: 10px
+    .error_info
+      min-height: 0
+  .contact-misc
+    h4.misc-title
+      margin-bottom: 15px
+    .address
+      margin-bottom: 5px
+    a.email-link
+      font: 16px Avenir
+    a.phone
+      display: block
+      font: 16px Avenir
+
+@media (max-width: 767px)
+  #contact
+    .container
+      padding: 10px 20px
+    ul
+      text-align: center
+      padding-left: 7px
+  #new_contact
+    padding: 0
+    #contact_subject,
+    #contact_message
+      width: 93%

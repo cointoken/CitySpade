@@ -1,0 +1,105 @@
+# = require jquery.uploadify
+class Uploadify
+  formId = gon.imageFormId || "#form"
+
+  @init: ->
+    new Uploadify
+
+  constructor: ->
+    @Setup()
+
+  Setup: ->
+    if gon.hasOwnProperty('obj_id')
+      upload_url = '/photos/uploadify?obj_id='+ gon.obj_id + '&obj_name=' + gon.obj_name
+    else
+      upload_url = '/photos/uploadify?obj_name=' + gon.obj_name
+
+    $("#file_upload").uploadify(
+      swf: '<%= asset_path('uploadify.swf') %>'
+      uploader: upload_url
+      onSelect: (file) ->
+        placeholder = $('<div class="uploadImg"></div>')
+        $("#{formId}").prepend(placeholder)
+
+      onUploadSuccess: (file, data, response) ->
+        data = $.parseJSON(data)
+        photoHtml = $("#tmpl-photo").tmpl(data)
+        upload = $(".uploadImg")
+        j = -1
+
+        # Find first blank .uploadImg element and store index in j
+        for i in [0..upload.length - 1]
+          if $($(".uploadImg").get(i)).html() == ""
+            j += 1
+          else
+            break
+
+        if !!$("#review-show").html()
+          if(!$("#myCarousel.images-list").html())
+            images_list =
+              $("<div class='images-list carousel slide pull-right' id='myCarousel'>
+                <div class='carousel-inner'></div>
+              </div>")
+
+            $("#review-show #add-photo").before(images_list)
+
+          newItem =
+          $("<div id='uploadify-photo-#{data.id}' class='item active'>
+            <a data-id='#{data.id}' href='#{data.small_url}'
+              rel='review-gallery' class='fancybox'>
+              <img class='review-img thumb' src='#{data.url}' />
+            </a>
+          </div>")
+
+          $("#review-show .images-list .carousel-inner .item.active").removeClass("active")
+          $("#review-show .images-list .carousel-inner").append(newItem)
+
+        uploadImg = $($('.uploadImg').get(j))
+        photoHtml.replaceAll(uploadImg)
+        Uploadify.GetPhotoIds()
+    )
+
+    $("#{formId}.uploadify").on 'click', '.cancel a', ->
+      $("#{formId}.uploadify").children(":first").remove()
+
+    $("#{formId}.uploadify").on 'click' , '.deleteIcon', ->
+      img = $(this).parent().find('input')
+      uploadImage = $(this).parent()
+      url = img.val()
+      target = img.data('target')
+      $.ajax(
+        url: url
+        type: 'DELETE'
+        complete: ->
+          uploadImage.remove()
+          if !!$("#review-show").html()
+            $(target).remove()
+          if ($("#myCarousel.images-list .carousel-inner .item").length == 0)
+            $("#myCarousel.images-list").remove()
+          Uploadify.GetPhotoIds()
+      )
+
+    $("#add-photo").bind 'click', ->
+      $("#make-background-turnoff").show()
+      $("#{formId}.show-uploadify").show()
+
+    $($("#make-background-turnoff a").get(0)).bind 'click', ->
+      $("#make-background-turnoff").hide()
+      $("#{formId}.show-uploadify").hide()
+
+    $("#add-photo-done").bind 'click', ->
+      $("#make-background-turnoff").hide()
+      $("#{formId}.show-uploadify").hide()
+
+  @GetPhotoIds: ->
+    ids = ''
+    imgs = $("#{formId}.uploadify .uploadImg input")
+
+    for img in imgs
+      if ids != ''
+        ids += ','
+      ids += $(img).data('id')
+
+    $("#hide-photo-ids").val(ids)
+
+App.UploadifyInit = Uploadify.init

@@ -1,0 +1,15 @@
+#notice-wrapper
+  - if flash.alert
+    .alert.alert-danger.notice-banner
+      strong
+        = flash.alert
+      .pointer.pull-right#close-notice
+        strong
+          | x
+  - elsif flash.notice
+    .alert.alert-success.notice-banner
+      strong
+        = flash.notice
+      .pointer.pull-right#close-notice
+        strong
+          | x

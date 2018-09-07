@@ -1,0 +1,89 @@
+#services-list
+  ul.nav.nav-tabs
+    li.active
+      a href="#moving" data-toggle="tab"
+        | #{t('services.litaba1')}
+    li
+      a href="#delivery" data-toggle="tab"
+        | #{t('services.litaba2')}
+    li
+      a href= "#divider" data-toggle="tab"
+        | #{t('services.litaba3')}
+  .tab-content
+    .tab-pane.fade.in.active#moving
+      .tab-banner#movingbanner
+        .row.row-xplan
+          .col-md-6.title-container
+            h3 #{t('services.tab1h3')}
+            p #{t('services.tab1p')}
+          .col-md-6
+            = image_tag ('school_img/Group_2138.png'), class: 'right-image'
+
+      .service-process
+        .row.process-container
+          .col-md-4.inside-detail
+            .process-number
+              span 1
+            h5 #{t('services.tab1h51')}
+
+          .col-md-4.inside-detail#detail-center
+            .process-number
+              span 2
+            h5 #{t('services.tab1h52')}
+
+          .col-md-4.inside-detail
+            .process-number
+              span 3
+            h5 #{t('services.tab1h53')}
+
+    .tab-pane.fade#delivery
+      .tab-banner#deliverybanner
+        .row.row-xplan
+          .col-md-6.title-container
+            h3 #{t('services.tab2h3')}
+            p #{t('services.tab2p')}
+          .col-md-6
+            = image_tag ('school_img/Group_2553.png'), class: 'right-image'
+
+      .service-process
+        .row.process-container
+          .col-md-4.inside-detail
+            .process-number
+              span 1
+            h5 #{t('services.tab2h51')}
+
+          .col-md-4.inside-detail#detail-center
+            .process-number
+              span 2
+            h5 #{t('services.tab2h52')}
+
+          .col-md-4.inside-detail
+            .process-number
+              span 3
+            h5 #{t('services.tab2h53')}
+
+    .tab-pane.fade#divider
+      .tab-banner#dividerbanner
+        .row.row-xplan
+          .col-md-6.title-container
+            h3 #{t('services.tab3h3')}
+            p #{t('services.tab3p')}
+          .col-md-6
+            = image_tag ('school_img/Group_2136.png'), class: 'right-image'
+
+      .service-process
+        .row.process-container
+          .col-md-4.inside-detail
+            .process-number
+              span 1
+            h5 #{t('services.tab3h51')}
+
+          .col-md-4.inside-detail#detail-center
+            .process-number
+              span 2
+            h5 #{t('services.tab3h52')}
+
+          .col-md-4.inside-detail
+            .process-number
+              span 3
+            h5 #{t('services.tab3h53')}

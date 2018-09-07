@@ -1,0 +1,59 @@
+.row
+  .box.col-md-12
+    .cell
+      Strong SpadePass
+      = link_to 'New SpadePass', new_admin_spade_pass_path, class: 'btn btn-success pull-right'
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "id", "ID"
+            th
+              = sortable "title", "Title"
+            th
+              = sortable "street_address", "Street Address"
+            th
+              = sortable "formatted_address", "Formatted Address"
+            th
+              = sortable "zipcode", "Zipcode"
+            th
+              = sortable "account_id", "Author"
+            th
+              = sortable "description", "Description"
+            th
+              = sortable "special_offers", "Special Offers"
+            th
+              = sortable "discounts_expired_date", "Special Offers Expired Date"
+            th
+              = sortable "created_at", "Created at"
+            th
+              = sortable "rank", "Rank"
+            th
+              = sortable "is_recommended", "Is recommended"
+            th Images
+            th Edit
+            th Delete
+        tbody
+          - @spade_passes.each do |spade_pass|
+            tr
+              td = spade_pass.id
+              td = spade_pass.title
+              td = spade_pass.street_address
+              td = spade_pass.formatted_address
+              td = spade_pass.zipcode
+              td = spade_pass.author_name
+              td = spade_pass.description
+              td = spade_pass.special_offers
+              td = spade_pass.discounts_expired_formatted_date
+              td = spade_pass.created_at
+              td = spade_pass.rank
+              td = spade_pass.is_recommended
+              td
+                = link_to "Add Images", add_images_admin_spade_pass_path(spade_pass.id), class: 'btn btn-primary', target: '_blank'
+              td
+                = link_to "Edit", edit_admin_spade_pass_path(spade_pass), class: 'btn btn-info'
+              td
+                = link_to "Delete", admin_spade_pass_path(spade_pass), method: :delete, confirm: 'Do you want to delete the SpadePass ?', class: 'btn btn-danger'
+      = paginate @spade_passes

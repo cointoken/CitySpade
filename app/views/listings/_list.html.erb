@@ -1,0 +1,43 @@
+<h1>Listing listings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Political area</th>
+      <th>Unit</th>
+      <th>Beds</th>
+      <th>Baths</th>
+      <th>Sq ft</th>
+      <th>Type name</th>
+      <th>Contact name</th>
+      <th>Contact tel</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings.each do |listing| %>
+      <tr>
+        <td><%= listing.title %></td>
+        <td><%= listing.political_area.try :long_name %></td>
+        <td><%= listing.unit %></td>
+        <td><%= listing.beds %></td>
+        <td><%= listing.baths %></td>
+        <td><%= listing.sq_ft %></td>
+        <td><%= listing.listing_type  %></td>
+        <td><%= listing.contact_name %></td>
+        <td><%= listing.contact_tel %></td>
+        <td><%= link_to 'Show', listing %></td>
+        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Listing', new_listing_path %>

@@ -1,0 +1,44 @@
+- content_for :custom_title,
+  "Save Up To $3,000 On Select No-Fee Apartments | CitySpade NYC Deals"
+
+.container-fluid.flashsales-header
+  .heading Daily Deals
+  .sub-heading Recieve a <b>move-in bonus</b> on select no-fee apartments
+
+.container.flashsales
+  .flash-sort.hidden-xs
+    div
+      h4 Sort by:
+
+    .borough-filter-web
+      = render_sort_link 'Manhattan', 'manhattan', false
+      = render_sort_link 'Brooklyn', 'brooklyn',  false
+      = render_sort_link 'Queens', 'queens', false
+      = render_sort_link 'Newport', 'jersey city', false
+      = render_sort_link 'Reset', 'reset', false
+
+  .flash-mobile-sort.row.visible-xs
+    .col-xs-6.dropdown#flashdrop
+      button.btn.btn-default.dropdown-toggle data-toggle="dropdown"
+        | By Borough
+        span.caret
+      ul.dropdown-menu
+        li
+          = render_sort_link 'Manhattan', 'manhattan', false
+        li
+          = render_sort_link 'Brooklyn', 'brooklyn',  false
+        li
+          = render_sort_link 'Queens', 'queens', false
+        li
+          = render_sort_link 'Newport', 'jersey city', false
+    .col-xs-6
+      button.btn-default
+        = render_sort_link 'Reset', 'reset', false
+
+  = render "flashsales"
+
+  .paginate
+    = paginate @listings
+
+javascript:
+  App.FlashsaleIndex();

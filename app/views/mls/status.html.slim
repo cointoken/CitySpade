@@ -1,0 +1,20 @@
+html
+  style
+    | td, th{border: 1px solid #000; padding: 3px 10px}
+    | .pagination li{ float: left; list-style-type: none; margin: 4px;}
+    | .pagination {margin-bottom: 50px;}
+  body
+    table
+      tr
+        th Number
+        th MLS Redirect URL
+        th Page View
+        - @mls_infos.each_with_index do |mls, index|
+          - next if mls.mls_id.blank? || mls.listing.blank?
+          tr
+            td = index + 1
+            td = link_to mls_listing_url(mls_name: mls.name, mls_id: mls.mls_id || 0, broker_name: mls.broker.try(:client_id) || mls.broker_name), mls_listing_url(mls_name: mls.name, mls_id: mls.mls_id || 0, broker_name: mls.broker.try(:client_id) || mls.broker_name)
+            td = link_to listing_url(mls.listing), listing_url(mls.listing)
+            td = mls.listing.page_views.all_num
+    = paginate @mls_infos
+

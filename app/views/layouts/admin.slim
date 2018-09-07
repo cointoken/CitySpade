@@ -1,0 +1,16 @@
+- content_for :content do
+  #admin-wrapper
+    .row
+      .col-md-2
+        - dashboard_menu.each do |m|
+          .box.fix-cell
+            .cell
+              strong= m[:name]
+            - m[:items].each do |item|
+              .cell
+                | &nbsp;
+                = link_to item.first, item.last, class: (:current_item if @title == item.first)
+      .col-md-10
+        = yield
+
+= render :template => 'layouts/application'

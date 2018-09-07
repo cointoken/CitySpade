@@ -1,0 +1,102 @@
+.row.listing-flag
+  = radio_button_tag 'flag',
+    Settings.listing_flags.rental,
+    (!search_review? && !(session[:listing_flag] == 0)),
+    id: 'banner-listing-rentals',
+    data: {url: 'for-rental'}
+
+  label for='banner-listing-rentals' Rentals
+
+  = radio_button_tag 'flag',
+    Settings.listing_flags.sale,
+    (!search_review? && session[:listing_flag] == 0),
+    id: 'banner-listing-sales',
+    data: {url: 'for-sale'}
+
+  label for='banner-listing-sales' Sales
+
+  = radio_button_tag 'flag',
+    'reviews',
+    search_review? ,
+    id: 'banner-reviews-radio',
+    data: {type: 'reviews',
+    url: result_reviews_path}
+
+  label for='banner-reviews-radio' Reviews
+
+#home-listings-input style="display: #{search_review? ? 'none' : 'block'}"
+  #banner-input
+    = f.select :title,
+      options_for_select( \
+        PoliticalArea.neighborhoods_by(current_area),
+        params[:neighborhoods] || [] \
+      ),
+      { include_blank: true },
+      { \
+        multiple: true,
+        name: "neighborhoods[]",
+        class: 'input-class large autocomplete-input',
+        data: {placeholder: 'Enter a neighborhood, borough or a zíp'} \
+      }
+
+    = f.select :beds,
+      bed_options ,
+      { selected: params[:beds] },
+      multiple: true,
+      class:'multiple-select small input-class respon-select',
+      name: 'beds[]'
+
+    = f.select :baths,
+      bath_options,
+      { selected: params[:baths] },
+      multiple: true,
+      name: 'baths[]',
+      class:'multiple-select small input-class respon-select'
+
+
+    input.small.input-class.respon-input [
+      type='text'
+      name='price_from'
+      value=params[:price_from]
+      placeholder='$Min'
+    ]
+
+    span.price-to.input-class To
+
+    input.small.input-class.respon-input [
+      type='text'
+      name='price_to'
+      value=params[:price_to]
+      placeholder='$Max'
+    ]
+
+    = f.submit 'Search', class:'btn input-class', type:'submit'
+
+  #banner-noFee
+    label for="banner-listing-noFee"
+      input [
+        type="checkbox"
+        name="noFee"
+        id="banner-listing-noFee"
+        checked=params[:noFee]
+      ]
+      .styled-checkbox
+      | No-Fee Only
+
+#home-reviews-input style="display: #{search_review? ? 'block' : 'none'}"
+  #review-search
+    #review-input
+      = text_field_tag :address,
+        params[:address],
+        placeholder: (mobile? ? 'Neighborhood / Street / Zip' : 'Enter a neighborhood or street'),
+        class: 'input-class large search-base-input'
+
+      #banner-location
+        label for='location'
+          = image_tag 'icons/location.png'
+
+        = text_field_tag :location,
+          "#{current_city.name}, #{current_city.state}",
+          class: 'input-calss small search-base-input current-city'
+
+      = button_tag "Search", class: 'input-class btn-search'

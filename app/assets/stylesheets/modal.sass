@@ -1,0 +1,48 @@
+@import modules
+
+#qr_modal
+  opacity: 0.8
+  text-align: center
+  background: rgba(black, 0.9)
+  border-width: thick 
+
+
+#facebook_modal
+  opacity: .99
+  text-align: center
+  background: rgba(black, 0.9)
+  border-width: thick 
+  .modal-dialog
+    padding-top: 5px
+    width: 520px
+    height: 380px
+    margin-top: 75px
+    border: 8px solid 
+    border-color: $map-marker-bg
+    background: $color333
+    border-radius: 7px
+  h3
+    color: $selected-color
+    letter-spacing: 0.04em
+    font-size: 2em
+  p
+    color: $sub-white
+    font-size: 1.15em
+    margin-bottom: 25px
+    letter-spacing: 0.025em
+  #facebookModalPrivacy
+    margin-top: 20px
+    font-size: 1.05em
+  @media screen and (max-width: 768px)
+    width: 100%
+    #inner_modal
+      width: 90%
+      margin-left: 5%
+      margin-right: 5%
+      height: auto
+      .signup-facebook
+        margin-bottom: 20px
+    #facebook_modal-body
+      p
+        font-size: 1.00em
+        margin-bottom: 15px

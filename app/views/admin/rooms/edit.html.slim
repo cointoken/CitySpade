@@ -1,0 +1,8 @@
+.box
+  .cell
+    h1
+      | Editing room
+    h3
+      = @admin_room.title
+
+    = render "rooms/form", room: @admin_room

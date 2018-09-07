@@ -1,0 +1,92 @@
+= form_for [:admin, @building] do |f|
+  - if @building.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@building.errors.count, "error")} prohibited this admin_building from being saved:"
+      ul
+        - if @building.errors[:formatted_address].present?
+          li
+            | This building already exists in database
+        - else
+          - @building.errors.full_messages.each do |message|
+            li = message
+  .field.row style="margin-top: 10px"
+    .col-sm-2
+      = f.label :state
+    .col-sm-4
+      = f.select :state, Settings.building_states.collect {|p, val| [val["name"], val["code"]]}, {include_blank: true}, {class: "form-control", required: true}
+
+  .field.row style="margin-top: 10px"
+    .col-sm-2
+      = f.label :city
+    .col-sm-4
+      = f.text_field :city, class: "form-control", required: true
+
+  .field.row style="margin-top: 10px"
+    .col-sm-2
+      = f.label :building_name
+    .col-sm-6
+      = f.text_field :name, class: "form-control", required: true
+
+  .field.row style="margin-top: 10px"
+    .col-sm-2
+      span Street # and Name
+    .col-sm-6
+      = f.text_field :address, class: "form-control", required: true
+
+  .field.row style="margin-top: 10px"
+    .col-sm-2
+      = f.label :year_built
+    .col-sm-6
+      = f.text_field :year_built, class: "form-control"
+  .field.row style="margin-top: 10px"
+    .col-sm-2
+      = f.label :floors
+    .col-sm-6
+      = f.text_field :floors, class: "form-control"
+  .field.row style="margin-top: 10px"
+    .col-sm-2
+      = f.label :units_total
+    .col-sm-6
+      = f.text_field :units_total, class: "form-control"
+  .field.row style="margin-top: 10px"
+    .col-sm-2
+      = f.label :description
+    .col-sm-6
+      = f.text_area :description, class: "form-control", rows: 10, required: true
+  .field.row style="margin-top: 10px"
+    .col-sm-2
+      = f.label :schools
+    .col-sm-6
+      = f.text_field :schools
+  .field.row style="margin-top: 10px"
+    .col-sm-2
+      = f.label "have op?"
+    .col-sm-6
+      = f.select :haveop, [['Yes', true], ['No', false]], {required: true}
+
+    //= f.label :amenities
+    //= f.text_area :amenities, value: @building.amenities.join(', ')
+  //.field
+    =f.label :services
+    =f.text_area :apt_amenities, value: @building.apt_amenities.join(', ')
+  //.field
+    =f.label :neighborhood
+    =f.text_area :neighborhood, value: @building.neighborhood.join('; ')
+  = f.fields_for :building, @building do |building|
+    .form-group
+      label Amenities
+      - amenities = Settings.building_details["amenities"]
+      .row
+        - for amenity in amenities
+          .col-xs-4
+            .div.aligned-checklist
+              label
+                - is_checked = @building.amenities.empty? ?  false : @building.amenities.include?(amenity)
+                = check_box_tag 'building[amenities][]', amenity, is_checked
+                span.styled-checkbox
+                = amenity
+  .row
+    .actions.col-sm-8 style="text-align: center"
+      = f.submit 'Save', class: "btn btn-primary", style: "width: 100px"
+
+  = link_to 'Back', admin_buildings_path, class: "btn btn-warning"

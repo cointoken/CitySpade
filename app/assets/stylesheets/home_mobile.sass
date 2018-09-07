@@ -1,0 +1,299 @@
+@import 'modules'
+.mb-home-page12
+  position: relative
+  width: 100vw
+  //background-image: image-url('home/page12.gif')
+  ///background-repeat: no-repeat
+  //background-size: 120vw 85vh
+  //background-position: right center
+
+  .mb-home-page1
+    height: 90vh
+    width: 100vw
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), image-url('home/background.png')
+    background-size: 160vw 240vw
+    background-position: center
+
+    .title
+      width: 100vw
+      text-align: center
+      //padding-left: 10vw
+      padding-top: 30vh
+
+      p
+        font-size: 1em
+        font-family: 'MuktaVaani ExtraBold'
+        line-height: 0.65
+
+      img
+        height: auto
+        width: 50%
+        left: 25%
+
+    .bottom-part
+      width: 100vw
+      //position: relative
+      //bottom: 0px
+      margin-top: 30vh
+      //align-items: center
+
+    .bottom-link
+      border-radius: 40px
+      border: 1px solid #2fcdc9
+      padding-left: 75px
+      padding-right: 75px
+      padding-bottom: 20px
+      padding-top: 20px
+      font-size: 0.8em
+      color: white
+      background-color: #2fcdc9
+      letter-spacing: 2px
+      position: relative
+      //top: 50%
+      //left: 50%
+      //transform: translate(-50%, -50%)
+      //transform: translateX(50%)
+      //bottom: -20px
+      //margin-right: 1vw
+
+  .mb-home-page2
+    height: auto
+    width: 100vw
+    text-align: center
+    //margin-left: 10vw
+    //margin-right: 10vw
+    //padding-left: 10vw
+
+    p
+      font-size: 20px
+      font-family: "MuktaVaani SemiBold"
+      color: #0fcecd
+
+    a
+      font-size: 1.06em
+      color: black
+
+
+    .image-box
+      height: 61.8vw
+      width: 61.8vw
+      margin-left: 19.1vw
+      margin-top: 15px
+      box-shadow: 6px 6px 2px rgba(80, 227, 194, 0.7)
+      text-align: center
+      border-left: 0.5px solid rgba(88, 88, 88, 0.3)
+      border-top: 0.5px solid rgba(88, 88, 88, 0.3)
+      border-right: 1.5px solid rgba(88, 88, 88, 0.3)
+      border-bottom: 1.5px solid rgba(88, 88, 88, 0.3)
+
+      img
+        height: 60%
+        width: 100%
+        max-width: 100%
+        max-height: 60%
+
+      .container
+        height: 40%
+        width: 95%
+        padding-left: 0
+        padding-right: 0
+
+        h1
+          font-size: 100%
+          color: #0fcecd
+          font-family: "MuktaVaani SemiBold"
+          margin-top: 0px
+
+        p.txt
+          font-size: 80%
+          color: #0fcecd
+          font-family: "MuktaVaani Medium"
+
+
+.mb-home-page3
+  margin-top: 5%
+  position: relative
+  text-align: center
+  height: 84vh
+
+  h2
+    color: #0fcecd
+    font-size: 20px
+
+  #page3-carousel
+    width: 100vw
+    height: 70vh
+    clear: both
+    margin: 0 auto
+    margin-top: 5vh
+
+    img
+      width: 75vw
+      height: 50vw
+      display: hidden
+      cursor: pointer
+
+    .image-contant
+      height: 20px
+      width: 20px
+    //padding: 0 10px 30px 10px
+    //margin-top: 30px
+    //text-align: center
+    //width: 75%
+    //margin-left: auto
+    //margin-right: auto
+
+    .carousel-indicators
+      right: 50%
+      top: auto
+      bottom: -10px
+      margin-right: -19px
+
+      li
+        background: #c0c0c0
+
+      .active
+        background: #2fcdcf
+        height: 10px
+        width: 10px
+        margin-bottom: 1px
+
+    .carousel-inner
+      .inner
+        vertical-align: middle
+        height: 100%
+        width: 100%
+        margin-left: auto
+        margin-right: auto
+
+        p
+          font-size: 1.2em
+          text-align: center
+          margin-bottom: 0px
+          //font-family: $droid
+          //font-style: italic
+
+        .t2
+          font-size: 1.2em
+          text-align: center
+          padding-top: 2%
+          font-weight: bold
+          color: #2fcdcf
+          //ont-family: $droid
+          //font-style: normal
+
+      .carousel-control
+        height: 35%
+        width: 5%
+        background-image: none
+        opacity: 1
+        color: $link-color
+        &:hover, &:active
+          color: $map-marker-bg
+
+.mb-home-page4
+  position: relative
+  background-color: white
+  width: 100vw
+  height: 180vh
+  margin-top: 10vh
+  text-align: center
+
+  h2
+    font-size: 20px
+    color: #0fcecd
+
+  h3
+    font-size: 14px
+
+  #page4-carousel
+    height: 160vh
+    width: 100%
+    clear: both
+    margin-top: 4%
+
+    .carousel-inner
+      .inner
+        vertical-align: middle
+        height: 160vh
+        width: 80%
+        margin-left: auto
+        margin-right: auto
+
+        .page_indicate
+          height: 5vh
+          width: 100%
+
+          .actived_page
+            background: black
+            border: 2.5px solid black
+            color: white
+            font-size: 2.8vw
+            letter-spacing: 0.03em
+            outline: none
+            margin-left: 5%
+
+          .inactived_page
+            background: white
+            border: 2.5px solid black
+            color: black
+            font-size: 2.8vw
+            letter-spacing: 0.03em
+            outline: none
+            margin-left: 5%
+
+        .pic
+          height: 70vh
+          width: 100%
+
+          img
+            width: 80vw
+            height: 70vh
+
+        .text-bottom
+          height: 90vh
+          width: 100%
+          text-align: left
+
+          h2
+            font-size: 24px
+
+          h3
+            font-size: 16px
+            font-weight: bold
+
+          p
+            font-size: 1.2em
+
+          a
+            font-size: 0.9em
+            color: black
+
+          h4
+            font-size: 14px
+
+      .carousel-control
+        height: 35%
+        width: 5%
+        background-image: none
+        opacity: 1
+        color: $link-color
+        &:hover, &:active
+          color: $map-marker-bg
+
+  .bottom-link
+    position: relative
+    height: 20vh
+    width: 100vw
+
+    .more-info
+      border-radius: 40px
+      border: 1px solid #2fcdc9
+      padding-left: 75px
+      padding-right: 75px
+      padding-bottom: 20px
+      padding-top: 20px
+      font-size: 0.8em
+      color: white
+      background-color: #2fcdc9
+      letter-spacing: 2px

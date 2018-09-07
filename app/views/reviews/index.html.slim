@@ -1,0 +1,34 @@
+- content_for :banner_wrapper do
+  = render partial: 'search_input'
+
+.container.row.reviews-home
+  .top
+    - if @most_related_venues.present?
+      .most-related
+        h4
+          | Most Reviewed Buildings
+        - cache "most-review#{current_city.id}-1#{Time.now.strftime('%y-%m-%d-%H')}-#{rand(10)}" do
+          = render "most_related", venues: @most_related_venues
+        .clearfix
+    .write-review
+      = render "prompt"
+  .col-md-8.col-sm-8
+    .recommends.white-background
+      h4.recommendedsH4
+        | Recommended Posts
+      - @remember_reviews.each do |review|
+        = render 'review_detail', review: review, display_photo: true
+      - if !mobile? && @remember_reviews.present?
+        = paginate @remember_reviews,  window: 3
+      - if mobile? && @remember_reviews.present?
+        #infscr-loading.hidden
+          = image_tag 'loading.gif'
+        .navigation
+          a href='/reviews.js?page=1'
+          /- (2..@remember_reviews.total_pages).each do |page|
+            /= link_to page, reviews_path(page: page)
+        = hidden_field_tag 'page_size', @remember_reviews.total_pages
+  #review-home-right.col-md-4.col-sm-4.white-background.default-border
+    h4
+      | New Reviews
+    = render "new_reviews", reviews: @new_reviews

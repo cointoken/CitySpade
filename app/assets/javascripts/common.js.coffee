@@ -1,0 +1,19 @@
+## 手机 PC 公用 js
+#= require jquery
+#= require jquery-ui
+#= require jquery_ujs
+#= require bootstrap
+#= require jquery.multiple.select
+#= require selectize
+#= require jquery.validate
+#= require pickadate/picker
+#= require pickadate/picker.date
+#= require pickadate/picker.time
+#= require chosen.jquery
+#= require common/base
+#= require jquery.infinite-pages
+#= require jquery.cookie
+#= require jquery-fileupload/basic
+#= require jquery-fileupload/vendor/tmpl
+#= require cocoon
+#= require_tree ./common

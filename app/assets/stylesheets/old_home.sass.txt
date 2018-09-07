@@ -1,0 +1,168 @@
+@import 'modules'
+.home-banner
+  position: relative
+  color: white
+  height: 500px
+  box-sizing: border-box
+  text-align: center
+  padding-top: 100px
+  font-family: 'Avenir'
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), image-url('bgimg/rooftop-back.jpg')
+  background-size: cover
+
+  .heading
+    letter-spacing: -3px
+    font-size: 5em
+    font-family: 'Avenir Book'
+
+  #sp-banner-wrapper #banner.row .row#banner-container
+    top: 285px
+
+    label
+      color: #666
+
+    input[type="checkbox"] + label, input[type="radio"] + label
+      color: white
+
+    .listing-flag input[type='radio']
+      border: 2px solid white
+
+.home-flashsales
+  padding-top: 20px
+  padding-left: 0px
+  padding-right: 0px
+
+  .flash-heading
+    margin-bottom: 15px
+    font-family: Avenir
+    a
+      font-size: 30px
+    p
+      font-size: 20px
+      font-weight: bold
+
+  .flash-index-link
+    display: block
+    text-align: center
+    font-size: 1.5em
+    margin-bottom: 10px
+
+  .flash-listing-row.row
+    // overwrite stupid "display: flex" in layout-mobile.css
+    display: block
+
+  .flash-listing-row:last-of-type
+    margin-bottom: 10px
+
+  .flash-see-more
+    .fa
+      margin-left: 7px
+      vertical-align: middle
+
+.feature-section
+  background-color: #34495e
+  padding-top: 30px
+  padding-bottom: 30px
+
+  h1
+    color: white
+
+  .feature-tiles
+    .row
+      & > div[class*="col-"]
+        display: table
+        margin-top: 20px
+
+    .tile
+      display: inline-block
+      height: 150px
+      font-weight: bold
+      background-size: cover
+      background-position: center 70%
+      text-transform: uppercase
+      font-size: 1.5em
+      color: white
+      margin-top: 20px
+      letter-spacing: 4px
+      display: table-cell
+      vertical-align: middle
+      background-color: rgba(0,0,0,0.7)
+      border-radius: 3px
+
+      &:hover
+        box-shadow: inset 0 0 0 6px white
+        text-decoration: none
+
+    .room-tile
+      background-image: url(asset-path("sublet/room-offer.jpg"))
+
+    .roommate-tile
+      background-image: url(asset-path("sublet/roommate-post.jpg"))
+
+    .review-tile
+      background-image: url(asset-path("reviews/reviews.jpg"))
+      background-position: center
+
+    .openhouse-tile
+      background-image: url(asset-path("home/openhouse.jpg"))
+
+@media (max-width: 768px)
+  .flashsales
+    padding: 0 !important
+  .flash-mobile-sort
+    padding: 4px
+  .flash-listing-row.row
+    margin-left: 9px
+    margin-right: 9px
+    .flash-listing
+      margin-bottom: 15px
+      img
+        width: 100%
+      .listing_img
+        position: relative
+      .discount
+        position: absolute
+        top: 0
+        width: 100%
+        text-align: center
+        background: rgba(52, 73, 94, 0.79)
+        color: white
+        letter-spacing: 0.03em
+        h5
+          color: white
+          font-size: medium
+          margin: 6px
+      .price
+        position: absolute
+        right: 0
+        bottom: 0%
+        font-size: 20px
+        color: white
+        background: rgba(52, 73, 94, 0.79)
+        padding: 6px
+      .listing-content
+        font-family: Avenir
+        .full-neighborhood, .beds-and-baths
+          font-size: 16px
+          color: #444
+          font-weight: bold
+        .fa
+          float: right
+          font-size: 1.5em
+
+.home-searchforme
+  background: #f3f3f4
+  text-align: center
+  padding-top: 50px
+  padding-bottom: 50px
+  h1
+    margin-bottom: 30px
+    @media (max-width: 768px)
+      font-size: 29px
+  a
+    color: $link-color
+    font-size: 22px
+    border: 2px solid $link-color
+    padding: 10px
+    font-family: Avenir
+    letter-spacing: 0.03em

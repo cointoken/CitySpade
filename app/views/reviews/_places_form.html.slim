@@ -1,0 +1,50 @@
+#grocery
+  span.lighter
+    | Grocery(Optional)
+  - if @review.groceries.present?
+    - @review.groceries.each_with_index do |grocery, index|
+      .place
+        p.pull-left 
+          | Where do you get your grocery from?
+        = image_tag "#{index == 0 ? 'add.png' : 'remove.png'}", class: "#{index == 0 ? 'add' : 'remove'}"
+        = place.hidden_field :place_type, value: :grocery
+        = place.text_field :name, value: grocery.name
+        = place.hidden_field :id, value: grocery.id
+        p.place-about-title
+          | Say something about it?
+        = place.text_area :comment, value: grocery.comment
+  - else
+    .place
+      p.pull-left
+        | Where do you get your grocery from?
+      = image_tag 'add.png' , class: 'add'
+      = place.hidden_field :place_type, value: :grocery
+      = place.text_field :name
+      p.place-about-title
+        | Say something about it?
+      = place.text_area :comment
+#laundry
+  span.lighter
+    | Laundry(Optional)
+  - if @review.groceries.present?
+    - @review.laundries.each_with_index do |laundry, index|
+      .place
+        p.pull-left
+          | Where do you do your laundry?
+        = image_tag "#{index == 0 ? 'add.png' : 'remove.png'}", class: "#{index == 0 ? 'add' : 'remove'}"
+        = place.hidden_field :place_type, value: :laundry
+        = place.text_field :name, value: laundry.name
+        = place.hidden_field :id, value: laundry.id
+        p.place-about-title
+          | Say something about it?
+        = place.text_area :comment, value: laundry.comment
+  - else
+    .place
+      p.pull-left
+        | Where do you do your laundry?
+      = image_tag 'add.png', class: 'add'
+      = place.hidden_field :place_type, value: :laundry
+      = place.text_field :name
+      p.place-about-title
+        | Say something about it?
+      = place.text_area :comment

@@ -1,0 +1,5 @@
+<% if @review.account.blank? && !admin? %>
+  $("#sign_in").modal('toggle')
+<% else %>
+  window.location.href="<%= venue_review_path(@review.venue_param)%>"
+<% end %>

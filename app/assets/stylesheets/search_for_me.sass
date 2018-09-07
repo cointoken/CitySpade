@@ -1,0 +1,328 @@
+@import 'modules'
+
+#searchforme
+  height: 768px
+  background-color: #1E2A36
+  @media (max-width: 768px)
+    height: 105vh
+  form
+    text-align: center
+    height: 100%
+    .progress
+      margin-top: 40px
+      .progress-bar
+        background-color: $link-color
+    fieldset:not(:first-of-type)
+      display: none
+    fieldset
+      height: 100%
+      padding-top: 2%
+      h3
+        color: white
+        margin-bottom: 30px
+      h4
+        margin-bottom: 30px
+        font-size: 18px
+        color: white
+        line-height: 1.0em
+      h5
+        color: #29bcb8
+        margin-bottom: 30px
+      .button-wrapper
+        margin-top: 10%
+        @media (max-width: 768px)
+          margin-top: 15%
+        .action-button
+          background: transparent
+          border: 2px solid $link-color
+          color: white
+          font-family: 'Avenir'
+          font-size: 18px
+          letter-spacing: 0.03em
+          outline: none
+        .next, .submit
+          margin-right: 30%
+          @media (max-width: 768px)
+            margin-right: 15%
+        .prev
+          margin-left: 30%
+          @media (max-width: 768px)
+            margin-left: 15%
+      input[type="text"]
+        border: 0
+        border-bottom: 1.5px solid white
+        background-color: transparent
+        color: $link-color
+        font-weight: bold
+        font-size: 20px
+        text-align: center
+        transition: width 1.5s
+        &:focus
+          outline: none
+          border-bottom: 1.5px solid white
+
+      input.name
+        width: 250px
+        font-family: 'Avenir'
+        letter-spacing: 0.05em
+        &:focus
+          width: 450px
+          @media (max-width: 768px)
+            width: 100%
+
+      span
+        color: white
+        vertical-align: bottom
+        font-family: 'Avenir'
+      p
+        color: $link-color
+        margin-top: 72px
+        letter-spacing: 0.03em
+        font-weight: bold
+    .boroughs
+      padding-top: 3%
+      input[type="checkbox"]
+        display: none
+        + label
+          display: inline-block
+          height: 100px
+          width: 100px
+          cursor: pointer
+          margin-right: 35px
+          margin-left: 35px
+          @media (max-width: 768px)
+            margin: 0
+            height: 95px
+            width: 95px
+          span
+            position: relative
+            top: 105px
+            color: white
+            font-size: 16px
+            letter-spacing: 0.03em
+
+        + label[for="brooklyn"]
+          background: url(asset_path('icons/search-for-me/BrooklynW.png')) no-repeat
+          background-size: 100px
+          @media (max-width: 768px)
+            margin-right: 10%
+        + label[for="manhattan"]
+          background: url(asset_path('icons/search-for-me/ManhattanW.png')) no-repeat
+          background-size: 100px
+        + label[for="queens"]
+          background: url(asset_path('icons/search-for-me/queens-w.png')) no-repeat
+          background-size: 100px
+          @media (max-width: 768px)
+            margin-right: 10%
+        + label[for="jersey"]
+          background: url(asset_path('icons/search-for-me/JerseyW.png')) no-repeat
+          background-size: 94px
+          @media (max-width: 768px)
+            margin-top: 45px
+
+        &:checked
+          + label
+            span
+              color: $link-color
+          + label[for="brooklyn"]
+            background: url(asset_path('icons/search-for-me/BrooklynB.png')) no-repeat
+            background-size: 100px
+          + label[for="manhattan"]
+            background: url(asset_path('icons/search-for-me/ManhattanB.png')) no-repeat
+            background-size: 100px
+          + label[for="queens"]
+            background: url(asset_path('icons/search-for-me/queens-B.png')) no-repeat
+            background-size: 100px
+          + label[for="jersey"]
+            background: url(asset_path('icons/search-for-me/JerseyB.png')) no-repeat
+            background-size: 94px
+      .button-page2
+        margin-top: 4%
+
+    .page-3
+      padding-top: 3%
+      .bed-bath
+        max-width: 40%
+        margin: 0 auto
+        @media (max-width: 768px)
+          max-width: 100%
+        .labels
+          text-align: right
+      span
+        font-size: 18px
+        letter-spacing: 0.03em
+        //margin-right: 35px
+      input[type="text"]
+        width: 150px
+      select
+        width: 150px
+        background: transparent
+        color: $link-color
+        font-weight: bold
+        font-size: 18px
+        outline: none
+        option
+          background-color: #1E2A36
+          color: white
+          &:hover
+            background-color: $link-color
+      .bedrooms
+        margin-bottom: 20px
+      .bathrooms
+        margin-bottom: 20px
+      .date
+        position: relative
+        margin-bottom: 20px
+      .button-wrapper
+        margin-top: 6%
+        @media (max-width: 768px)
+          margin-top: 15%
+
+    .page-4
+      padding-top: 3%
+      input[type="checkbox"]
+        display: none
+        + label
+          display: inline-block
+          height: 45px
+          width: 45px
+          border: 2px solid white
+          border-radius: 50%
+          color: white
+          font-family: $avenir
+          font-size: 20px
+          padding-top: 3px
+          margin-right: 15px
+          cursor: pointer
+          @media (max-width: 768px)
+            height: 40px
+            width: 40px
+            margin-right: 10px
+            font-size: 18px
+
+        &:checked
+          @for $i from 1 through 3
+            + label[for="mta-#{$i}"]
+              background: #EE352E
+          @for $i from 4 through 6
+            + label[for="mta-#{$i}"]
+              background: #00933C
+          + label[for="mta-7"]
+            background: #B933AD
+          @each $line in A,C,E
+            + label[for="mta-#{$line}"]
+              background: #2850AD
+          @each $line in B,D,F,M
+            + label[for="mta-#{$line}"]
+              background: #F66319
+          @each $line in J,Z
+            + label[for="mta-#{$line}"]
+              background: #996633
+          @each $line in N,Q,R,W
+            + label[for="mta-#{$line}"]
+              background: #FCCC0A
+          + label[for="mta-G"]
+            background: #6CBE45
+          + label[for="mta-L"]
+            background: #A7A9AC
+          + label[for="mta-S"]
+            background: #808183
+      .second-line
+        margin-top: 12px
+      @media (max-width: 768px)
+        p
+          margin-top: 20px
+      .button-wrapper
+        margin-top: 4%
+
+    .page-5
+      padding-top: 3%
+      input[type="radio"]
+        display: none
+      input[type="radio"]
+        + label
+          display: inline-block
+          cursor: pointer
+          height: 100px
+          width: 100px
+        + label[for="employed"]
+          background: url(asset_path('icons/search-for-me/briefcase-w.png')) no-repeat
+          background-size: 100px
+        + label[for="student"]
+          background: url(asset_path('icons/search-for-me/grad-w.png')) no-repeat
+          background-size: 100px
+        &:checked
+          + label[for="employed"]
+            background: url(asset_path('icons/search-for-me/briefcase-b.png')) no-repeat
+            background-size: 100px
+          + label[for="student"]
+            background: url(asset_path('icons/search-for-me/grad-b.png')) no-repeat
+            background-size: 100px
+      span
+        font-size: 25px
+        position: relative
+        bottom: 30px
+        margin-left: 50px
+        margin-right: 50px
+        @media (max-width: 768px)
+          margin-left: 20px
+          margin-right: 20px
+      .button-wrapper
+        margin-top: 2%
+
+    .page-6
+      .wechatqr
+        margin-top: 5%
+        span
+          font-size: 22px
+          vertical-align: middle
+          margin-right: 25px
+      .button-wrapper
+        margin-top: 5%
+    .page-7
+      .email
+        width: 500px
+        @media (max-width: 768px)
+          width: 100%
+      .button-wrapper
+        margin-top: 5%
+
+    .form_info_error, .error
+      color: #DE5742
+      letter-spacing: 0.03em
+      font-weight: bold
+    .error
+      display: none
+    .bed-error, .bath-error
+      padding-top: 10px
+      padding-left: 15px
+    .date-error, .budget-error
+      padding-top: 20px
+    span.error
+      position: absolute
+      font-size: 14px
+      @media (max-width: 768px)
+        padding: 0
+        position: static
+        margin-left: 15%
+
+
+/***** Confoirmation page ******/
+
+#confirmation
+  height: 90vh
+  background-color: #1E2A36
+  text-align: center
+  padding-top: 30vh
+  @media (max-width: 768px)
+    padding-top: 15vh
+  h2
+    color: white
+  a
+    font-size: 22px
+    font-family: Avenir
+
+/***** Admin Page ******/
+
+#sforme-text
+  width: 100%

@@ -1,0 +1,47 @@
+
+.title REVIEWS
+
+- average_ratings = average_building_ratings(building_reviews)
+
+.row
+  .col-md-2.overall
+    h4 OVERALL
+    .rating #{average_ratings[:overall_quality]}
+    .rating-stars = render_review_stars(average_ratings[:overall_quality])
+
+  .col-md-2.rating-category
+    = image_tag 'reviews/safety.gif'
+    .rating #{average_ratings[:safety]}
+    h2 SAFETY
+    .rating-stars = render_review_stars(average_ratings[:safety])
+
+  .col-md-2.rating-category
+    = image_tag 'reviews/convenience.gif'
+    .rating #{average_ratings[:convenience]}
+    h2 CONVENIENCE
+    .rating-stars = render_review_stars(average_ratings[:convenience])
+
+  .col-md-2.rating-category
+    = image_tag 'reviews/things_to_do.gif'
+    .rating #{average_ratings[:things_to_do]}
+    h2 THINGS TO DO
+    .rating-stars = render_review_stars(average_ratings[:things_to_do])
+
+  .col-md-2.rating-category
+    = image_tag 'reviews/building.gif'
+    .rating #{average_ratings[:building]}
+    h2 BUILDING
+    .rating-stars = render_review_stars(average_ratings[:building])
+
+  .col-md-2.rating-category
+    = image_tag 'reviews/management.gif'
+    .rating #{average_ratings[:management]}
+    h2 MANAGEMENT
+    .rating-stars = render_review_stars(average_ratings[:management])
+
+
+- building_reviews.each do |review|
+  = render "review", review: review
+
+.read-more-reviews
+  = link_to_review(building_reviews.first, "- READ MORE REVIEWS -")

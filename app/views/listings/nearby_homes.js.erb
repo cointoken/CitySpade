@@ -1,0 +1,3 @@
+<% if @nearby_homes.present? %>
+  $("#nearby-apartments").html('<%= j(render("nearby_homes", listings: @nearby_homes))%>')
+<% end %>

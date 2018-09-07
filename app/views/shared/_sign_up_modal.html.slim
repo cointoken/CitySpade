@@ -1,0 +1,64 @@
+#sign_up.modal.fade.sign style='z-index: 2048' data-backdrop="#{!!page_status_class ? '': true}"
+  .modal-dialog#dialog
+    a.close data-dismiss="modal"
+      span.glyphicon.glyphicon-remove
+    //a.close data-dismiss="modal" aria-hidden="true"
+    h3 Sign Up
+    .modal-content
+      .modal-header
+
+        .header_content
+          //.house_img_container.pull-left
+            img src=asset_path('cityspade-facebook.jpg')
+          .sign_up_notice.pull-left
+            - if controller_name == 'reviews'
+              = image_tag "header/Group_505.png", class: 'image-logo'
+            - else
+              = image_tag "header/Group_505.png", class: 'image-logo'
+
+            //span
+          	  | Already a member?
+              a#to_sign_in href="#sign_in" role="button" data-toggle="modal" data-target="#sign_in" data-dismiss='modal' aria-hidden=true
+
+          	    | &nbsp Log in →
+
+      .modal-body
+        //= link_to account_omniauth_authorize_path(:facebook), class: 'signup-facebook' do
+          img src=asset_path('signup_facebook.jpg')
+        //.signup-notice-wrapper
+          h6.signup-notice
+            span or sign up using your email
+        //h6.signup-notice-mobile or sign up using your email
+        .signup-box
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :format => :json, :remote => true) do |f|
+            - resource.errors.full_messages.each do |msg|
+              li
+                = msg
+            = f.label :first_name
+            = f.text_field :first_name, :autofocus => true, class: 'textfield'
+            = f.label :last_name
+            = f.text_field :last_name, class: 'textfield'
+            = f.label :email
+            = f.email_field :email, class: 'textfield'
+            = f.label :password
+            = f.password_field :password, class: 'textfield'
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, class: 'textfield'
+            = f.submit "Sign Up", class: 'btn-custom'
+
+        .signin-span
+          span
+            | Already a member?
+            a#to_sign_in href="#sign_in" role="button" data-toggle="modal" data-target="#sign_in" data-dismiss='modal' aria-hidden=true
+              | &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Sign In
+
+    .end-line
+      .row
+        a href="/privacy"
+          | Privacy Policy &nbsp
+        span |
+        a href="/terms"
+          |  &nbsp Terms of Use &nbsp
+        span |
+        a href="/contact"
+          |  &nbsp Contact Support

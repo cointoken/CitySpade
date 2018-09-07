@@ -1,0 +1,44 @@
+.container
+  #mortgage-calculator
+    div.mortgage-header.clearfix
+      .title Mortgage Calculator
+      hr
+      .row
+        .col-md-3
+          label Price
+          .input-group
+            span.input-group-addon $
+            input.mortgage.price value=listing.price id='mortgage-price'
+        .col-md-3
+          label Term
+          = select_tag 'mortgage-term', options_for_select([10, 15, 20, 30].map{|s| ["#{s} Years", s]}), class: 'mortgage term'
+        .col-md-3
+          label Down Payment
+          .input-group
+            input.mortgage.downpayment value='20' id='mortgage-downpayment'
+            span.input-group-addon %
+        .col-md-3
+          label Rate
+          .input-group
+            input.mortgage.rate value=5 id='mortgage-rate'
+            span.input-group-addon %
+    .mortgage-content
+      .row
+        .col-md-7
+          table
+            tr
+              td.mortgage-th Down Payment Amount
+              td#downpayment-amount.mortgage-td
+            tr
+              td.mortgage-th Mortgage Amount
+              td#mortgage-amount.mortgage-td
+            tr
+              td.mortgage-th Maintenance / Common Charges
+              td#common-charges.mortgage-td
+                = number_to_currency(listing.maintenance, precision: 0)
+            tr
+              td.mortgage-th Mortgage Payment
+              td#mortgage-payment.mortgage-td
+        .col-md-5
+          #mortgage-monthly-price
+          p Total Monthly Payment

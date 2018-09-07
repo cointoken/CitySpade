@@ -1,0 +1,49 @@
+
+.container-fluid.rentaldeals-header
+  .heading RENTAL DEALS
+  .sub-heading DISCOUNTED RENTS AND SPECIAL PROMOTIONS
+
+  .row
+    .container
+      .col-sm-8.rentaldeals_ad
+        h4 FREE MONTH
+        p
+          |Choose one of these apartments and recieve a FREE month towards your lease. Book a showing now before this deal expires!
+      .col-sm-4.rentaldeals_listings
+        - @rental_deals.each do |listing|
+          .row
+            .listing_img
+               = image_tag listing_image_url(listing), alt: listing.title,
+                title: listing.img_alt 
+               div.rentaldeal_title
+                 = listing.title
+               div.rentaldeal_price
+                 #beds
+                   = display_beds(listing)                 
+                 #price
+                   = number_to_currency(listing.price, precision: 0)
+                   #discount
+                     = rent_after_one_month_free(listing.price)
+
+  .row
+    .container
+      .col-sm-8.rentaldeals_ad
+        h4 DISCOUNTED RENT
+        p
+          |Choose one of these apartments and recieve a FREE month towards your lease. Book a showing now before this deal expires!
+      .col-sm-4.rentaldeals_listings
+        - @rental_deals.each do |listing|
+          .row
+            .listing_img
+               = image_tag listing_image_url(listing), alt: listing.title,
+                title: listing.img_alt 
+               div.rentaldeal_title
+                 = listing.title
+               div.rentaldeal_price
+                 #beds
+                   = display_beds(listing)                 
+                 #price
+                   = number_to_currency(listing.price, precision: 0)
+                   #discount
+                     = rent_after_one_month_free(listing.price)
+ 

@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @broker.name
+p
+  strong Tel:
+  = @broker.tel
+p
+  strong Email:
+  = @broker.email
+
+= link_to 'Edit', edit_admin_broker_path(@broker)
+'|
+= link_to 'Back', admin_brokers_path

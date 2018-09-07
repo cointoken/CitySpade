@@ -1,0 +1,73 @@
+- content_for :banner_wrapper do
+  .hidden-sm.fullwidthbanner-container
+    .search-banner-bg style="background-image: url(#{asset_path('search_banner.jpg')})"
+      .row#banner-container.banner-listings
+        .container
+          #banner-search class="#{search_review? ? 'for-search-review': 'for-search-listing'}"
+            = form_for Listing.new, url: search_path, method: :get, id: 'banner-search-form',\
+            data: {sl: search_path, sr: result_reviews_path} do |f|
+              = render partial: 'search/search_input', locals: {f: f}
+
+- if @dont_match_flag
+  section#sp-dont-match-search
+    .container
+      .row-fuild
+        .pull-right
+          a#close-dont-match-info
+            i.fa.fa-times
+        .dont-match-search
+          div
+            font.font16
+              | Oops!
+            | There are currently no listings under your search preference.
+          div
+            a#miss-match-click-here
+              | Click here
+            | to search again
+
+.container-fluid
+  #scroll-fixed-content
+    #search-sort.clearfix
+      .subject
+        h3 SORT BY
+      #sort-option-list.pull-left
+        .sort-input.price
+          span.title Price:
+          = render_sort_link 'High to Low', 'price.desc'
+          = render_sort_link 'Low to High', 'price.asc'
+        .sort-input.rating
+          span.title Rating:
+          = render_sort_link 'Cost-Efficiency', 'price'
+          = render_sort_link 'Transportation', 'transport'
+        .sort-input.reset
+          = link_to 'Reset', url_for(params.merge(sort: nil,open_houses: nil, only_path: true)), remote: true
+      div.mobile-price-rating
+        = render_mobile_price
+        = render_mobile_rating
+      .search-result
+        = "#{@listings_total_count} Results"
+    .clear
+
+  .row
+    - if @listings.present?
+      .col-xs-12.col-sm-7.col-md-6
+        = render 'listings/index', listings: @listings
+    - else
+      #no-result-matched.l-content-margin
+        | No results matched. Please try again.
+
+    .hidden-xs.col-sm-5.col-md-6
+      .listings-map-wrapper [
+        data-spy="affix"
+        data-offset-top="280"
+        data-offset-bottom="250"
+      ]
+        #listingIndexMap
+
+  .clear
+  .listings_content
+    = paginate @listings, window: 3
+
+= content_for :footer_script
+  = google_maps_script('Maps.listingIndex')
+

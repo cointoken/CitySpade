@@ -1,0 +1,34 @@
+- content_for :banner_wrapper do
+  .fullwidthbanner-container
+    .review-option-banner-bg
+      .row-fuild#banner-container
+        .container
+          h3.review-option-title Share your experience and advice. Help others make smarter rental choices.
+          .review-option-label
+            | What would you like to review?
+          .row-fuild
+            = link_to 'Apartment / Building', new_review_path(review_type: 'apartment-build')
+            = link_to 'Street / Neighborhood', new_review_path(review_type: 'street-neighborhood')
+
+
+        /
+        / Remove Ipad/GoPro promo advertisement box
+        /
+          .option-tip
+            i.fa.fa-lightbulb-o
+            h3 Win a prize with just one review.
+            div.tip-label
+              | Add
+              span.key-color
+                | "#CitySpadeRaffle"
+              |  at the end of your review post to enter the raffle.
+            div.tip-list
+              span.start
+                | Write:
+              ul
+                li > 100 words - WIN UrBeats earphones.
+                li > 150 words - WIN GoPro Hero 3 camera.
+                li > 200 words - WIN iPad Mini.
+              span.end.key-color
+                | Reviews must be of quality.
+

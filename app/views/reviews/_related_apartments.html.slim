@@ -1,0 +1,63 @@
+- if true #!mobile?
+  -if review_type != 1
+    - slide_page_num = 3
+  - else
+    - slide_page_num = 6
+  - slide_total_page = (listings.size / slide_page_num.to_f).ceil
+
+  #related-apartments
+    h4
+      - if review_type != 1
+        | Related Apartments
+      - else
+        | Apartments in this neighborhood
+    .container
+      #related-apartments-slider.carousel.slide
+        .carousel-inner
+          - (0...slide_total_page).each do |s_page|
+            .item class="#{s_page == 0 ? 'active' : nil}"
+              ul.listing-homes
+                - ((s_page * slide_page_num)...((s_page + 1) * slide_page_num)).each do |i|
+                  - if i < listings.size
+                    - listing = listings[i]
+                    li.listing-show
+                      .listing-img
+                        = link_to listing, target: '_blank', title: listing.display_title do
+                          =image_tag listing_image_url(listing), alt: listing.display_title, title: listing.img_alt
+                      - if mobile?
+                        .listing-content class=listing.flag_name
+                          .listing-item
+                            h3.pull-left.listing-title class="title-length#{listing.price.to_i.to_s.size}"
+                              /= listing.title
+                              = link_to listing.display_title, listing
+                            .pull-right.listing-price
+                                = number_to_currency(listing.price, precision: 0)
+                            .clear
+                          div.full-neighborhood
+                            = full_neighborhood(listing)
+                          span
+                            .beds-and-baths
+                              = "#{display_bedrooms(listing)}, #{display_baths(listing)}"
+                          div.cost-efficiency
+                            | Cost-Efficiency:
+                            .pull-right =display_score(listing, :score_price)
+                          div.transportation
+                            | Transportation:
+                            .pull-right =display_score(listing, :score_transport)
+                          br
+                          = link_to listing, class: "pull-right", target: '_blank' do
+                            | More Details &nbsp;
+                            i.fa.fa-caret-right
+
+                      - else
+                        .listing-loc
+                          h5.listing-title
+                            /= listing.title
+                            = link_to listing.display_title, listing
+                          div.full-neighborhood
+                            = full_neighborhood(listing, :short)
+                        .listing-info
+                          .pull-left.listing-price
+                              = number_to_currency(listing.price, precision: 0)
+                          .pull-right.beds-and-baths
+                            = "#{listing.beds} Beds, #{listing.baths} Baths"

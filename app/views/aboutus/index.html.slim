@@ -1,0 +1,187 @@
+#aboutus-container
+  .aboutus-img
+    //= image_tag "aboutus/about_banner.jpg"
+    h1 About CitySpade
+    .line
+    h2 Best Rental Experience
+  .about-cmp
+    .row
+      .col-sm-4.col-xs-12.left-div
+        h1.header #{t('aboutus.p2h1header')}
+      .col-sm-8.col-xs-12.right-div
+        h5
+          | #{t('aboutus.right_div_h5')}
+        p
+          | #{t('aboutus.right_div_p')}
+  .our-team
+    h1.header Our Team
+    p A Concierge team for you
+    = image_tag "aboutus/group_pic.jpg"
+  .our-staff
+    h2 #{t('aboutus.p3h1header')}
+    .laptop-view.hidden-xs
+      .row
+        .col-sm-4
+          h4.name Vivian
+          h5.title HRM
+        .col-sm-4
+          h4.name Chloe
+          h5.title Marketing Manager
+        .col-sm-4
+          h4.name Susan
+          h5.title Marketing Associate
+      .row
+        .col-sm-4
+          h4.name Vineeth
+          h5.title Software Engineer
+        .col-sm-4
+          h4.name Tate
+          h5.title HR
+        .col-sm-4
+          h4.name Dan
+          h5.title Software Engineer
+      .row
+        .col-sm-4
+          h4.name Yichen
+          h5.title Visual Designer
+        .col-sm-4
+          h4.name Mo
+          h5.title Operation Coordinator
+        .col-sm-4
+          h4.name Ding
+          h5.title Operation Coordinator
+      .row
+        .col-sm-4
+          h4.name Dina
+          h5.title Marketing Associate
+        .col-sm-4
+          h4.name Ann
+          h5.title Social Media Director
+        .col-sm-4
+          h4.name Francis
+          h5.title Moving Director
+      .row
+        .col-sm-4
+          h4.name Lindy
+          h5.title Business Developer
+        .col-sm-4
+          h4.name Wensun
+          h5.title Business Developer
+    .mobile-view.visible-xs
+      .row
+        .col-xs-6
+          h4.name Vivian
+          h5.title HR
+        .col-xs-6
+          h4.name Chloe
+          h5.title Marketing Manager
+      .row
+        .col-xs-6
+          h4.name Susan
+          h5.title Marketing Associate
+        .col-xs-6
+          h4.name Vineeth
+          h5.title Software Engineer
+      .row
+        .col-xs-6
+          h4.name Tate
+          h5.title HR
+        .col-xs-6
+          h4.name Dan
+          h5.title Software Engineer
+      .row
+        .col-xs-6
+          h4.name Yichen
+          h5.title Visual Designer
+        .col-xs-6
+          h4.name Mo
+          h5.title Operation Coordinator
+      .row
+        .col-xs-6
+          h4.name Ding
+          h5.title Operation Coordinator
+        .col-xs-6
+          h4.name Dina
+          h5.title Marketing Associate
+      .row
+        .col-xs-6
+          h4.name Ann
+          h5.title Social Media Director
+        .col-xs-6
+          h4.name Francis
+          h5.title Moving Director
+      .row
+        .col-xs-6
+          h4.name Lindy
+          h5.title Business Developer
+        .col-xs-6
+          h4.name Wensun
+          h5.title Business Developer
+  .locations
+    h1.header #{t('aboutus.p4h1header')}
+    p Meet our people
+  .location-imgs
+    .img
+      = image_tag "aboutus/manhattan.jpg", width: "100%", height: "636px", class: "img-clss-one hidden-xs"
+      = image_tag "aboutus/manhattan_mb.png", width: "100%", height: "636px", class: "img-clss-one visible-xs", style: "margin: 0 auto"
+    .img-card.card1
+      h4 New York
+      h5 70 West 36th Street, Suite 6C
+      h5 New York NY 10013
+    .img-card.card2
+      h4 Boston
+      h5 68 Harvard St, G1
+      h5 Brookline, MA 02445
+    .img
+      = image_tag "aboutus/boston.jpg", width: "100%", height: "636px", class: "img-clss-one hidden-xs"
+      = image_tag "aboutus/boston_mb.png", width: "100%", height: "636px", class: "img-clss-one visible-xs", style: "margin: 0 auto; margin-top: -120px"
+    .img-left.hidden-xs style="margin-top: 160px"
+      = image_tag "aboutus/chicago.jpg", size: "636"
+      .left-txt-card
+        h4 Chicago
+        h5 230 East Ohio Street, Suite 106
+        h5 Chicago, IL 60611
+    .img-left.visible-xs style="height: 90px"
+      = image_tag "aboutus/chicago_mb.png", size: "636"
+      .left-txt-card
+        h4 Chicago
+        h5 230 East Ohio Street, Suite 106
+        h5 Chicago, IL 60611
+
+    .img-right.hidden-xs style="margin-top: 160px"
+      = image_tag "aboutus/philadelphia.jpg", size: "636"
+      .right-txt-card
+        h4 Philadelphia
+        h5 1315 Walnut St, Suite 1718
+        h5 Philadelphia PA 19107
+    .img-right.visible-xs style="height: 90px"
+      = image_tag "aboutus/philadelphia_mb.png", size: "636"
+      .right-txt-card
+        h4 Philadelphia
+        h5 1315 Walnut St, Suite 1718
+        h5 Philadelphia PA 19107
+    .img-left.hidden-xs
+      = image_tag "aboutus/hollywood.jpg", size: "636"
+      .left-txt-card style="bottom: 580px"
+        h4 Los Angeles
+        h5 12F, 811 W 7th St, Los Angeles,
+        h5 CA 90017
+    .img-left.visible-xs style="height: 80px"
+      = image_tag "aboutus/hollywood_mb.png", size: "636"
+      .left-txt-card style="bottom: 580px"
+        h4 Los Angeles
+        h5 12F, 811 W 7th St, Los Angeles,
+        h5 CA 90017
+
+    .img-right.shanghai.hidden-xs
+      = image_tag "aboutus/shanghai.jpg", size: "636"
+      .right-txt-card style="bottom: 280px"
+        h4 Shanghai
+        h5 上海市徐汇区
+        h5 零陵路899号11i
+    .img-right.shanghai.visible-xs style="height: 90px"
+      = image_tag "aboutus/shanghai_mb.png", size: "636"
+      .right-txt-card style="bottom: 280px"
+        h4 Shanghai
+        h5 上海市徐汇区
+        h5 零陵路899号11i

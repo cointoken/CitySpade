@@ -1,0 +1,765 @@
+@import 'modules'
+#building
+  padding-left: 0px
+  padding-right: 0px
+  padding-bottom: 200px
+  .building-cover
+    position: relative
+    background-color: #000
+    z-index: 0
+    .cover-img
+      width: 100%
+      height: 85vh
+      filter: blur(2px)
+      -webkit-filter: blur(2px)
+      -moz-filter: blur(2px)
+      -o-filter: blur(2px)
+      -ms-filter: blur(2px)
+      opacity: 0.5
+    .name
+      position: absolute
+      top: 40%
+      left: 9%
+      color: white
+      font-family: "Gilroy Extrabold"
+      font-size: 55px
+      letter-spacing: 0.02em
+    .address
+      position: absolute
+      top: 20%
+      right: 10%
+      color: white
+      font-family: "Gilroy Light"
+      font-size: 17px
+      letter-spacing: 0.02em
+      background-color: rgba(255,255,255,0.2)
+      padding: 5px 15px
+      border-radius: 20px
+    .start-price
+      position: absolute
+      top: 60%
+      left: 9%
+      color: white
+      font-size: 26px
+      font-family: "Renner Light"
+
+  .building-images
+    padding-left: 7%
+    padding-right: 7%
+    position: relative
+    top: -50px
+    z-index: 999
+    .img-row
+      display: none
+      width: 70%
+    .img-row:first-child
+      display: inline-block
+    .img-row:not(:first-child)
+      margin-top: 30px
+    .img-thumb
+      display: inline-block
+      margin-right: 32px
+      width: 29%
+      border-radius: 10px
+      cursor: pointer
+      transition: transform 0.3s, box-shadow 0.3s
+      -webkit-transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s
+      -moz-transition: -moz-transform 0.3s, -moz-box-shadow 0.3s
+      -ms-transition: -ms-transform 0.3s, -ms-box-shadow 0.3s
+      -o-transition: -o-transform 0.3s, -o-box-shadow 0.3s
+      &:hover
+        transform: scale(1.1)
+        -webkit-transform: scale(1.1)
+        -moz-transform: scale(1.1)
+        -ms-transform: scale(1.1)
+        -o-transform: scale(1.1)
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+        -webkit-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+        -moz-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+        -ms-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+        -o-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+      a, a:focus
+        outline: none
+    img
+      width: 100%
+      border-radius: 10px
+    .show-more
+      width: 65%
+      text-align: center
+      padding-top: 30px
+      span
+        font-family: "Renner Book"
+        font-size: 20px
+        color: #28d8d8
+        cursor: pointer
+    .availability
+      position: absolute
+      width: 23%
+      background: white
+      top: 100px
+      right: 70px
+      padding: 40px 25px
+      border: 0.5px solid rgba(182, 182, 182, 0.3)
+      border-radius: 10px
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+      -webkit-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+      -moz-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+      -ms-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+      -o-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+      .top-div
+        padding-bottom: 20px
+        border-bottom: 1px solid rgba(182, 182, 182, 0.5)
+      .btm-div
+        padding-top: 30px
+        text-align: center
+      h4
+        font-family: "Renner Medium"
+        font-size: 22px
+      .addr
+        font-family: "Renner Light"
+        font-size: 16px
+        color: #7e849c
+      .price
+        font-family: "Renner Light"
+        font-size: 22px
+        color: #28d8d8
+        margin-top: 35px
+      button
+        font-family: "Renner Book"
+        color: white
+        background: #28d8d8
+        font-size: 22px
+        padding: 15px 20px
+        border-radius: 10px
+        outline: none
+      .fav-button
+        background-color: transparent
+        font-size: 18px
+        outline: none
+        color: #262d3f
+        padding-left: 0px
+        padding-top: 0px
+        position: relative
+        top: -10px
+
+  .building-container2
+    padding-left: 7%
+    padding-right: 7%
+    padding-top: 55px
+
+  .building-layouts
+    width: 70%
+    h2
+      font-family: "Gilroy Extrabold"
+      font-size: 45px
+      margin-bottom: 88px
+      color: #262d3f
+    h2.no-unit
+      font-size: 30px
+      text-align: center
+    .tab-content
+      padding-top: 88px
+    li
+      font-family: "Gilroy Light"
+      font-size: 24px
+      border-bottom: 0.5px solid #969baa
+      a
+        background: white
+        color: #969BAA
+    li.active
+      font-family: "Gilroy Extrabold"
+      a
+        color: #28d8d8
+        border-bottom: 6px solid #28d8d8
+        border-radius: 0px
+    .fplan-thumb
+      border: 1px solid #969BAA
+      border-radius: 10px
+    .fplan, .fplan:active
+      outline: none
+      img
+        width: 100%
+        border-top-left-radius: 10px
+        border-top-right-radius: 10px
+    .caption
+      background-color: #28d8d8
+      text-align: center
+      border-bottom-left-radius: 10px
+      border-bottom-right-radius: 10px
+      padding-top: 15px
+      padding-bottom: 15px
+      p
+        color: white
+        margin-bottom: 0px
+      p.price
+        font-size: 20px
+        font-family: "Renner Bold"
+      p.type
+        font-size: 18px
+        font-family: "Gilroy Light"
+    .floorplans
+      .row:not(:first-child)
+        margin-top: 68px
+
+  .building-descrip
+    width: 70%
+    margin-bottom: 150px
+    h2
+      font-family: "Gilroy Extrabold"
+      font-size: 45px
+      margin-top: 170px
+      color: #262d3f
+    p
+      padding-top: 45px
+      font-family: "Renner Light"
+      color: #7e849c
+      font-size: 20px
+
+  .building-features
+    padding-left: 7%
+    background-color: #f1f5f7
+    width: 70%
+    padding-top: 85px
+    padding-bottom: 135px
+    h2
+      font-family: "Gilroy Extrabold"
+      font-size: 45px
+      color: #262d3f
+    .amenity-div
+      margin-top: 45px
+    .amenity-row:not(first-child)
+      margin-top: 40px
+    h4
+      font-family: "Renner Light"
+      font-size: 20px
+      color: #262d3f
+
+  .building-container4
+    padding-left: 7%
+    width: 70%
+    padding-top: 100px
+    h4
+      color: #262d3f
+      margin-top: 50px
+      margin-bottom: 30px
+      font-family: "Renner Medium"
+      font-size: 24px
+    .public-transit
+      h2
+        font-family: "Gilroy Extrabold"
+        font-size: 45px
+        color: #262d3f
+      .subway-lines
+        padding-bottom: 10px
+      img
+        margin-right: 10px
+        width: 40px
+      .row
+        padding-top: 10px
+      span
+        font-size: 22px
+        font-family: "Renner Book"
+        color: #7e849c
+
+    .hot-spots
+      .spot, .college
+        display: inline-block
+        width: 100%
+        margin-bottom: 15px
+        h6.name, .trans-type-icon.public
+          display: inline-block
+        h6.name
+          width: 87%
+        .trans-type-icon.public, .trans-type-icon.walk
+          width: 25px
+          opacity: 0.7
+          margin-top: 8px
+        h6.name, span
+          font-size: 19px
+          font-family: "Renner Book"
+          color: #7e849c
+
+    #map
+      height: 600px
+      width: 100%
+      border-radius: 10px
+
+#availModal
+  background-color: rgba(255, 255, 255, 0.8)
+  #msgClose
+    opacity: 1
+    position: absolute
+    right: 15%
+    top: 10%
+    outline: none
+    img
+      width: 90px
+    &:focus, &:active, &:hover
+      background: transparent
+
+  .md-header
+    h2
+      font-family: "Gilroy Extrabold"
+      text-align: center
+      color: #262d3f
+      margin-top: 60px
+      font-size: 40px
+  .modal-dialog
+    width: 50%
+    .modal-content
+      padding-left: 10%
+      padding-right: 10%
+      .modal-header
+        padding: 0px
+        padding-top: 40px
+      .modal-title
+        color: #262d3f
+        font-family: "Renner Book"
+        font-size: 24px
+      .modal-body
+        padding: 0px
+        padding-top: 20px
+        form
+          label
+            font-family: "Renner Light"
+            font-size: 16px
+            color: #262d3f
+          input
+            height: 33px
+            border: 0.5px solid #7e849c
+            border-radius: 10px
+            box-shadow: none
+            font-family: "Renner Light"
+            font-size: 16px
+            color: #262d3f
+            &:focus
+              border: 2px solid #28d8d8
+          textarea
+            width: 100%
+            height: 85px
+            border: 0.5px solid #7e849c
+            border-radius: 10px
+            font-family: "Renner Light"
+            font-size: 16px
+            &:focus
+              border: 2px solid #28d8d8
+          label.error
+            font-size: 12px
+            color: #fa4961 !important
+          input.error, textarea.error
+            border: 2px solid #fa4961
+          .submit-btn
+            padding-top: 20px
+            text-align: center
+            .btn
+              width: 164px
+              height: 40px
+              border-radius: 10px
+              background: #28d8d8
+              outline: none
+              border: none
+              font-family: "Renner Book"
+              font-size: 20px
+              color: white
+      .modal-footer
+        .left-div
+          p
+            text-align: left
+            font-family: "Renner Book"
+            color: #28d8d8
+          h4
+            text-align: left
+            font-family: "Renner Book"
+            color: #7e849c
+            font-size: 22px
+        .wechat1, .wechat2
+          text-align: left
+        .wechat1
+          font-family: "Gilroy Extrabold"
+          font-size: 24px
+          color: #262d3f
+        .wechat2
+          font-family: "Gilroy Light"
+        .qr_border
+          float: left
+        .qr_code
+          position: absolute
+          top: 10px
+          left: 35px
+
+
+.bttn-left, .bttn-right
+  background: transparent !important
+.bttn-left
+  left: 100px !important
+.bttn-right
+  right: 100px !important
+
+
+/****** Admin page *******/
+
+#bpage-bimages, #build-floorplan
+  width: 100%
+  margin-bottom: 10%
+  .existing-img
+    display: inline-block
+    .build-img
+      display: inline-block
+      margin-right: 20px
+      margin-top: 20px
+      img
+        width: 300px
+      a
+        font-size: 16px
+      .actions
+        text-align: center
+  .mybuilding-img
+    margin-top: 35px
+  .nested-fields
+    padding-top: 20px
+  #progress
+    width: 90%
+    background: white
+    border-radius: 5px
+    border: 1px solid #9a9a9a
+    .bar
+      height: 18px
+      background: green
+  .submit-button
+    margin-top: 20px
+
+#build-floorplan, .edit_floorplan
+  .new-form
+    .floor-ip
+      width: 100%
+    form
+      padding-bottom: 20px
+  .links
+    margin-top: 20px
+  img
+    width: 125px
+  i
+    margin-left: 12px
+  .floor-submit
+    border: 2px solid #2fcdc9
+    background: white
+    padding-left: 30px
+    padding-right: 30px
+    padding-top: 8px
+    padding-bottom: 8px
+
+.edit_floorplan
+  width: 100%
+  padding-right: 20px
+  .floor-ip
+    width: 100%
+  .submit-button
+    margin-top: 20px
+
+
+/****** Media Queries ******/
+/*** Building Page ****/
+
+@media screen and (max-width: 767px)
+  #building
+    padding-bottom: 30px
+    .building-container
+      #myCarousel
+        img
+          height: 260px
+          opacity: 0.7
+        .carousel-control
+          background: transparent
+          color: white
+          opacity: 0.5
+          font-size: 30px
+          &:hover
+            opacity: 1
+      .name-mb
+        font-size: 26px
+        font-family: "Gilroy Extrabold"
+        margin-top: 30px
+        padding-left: 15px
+      .address-mb
+        font-size: 19px
+        font-family: "Gilroy Light"
+        color: #7E849C
+        margin-left: 10px
+        margin-right: 10px
+        padding: 5px
+        background: #f6fafc
+        border-radius: 29px
+        margin-top: 20px
+      .start-price
+        top: 75%
+    .building-layouts
+      width: 100%
+      h2
+        margin-bottom: 75px
+      option, select
+        font-family: "Gilroy Light"
+        color: #7e849c
+        font-size: 20px
+      select
+        color: #28d8d8
+        height: 50px
+      .floorplans
+        .row:not(:first-child)
+          margin-top: 0px
+        .fplan-thumb
+          margin-bottom: 30px
+    .building-descrip
+      width: 100%
+      margin-bottom: 75px
+      h2
+        margin-top: 75px
+    .building-features, .building-container4
+      width: 100%
+      padding-left: 5%
+      padding-right: 5%
+    .building-features
+      padding-top: 75px
+      padding-bottom: 75px
+      .amenity-row:not(first-child)
+        margin-top: 30px
+    .building-container4
+      padding-top: 75px
+      #map
+        height: 442px
+  .mb-availability
+    button, button:active
+      width: 100%
+      background: #28d8d8
+      outline: none
+      height: 70px
+      font-family: "Renner Medium"
+      font-size: 28px
+      color: white
+      letter-spacing: 0.04em
+      &:focus, &:hover, &:active
+        background: #28d8d8
+        color: white
+        outline: none
+
+    .fav-button
+      background: transparent
+      color: #262d3f
+      &:active
+        background: transparent
+
+
+  #availModal
+    .modal-dialog
+      width: 94%
+
+
+/******* Building List Page *******/
+#build-filter
+  padding-top: 21px
+  padding-bottom: 21px
+  padding-left: 5%
+  border-top: 1px solid rgba(132,130,130, 0.3)
+  border-bottom: 1px solid rgba(132,130,130, 0.3)
+  .more-filter
+    margin-left: 17px
+  .price-filter, .more-filter
+    font-family: "Renner Book"
+    color: #262d3f
+    border-radius: 10px
+    background: white
+    border: 1px solid rgba(150, 155, 170, 0.5)
+    outline: none
+  .btn.active
+    background-color: #28d8d8
+    color: white
+
+  .dropdown-price
+    display: none
+    width: 350px
+    height: 180px
+    position: absolute
+    border-radius: 10px
+    background-color: #f6fafc
+    z-index: 999999
+    padding: 2%
+    span
+      font-family: "Renner Medium"
+      color: #262d3f
+    #slider
+      margin-top: 25px
+      height: 5px
+      border-color: #28d8d8
+      background-color: rgba(40, 216, 216, 0.3)
+      .ui-slider-handle
+        border-radius: 50%
+        outline: none
+        background-color: white
+        top: -0.5em
+        border: 1px solid #f1f5f7
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16)
+      .ui-slider-handle.ui-state-active
+        border: 1px solid #f1f5f7
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16)
+      .ui-slider-range
+        background-color: #28d8d8
+        border-color: #28d8d8
+  .dropdown-location
+    display: none
+    //width: 400px
+    height: 225px
+    position: absolute
+    border-radius: 10px
+    background-color: #f6fafc
+    z-index: 999999
+    padding-top: 25px
+    padding-left: 33px
+    p
+      font-family: "Gilroy Extrabold"
+      font-size: 18px
+      color: #262d3f
+    label
+      font-family: "Renner Light"
+      font-size: 16px
+      color: #262d3f
+      background: white
+      outline: none
+      padding: 8px
+      border-radius: 4px
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.16)
+      margin-right: 15px
+      margin-top: 15px
+    p.sch
+      margin-top: 25px
+
+  .btn-apply
+    background: #28d8d8
+    color: white
+    outline: none
+    margin-left: 17px
+  //.btn-cancel
+    background: white
+    color: #28d8d8
+    outline: none
+  .pr-filter
+    font-family: "Renner Book"
+    border-radius: 10px
+    border: 1px solid #28d8d8
+
+#building-list
+  padding-right: 0px
+  padding-top: 42px
+  padding-bottom: 125px
+  min-height: 700px
+  .empty-result
+    text-align: center
+  .no-result
+    font-family: "Gilroy Extrabold"
+  .card-list:not(:first-child)
+    margin-top: 23px
+  .card-list
+    padding-left: 42px
+    img, .img
+      text-align: center
+      width: 100%
+      max-width: 285px
+    .card
+      width: 100%
+      position: relative
+      max-width: 287px
+      text-align: center
+      border-radius: 10px
+      border: 1px solid rgba(132, 130, 130, 0.3)
+      margin-left: auto
+      margin-right: 0px
+      transition: transform 0.3s, box-shadow 0.3s
+      -webkit-transition: -webkit-transform 0.3s, -webkit-box-shadow 0.3s
+      -moz-transition: -moz-transform 0.3s, -moz-box-shadow 0.3s
+      -ms-transition: -ms-transform 0.3s, -ms-box-shadow 0.3s
+      -o-transition: -o-transform 0.3s, -o-box-shadow 0.3s
+      &:hover
+        transform: scale(1.1)
+        -webkit-transform: scale(1.1)
+        -moz-transform: scale(1.1)
+        -ms-transform: scale(1.1)
+        -o-transform: scale(1.1)
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+        -webkit-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+        -moz-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+        -ms-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+        -o-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3)
+    .col-card:last-child .card
+      margin-right: auto
+    .card-wrap
+      max-width: 287px
+      margin-right: 0
+      margin-left: auto
+    img
+      height: 190px
+      object-fit: cover
+      border-top-left-radius: 10px
+      border-top-right-radius: 10px
+    .price
+      position: absolute
+      top: 15px
+      left: 6%
+      background-color: #28d8d8
+      padding-top: 3px
+      padding-bottom: 3px
+      padding-left: 14px
+      padding-right: 14px
+      border-radius: 18px
+      span
+        color: white
+        font-family: "Renner Book"
+        font-size: 12px
+        font-weight: bold
+        letter-spacing: 0.07em
+    .details
+      text-align: left
+      padding-left: 17px
+      padding-bottom: 10px
+    h4
+      font-family: "Renner Medium"
+      font-size: 18px
+      color: #262d3f
+      margin-top: 20px
+      margin-bottom: 10px
+      padding-bottom: 11px
+      border-bottom: 1px solid rgba(224, 224, 224, 0.5)
+    p
+      font-family: "Renner Light"
+      color: #7e849c
+      font-size: 11px
+  .paginate
+    margin-top: 80px
+    .next_page
+      a
+        border: 2px solid rgba(40, 216, 216,0.8)
+        padding-top: 6px
+
+  .col-map
+    position: fixed
+    right: 0px
+    height: 70%
+  #buildingIndexMap
+    width: 100%
+    height: 100%
+    max-height: 550px
+
+@media screen and (max-width: 767px)
+  #build-filter
+    .dropdown-price
+      width: 90%
+    .dropdown-location
+      width: 100%
+      height: 225px
+  #building-list
+    padding-right: 15px
+    .card-list
+      padding-left: 0px
+      .card
+        margin-top: 23px
+      .card-wrap
+        margin-right: auto
+    .card-list:not(:first-child)
+      margin-top: 0px

@@ -1,0 +1,52 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_client_checkins_path, method: :get do
+        .field.fieldset.center
+          h3 Clients
+          .input-text
+            = text_field_tag :first_name, params[:first_name], placeholder: "First name", class: "first-name col-md-5"
+            = text_field_tag :last_name, params[:last_name], placeholder: "Last name", class: "col-md-5"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    .cell
+      strong Client Check-In Table
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              | ID
+            th
+              | Name
+            th
+              | Roommates
+            th
+              | E-mail
+            th
+              | Phone
+            th
+              | Building - Unit
+            th
+              | Created at
+        tbody
+          -@clients.each do |client|
+            tr 
+              td = client.id
+              td = client.full_name
+              - roommates = client.client_roommates.map {|x| x.full_name}
+              td = roommates.join(", ")
+              td = client.email
+              td = client.phone
+              - buildings = client.checkin_buildings.map {|x| "#{x.name} - #{x.unit}" }
+              td width="150px" = buildings.join(",<br>").html_safe
+              td = client.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%m/%d/%Y %l:%M %p")
+              td = link_to "Edit", edit_client_checkin_path(client), class: 'btn btn-info'
+              td = link_to "Delete", client, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
+
+      = paginate @clients
+

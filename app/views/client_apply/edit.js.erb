@@ -1,0 +1,6 @@
+<% if @error %>
+  $('#notice-wrapper').append("<%= escape_javascript(render partial: 'shared/notice') %>");
+  setTimeout(function() { $('#notice-wrapper .alert').slideUp(); },2000);
+<%else %>
+  $('#apply-retrieval').replaceWith(" <%= escape_javascript(render partial: 'form_edit', locals: { :@application => @application, :@update_flag => @update_flag, :@documents => @documents}) %>");
+<% end %>

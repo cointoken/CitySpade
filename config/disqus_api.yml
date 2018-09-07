@@ -1,0 +1,11 @@
+disqus: &disqus
+  api_secret: '8chgM1I5JZY29qS6WkUDFpogdsg1GoHOHvy9mZc5r9LAAXmtNkk6EN0dfy19Tjjw' 
+  api_key: 'zqVG4K4Jqo94y5JKSgGitKK2dtZY9wS0c5zQPrtFAKWIRzNnxFx7GHSWqNn3odVL'
+  forum: 'production-cityspade'
+
+development:
+  <<: *disqus
+production:
+  <<: *disqus
+staging:
+  <<: *disqus

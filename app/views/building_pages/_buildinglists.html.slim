@@ -1,0 +1,10 @@
+- if @buildings.empty?
+  .nothing
+    h4
+      'no building listed'
+
+- else
+  .row.building-list-row
+    - @buildings.each do |building|
+      .col-sm-6
+        = render "buildinglist", building: building

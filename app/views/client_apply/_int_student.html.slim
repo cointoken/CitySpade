@@ -1,0 +1,83 @@
+= f.fields_for :documents, Document.new do |doc_f|
+  #int-student-fields
+    .form-group
+      = doc_f.label :passport, "Passport"
+      .button.file-upload
+        = doc_f.file_field :passport, multiple: true, name: "client_apply[documents_attributes][passport][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "passport").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    .form-group.int-visa
+      = doc_f.label :visa, "Visa"
+      .button.file-upload
+        = doc_f.file_field :visa, multiple: true, name: "client_apply[documents_attributes][visa][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "visa").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    .form-group.int-visa
+      = doc_f.label :i20, "I-20"
+      .button.file-upload
+        = doc_f.file_field :i20, multiple: true, name: "client_apply[documents_attributes][i20][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "i20").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    
+    .form-group
+      = doc_f.label :bank_statement, "Bank Statement"
+      .button.file-upload
+        = doc_f.file_field :bank_statement, multiple: true, name: "client_apply[documents_attributes][bank_statement][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "bank_statement").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    .form-group
+      = doc_f.label :school_letter, "School Acceptance Letter"
+      .button.file-upload
+        = doc_f.file_field :school_letter, multiple: true, name: "client_apply[documents_attributes][school_letter][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "school_letter").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    
+    .form-group
+      = doc_f.label :other, "Other Documents"
+      .button.file-upload
+        = doc_f.file_field :other, multiple: true, name: "client_apply[documents_attributes][other][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "other").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+

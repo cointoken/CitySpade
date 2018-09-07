@@ -1,0 +1,222 @@
+= content_for :seo
+  meta property='og:description' content=@review.comment
+  meta property='og:title' content=display_review_title(@review)
+  meta property='og:image' content="#{@review.photos.first.try(:url) || listing_default_image_url(:rand)}"
+  meta property="og:type" content=@review.og_type
+  meta property='disqus:url' content=venue_url(@review.venue_param.slice(:review_type, :permalink))
+- content_for :banner_wrapper do
+  = render 'search_input'
+.container.building-review-show.row#review-show.neighbor-review-show
+  .review-title-info.clearfix data-lat=@review.lat data-lng=@review.lng data-title=@review.title data-price=@review.try(:price)
+    .big-title
+      span.build-info
+        = display_review_neighborhood(@review)
+      - if admin? && @venue.region.present?
+        span.font16
+          | &nbsp;&nbsp;
+          = link_to edit_admin_building_path(@venue.region) do
+            i.fa.fa-edit
+            | Edit &nbsp;&nbsp;
+      - if @venue.access_listing?
+        span.supplement
+          span
+            | (
+          span.apart-num
+            = link_to "#{pluralize(@venue.listings_size, "apartment")} available ",
+              search_area_neighborhood_path(current_area: @venue.city.long_name.to_url, neighborhood: to_url_str(@venue.political_area.long_name)),
+              target: '_blank'
+          span
+            |  in this neighborhood)
+    .write-review.pull-right
+      = link_to image_tag('write-a-review-btn.png'), new_review_path({review_type: 'street-neighborhood', review_id: @review.id})
+
+
+    .little-title
+      span.full-neighborhood
+        = @review.location
+      span
+        | #
+        = @review.review_type_name
+
+    / - if @venue.overall_quality && @venue.overall_quality > 0
+    /   .rating-result.overall-quality-rating
+    /     .rating-all-items
+    /       - rating = @venue.round_rating(:overall_quality)
+    /       - 5.times do |t|
+    /         = content_tag :i,nil ,class: "fa fa-square-star-big #{t < rating ? "selected" : nil} #{rating - t == 0.5 ? "half" : nil }"
+    /     .rating-score
+    /       = "#{@venue.overall_quality}/5"
+    - supplement = "(Calculation based on #{pluralize(@venue.neighborhood_reviews.size, "neighborhood review")} and #{@venue.building_reviews.size.to_i == 0 ? "0 buliding review" : pluralize(@venue.building_reviews.size, "building review")})"
+    = render_average_overall_quality(@venue, {type: 'reviews', supplement: supplement})
+        / span.supplement
+        /   = "(Calculation based on #{pluralize(@venue.neighborhood_reviews.size, "neighborhood review")} and #{@venue.building_reviews.size.to_i == 0 ? "0 buliding review" : pluralize(@venue.building_reviews.size, "building review")})"
+
+  /----------- 左侧栏:
+  #review-left.pull-left.col-md-8.review-content
+    /--------- 总评分
+    - if @review.rating_stars.any?{|target| @venue.try(target) && @venue.send(target) > 0}
+      .rating-box.rating-result.clearfix
+        - @review.rating_stars.each do |target|
+          - i = @venue.round_rating(target) || 0
+          - if i > 0
+            .rating-list
+              .title.pull-left
+                = target.split('_').map(&:capitalize).join(' ')
+                | :
+              .rating-items.list-inline
+                - 5.times do |t|
+                  = content_tag :i,nil ,class: "fa fa-star #{t < i ? "selected" : nil} #{i-t==0.5 ? "fa-star-half" : nil}", data:{index: i, name: target}
+              .rating-score
+                = "#{@venue.send(target)}/5"
+
+    /--------- 图片
+    - if current_account.present? and current_account.try(:admin?)
+      #review_id data-id="#{@review.id}"
+      .input
+        = render 'tmpls/photo'
+        #form.uploadify.show-uploadify
+          #queue
+          input#file_upload name="file_upload" type="file" multiple="true"
+          button#add-photo-done type="button" Done
+          br.clear
+
+      .add-photo-div
+        = button_tag id: "add-photo", class: "pull-right" do
+          i class="fa fa-plus" style="margin-right:4px"
+          | Add Photos
+
+    - if @venue.images.present?
+      - slide_page_num = 2
+      - slide_total_page = (@venue.images.size / slide_page_num.to_f).ceil
+      #myCarousel.images-list.carousel.slide.review_show_in_pc auto-carousel='false'
+        .carousel-inner
+          - (0...slide_total_page).each do |s_page|
+            .item class="#{s_page == 0 ? 'active' : nil}"
+              ul.review-image-homes.neighborhood-imgs
+                - ((s_page * slide_page_num)...((s_page + 1) * slide_page_num)).each do |i|
+                  - if i < @venue.images.size
+                    - img = @venue.images[i]
+                    li.review-image-show class="#{s_page * slide_page_num == i ? 'first' : nil}"
+                      .review-img
+                        = link_to "#{img.url}", class: "fancybox", rel: 'review-gallery'
+                          = image_tag img.thumb, class: 'review-img thumb', title: @review.img_title(i), alt: @review.img_title(i)
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+
+    /----------- 下方5条reviews
+    .reviews.street-neighborhood
+      .reviews-count
+        h4
+          = @reviews.total_count
+          | &nbsp;&nbsp;
+          = 'Review'.pluralize(@reviews.size)
+      - @reviews.each_with_index do |review, index|
+        .review.hreview itemscope=true itemtype="http://data-vocabulary.org/Review" data-lat=review.lat data-lng=review.lng class="#{has_lock_review?(index, @reviews.size) ? 'has-lock' : nil}"
+          = render_lock_pop review, index, @reviews.size
+          .head-portrait.clearfix
+            = image_tag review.account_avatar_url, class: 'avatar-55 circle pull-left'
+            .reviews-head-top
+              span.reviews-head-title
+                = display_review_only_address(review)
+              - if review.overall_quality && review.overall_quality > 0
+                .rating-result
+                  .rating-all-items
+                    - 5.times do |t|
+                      = content_tag :i,nil ,class: "fa fa-square-star #{t < review.overall_quality ? "selected" : nil}"
+                  .rating-score
+                    span itemprop="rating" = review.overall_quality
+                    |/
+                    span itemprop="bestRating" 5
+            .reviews-head-bottom
+              span.name.reviewer itemprop="reviewer"
+                = review.display_name || current_account.name
+              - if @listing.present?
+                span.distance-to-listing
+                  = "#{review.distance_to(@listing).round(1)} mile"
+              = link_to "Show Map", "#", class: "show-map", data: {lat: review.lat, lng: review.lng}
+              = link_to "Street View", "#", class: "street-view", data: {lat: review.lat, lng: review.lng}
+
+              .little-title.pull-right
+                - if can?(:operate, review)#current_account_own?(review)
+                  .pull-right
+                    = link_to review, method: :delete, data:{confirm: 'Are you sure delete the review?'} do
+                      .font12
+                        i.fa.fa-trash-o
+                        | &nbsp;Destroy
+                  | &nbsp; &nbsp;
+                  .pull-right
+                    = link_to edit_review_path(review) do
+                      .font12
+                        i.fa.fa-edit
+                        | &nbsp;Edit &nbsp;&nbsp;
+
+
+
+          /------- 更改review
+          / - if can?(:operate, @review)
+          /   .pull-right
+          /     = link_to @review, method: :delete, data:{confirm: 'Are you sure delete the review?'} do
+          /       .font16
+          /         i.fa.fa-trash-o
+          /         | &nbsp;Destroy
+          /   .pull-right
+          /     = link_to edit_review_path(@review) do
+          /       .font16
+          /         i.fa.fa-edit
+          /         | &nbsp;Edit &nbsp;&nbsp;
+
+          /--------- 总评分
+          - if review.rating_stars.any?{|target| review.try(target) && review.send(target) > 0}
+            .rating-box.rating-result.clearfix
+              - review.rating_stars.each do |target|
+                - i = review.try(target) || 0
+                - if i > 0
+                  .rating-list
+                    .title.pull-left
+                      = target.split('_').map(&:capitalize).join(' ')
+                      | :
+                    .rating-items.list-inline
+                      - 5.times do |t|
+                        = content_tag :i,nil ,class: "fa fa-star #{t < i ? "selected" : nil}", data:{index: i, name: target}
+
+          .info-details
+            = toggle_review_comment(review)
+            = review_comment_photos(review, index)
+          .more
+
+          div.share.pull-right
+            .btn-group
+              - if current_account.try :collect?, review
+                = render 'shared/share_link_min', obj: review, collect_url: uncollect_review_path(review), collect_class: 'uncollect', reverse_url: collect_review_path(review), text: review.collect_num, url: review_url(review)
+              - else
+                = render 'shared/share_link_min', obj: review, collect_url: collect_review_path(review), collect_class: 'collect', reverse_url: uncollect_review_path(review),text: review.collect_num, url: review_url(review)
+
+      - if @reviews.present?
+        = paginate @reviews,  window: 3
+
+
+    / ------------ 评论
+    #disqus_thread
+    = javascript_include_tag :disqus
+    noscript
+      | Please enable JavaScript to view the
+        a href="http://disqus.com/?ref_noscript" comments powered by Disqus.
+    a href="http://disqus.com" class="dsq-brlink"
+      | comments powered by
+      span class="logo-disqus"
+        | Disqus
+
+  /---------- 右侧building信息
+  #review-home-right.pull-right.col-md-4
+    #review-map
+      .pull-left#map-canvas
+      .clearfix
+
+= content_for :footer_script do
+  = google_maps_script("Maps.reviewNeighborhoodShow")
+
+/div#make-background-turnoff
+  /a href="#" X
+
+- if !mobile? && !created_obj?
+  = render 'show_share_new'

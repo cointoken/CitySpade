@@ -1,0 +1,68 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_accounts_path, method: :get do
+        .field.fieldset.center
+          legend
+            | User
+          .input-text
+            = text_field_tag :first_name, params[:first_name], placeholder: "First name", class: "col-md-5"
+            = text_field_tag :last_name, params[:last_name], placeholder: "Last name", class: "col-md-5"
+          .radio-btns
+            label.radio.list-inline
+              | Admin
+              = radio_button_tag :role, 'admin', params[:role] == "admin"
+            label.radio.list-inline
+              | User
+              = radio_button_tag :role, 'user', params[:role] == "user"
+            label.radio.list-inline
+              | Office
+              = radio_button_tag :role, 'office', params[:role] == "office"
+            label.radio.accheckbox.list-inline
+              | Facebook Account
+              = check_box_tag :bind_facebook, 'true', params[:bind_facebook] == 'true'
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    .cell
+      | Users |
+      p.total
+        |  Total: #{@accounts.total_count}
+        | &nbsp;&nbsp;&nbsp;&nbsp;
+        = link_to  'New Account', new_admin_account_path
+
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "accounts.id", "ID"
+            th
+              = sortable "accounts.first_name", "Name"
+            th
+              = sortable "accounts.role", "Role"
+            th Facebook Account?
+            th
+              = sortable "accounts.created_at", "Created at"
+            th
+              = sortable "accounts.last_sign_in_at", "Last Sign in"
+            th Edit
+        tbody
+          - @accounts.each do |account|
+            tr
+              td = account.id
+              td = account.name
+              td = account.role
+              th = account.bind_facebook?
+              td = account.created_at.in_time_zone('America/New_York').strftime("%m/%d/%Y %H:%M")
+              td = account.last_sign_in_at.in_time_zone('America/New_York').strftime("%m/%d/%Y %H:%M")
+              td
+                = link_to "Edit", edit_admin_account_path(account), class: 'btn btn-info'
+                - if account.role?(:office)
+                  | &nbsp;
+                  = link_to "deactivated listings", url_for(deactive: true, account_id: account.id), class: 'btn btn-info', data:{confirm: 'Are you sure?'}
+                  | &nbsp;
+                  = link_to "Visit Listings", admin_listings_path(account_id: account.id), class: 'btn btn-info'
+      = paginate @accounts

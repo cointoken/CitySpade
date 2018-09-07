@@ -1,0 +1,7 @@
+- content_for :custom_top
+  = render "shared/banner_ad"
+
+- content_for :seo
+  meta property='og:description' content="#{@room.street_address}"
+
+- content_for :custom_title, "#{@room.title} | CitySpade"

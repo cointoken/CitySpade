@@ -1,0 +1,15 @@
+.tab-container
+  ul.nav.nav-tabs
+    li class="#{params[:review_type] == 'apartment-build' ? 'active' : nil }"
+      a href=new_review_path(review_type: 'apartment-build')
+        | Apartment/Building
+    li class="#{params[:review_type] != 'apartment-build' ? 'active' : nil }"
+      a href=new_review_path(review_type: 'street-neighborhood')
+        | Street/Neighborhood
+.container.row.tab-content#review-content
+  - if params[:review_type] == 'apartment-build'
+    .tab-pane#apartment class="#{'active' if params[:review_type] == 'apartment-build'}"
+      = render 'new_apartment'
+  - else
+    .tab-pane#neighborhood class="#{'active' if params[:review_type] != 'apartment-build'}"
+      = render 'new_neighborhood'

@@ -1,0 +1,16 @@
+#profile.global-container.row
+  .container
+    h1.title My Message
+    .row
+      = render '/accounts/sidebar'
+      #inboxes.col-md-9.row
+        .inboxes-wrapper
+          - @account_inboxes.each do |account_inbox|
+            .inbox class= "#{(!account_inbox.is_read) ? "unread" : ''}"
+              = link_to account_inbox.inbox.title, account_inbox.inbox, class: 'inbox-title'
+              = link_to '', account_inbox, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'inbox-delete'
+              /- if !account_inbox.read
+              /  span unread
+              span.pull-right.time
+                = account_inbox.created_at.strftime("%Y/%m/%d")
+        = paginate @account_inboxes

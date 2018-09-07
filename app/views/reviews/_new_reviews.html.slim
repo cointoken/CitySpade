@@ -1,0 +1,37 @@
+- slide_page_num = 5
+- slide_total_page = (reviews.size / slide_page_num.to_f).ceil
+#new-reviews-slide.carousel.slide.default-border
+  .carousel-inner
+    - (0...slide_total_page).each do |s_page|
+      .item class="#{s_page == 0 ? 'active' : nil}"
+        - ((s_page * slide_page_num)...((s_page + 1) * slide_page_num)).each do |i|
+          - if i < reviews.size
+            - review = reviews[i]
+            .review-abstract
+              .release-info
+                table
+                  tr
+                    td.avatar-td rowspan="2"
+                      = image_tag review.account_avatar_url('35'), class:'avatar-35 circle'
+                    td
+                      div.release-title
+                        .title
+                          = link_to_review review, review.address
+                  tr
+                    td
+                      div.release-location.list-inline
+                        /= review.created_at.strftime("%b %d, %Y")
+                        = "#{review.city}, #{review.state}"
+                  tr
+                    td colspan="2"
+                      div.user-name.list-inline
+                        = review.display_name
+
+              .new-review-comment
+                p
+                  = short_comment(review, 90, false)
+
+  - if slide_total_page > 0
+    ol.carousel-indicators
+      - (0...slide_total_page).each do |i|
+        li data-target="#new-reviews-slide" data-slide-to=i class="#{i == 0 ? 'active' : nil}"

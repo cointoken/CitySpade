@@ -1,0 +1,72 @@
+/** 布局相关 **/
+#wrapper
+  margin-top: 40px
+
+//.container
+  max-width: 990px
+  
+.container.listings,
+#sp-header-fix-header-wrapper .container,
+#sp-banner-wrapper .container
+  max-width: 1200px
+  width: auto
+
+#sp-header-fix-header-wrapper .container,
+#sp-banner-wrapper #banner #banner-container .container
+  overflow: visible
+
+.global-container
+  min-height: 550px
+  @media (max-width: 767px)
+    margin-top: 0
+    padding-top: 15px
+
+#admin-wrapper
+  font-family: Arial
+  margin-top: 60px
+  padding-top: 20px
+  background-color: #E0E0E0
+  border-bottom: 1px solid #CCC
+
+  [class*="span"]
+    float: left
+    min-height: 1px
+    margin-left: 30px
+
+#sp-users-wrapper
+  background: none repeat scroll 0 0 #f9f9f9 !important
+
+#sp-main-body-wrapper
+  background: none repeat scroll 0 0 #f5f5f5 !important
+  border-bottom: 1px solid #dadbde
+
+#sp-banner-wrapper
+  #add_wish_list
+    max-width: 940px
+    height: 160px
+    margin: 0 auto
+    span#add_bt
+      position: relative
+      top: 120px
+      cursor: pointer
+
+
+/** END **/
+/** responstive **/
+@media (max-width: 767px)
+  #sp-reviews-wrapper
+    margin-top: 350px
+
+/** END **/
+
+#sp-menu
+  //width: 85%
+  //margin-left: -9px
+
+@media (max-width: 1200px)
+  #sp-header-fix-header-wrapper
+    .container
+      padding: 0 20px
+  #sp-menu
+    margin-left: 20px
+    width: 80%

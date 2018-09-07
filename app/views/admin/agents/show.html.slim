@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @agent.name
+p
+  strong Tel:
+  = @agent.tel
+p
+  strong Email:
+  = @agent.email
+
+= link_to 'Edit', edit_admin_agent_path(@agent)
+'|
+= link_to 'Back', admin_agents_path

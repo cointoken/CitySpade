@@ -1,0 +1,12 @@
+.topbar
+  .item#item1
+    a.menu-item href=account_saved_wishlist_path(flag: Settings.listing_flags.rental)
+      | My Favorites
+  //a.menu-item href="#"
+    | My Applications
+  .item#item3
+    a.menu-item href=edit_account_path
+      | Edit Profile
+
+javascript:
+  App.Accounts();

@@ -1,0 +1,18 @@
+.tab-container
+  ul.nav.nav-tabs
+    - if !@review.is_neighborhood?
+      li class="active"
+        a href="#apartment" data-toggle="tab"
+          | Apartment/Building
+    - else
+      li class="active"
+        a href="#neighborhood" data-toggle="tab"
+          | Street/Neighborhood
+.container.row.tab-content
+  - if !@review.is_neighborhood?
+    .tab-pane#apartment class="active"
+      = render 'new_apartment'
+  - else
+    .tab-pane#neighborhood class="#{'active' if @review.is_neighborhood? }"
+      = render 'new_neighborhood'
+

@@ -1,0 +1,13 @@
+.buildinglist
+  .row
+    .col-xs-7
+      .listing_img
+        = building_title(building)
+    .col-xs-5
+      .diagonal
+      .listing-content
+        h4
+          = link_to building.id, building_page_path(building.id) , target: '_blank'
+
+        .full-address
+          = building_address(building, :short)

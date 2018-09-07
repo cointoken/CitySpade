@@ -1,0 +1,57 @@
+#career-list
+  .career-header
+    .career-content
+      h1 Careers
+      hr
+      span Join the best minds
+
+  .career-links
+    .row
+      .col-md-1
+      .col-md-5
+        .left-content
+          h2 A dedicated Concierge team just for you.
+          p CitySpade is a next-generation brokerage firm founded in 2015. Based in New York City, CitySpade consists of a group of energetic millennials who share the same passion for improving people's urban living.
+
+        = link_to "Explore your Team", aboutus_path, class: 'left-link-container'
+      .col-md-1
+      .col-md-4
+        .right-content
+          h2 Let's do this
+          p Ready to be a part of something big? We can’t wait to meet you.
+        button.btn.btn-default.right-link-container
+          | See all open jobs
+
+  .career-list
+    .list-title
+      h3 Open Positions
+      p CitySpade is growing fast and needs talent to continue our pace. If you’re up for great challenges and the rewards that come with them, check out our open positions below.
+
+    - @careers.first(5).each do |career|
+      .career-list-item
+        .row
+          .col-md-6.left-part
+            h4 #{career.title}
+            p #{career.location}
+          .col-md-6.right-part
+            = link_to 'READ MORE »', career_path(career), class: ''
+
+    - if @count > 5
+      .all-positions style="display: none"
+        - @careers[5..(@count-1)].each do |ca|
+          .career-list-item-all
+            .row
+              .col-md-6.left-part
+                h4 #{ca.title}
+                p #{ca.location}
+              .col-md-6.right-part
+                = link_to 'READ MORE »', career_path(ca), class: ''
+
+      .more-btn
+        button.btn.btn-default.showmoreclick#showmore
+          | VIEW ALL #{@count} POSITIONS
+
+
+
+javascript:
+  App.Career();

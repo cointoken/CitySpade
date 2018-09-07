@@ -1,0 +1,8 @@
+.modal.fade#contactModal tabindex="-1" role="dialog"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal" &times;
+        h4.modal-title.center Send message to #{@room.account.first_name} #{@room.account.last_name}
+      .modal-body
+        = render "rooms/show/form_contact"

@@ -1,0 +1,38 @@
+#mb-banner-search
+  .back
+    = link_to "< Back","#"
+
+  = form_for Listing.new, url: search_path, method: :get do |f|
+    .row.listing-flag
+      = radio_button_tag 'flag', 'rental', !(session[:listing_flag] == 0), id: 'banner-listing-rentals', data: {url: 'for-rental'}
+      label for='banner-listing-rentals'
+        b
+          i.fa.fa-circle
+          | &nbsp;&nbsp;Rentals
+      = radio_button_tag 'flag', 'sale', session[:listing_flag] == 0 , id: 'banner-listing-sales', data: {url: 'for-sale'}
+      / input type='radio' name='flag' value='sales' id='banner-listing-sales' checked="#{session[:listing_flag] == 0 ? true : false}"
+      label for='banner-listing-sales'
+        b
+          i.fa.fa-circle
+          | &nbsp;&nbsp;Sales
+      / input type='radio' name='flag' value='sales' id='banner-listing-sales' checked="#{session[:listing_flag] == 0 ? true : false}"
+    .update-city-row
+      /- render_cities_btn do |city_long_name, city, index|
+        /.city-btn data-area="#{city['long_name'].to_url}" class="#{index == 0 ? 'update-city-left' : (index == Settings.cities.size - 1 ? 'update-city-right' : nil)} #{current_area.long_name == city['long_name'] ? 'update-active' : nil}"
+          /= link_to "#{city_long_name}", '#'
+      .mb-city-row
+        = select_tag :current_area, options_for_select(search_area_options, params[:current_area]), multiple: false, class: 'multiple-select input-class select-area', name: 'current_area'
+      .clearfix
+
+    #mb-banner-input
+      = f.text_field :title, placeholder: 'Neighborhood / Street / Zip', class: 'input-class autocomplete-input', name: 'title', value: params[:title] || params[:neighborhood]
+
+      .mb-banner-row
+        = f.select :beds, bed_options ,{ selected: params[:beds] },multiple: true, class:'multiple-select small input-class beds-input', name: 'beds[]'
+        = f.select :baths, bath_options,{ selected: params[:baths] }, multiple: true, class:'multiple-select small input-class baths-input', name: 'baths[]'
+      .mb-banner-row
+        input.small.input-class.min-input type='text' name='price_from' value=params[:price_from]  placeholder='$Min'
+        span.price-to.input-class To
+        input.small.input-class.max-input type='text' name='price_to' value=params[:price_to]  placeholder='$Max'
+
+      = f.submit 'UPDATE', class:'btn input-class btn-search'

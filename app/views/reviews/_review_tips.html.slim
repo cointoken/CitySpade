@@ -1,0 +1,34 @@
+h4
+  | Review Writing Tips
+p.bold
+  | Here are some tips to help you write a review that other users will find useful:
+
+p.bold
+  | Be specific and elaborate on your experience.
+- if @review.review_type == 0
+  p
+    | Tell us what happened exactly instead of just compliment/complain about your apartment/building.
+- else
+  p
+    | Tell us what happened exactly instead of just compliment/complain about your street/neighborhood.
+
+p.bold
+  | Be truthful when describing your experience. 
+p 
+  | You can express your emotions in your reviews, but be courteous with your word choices. CitySpade does not allowed profanity or hate speech.
+
+p.bold
+  | Be careful with personal information. 
+p
+  | Please avoid disclosing all forms of personal contact information (including but not limited to names, phone numbers and emails). We want to ensure CitySpade is a safe platform where people can be honest in their reviews without causing harm to others.
+
+- if @review.review_type == 0
+  p.bold
+    | Add pictures of your apartment/building
+  p
+    | Pictures help others visualize the building/apartment you are reviewing, giving them a better sense of the environment.
+- else
+  p.bold
+    | Add pictures of your street/neighborhood
+  p
+    | Pictures help others visualize the street/neighborhood you are reviewing, giving them a better sense of the environment.

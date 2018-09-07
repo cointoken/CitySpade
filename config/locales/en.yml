@@ -1,0 +1,228 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  client_apply:
+    new:
+      apply: "Application Info"
+    form:
+      student: "Student"
+      employed: "Employed"
+      ques: "Are you employed or a student?"
+      basic: "Basic Info:"
+      fname: "First Name"
+      lname: "Last Name"
+      dob: "Date of birth"
+      ssn: "Social Security Number"
+      ssn_place: "Put n/a if you don't have one"
+      phone: "Phone number"
+      email: "Email"
+      building: "Building Name"
+      unit: "Unit Number"
+      addr: "Current Address:"
+      street: "Street"
+      city: "City"
+      state: "State/Province"
+      country: "Country"
+      zip: "Zip code"
+      landlord: "Current Landlord Name"
+      landlord_place: "Put 'self' if you own"
+      lordphone: "Current Landlord Phone"
+      rent: "Current rent/month"
+      rent_place: "put '0' if own"
+      income: "Income Source:"
+      position: "Position"
+      pos_student: "Student"
+      company: "Company"
+      school: "School"
+      startdate: "Start Date"
+      salary: "Salary"
+      salary_place: "'0' if student"
+      pets: "Pets:"
+      qpets: "Do you have pets?"
+      yes_opt: "Yes"
+      no_opt: "No"
+      if_yes: "If Yes:"
+      dog: "Dog"
+      cat: "Cat"
+      breed: "Breed"
+      name: "Name"
+      age: "Age"
+      weight: "Weight"
+      emergency: "Emergency Contact:"
+      ename: "Name"
+      eaddr: "Address"
+      ephone: "Phone"
+      erel: "Relationship to you"
+      add_info: "How did you hear about us?"
+      agent_name: "Agent name/WeChat ID"
+      please_select: "Please select"
+      relation: "Friend"
+      newmedia1: "Dealmoon"
+      newmedia2: "WeChat Official Account"
+      newmedia3: "NYU BBS"
+      newmedia4: "NYU CSSA"
+      newmedia5: "NYU Tandon CSSA"
+      newmedia6: "PACE CSSA"
+      newmedia7: "58.com"
+      other: "Other"
+      rel1: "Referral Name"
+      rel2: "Please specify if other"
+      select: "Please select an option"
+      status: "Select all that apply to you:"
+      opt1: "Annual income at least 40X the monthly rent"
+      opt2: "A guarantor with annual income at least 80X the monthly rent (NY, NJ, CT)"
+      opt3: "A guarantor with annual income at least 80X the monthly rent (all other states)"
+      opt4: "A guarantor with annual income at least 80X the monthly rent (outside U.S.)"
+      opt5: "No guarantor candidates"
+      opt6: "Willing to pay full year's rent upfront"
+      opt7: "Willing to prepay several months' rent upfront or put down extra security deposit"
+      opt8: "Willing to pay extra month to third party company for lease guarantee"
+      continue: "Next"
+
+    document_form:
+      ques1: "What is your resident status?"
+      an1: "International"
+      an2: "Domestic"
+      docmsg: '*If you do not have the documents at hand, you can upload them later. Just hit "Save" for now.'
+      submit: "Save"
+      back: "Back"
+
+  home_page:
+    index:
+      where_live: "Where do you want to live?"
+      schools: "Popular Schools"
+      whatis_detail: "CitySpade is a next-generation brokerage firm founded in 2015. Based in New York City, CitySpade consists of a group of energetic millennials who share the same passion for improving people's urban living."
+      learnmore: "LEARN MORE"
+      apart_hunt: "Apartment \n Hunt"
+      apart_apply: "Apartment Application"
+      enjoy_home: "Enjoy your \nNew Home"
+      what_can: "What we can do for you"
+      consult_agent: "Consult with Professional Agent"
+      reserve_online: "Reservation for Online"
+      confirm_apt: "Confirm the Ideal Appartment"
+      assist_proc: "Assit for Application Process"
+      go_over: "Go Over Local Legal Terms"
+      pay_fee: "Pay for Application Fee"
+      pre_move: "Pre-Move-in Furniture Installation"
+      space_move: "Space Divided Service"
+      air_pick: "Airport Pick-up"
+      room_pair: "Roommate Pairing"
+      free_move: "Free Move in"
+      get_quote: "GET A QUOTE"
+      save_money: "We can save your time and money."
+      save_money_detail: "CitySpade has landed in Chicago, Boston, Philadelphia, Shanghai and is now setting up new offices in Texas and California. The company is made up with a group of dynamic young professionals who share the same passion for improving people's urban living. As a leader in the housing rental industry, the company strives to find dream aparment for every individual client."
+      broker_fee: "$0 Broker fee"
+      instead_of: "Instead of charging clients high broker fee, we only charge marketing fee from the residential companies."
+      one_on_one: "24/7 One-on-one Service"
+      one_on_one_detail: "Our one-one-one professional consultant is available 24/7 to assist you finding the optimal home."
+      roommate_mat: "Roommate Matching"
+      ideal_room: "Our professional agents can help you find an ideal roommate in a timely manner."
+      flat_rate: "Flat-rate Moving"
+      move_team: "the licensed moving team at CitySpade has years of experience with providing efficient moving service."
+      furn_delieve: "Furniture Delivery"
+      furn_team: "Our professional furniture team that assist with purchasing and installing IKEA furnitures before clients moving in."
+      room_divide: "Room Space Divide"
+      room_divide_detail: "We cooperate with professional space divide company CuteDivide and provide discount for all clients, guaranteeing a master bedroom experience at an affordable price."
+      rent_quick: "Rent a room easily and quickly"
+      phone_number: "Phone"
+      wechat_kakao: "WeChat"
+      w_k_id: "nyu-rental"
+      en_kr_email: "pr@cityspade.com"
+
+      #rentopia: "Rentopia at Your Fingertips"
+      #customize: "Customize your renter experience"
+      #with_city: "with CitySpade"
+      #link_learn_more: "LEARN MORE"
+      #one_stop: "One-stop Apartment Hunting"
+      #none_stop: "Non-stop Quality Services"
+      #real_time: "Real-Time Consultation"
+      #our_profess: "Our professional consultants will find the best home for you."
+      #no_fee_rent: "No-Fee Rental Listings"
+      #broker_fee: "with exclusive benefits available."
+      #worry_free: "Worry-free Roommate Matching"
+      #we_know_u: "We could match you with your perfect roommates."
+      #all_around: "All-in-one Household Services"
+      #moving_help: "Moving help, room partition, cleaning... We eliminate all your hassles."
+      #discover_homes: "Discover Homes Beyond Your Dream"
+      #more_neigh: "MORE NEIGHBOURHOODS"
+      # detailed discription for page 4 contents
+      #Brooklyn Downtown
+      #downt_blky: "Downtown Brooklyn"
+      #art_n_cult: "Arts, Culture and Public Transit Hub"
+      #borderis: "Boundaries"
+      #wyckoff: "Wyckoff St./Warren St. to Sands St., Flatbush Ave. to Court St./Cadman Plaza"
+      #dt_blky_disc: "Downtown Brooklyn is a dynamic neighborhood for young professionals and students. As the commercial, cultural and art center, Downtown Brooklyn provides you with diversified commuting options and environment. It has become the most promising alternative to Manhattan as regards living standards."
+      #dt_blky_tag1: "#great transport"
+      #dt_blky_tag2: "#Brooklyn cultural district"
+      #Midtown West
+      #midt_west: "Midtown West"
+      #u_only_liv: "You only live once, in New York"
+      #29th_st: "29th St. to 59th St., Madison Ave. to Hudson River"
+      #midt_west_disc: "Midtown West is NYC’s most crowded and famous neighborhood. Times Square, Broadway shows and neon billboards, everything iconic about New York belongs to Midtown West. It is the heart of New York City, center of shopping, culture and art and the symbol for hustling and bustling metropolitan life of New Yorkers. Living in Midtown West, you will experience the City of Thousand Lights to the fullest."
+      #midt_west_tag1: "#heartofnewyork"
+      #midt_west_tag2: "#urbanlife"
+      #midt_west_tag3: "#timessquare"
+
+  aboutus:
+    p2h1header: "Who we are"
+    right_div_h5: "CitySpade is a real estate brokerage firm founded in 2014 by three alumni from NYU. Based in New York City, CitySpade has expanded to major cities all over the US."
+    right_div_p: "CitySpade has landed in Chicago, Boston, Philadelphia, Shanghai and is now setting up new offices in Texas and California. The Company is made up with a group of dynamic young professionals who share the same passion for improving people's urban living. As a leader in the housing rental industry, the Company strives to find dream apartment for every individual client. Besides keeping the listing constantly updated and source verified by the professionals, the Company also provides series of rental-oriented services,  including but not limited to 24/7 customer services, hassle-free roommate pairing, airport pick up services to improve the service experience."
+    p3h1header: "Our Staff"
+    p4h1header: "Our Locations"
+
+  footer:
+    p1title: "Company"
+    p1li1: "About"
+    p1li2: "Career"
+    p1li3: "Privacy"
+    p1li4: "Terms of Use"
+    p1li5: "Contact"
+
+  header:
+    buildings: "Buildings"
+    about: "About"
+    sign_in: "Sign In"
+
+  services:
+    litaba1: "Moving"
+    litaba2: "Funiture Delivery"
+    litaba3: "Room Divider"
+    tab1h3: "Flat-rate Moving"
+    tab1p: "The licensed moving team at Cityspade has years of experience with providing efficient moving service. More importantly, we offer free moving for our clients."
+    tab1h51: "Book moving time & Reserve elevator"
+    tab1h52: "Pack your luggage"
+    tab1h53: "Enjoy the incredible moving service"
+    tab2h3: "Furniture Purchase and Installation"
+    tab2p: "Our professional furniture team assist with purchasing and installing IKEA furnitures before clients moving in."
+    tab2h51: "Choose desired furniture"
+    tab2h52: "We buy for you"
+    tab2h53: "Enjoy the convenient installation service"
+    tab3h3: "Room Divider"
+    tab3p: "We closely cooperate with professional partition company CuteDivide to provide a discount partition price, so that our clients can spend the living price but enjoy the master bedroom experience."
+    tab3h51: "Make measurement appointment"
+    tab3h52: "Confirm design"
+    tab3h53: "Enjoy the practical partition wall"
+
+  search_for_me:
+    p1h4l3: 'Or contact our specialist on WeChat:'
+    p1image: "newhome/qrcode_new.png"

@@ -1,0 +1,46 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_blogs_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Blog
+          .input-text
+            = text_field_tag :title, params[:title], placeholder: "Title", class: "col-md-5"
+            = text_field_tag :author_name, params[:author_name], placeholder: "Author", class: "col-md-5"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+.row
+  .box.col-md-12
+    .cell
+      Strong Blogs
+      = link_to 'New Blog', new_admin_blog_path, class: 'btn btn-success pull-right'
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "id", "ID"
+            th
+              = sortable "title", "Title"
+            th
+              = sortable "account_id", "Author"
+            th
+              = sortable "created_at", "Created at"
+            th Edit
+            th Delete
+        tbody
+          - @blogs.each do |blog|
+            tr
+              td = blog.id
+              td = blog.title
+              td = blog.author_name
+              td = blog.created_at
+              td
+                = link_to "Edit", edit_admin_blog_path(blog), class: 'btn btn-info'
+                | &nbsp;&nbsp;
+                = link_to "Edit HTML Souce", edit_admin_blog_path(blog, flag: 'raw'), class: 'btn btn-info'
+              td
+                = link_to "Delete", admin_blog_path(blog), method: :delete, confirm: 'Do you want to delete the blog ?', class: 'btn btn-danger'
+      = paginate @blogs

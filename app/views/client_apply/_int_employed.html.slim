@@ -1,0 +1,91 @@
+= f.fields_for :documents, Document.new do |doc_f|
+  #opt-option.visa-ques
+    .row
+      h3 Are you on OPT?
+      .col-xs-6.col-md-3.col-md-offset-3.radios
+        input type="radio" name="workvisa" value="true" Yes
+      .col-xs-6.col-md-3.radios
+        input type="radio" name="workvisa" value="false" No
+      .col-md-3
+  #int-employed-fields
+    .form-group
+      = doc_f.label :passport, "Passport"
+      .button.file-upload
+        = doc_f.file_field :passport, multiple: true, name: "client_apply[documents_attributes][passport][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "passport").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    .form-group.int-opt
+      = doc_f.label :opt, "OPT"
+      .button.file-upload
+        = doc_f.file_field :opt, multiple: true, name: "client_apply[documents_attributes][opt][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "opt").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    .form-group.int-h1b
+      = doc_f.label :h1b, "H1B"
+      .button.file-upload
+        = doc_f.file_field :h1b, multiple: true, name: "client_apply[documents_attributes][h1b][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "h1b").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    .form-group
+      = doc_f.label :bank_statement, "Bank Statement"
+      .button.file-upload
+        = doc_f.file_field :bank_statement, multiple: true, name: "client_apply[documents_attributes][bank_statement][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "bank_statement").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    .form-group
+      = doc_f.label :paystub, "2 Most recent pay stubs"
+      .button.file-upload
+        = doc_f.file_field :paystub, multiple: true, name: "client_apply[documents_attributes][paystub][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "paystub").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+    
+    .form-group
+      = doc_f.label :other, "Other Documents"
+      .button.file-upload
+        = doc_f.file_field :other, multiple: true, name: "client_apply[documents_attributes][other][]", accept: 'image/png,image/jpeg,image/jpg,application/pdf'
+        i.fa.fa-upload
+        span Upload Files
+      .row
+        - if @update_flag
+          - @documents.where(doc_type: "other").each do |doc|
+            .col-sm-10
+              = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", class: "editlink"
+            .col-sm-2
+              = link_to "Delete", apply_destroy_path(doc.id), method: :delete, remote: true, class: "del-link"
+
+

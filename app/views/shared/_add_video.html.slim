@@ -1,0 +1,10 @@
+#add-video-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h4 
+          |video embed
+      .modal-body
+        = form_for @listing do |f| 
+           = f.text_field :video_url, placeholder: 'https://www.youtube.com/embed/32WtDb3c3ws'
+           = f.submit 'Submit'

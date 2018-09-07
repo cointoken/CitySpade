@@ -1,0 +1,66 @@
+.row
+  - if mobile?
+    .col-md-7.related-reviews-span
+      .title RELATED REVIEWS
+      hr
+      #relRevCarousel.carousel.slide
+        .carousel-inner
+          - reviews.each_with_index do |review, index|
+            .item.clearfix
+              .listing-review
+                = link_to_review review, nil, class: 'review-title', target: "_blank"
+                .review-subtitle
+                  span.location =review.full_neighborhood
+                  - if listing.building_venue_id != review.venue_id
+                    span.distance =display_distance(listing.distance_to(review) * 1000)
+                .review-comment.row
+                  - rvs = [review, review.venue.reviews.where.not(id: review.id).order(id: :desc).first].compact
+                  - rvs.each do |review|
+                    div class="span#{rvs.size == 2 ? 6 : 12}"
+                      div
+                        = image_tag review.account_avatar_url('35'), class: 'avatar-35 circle'
+                        span.reviewer-name
+                          = review.display_name
+                        = render_inline_rating_by review, target: :listing_review, rating_class: 'pull-right building-ratings'
+                      = truncate(strip_tags(review.comment), length: 150, separator: ' ')
+        <a class="relrev-car carousel-control left" href="#relRevCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="relrev-car carousel-control right" href="#relRevCarousel" data-slide="next">&rsaquo;</a>
+
+
+    .col-md-5.related-reviews-span
+      .title  NEIGHBORHOOD TALKS
+      hr
+  - else
+    .col-md-12.related-reviews-span
+      .col-md-6.clearfix
+        .title RELATED REVIEWS
+        hr
+        - reviews.each_with_index do |review, index|
+          .listing-review style="margin-bottom: 10px" class="#{index > 1 ? 'hide more-review-list' : 'first-listing-review'} "
+            = link_to_review review, nil, class: 'review-title', target: "_blank"
+            .review-subtitle
+              span.location =review.full_neighborhood
+              - if listing.building_venue_id != review.venue_id
+                span.distance =display_distance(listing.distance_to(review) * 1000)
+            .review-comment.row class="#{has_lock_review?(index, reviews.size) ? "has-lock pc-hide-lock" : nil}"
+              - rvs = [review, review.venue.reviews.where.not(id: review.id).order(id: :desc).first].compact
+              - rvs.each do |review|
+                div
+                  div
+                    = image_tag review.account_avatar_url('35'), class: 'avatar-35 circle'
+                    span.reviewer-name style="font-size: 16px;font-family:Avenir; margin: 5px"
+                      = review.display_name
+                    = render_inline_rating_by review, target: :listing_review, rating_class: 'pull-right building-ratings'
+                  .review-comment-content
+                    = truncate(strip_tags(review.comment), length: 180, separator: ' ')
+              = render_lock_pop review, index, reviews.size
+      / .col-md-6.clearfix
+      /   .title  NEIGHBORHOOD TALKS
+      /   hr
+
+      / .review-lock-tmp
+      /   = render_lock_pop reviews.last, 1, 2
+      / - if no_lock_review_and_neighborhood?(reviews.count, neigh_reviews.count)
+      /   .review-indicator
+      /     .more.center.key-color
+      /       | Read More

@@ -1,0 +1,67 @@
+.row
+  .box.col-md-12
+    .cell
+      | Newset Users
+    .inner
+      table.topics.table.table-striped
+        thead
+          tr
+            th ID
+            th User Name
+            th Email
+            th Sign up time
+        tbody
+          - Account.order('created_at DESC').first(5).each do |account|
+            tr
+              td = account.id
+              td
+              td = account.email
+              td
+                small = account.created_at.getlocal
+
+.row
+  .box.col-md-12
+    .cell
+      | State
+      | &nbsp;&nbsp;
+      = link_to 'Nestio Listings', '/mls/nestio'
+      | &nbsp;&nbsp;
+      = link_to 'Broker Site Listings', '/mls/broker'
+    .inner
+      table{style="width: 100%"}
+        tr
+          td{style='text-align: right; width: 40%;'}
+            span Account count:
+          td{style="align: left"}
+            | &nbsp;&nbsp;
+            strong = Account.count
+        tr
+          td{style='text-align: right; width: 40%;'}
+            span Listing count:
+          td{style="align: left"}
+            | &nbsp;&nbsp;
+            strong = Listing.count
+        tr
+          = link_to "restart sidekiq",
+            restart_sidekiq_admin_welcome_index_path,
+            class: 'btn btn-info', 
+            remote: true, onclick: "$(this).attr('disabled', true)"
+        tr
+          = link_to "Download log", download_log_admin_welcome_index_path, class: 'btn btn-info', style: "margin-left: 15px"
+        tr
+          = link_to "Update Buildings", building_cleanup_admin_welcome_index_path, class: 'btn btn-info', style: "margin-left: 15px"
+.row
+  .box.col-md-12
+    .cell
+      | API Usage Status
+    .inner
+      table.table.table-striped.table-bordered
+        tr
+          th
+          - (0..7).each do |d|
+            th = (Time.now - d.day).strftime("%Y-%m-%d")
+        - APICount.keys.each do |key|
+          tr
+            td = key
+            - (0..7).each do |d|
+              td = APICount.get(key, (Time.now - d.day).strftime("%Y-%m-%d"))

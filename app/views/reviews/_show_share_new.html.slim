@@ -1,0 +1,58 @@
+= form_for Review.new(token: session[:account_token]), remote: true do |f|
+  div#review-show-share1.review-show-share.modal
+    a.close  data-dismiss="modal" aria-hidden="true" X
+    = image_tag "pencil.png"
+    p.contribute
+      | Contribute your review to get access to #{Review.all.size * 2} + reviews. 
+      br
+        | Share your story with us.
+    span id="review-show-btn1" Continue
+    - unless current_account
+      p 
+        | If you have an account with at least one review posted, please 
+        a class='login-link' href="#sign_in" role="button" data-toggle="modal" data-target="#sign_in"
+          | Log In
+
+  div#review-show-share2.review-show-share.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          a.close  data-dismiss="modal" aria-hidden="true" X
+          h4.modal-title Write a Review
+        .modal-body
+          .row
+            .col-md-6
+              p.review-type-select-tag.selected data-val=0
+                | Apartment/Building 
+            .col-md-6
+              p.review-type-select-tag data-val=1
+                | Street/Neighborhood 
+          h3 Location Info:
+          #new-review-location
+          span id="review-show-btn2" Next
+
+  div#review-show-share3.review-show-share.modal
+    .modal-dialog
+      .modal-content
+        .modal-header
+          a.close  data-dismiss="modal" aria-hidden="true" X
+          h3.modal-title Your review for this place
+        .modal-body
+          #new-review-comment
+          p#review-show-pre 
+            | << pre
+  #review-show-share4.review-show-share.modal
+    .modal-dialog
+      .modal-content
+        .modal-body
+          a.close  data-dismiss="modal" aria-hidden="true" X
+          #done
+            i.fa.fa-check-circle
+            div
+              | Congratulations, you have successfully submitted your review.
+              br
+              = link_to  'To see your review post', '#', id: 'to_review_your_page', target: '_blank'
+              = ' or '
+              = link_to 'stay on this page.', 'javascript: window.location.reload();'
+
+  = render 'tmpls/new_review_for_show', f: f

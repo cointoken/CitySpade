@@ -1,0 +1,2030 @@
+@import 'modules'
+
+
+/* 首页、review首页 */
+.reviews-home
+  margin-left: auto
+  margin-right: auto
+  .top
+    .most-related
+      text-align: center
+      margin-bottom: 20px
+    .most-related h4
+      text-align: center
+      font-family: Avenir
+      font-weight: normal
+      font-size: 21px
+      margin-top: 0
+    .most-related .related-review
+      text-align: left
+    .most-related .related-review:first-child
+      float: left
+    .most-related .related-review:last-child
+      float: right
+    .most-related .related-review img
+      width: 100%
+      height: 200px
+    .most-related .related-review .review-img
+      position: relative
+    .most-related .related-review .reviews-count
+      font-size: 15px
+      color: white
+      background-color: rgba(0,0,0,0.8)
+      z-index: 10
+      position: absolute
+      top: 0
+      left: 0
+      line-height: 30px
+      padding: 0 10px
+    .related-review .review-title
+      margin-top: 10px
+    .related-review .review-title a
+      font-size: 16px
+      color: #333
+      font-family: Avenir
+      font-weight: normal
+    .related-review .head-portrait
+      display: inline-block
+      max-width: 60px
+      text-align: center
+      overflow: hidden
+    .related-review .head-portrait img
+      width: 35px
+      height: 35px
+      margin-top: 5px
+    .related-review .rating-right
+      display: inline-block
+      margin-left: 10px
+      vertical-align: top
+      margin-top: 4px
+    .rating-all-items
+      display: inline-block
+    .rating-score
+      display: inline-block
+      color: #29bcb8
+      vertical-align: top
+      margin-top: 10px
+      line-height: 20px
+      font-weight: bold
+      margin-left: 5px
+      font-family: "Avenir", sans-serif
+  .col-md-8.col-sm-8
+    padding-left: 0px
+
+@media (max-width: 768px)
+  .reviews-home
+    .col-md-8.col-sm-8
+      padding-left: 0px
+      padding-right: 0px
+  .img-list
+    .thumb.review-img
+      width: 100% !important
+
+.prompt
+  border: 1px solid #cbcdcc
+  background: #eef4f4
+  height: 110px
+  .promt-container
+    width: 480px
+    margin: 0 auto
+    color: #444
+    text-align: center
+    .words
+      @include review-text
+      font-size: 18px
+      padding: 15px 0 10px 0
+    .write-review
+      @include review-text
+      font-size: 16px
+      a
+        margin-left: 20px
+        display: inline-block
+        border-radius: 4px
+        border-bottom: 1px solid #479290
+
+
+#sp-reviews-wrapper .reviews-home .col-md-8 .titleH4 .pull-left h4,
+.recommends h4.recommendedsH4,
+.result-reviews h4.recommendedsH4
+  @include review-title
+  font-size: 21px
+  margin: 0 0 16px
+#sp-reviews-wrapper .reviews-home .col-md-8 .titleH4 .pull-left h4
+  margin: 10px 0
+
+
+.recommends,
+.result-reviews
+  margin-top: 22px
+  border: 1px solid #cbcdcc
+  padding: 18px 10px
+
+.review-list:first-child
+  border-top: 0
+.review-list
+  border-top: 1px solid #ececec
+  margin-bottom: 10px
+  .venue-info
+    margin: -12px 0 0 0
+  .venue-info div
+    vertical-align: middle
+    display: inline-block
+  .reviews-count
+    @include size-color(15px,#29bcb8)
+    margin: 5px 15px 0 5px
+    font-family: 'Avenir'
+  .time,
+  .location
+    margin-top: 5px
+    margin-right: 15px
+    @include review-text
+    @include size-color(14px,#888)
+  p
+    @include review-text
+    @include size-color(14px,#444)
+    line-height: 1.7em
+    margin: 0 0 8px
+  h4.type
+    @include review-title
+    @include size-color-family(15px,#333,$body-bold-font)
+    display: inline-block
+    margin: 0 0 0 12px
+  .user-info
+    margin: 20px 0 10px
+    font-size: 16px
+    img
+      margin-top: -5px
+    .user-name
+      @include review-text
+      @include size-color(16px,#888)
+      font-weight: normal
+    .share
+      margin-top: 4px
+  .info-details
+    margin: 10px 0
+    h4.list-inline
+      margin: 10px 10px 5px 0
+      @include review-title
+      @include size-color(17.5px,#45bbbd)
+
+/* 首页、review首页、review show : 右侧栏 */
+#review-home-right
+  margin-top: 22px
+  #building-info
+    border: 1px solid #ccc
+    margin: 0 0 10px 0
+    background: #f7f7f7
+    table
+      width: 100%
+      tr td
+        padding: 4px 15px
+        font-size: 14px
+      tr td.header
+        padding-top: 12px
+        font-size: 18px
+        font-family: 'Avenir', sans-serif
+      tr td.little-header
+        padding-bottom: 12px
+        color: #666
+        font-family: "Avenir Book", sans-serif
+      tr td.info-kv
+        text-align: center
+        width: 33.3%
+        font-size: 15px
+        border-right: 1px solid #ccc
+        .info-val
+          font-size: 18px
+          font-family: 'Avenir', sans-serif
+      tr td.info-kv-last
+        border-right: 0
+      tr td.placeholder
+        height: 1px
+  .more-info
+    border: 1px solid #ccc
+    margin-bottom: 12px
+    .review-tabbable
+      .nav
+        margin-bottom: 0
+        li
+          width: 33.3%
+          font-size: 16px
+          text-align: center
+        li a
+          border-radius: 0
+          font-family: 'Avenir', sans-serif
+          margin-right: 0
+    .venues-images
+      height: 243px
+      width: 100%
+      overflow: hidden
+      .venue .venue-li, .venue .venue-li a img
+        position: relative
+        display: inline-block
+        width: 161px
+        height: 119px
+        padding: 3px
+      .venue .venue-li a .distance
+        position: absolute
+        left: 6px
+        top: 6px
+        @include size-color(12px,#fff)
+        background-color: rgba(0,0,0,0.7)
+        padding: 3px 4px
+      .venue .venue-li a .venue-name
+        position: absolute
+        text-align: center
+        background-color: rgba(0,0,0,0.7)
+        @include size-color(12px,#fff)
+        width: 141px
+        left: 6px
+        bottom: 0
+
+#new-reviews-right,#grocery-ideas,#laundry-ideas
+  @include border-gray
+  padding: 18px
+  h4
+    padding-bottom: 15px
+    border-bottom: 1px solid #c6c6c6
+    margin: 0
+#new-reviews-right
+  background-color: #fff
+  p
+    @include review-text
+
+.item.review-abstract
+  position: relative
+  .user-name
+    display: block
+    width: 60px
+    word-wrap: break-word
+.item.review-abstract:first-child
+  border-top: 0
+.review-abstract
+  padding: 15px 0
+  border-top: 1px solid #ececec
+  @include review-text
+  p
+    @include size-color(14px,#444)
+    margin: 15px 0 0 3px
+    line-height: 1.6em
+  .release-info
+    border-bottom: 0px
+    margin-bottom: 10px
+
+      width: 60px
+    .release-title
+      a
+        @include review-title
+        @include size-color-family(16px,#333,$body-bold-font)
+    .user-name
+      @include review-text
+      @include size-color(14px,#888)
+      position: relative
+      top: 6px
+      margin-left: 3px
+    .release-location
+      @include size-color(14px,#888)
+  .rating-all-items.square-star
+    position: absolute
+    top: 55px
+    margin: 0
+
+
+
+/** Review Homepage Search **/
+/** homepage item link **/
+[id^="sp-header-"] #sp-main-menu
+  .reviews-link-menu
+    @include margin-padding(12px 0,0 10px)
+    @include border-radius(3px)
+    background-color: #ff779f
+    border-bottom: 1px solid #c26a84
+    a
+      @include size-color(16px,white)
+      line-height: 35px
+    &:hover
+      background-color: #ff90b1
+
+  .reviews-link-menu.new-badge
+    position: relative
+
+    .badge
+      position: absolute
+      top: -6px
+      background-color: #e74c3c
+      right: -17px
+
+  .reviews-link-menu.listings-link-menu.pull-left
+    background-color: #29bcb8
+    border-bottom: 1px solid #479290
+    margin-left: 10px
+    padding: 0 20px
+    &:hover
+      background-color: #2fcdc9
+
+  i
+    margin-right: 5px
+.reviews-home, #review-show, #reviews-result-contents
+  margin-top: 20px
+  margin-bottom: 30px
+/** home item link end **/
+#review-search
+  #review-input
+    padding: 0px 8.5px
+    input#address
+      border-radius: 3px 0 0 3px
+      width: 420px
+      height: 50px
+      border: none
+      border-right: 1px solid #9C9A9A
+  #banner-location
+    padding: 5px
+    margin-left: -28px
+    margin-top: -5px
+    label
+      color: #fff
+      display: list-inline
+      position: relative
+      left: 28px
+    input
+      padding-left: 30px
+      width: 140px
+      height: 50px
+      border: none
+.img-list
+  a:nth-child(odd)
+    margin-right: 14px
+  overflow: hidden
+  .review-img:last
+    @include width-height(290px,200px)
+    clear: both
+  .thumb.review-img
+    @include width-height(290px,200px)
+    margin: 6px 0
+  >.thumb.review-img:nth-child(odd)
+    margin-right: 14px
+
+/*new review page style*/
+.ratings-title,
+.label-title[for="review_review_apartment_attributes_comment"],
+.label-title[for="Upload_Photos"],
+.label-title[for="review_display_name"],
+#grocery .lighter,
+#laundry .lighter
+  margin-top: 20px !important
+
+#review-right
+  border: 1px solid #ccc
+  padding: 10px 20px
+  width: 32%
+  h4
+    color: #30baba
+    margin: 0 0 -10px 0
+  p
+    @include size-color(14px,#444)
+    margin: 0
+  p.bold
+    margin-top: 20px
+    @include size-color-family(16px, #444, Avenir)
+
+
+
+#grocery,#laundry
+  margin-bottom: 10px
+  span
+    margin-bottom: 0px
+    display: block
+    @include size-color-family(16px,#333,Avenir)
+#laundry
+  .bold
+    margin-top: -30px
+.place
+  @include size-color-family(16px,#555,Avenir)
+  margin-bottom: 5px
+  p
+    margin: 0 5px 0 2px
+  img
+    margin-left: 10px
+    cursor: pointer
+  input
+    @include review-input
+    width: 220px
+  textarea
+    @include width-height(95%,50px)
+    background-color: #fff
+    border: 1px solid #b2b2b2
+  .place-about-title
+    margin: 5px 0 0
+#grocery, #laundry
+  input, textarea
+    font: 14px Avenir
+.new-review-form
+  input, textarea
+    font: 14px Avenir
+  label.review-on-facebook-label
+    text-align: left
+    width: 400px
+    line-height: 40px
+    text-indent: 10px
+    input
+      width: auto
+      margin: 8px
+  label
+    @include review-text
+    @include size-color(16px,#555)
+    line-height: 30px
+    margin-bottom: 0
+    font-weight: lighter
+    .star
+      color: #8e252a
+      height: 30px
+      display: inline-block
+      line-height: 30px
+    &.label-title
+      color: #444
+  .ms-choice
+    border-radius: 0
+  .ms-parent
+    button
+      background-image: none
+      font-family: Avenir
+      span
+        font-size: 14px
+  .ms-drop.bottom
+    border-radius: 0
+    ul
+      li
+        input
+          display: none
+          width: 110px
+        label
+          @include width-height(120px,18px)
+          font-size: 10px
+          padding: 0
+          text-align: left
+          line-height: 18px
+          white-space: nowrap
+          font-size: 14px
+  .input
+    margin-bottom: 8px
+    &.review-on-facebook-container
+      margin-top: -10px
+    span
+      height: 30px
+      line-height: 30px
+      font-size: 16px
+    input
+      @include review-input
+      font: 14px Avenir
+    .pull-right, .pull-left
+      width: 40%
+
+    #display_name
+      width: 97px
+  .select-circle-container
+    margin-bottom: 0px
+    display: inline-flex
+    width: 55%
+  #location-info
+    #location-content
+      font-family: Avenir
+      .ms-search input
+        width: inherit
+  #payment-content
+    .input
+      span
+        font-size: 16px
+        display: list-inline
+        margin-top: 10px
+      .star
+        font-weight: normal
+    .lighter
+      font-weight: lighter
+      padding-top: 5px
+    h4
+      font-size: 16px
+      margin-top: 16px
+    .input textarea
+      @include review-input
+      height: 117px
+      padding-top: 11px
+      line-height: 1.6em
+    .input .cal-characters
+      width: 37%
+      .cal-char, .characters
+        font-size: 14px
+        color: #666
+    .select-container
+      margin-bottom: 12px
+    .label-title
+      @include review-title
+      margin-top: 10px
+      margin-bottom: 0px
+      width: 100%
+    .select-items
+      color: #c6e6e5
+      i.fa.fa-circle
+        margin: 4px
+        cursor: pointer
+        &.active
+          color: $selected-color
+        &.disactive
+          color: $cancel-color
+    .select-overall-container
+      .select-items
+        float: left
+        margin-top: 5px
+        i.fa.fa-circle
+          font-size: 26px
+        i.fa.fa-square-star
+          background: image-url('square-star-big.png') no-repeat
+          @include width-height(22px,22px)
+          margin: 9px 6px 0 0
+          cursor: pointer
+        i.fa.fa-square-star:hover,
+        i.fa.fa-square-star.selected,
+        i.fa.fa-square-star.active,
+        i.fa.fa-square-star.selected.active
+          background: image-url('square-star-big-ho.png') no-repeat
+        i.fa.fa-square-star.selected.disactive
+          background: image-url('square-star-big.png') no-repeat
+          width: 19px
+    .select-circle-container
+      label
+        width: 115px
+        display: inline-block
+      .select-items
+        display: list-inline
+        padding-left: 10px
+        font-size: 22px
+        i.fa
+          @include width-height(27px,23px)
+          cursor: pointer
+          &.active
+            color: $selected-color
+          &.disactive
+            color: $cancel-color
+    span.clickToRates
+      background-image: image-url('clickToRate.png')
+      @include width-height(112px,29px)
+      @include size-color(16px,#fff)
+      display: inline-block
+      margin-left: 10px
+      padding-left: 16px
+      line-height: 29px
+    #review_photos_attributes__image
+      display: none
+  #payment-info
+    .actions
+      input
+        @include width-height(120px,36px)
+        background: #2abcb9
+        border: 0
+        color: #fff
+        margin-top: 10px
+        border-bottom: 1px solid #479290
+        &:hover
+          background-color: #2fcdc9
+      input[type=submit]
+        font: 16px Helvetica
+  #location-info, #payment-info
+    #location-content
+      font-family: Avenir
+      .ms-search input
+        width: inherit
+      .selectize-control.single
+        width: 100%
+  #location-title,#payment-title
+    @include size-color-family(18px,#30baba,Avenir)
+    border-bottom: 2px solid #daeae9
+    padding: 10px
+    margin-bottom: 8px
+    img
+      margin-right: 10px
+      cursor: pointer
+#review-left
+  background-color: #fff
+  padding-bottom: 20px
+  margin: 0
+  width: 65%
+  margin-bottom: 10px
+.new-review-form
+  border: 1px solid #cccccc
+#payment-content,#location-content
+  padding: 0 12%
+/*boostrap modal widget style*/
+.tab-content
+  form
+    margin: 0
+.tab-container
+  background: #2abcb9
+  margin-bottom: 20px
+  .nav-tabs
+    max-width: 940px
+    height: 52px
+    color: #fff
+    border: 0
+    margin: 0 auto
+    >li >a
+      @include size-color-family(16px,#d6fff0,Avenir)
+      line-height: 29px
+      border-radius: 0
+      margin-top: 6px
+  .nav-tabs > .active > a, .nav-tabs > .active > a
+    color: #1cbdab
+  .nav-tabs > li > a
+    &:hover,&:focus
+      color: #1cbdab
+      background-color: #fff
+
+/*fa fa-circle selected style*/
+.selected
+  color: #2db9b8
+
+
+/******************** review show css *********************/
+.building-review-show #new-reviews-right,
+.building-review-show #review-home-right
+  width: 32%
+  margin-left: 18px
+.building-review-show
+  #review-home-right
+    margin-top: 0
+  .write-review
+    margin-top: -5px
+.building-review-show.neighbor-review-show
+  .review_show_in_pc,
+  .review_show_in_pc .carousel-inner,
+  .review_show_in_pc .item,
+  .review-image-homes.neighborhood-imgs,
+  .review-image-homes.neighborhood-imgs .review-img
+    width: 100%
+    height: 230px !important
+.building-review-show.neighbor-review-show
+  .big-title
+    line-height: 20px
+  .big-title .supplement
+    margin-left: 15px
+    @include size-color(16px, #888)
+  .big-title .supplement .apart-num
+    @include size-color(16px, #29bcb8)
+  .review_show_in_pc
+    position: relative
+    li.review-image-show
+      width: 48.5%
+      height: 220px !important
+    li.review-image-show
+      position: absolute
+      right: 0
+    li.review-image-show.first
+      position: absolute
+      left: 0
+    ul.neighborhood-imgs li.review-image-show img
+      margin: 0
+    .carousel-control
+      top: 50%
+  .rating-result.overall-quality-rating
+    margin-top: 9px
+  .rating-result .supplement
+    vertical-align: top
+    margin-left: 15px
+    @include size-color(14px, #888)
+
+
+#new-reviews-right .release-info .avatar-td
+  width: 60px
+#review-show
+  border: 1px solid #ccc
+  margin-left: auto
+  margin-right: auto
+  .review-title-info
+    padding: 15px 18px 7px
+    //margin: 0 -19px
+    .build-info, h1
+      @include review-title
+      @include size-color(22px,#333)
+    .build-info
+      margin-top: -8px
+    h1
+      margin: 0
+    .little-title
+      @include review-text
+      @include size-color(14px,#888)
+      margin: 0px 0 7px 0px
+      .full-neighborhood
+        margin-right: 15px
+      .review_type
+        display: inline-block
+      .time
+        margin: 15px 0 0 15px
+    .rating-result
+      //margin-left: 103px
+      .rating-all-items
+        margin-top: 0px
+        display: inline-block
+        .fa.fa-square-star
+          background: image-url('square-star.png') no-repeat
+          @include width-height(19px,19px)
+          margin-right: 5px
+        .fa.fa-square-star.selected
+          background: image-url('square-star-ho.png') no-repeat
+      .rating-score
+        display: inline-block
+        @include size-color(16px,#29bcb8)
+        height: 20px
+        vertical-align: top
+        line-height: 20px
+        font-weight: bold
+        margin-left: 5px
+        font-family: 'Avenir', sans-serif
+
+.review-content
+  //padding: 0 0 18px 18px
+  width: 65.67%
+  p
+    @include review-text
+    @include size-color(14px,#444)
+    padding-top: 8px
+  .review
+    border-top: 1px solid #ececec
+    padding: 0 0 8px 0
+    position: relative
+    .rating-box
+      margin-top: 0
+      font-family: "Avenir Book"
+    .head-portrait
+      margin-bottom: 2px
+      .reviews-head-top
+        //line-height: 20px
+        min-height: 35px
+        margin-top: 5px
+      .reviews-head-top .reviews-head-title
+        @include size-color-family(16px,#333,Avenir)
+        margin-right: 15px
+      .reviews-head-bottom
+        margin-bottom: 10px
+        margin-left: 45px
+        .name.reviewer, .little-title
+          line-height: 25px
+        .distance-to-listing
+          @include margin-padding-border(10px 0 10px 10px, 0 3px, 1px solid #ccc)
+          @include border-radius(5px)
+          color: #888
+
+      img
+        width: 35px
+        height: 35px
+        margin-top: 10px
+      span.name
+        font-size: 14px
+        font-weight: bold
+        line-height: 55px
+        margin-right: 10px
+      .rating-result
+        display: inline-block
+        .rating-score
+          @include size-color(14px,#29bcb8)
+          display: inline-block
+          font-weight: bold
+          margin: 10px 0 0 5px
+          height: 20px
+          line-height: 20px
+          font-family: 'Avenir', sans-serif
+        .rating-all-items
+          vertical-align: top
+          display: inline-block
+      .little-title
+        font-size: 14px
+        line-height: 55px
+        span.review-date
+          margin-left: 8px
+          color: #999
+    .info-details
+      p
+        padding-top: 0
+        line-height: 1.7em
+      ul.review-comment-imgs li
+        display: inline-block
+        width: 50%
+        .review-comment-img
+          width: 98%
+          height: 230px
+      ul.review-comment-imgs li:first-child
+        text-align: left
+      ul.review-comment-imgs li:last-child
+        text-align: right
+
+
+    .more
+      position: relavtive
+      width: 50%
+      display: inline-block
+      text-align: right
+      a.more-info
+        position: relavtive
+        font-size: 16px
+        display: inline-block
+        text-align: center
+        color: #29bcb8
+        .more-text
+          height: 6px
+          font-size: 14px
+          line-height: 10px
+        .more-arrow
+          width: 100%
+        .more-arrow.fa-caret-up
+          display: none
+        &:hover
+          color: #0e9e9a
+    .share
+      display: inline-block
+      vertical-align: top
+      //position: absolute
+      //bottom: 2px
+      //right: 2px
+      .btn-group
+        text-align: left
+        .collect-num
+          font-size: 18px
+  h4.type
+    margin: 0
+    padding-bottom: 12px
+    font-size: 15px
+    font-weight: normal
+    color: #333
+    .time, .author-by, .author-name
+      @include review-title
+      @include size-color(14px,#888)
+    .time
+      padding-left: 20px
+    .author-by
+      margin-right: 5px
+    .author-name
+      color: #333
+  .review-tabbable
+    margin-top: 30px
+    .tab-content
+      overflow: hidden
+  .reviews
+    margin-top: 18px
+    .review-streetview-content
+      border-top: 1px solid #ccc
+      margin-bottom: 25px
+      #review-street-view-pane
+        border: 1px solid #ccc
+        #sv-pano
+          width: 100%
+          height: 300px
+    .review .head-portrait .show-map, .street-view
+      @include margin-padding-border(10px, 0 3px, 1px solid #29bcb8)
+      @include border-radius(5px)
+      color: #29bcb8
+  .avatar-55
+    margin-right: 12px
+
+.rating-box
+  padding: 6px 10px
+  margin: 0 0 12px 0
+  background: #f5fbfb
+  border: 1px solid #dbe5e4
+  .title
+    @include review-title
+    font-size: 14px
+    width: 90px
+    text-align: left
+    margin-right: 5px
+    font-family: 'Avenir Book'
+  .rating-list
+    display: inline-flex
+    display: -webkit-inline-flex
+    width: 49%
+    margin: 3px 0
+    .rating-items
+      color: #c4e8e6
+    .rating-score
+      height: 20px
+      vertical-align: top
+      line-height: 20px
+      display: inline-block
+      @include size-color(14px,#2db9b8)
+      font-weight: bold
+      margin-left: 5px
+      font-family: 'Avenir', sans-serif
+    i
+      margin-left: 8px
+      font-size: 18px
+      cursor: pointer
+
+
+.user-info
+  margin: 0 auto
+  border: 0
+  @review-text
+  .avatar-35,.avatar-55
+    margin-right: 12px
+.review-shared
+  margin-top: 20px
+  a
+    margin-left: 8px
+  a.collect
+    div.collect-heart
+      background-color: #f59797
+  a.uncollect
+    div.collect-heart
+      background-color: #fff
+      i
+        color: #f59797
+  a.collect,a.uncollect
+    @include width-height(85px,23px)
+    line-height: 23px
+    position: relative
+    top: -8px
+    div
+      display: inline-block
+    div.collect-heart
+      width: 30px
+      border-top-left-radius: 3px
+      border-bottom-left-radius: 3px
+      border: 1px solid #f59797
+      border-right: 0px
+      i
+        margin-left: 6px
+        font-size: 18px
+        position: relative
+        top: 4px
+    div.collect-num
+      border-top-right-radius: 3px
+      border-bottom-right-radius: 3px
+      background-color: #fff
+      width: 50px
+      text-align: center
+      border: 1px solid #f59797
+
+#building-image-show
+  display: block
+  width: 100%
+  height: 400px
+  border: 1px solid #ccc
+  margin-bottom: 10px
+  a img
+    width: 100%
+    height: 400px
+
+.images-list.review_show_in_phone
+  display: none
+.images-list
+  width: 296px
+  width: 100%
+  border: 1px solid #ccc
+  overflow: hidden
+  margin-bottom: 10px
+
+  a
+    display: block
+  .review-img
+    @include width-height(200px,150px)
+    float: lef
+  .carousel-control
+    @include width-height(20px,20px)
+    font-size: 25px
+    line-height: 16px
+    top: 45%
+
+
+.images-list.review_show_in_pc
+  display: block
+  border: 0
+  .carousel-inner
+    height: 170px
+  a.carousel-control
+    top: 40%
+    opacity: 1
+    color: #2fcdc9
+    font-size: 70px
+    background: none
+    height: 41px
+  .item
+    width: 100%
+    height: 170px
+    .review-image-show
+      margin: 0px 0 0px 12px
+      height: 150px
+      width: 32%
+      display: inline-block
+      .review-img
+        width: 100%
+        height: 150px
+        img
+          width: 100%
+          height: 150px
+    .review-image-show.first
+      margin: 0
+
+/* review show add-photo */
+.add-photo-div
+  position: relative
+  width: 100%
+  height: 30px
+  margin: 0 0 15px
+#add-photo,
+#add-photo-done
+  @include size-color-family(14px,white,helvetica)
+  @include width-height(19.5%,30px)
+  background: #2abcb9
+  text-shadow: none
+  border-radius: 4px
+  border-bottom: 1px solid #479290
+  &:hover
+    background-color: #2fcdc9
+#add-photo-done
+  float: none
+  width: 126px
+  position: absolute
+  bottom: 13px
+  left: 50%
+  margin: 0 0 0 -63px
+
+#form.show-uploadify
+  display: none
+  position: absolute
+  top: -100px
+  left: 50%
+  margin-left: -195px
+  background: white
+  width: 390px
+  z-index: 1010
+  padding: 10px 0 60px 10px
+  #file_upload-queue
+    top: 10px
+
+#make-background-turnoff
+  display: none
+  background-color: black
+  opacity: 0.8
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 1000
+  @include width-height(100%,200%)
+  a
+    @include size-color(20px,#fff)
+    position: absolute
+    top: 15px
+    right: 20px
+    z-index: 1020
+    width: 34px
+    border: 2px solid #fff
+    border-radius: 100px
+    text-align: center
+  a:hover
+    font-size: #fff !important
+
+
+
+.fileinput-button
+  position: relative
+  overflow: hidden
+.fileinput-button input
+  position: absolute
+  top: 0
+  right: 0
+  margin: 0
+  opacity: 0
+  -ms-filter: 'alpha(opacity=0)'
+  font-size: 200px
+  direction: ltr
+  cursor: pointer
+/*photo upload modal*/
+#photoModal
+  padding: 10px
+  width: auto
+  .progress
+    width: 80px
+  .fileupload-buttonbar
+    margin: 0 auto
+  form
+    margin: 30px 0 20px
+.show-upload-result
+  width: 474px
+  margin: 0 auto
+  .preview
+    width: 180px
+  .name,.size
+    width: 100px
+  .delete
+    width: 120px
+.fileinput-button
+  position: relative
+  overflow: hidden
+
+.fileinput-button input
+  position: absolute
+  top: 0
+  right: 0
+  margin: 0
+  opacity: 0
+  -ms-filter: 'alpha(opacity=0)'
+  font-size: 200px
+  direction: ltr
+  cursor: pointer
+/*for jquery.multiple.select.js style*/
+.input .ms-parent
+  width: 100%
+  margin-left: 0
+  top: 0
+  .ms-choice
+    @include width-height(100%,32px)
+    div
+      width: 25px
+      top: 4px
+    span
+      top: 3px
+
+
+/*review result css*/
+#reviews-result-contents
+  font-size: 16px
+  margin-left: 0px
+  margin-right: 0px
+  #search-result-tips
+    margin-bottom: 10px
+    b
+      font-family: Sanchez
+  #grocery-ideas
+    margin-bottom: 20px
+  #laundry-ideas
+    margin-bottom: 20px
+#new-reviews-right
+  .carousel-indicators
+    position: inherit
+    width: 48px
+    margin: 0 auto
+    li
+      background: #d1d1d1
+    .active
+      background: #868686
+.review-option-banner-bg
+  text-align: center
+  background: image-url('review_option_banner.jpg')
+  background-attachment: fixed
+  background-size: cover
+  -moz-background-size: cover
+  width: 100%
+  min-height: 640px
+  h3.review-option-title
+    @include size-color-family(22px,#fff,Lucida Bright)
+    margin-top: 80px
+    margin-bottom: 0px
+    font-weight: inherit
+  .review-option-label
+    @include review-text
+    @include size-color(20px,#ccc)
+    margin: 40px 0
+  a
+    @include size-color-family(18px,#fff,avenir-light)
+    width: 220px
+    margin-left: 15px
+    border: 1px solid #fff
+    padding: 10px 15px
+    display: inline-block
+    &:hover
+      background: #29bcb8
+      color: #fff
+      border: 1px solid #29bcb8
+  .option-tip
+    padding: 10px 0
+    width: 730px
+    border: 1px solid $sub-white
+    margin: 40px auto
+    text-align: center
+    position: relative
+    .tip-label
+      @include size-color(18px, $sub-white)
+    h3
+      @include size-color-family(25px, $full-white, 'Avenir')
+    .fa-lightbulb-o
+      font-size: 30px
+      color: #fff
+      position: absolute
+      top: 15px
+      left: 15px
+    .tip-list
+      margin-left: 170px
+      margin-top: 10px
+      text-align: left
+      color: $full-white
+      .start
+        @include size-color(20px, $sub-white)
+      .end
+        font-size: 18px
+      ul li
+        @include size-color-family(20px, $full-white, 'Avenir')
+        line-height: 1.7
+
+/** responstive **/
+@media (max-width: 960px)
+  /* write review */
+  #grocery,
+  #laundry,
+  #form,
+  label[for="Upload_Photos"]
+    display: none
+  .review-content
+    padding: 10px 0px 18px 0px
+
+@media (max-width: 767px)
+  #add-photo
+    display: none
+  .review-content
+    padding: 0 !important
+    border: 0 !important
+    .reviews
+      margin-top: 10px
+    .reviews .rating-result
+      padding: 0 0 10px
+      margin: 0 0 10px
+    .review-title-info
+      .head-portrait
+        margin-right: 20px !important
+    .review-tabbable
+      .nav-tabs,#tab2
+        display: none
+  #review-show
+    .more-info
+      .images-list
+        margin-bottom: 10px
+      .images-list img
+        width: 100%
+        height: 210px
+      .tabbable.review-tabbable
+        margin-top: 20px
+    .review-shared
+      margin-top: 10px
+
+  /* write review */
+  #review-right,button.add-photo
+    display: none
+  .new-review-form
+    #location-title,#payment-title
+      padding: 10px 0
+    .input
+      #display_name
+        width: 95%
+  .tab-container
+    margin-bottom: 0
+    .nav-tabs
+      display: inline-flex
+      >li >a
+        font-size: 14px
+  #review-left
+    border-width: 0px
+    width: 100%
+    padding-right: 0px
+    padding-left: 0px
+  #new_review
+    padding: 0px
+  #payment-content,
+  #location-content
+    padding: 0
+  .new-review-form
+    .input
+      input
+        width: 100%
+      .selectize-input
+        width: 100%
+    #payment-content
+      .select-circle-container
+        width: 100%
+        label
+          width: 108px
+      span.clickToRates
+        width: 112px
+      .label-title
+        margin-top: 0px !important
+      .input
+        .cal-characters
+          width: 100%
+
+  /* review home page */
+  .prompt
+    height: 130px
+    text-align: center
+    a
+      display: block
+    .promt-container
+      width: auto
+      .write-review
+        a
+          margin-left: 0
+  .review-content
+    .reviews
+      margin-top: 10px
+    .review-title-info
+      padding: 0 20px
+      .write-review
+        margin-top: -10px
+      .little-title
+        clear: both
+        margin: 0 !important
+        .full-neighborhood
+          display: inline-block
+        .time
+          display: block
+          margin: 0 !important
+      .rating-result
+        margin-left: 0
+    h4.type
+      .pull-right
+        float: left
+        margin-right: 10px
+      margin-bottom: 7px
+
+  .reviews-home
+    .pagination
+      display: none
+  #review-search
+    margin-top: 25px !important
+    input#address
+      display: block
+      margin: 7px
+    #banner-location
+      float: left
+      input
+        width: 175px
+    #review-input
+      display: block !important
+      background: none
+      input#address
+        width: 260px
+    input.btn-search
+      border-radius: 0
+  .review-option-banner-bg
+    a
+      margin: auto
+      margin-bottom: 15px
+      display: block
+    h3.review-option-title
+      margin-bottom: 50px
+      margin-left: 20px
+      margin-right: 20px
+      line-height: 1.7
+    .option-tip
+      margin-left: 10px
+      margin-right: 10px
+      width: inherit
+      h3
+        margin-left: 30px
+      .tip-list
+        margin-left: 10px
+
+  #sp-banner-wrapper #banner.row .review-banner-bg .row#banner-container
+    top: 60px
+  .images-list
+    float: none
+    margin: 0 auto 20px
+  .images-list.review_show_in_pc
+    display: none
+  .images-list.review_show_in_phone
+    display: block
+
+  .recommends,.result-reviews
+    .review-list
+      padding-bottom: 10px
+      .user-info
+        position: relative
+        .share
+          position: absolute
+          right: 0
+          margin-top: 0px
+        .user-name
+          position: absolute
+          top: 34px
+          left: 0px
+        h4.type
+          margin: 4px 0
+          font-weight: normal
+          position: absolute
+          top: 0
+          right: 0
+      .info-details
+        .rating-all-items
+          margin: 4px 0 0
+        h4.list-inline
+          display: block
+          width: 100%
+      .venue-info .reviews-rating
+        display: block
+      .venue-info .location
+        float: left
+        margin-right: 0
+        font-size: 14px
+      .venue-info .time-ago-display
+        float: right
+        margin-right: 0
+        font-size: 14px
+  .reviews-home
+    .top
+      .most-related
+        margin-bottom: 0
+      .most-related .related-review:first-child
+        float: initial
+      .most-related .related-review
+        width: 100%
+        display: block
+        margin-bottom: 8px
+      .most-related .related-review .head-portrait, .most-related .related-review .rating-right
+        margin-top: -5px
+      .most-related .related-review .rating-result
+        margin-top: 3px
+      .most-related .related-review .rating-result .rating-all-items, .most-related .related-review .rating-result .rating-score
+        margin-top: 5px
+
+  .reviews-home
+    .top
+      .most-related
+        margin-bottom: 0
+      .most-related .related-review
+        width: 100%
+        display: block
+        margin-bottom: 8px
+      .most-related .related-review .head-portrait, .most-related .related-review .rating-right
+        margin-top: -5px
+      .most-related .related-review .rating-result
+        margin-top: 3px
+      .most-related .related-review .rating-result .rating-all-items, .most-related .related-review .rating-result .rating-score
+        margin-top: 5px
+
+
+
+/* review map */
+#review-map
+  height: 200px
+  @include border-gray
+  margin: 0 0 10px 0
+  #map-canvas
+    height: 200px
+  #map-listing-detail
+    max-width: 160px
+    img
+      max-height: 150px
+      width: 100%
+
+@media (max-width: 444px)
+  .review-content
+    h4.type
+      .pull-right
+        margin-top: 8px
+      margin-bottom: 20px
+
+
+
+
+
+/**************** pic *******************/
+.uploadify-button
+  background-image: image-url('upload_img.png')
+.uploadify-queue-item
+  background-color: #F5F5F5
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  border-radius: 3px
+  font: 11px Verdana, Geneva, sans-serif
+  .cancel a
+    background: image-url('uploadify-cancel.png') 0 0 no-repeat
+    float: right
+    height: 16px
+    text-indent: -9999px
+    width: 16px
+.uploadify-error
+  background-color: #FDE5DD !important
+.uploadify-queue-item.completed
+  background-color: #E5E5E5
+.uploadify-progress
+  background-color: #E5E5E5
+  margin-top: 10px
+  width: 100%
+.uploadify-progress-bar
+  background-color: #0099FF
+  height: 3px
+  width: 1px
+
+.clearfix:after
+  content: "."
+  display: block
+  height: 0
+  clear: both
+  visibility: hidden
+.clearfix
+  display: inline-block
+
+/* Hides from IE-mac \*/
+* html .clearfix
+  height: 1%
+.clearfix
+  display: block
+/* End hide from IE-mac */
+
+.clear
+  clear: both
+
+
+#form
+  width: 390px
+  position: relative
+  .placeHolder
+    @include width-height(120px,120px)
+  #file_upload-queue
+    position: absolute
+    top: 0
+    .uploadify-queue-item
+      @include width-height(120px,120px)
+      overflow: hidden
+      span
+        font-weight: normal
+        font-size: 15px
+        margin: 0
+  #file_upload,
+  .uploadImg,
+  .uploadify-queue-item
+    margin-bottom: 10px
+    margin-right: 10px
+    float: left
+  .uploadImg
+    @include width-height(118px,118px)
+    border: 1px solid #bcbcbc
+    overflow: hidden
+    position: relative
+    .deleteIcon
+      position: absolute
+      top: 2px
+      right: 2px
+      cursor: pointer
+    .img
+      @include width-height(118px,118px)
+
+
+/**** reviews show -- write a review ****/
+body
+  .body-innerwrapper
+    .review-show-share
+      span#review-show-btn1,
+      span#review-show-btn2,
+      input#submitBtn
+        @include review-text
+        @include size-color(16px,#fff)
+        background-color: #29bcb8
+        display: block
+        text-align: center
+        border-bottom: 1px solid #479290
+        cursor: pointer
+        @include width-height(200px,35px)
+        line-height: 35px
+        &:hover
+          background-color: #2fcdc9
+      h3
+        @include size-color(20px,#00c1bb)
+    #review-show-share1
+      padding: 30px 15px
+      width: 490px
+      img
+        display: block
+        margin: 0 auto
+      span
+        margin: 20px auto
+      p
+        @include review-text
+        @include size-color(14px,#333)
+        text-align: center
+        margin: 0
+      p.contribute
+        @include size-color(18px, #ff6399)
+    #review-show-share2
+      .pull-right
+        min-width: 200px
+      display: none
+      padding: 20px 20px
+      span#review-show-btn2
+        margin: 20px auto 0
+      div p
+        @include width-height(100%,38px)
+        @include size-color(16px,#29bcb8)
+        float: left
+        line-height: 38px
+        border: 1px solid #29bcb8
+        text-align: center
+        cursor: pointer
+        &:hover
+          background-color: #29bcb8
+          color: #fff
+      div p.selected
+        background-color: #29bcb8
+        color: #fff
+      div.input
+        label
+          margin-top: 5px
+        input
+          border: 1px solid #b1b1b1
+          background-color: #fff
+        div.ms-parent
+          border: 1px solid #b1b1b1
+          button
+            border: 0
+            border-radius: 0
+            height: 0
+          span,div
+            background-color: #fff
+          .ms-drop
+            display: relative
+            top: -293px
+            left: -1px
+            width: 200px !important
+            border-radius: 0
+            ul li input
+              display: none
+        input#review_address,input#review_building_name,input#review_cross_street
+          //@include width-height(458px,23px)
+        input#review_city,div.ms-parent
+          //@include width-height(180px,23px)
+          //padding: 5px 10px
+        #review_state
+          background-color: #fff
+          border: 1px solid #b1b1b1
+        .selectize-control
+          .selectize-input
+            width: 100%
+            height: 34px
+    #review-show-share3
+      display: none
+      //padding: 7px 20px 9px
+      //width: 500px
+      .modal-header,.modal-body
+        padding-left: 20px
+        padding-right: 20px
+      .modal-body
+        max-height: 400px
+        max-height: 65vh
+        max-height: calc(85vh - 80px)
+        max-height: -webkit-calc(85vh - 80px)
+        max-height: -moz-calc(85vh - 80px)
+        background-color: $full-white
+        overflow-y: auto
+      //max-height: 85%
+      .new-review-comment
+        overflow: auto
+      label.label-title
+        @include review-title
+        @include size-color(16px,#333)
+      .select-items
+        float: left
+        i.fa.fa-square-star
+          background: image-url('square-star-big.png') no-repeat
+          @include width-height(22px,22px)
+          margin: 9px 6px 0 0
+          cursor: pointer
+        i.fa.fa-square-star:hover,i.fa.fa-square-star.selected,i.fa.fa-square-star.active,
+        i.fa.fa-square-star.selected.active
+          background: image-url('square-star-big-ho.png') no-repeat
+        i.fa.fa-square-star.selected.disactive
+          background: image-url('square-star-big.png') no-repeat
+          width: 19px
+      .select-circle-container
+        float: left
+        width: 100%
+        label
+          width: 110px
+          line-height: 30px
+          float: left
+          font-size: 16px
+        .select-items
+          padding-left: 10px
+          font-size: 19px
+          i.fa
+            @include width-height(27px,23px)
+            cursor: pointer
+            color: #bfe8e6
+            &.active
+              color: #00c1bb
+            &.disactive
+              color: #bfe8e6 !important
+            &.selected
+              color: #00c1bb
+      #review_display_name
+        background-color: #fff
+        border: 1px solid #b1b1b1
+        width: 80px
+      span.clickToRates
+        background-image: image-url('clickToRate.png')
+        @include width-height(112px,29px)
+        @include size-color(16px,#fff)
+        display: inline-block
+        margin: 3px 0 0 10px
+        padding-left: 16px
+        line-height: 29px
+      textarea
+        width: 100%
+        height: 100px
+        border: 1px solid #b1b1b1
+        background-color: #fff
+      label
+        width: 100%
+        .tip
+          color: #888
+          font-size: 14px
+      input#submitBtn
+        margin: 20px auto
+        border-width: 0 0 1px
+      #review-show-pre
+        @include size-color(16px,#29bcb8)
+        cursor: pointer
+        margin: 0
+    #review-show-share4
+      display: none
+      #done
+        margin: 120px auto
+        text-align: center
+        font-size: 16px
+        i
+          @include size-color(60px,#29bcb8)
+          margin-bottom: 30px
+
+/*****************************
+ * Review show neighborhood
+ *****************************/
+.neighborhood-show#review-show
+  border: 0
+  #review-left
+    border: 1px solid #cccccc
+    background-color: white
+    padding-bottom: 20px
+    margin: 0
+    padding: 18px
+  .review-title-info
+    padding: 0 20px 7px
+    margin: 0 -19px
+    .head-portrait
+      width: 55px
+      float: left
+      margin-right: 48px
+    .head-portrait img
+      margin-right: 12px
+    .head-portrait span
+      display: block
+      text-align: center
+      width: 55px
+      word-wrap: break-word
+      font-family: "Avenir Book"
+      font-weight: normal
+      font-size: 14px
+      color: #888888
+    .build-info, h1
+      font-family: Avenir
+      font-weight: normal
+      font-size: 18px
+      color: #2abdb7
+      line-height: 1.7
+      margin-top: -5px
+    .little-title
+      font-family: "Avenir Book"
+      font-weight: normal
+      font-size: 14px
+      color: #333333
+      margin: -3px 0 7px 103px
+    .little-title .full-neighborhood
+      margin-right: 15px
+    .little-title .time
+      margin: 15px 0 0 15px
+      color: #888888
+    .rating-result
+      margin-left: 103px
+    .rating-result .rating-all-items
+      margin: 10px 0 0 0
+    .rating-result .rating-all-items .fa.fa-square-star
+      background: image-url("square-star.png") no-repeat
+      width: 19px
+      height: 19px
+      margin-right: 5px
+    .rating-result .rating-all-items .fa.fa-square-star.selected
+      background: image-url("square-star-ho.png") no-repeat
+  .reviews
+    border-top: 1px solid #cccccc
+    .rating-result
+      border-bottom: 1px solid #cccccc
+      padding: 0 0px 10px
+      margin: 0 0px 10px
+    .rating-result .rating-list
+      margin-top: 10px
+      width: 250px
+      float: left
+    .rating-result .title
+      font-family: Avenir
+      font-weight: normal
+      font-size: 14px
+      width: 90px
+      text-align: left
+      margin-right: 5px
+    .rating-result .rating-list .rating-items
+      color: #c6e6e5
+    .rating-result .rating-list i
+      margin-left: 8px
+      font-size: 18px
+      cursor: pointer
+  .review_show_in_pc.images-list
+    display: block
+    width: 296px
+    height: 250px
+    border: 1px solid #cccccc
+    overflow: hidden
+    margin-bottom: 10px
+    .carousel-inner
+      overflow: hidden
+      width: 100%
+      position: relative
+    .carousel-inner .item
+      display: block
+      width: 100%
+      height: 100%
+    .carousel-inner a
+      display: block
+    .carousel-inner a .review-img
+      width: 296px
+      height: 250px
+      float: left
+      max-width: 100%
+      vertical-align: middle
+      border: 0
+
+  #add-photo
+    font-size: 18px
+    color: white
+    font-family: helvetica
+    width: 31.62%
+    height: 40px
+    background: #2abcb9
+    margin: 0 0 20px
+    text-shadow: none
+    float: right
+    border-bottom: 1px solid #479290
+    #review-home-right
+      background-color: white
+      border: 1px solid #c6c6c6
+      padding: 18px
+    h4
+      padding-bottom: 15px
+      border-bottom: 1px solid #c6c6c6
+      margin: 0
+  .more-info
+    .review-tabbable #review-map-pane #review-map
+      height: 280px
+      border: 0
+    .review-tabbable #review-map-pane #review-map #map-canvas
+      height: 280px
+.review-abstract .release-info td.avatar-td
+  width: 50px
+
+#related-apartments
+  border: 1px solid #cccccc
+  h4
+    padding: 0 10px
+    margin: 10px 0 5px 0
+    font-size: 18px
+  .container
+    //width: 295px
+    padding: 10px
+    padding-top: 0
+    width: 275px
+    ul.listing-homes
+      padding: 0
+    ul li.listing-show
+      padding: 15px 0
+    ul li.listing-show img
+      width: 275px
+      height: 170px
+    ul li .listing-loc h5.listing-title
+      margin: 10px 0 5px 0
+      padding: 0
+      a
+        text-decoration: none
+        font-size: 18px
+        color: #222
+        &:hover
+          color: #29bcb8
+    ul li .listing-loc .full-neighborhood
+      color: #666
+    ul li .listing-info
+      padding: 10px 0 15px 0
+    ul li .listing-info .listing-price
+      color: #29bcb8
+      font-size: 16px
+      font-family: "Avenir", sans-serif
+    .carousel-control
+      top: 48%
+      opacity: 1
+      color: #2fcdc9
+      font-size: 45px
+      background: none
+      height: 41px
+
+#review-home-right.white-background
+  #new-reviews-slide
+    border: 0
+    padding: 0
+#new-reviews-slide
+  text-align: center
+  .carousel-inner
+    text-align: left
+  .carousel-indicators
+    position: relative
+    display: inline-block
+    top: 0
+    right: 0
+    height: 10px
+    li
+      background-color: #ccc
+    li.active
+      background-color: #bbb
+
+// review lock
+.review-lock
+  position: absolute
+  top: 56px
+  left: 0
+  bottom: 0
+  right: 0
+  padding-top: 30px
+  background-color: rgba(255,255,255, 0.94)
+  text-align: center
+  .lock-container
+    background: rgba(234, 248, 248, 0.9)
+    border: 1px solid #dbe5e4
+    padding: 20px
+    box-shadow: 5px 10px 40px #dbe5e4
+    -webkit-box-shadow: 5px 10px 40px #dbe5e4
+    -moz-box-shadow: 5px 10px 40px #dbe5e4
+    border-radius: 5px
+    a
+      padding: 4px 5px
+      background: $link-color
+      color: $full-white
+      border-radius: 3px
+  i.fa
+    @include size-color(24px, $link-color)
+  .lock-comment
+    margin-bottom: 4px
+  .lock-title
+    font-size: 20px
+  a.login
+    font-family: Avenir
+.neigh .lock-container a.contribute-review
+  display: table
+  margin: 5px auto
+.review-show-share,#review-show-share-turnoff
+  display: none
+.review-show-share
+  a.close
+    position: absolute
+    right: -15px
+    top: -15px
+    width: 30px
+    height: 30px
+    border-radius: 50%
+    background: white
+    color: $color444
+    opacity: 1
+    padding-top: 5px
+    padding-left: 8px
+    padding-bottom: 2px
+.street-neighborhood .review-lock
+  top: 65px
+.reviews .review.has-lock
+  min-height: 280px
+  .share
+    position: absolute
+    bottom: 8px
+    right: 2px
+//.review.has-lock
+  //.info-details, .rating-box
+    //text-shadow: 0px 0px 20px
+    //padding: 5px
+
+#sp-banner-wrapper
+  #banner
+    margin-left: auto
+    margin-right: auto
+    #banner-container
+      margin-left: auto
+      margin-right: auto
+      #review-input
+        display: -webkit-inline-flex
+        display: -webkit-inline-box
+        display: -moz-inline-box
+
+.review-image-homes
+  padding-left: 25px
+  padding-right: 25px
+
+#review-content
+  margin-left: auto
+  margin-right: auto
+
+.long-comment
+  display: none

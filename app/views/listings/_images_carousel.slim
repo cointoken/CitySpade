@@ -1,0 +1,74 @@
+- if target.to_sym == :desktop
+  .image-content#listingGallery.carousel.slide
+    - if @listing.images.size == 0
+      = image_tag listing_image_url(@listing, 'origin'), alt: @listing.title, title: @listing.img_alt
+    - else
+      ol.carousel-indicators
+        - (0...@listing.images.size).each do |i|
+          li data-target="#listingGallery" data-slide-to=i class="#{i == 0 ? 'active' : nil}"
+      .carousel-inner.image-pannel
+        - @listing.images.each_with_index do |img, index|
+          .item class="#{index == 0 ? 'active' : nil} #{img.floorplan ? 'floorplan' : nil}"
+            = link_to "#{img.url('origin')}", class: "listing-image fancybox", rel: "listing-big-gallery", data:{'img-index' => index} do
+              - if (img.respond_to?(:video_url) && img.video_url) || (img.respond_to?(:s3_url) && img.s3_url.include?("youtube"))
+                #popupVid
+                  iframe width="100%" height="393em" src="#{ img.respond_to?(:video_url) ? img.video_url : img.s3_url}?rel=0&autoplay=1&controls=1&enablejsapi=1" frameborder="0" allowfullscreen="true"
+              - else
+                = image_tag (img.sizes.include?("600X420") ? img.url("600X420") : img.url("480X400")), alt: @listing.img_alt(index + 1), title: @listing.img_alt(index + 1)
+      - if @listing.open_houses.present?
+        .carousel-caption itemscope='' itemtype="http://schema.org/Event"
+          .open-houses-title 
+            i.fa.fa-calendar itemprop= "name" content= "OPEN HOUSE:#{@listing.open_houses.first.open_time}"
+            time itemprop= "startDate" content= "#{@listing.open_houses.first.open_date}"
+            meta itemprop= "location" content= "#{@listing.title} #{full_neighborhood(@listing, :short)}"
+            |  OPEN HOUSES:
+            br
+          - @listing.open_houses.to_a.uniq{|a| a.loop ? "#{a.begin_time.hour}-#{a.end_time.hour}" : a.open_date}[0..1].each do |open_house|
+            .list-inline.open-house
+              span.open-time
+                = open_house.open_time
+              = render_calendar_link @listing, open_house
+      - if @listing.has_floorplans?
+        span.floorplan-link
+          = link_to "FLOORPLANS", "", class: "floorplan-btn"
+      a.carousel-control.left href="#listingGallery" data-slide="prev" &lsaquo;
+      a.carousel-control.right href="#listingGallery" data-slide="next" &rsaquo;
+  - slide_total_page = (@listing.images.count - 1) / 4
+
+  / Small image list row
+  .listing-images-list
+    #listingImagelist.slide
+      .carousel-inner.image-pannel
+        - if @listing.images.size == 0
+          = image_tag listing_image_url(@listing, 'origin'), alt: @listing.title, title: @listing.img_alt
+        - else
+          - (0..slide_total_page).each do |page|
+            ul.item class="#{page == 0 ? 'active' : nil}" data-img-page=page
+              - end_index = @listing.images.size > (page * 4 + 3) ? (page * 4 + 3) : @listing.images.size - 1
+              - ((page * 4)..end_index).each do |index|
+                li class="img-index-#{index} #{index == 0 ? 'current-img' : nil}"
+                  a href="javascript:void(0);" data-target='#listingGallery' data-slide-to=index class="thumbnail"
+                    - if (@listing.images[index].respond_to?(:video_url) && @listing.images[index].video_url) || ( @listing.images[index].respond_to?(:s3_url) &&  @listing.images[index].s3_url.include?("youtube"))
+
+                      #popupVid
+                        = image_tag  src="http://img.youtube.com/vi/#{@listing.images[index].video_id}/1.jpg"
+                    - else
+                      = image_tag @listing.images[index].sizes.include?("600X420") ? @listing.images[index].url("600X420") : @listing.images[index].url("480X400"), alt: @listing.img_alt(index + 1), title: @listing.img_alt(index + 1)
+- else
+
+  / Mobile View
+  #listingImagesCarousel.carousel.slide
+    .carousel-inner.image-pannel
+      - if @listing.images.size == 0
+        = image_tag listing_image_url(@listing, 'origin'), alt: @listing.title, title: @listing.img_alt
+      - else
+        - @listing.images.each_with_index do |img, index|
+          .item class="#{index == 0 ? 'active' : nil}"
+            = link_to "#{img.url('origin')}", class: "listing-image fancybox", rel: "listing-gallery" do
+            - if (img.respond_to?(:video_url) && img.video_url) || (img.respond_to?(:s3_url) && img.s3_url.include?("youtube"))
+              #popupVid
+                iframe width="100em" height="220em" src="#{ img.respond_to?(:video_url) ? img.video_url : img.s3_url}?rel=0&controls=1&enablejsapi=1" allowfullscreen="true"
+            - else
+              = image_tag img.sizes.include?("600X420") ? img.url("600X420") : img.url("480X400"), alt: @listing.img_alt(index + 1), title: @listing.img_alt(index + 1)
+    a.carousel-control.left href="#listingImagesCarousel" data-slide="prev" &lsaquo;
+    a.carousel-control.right href="#listingImagesCarousel" data-slide="next" &rsaquo;

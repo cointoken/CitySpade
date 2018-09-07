@@ -1,0 +1,9 @@
+data = <%== @photos_json%>
+ids = ''
+for(var i = 0; i < data.length; i ++)
+{
+  $('#tmpl-photo').tmpl(data[i]).prependTo('.uploadify#form');
+  if(ids != ''){ids += ','}
+  ids += data[i].id;
+}
+$("#hide-photo-ids").val(ids);

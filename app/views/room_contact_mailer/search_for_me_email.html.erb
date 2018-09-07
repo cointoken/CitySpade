@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+</head>
+<body>
+<table border="1" style="width:50%">
+  <tr>
+    <td style="padding: 10px;">Name</td>
+    <td style="padding: 10px;"><%= @form_info.name %></td>
+  </tr>
+  <tr>
+    <td style="padding: 10px;">Boroughs</td>
+    <td style="padding: 10px;"><%= @form_info.boroughs.join(",") %></td>
+  </tr>
+  <tr>
+    <td style="padding: 10px;">Beds</td>
+    <td style="padding: 10px;"><%= @form_info.beds %></td>
+  </tr>
+  <tr>
+    <td style="padding: 10px;">Baths</td>
+    <td style="padding: 10px;"><%= @form_info.baths %></td>
+  </tr>
+  <tr>
+    <td style="padding: 10px;">Budget</td>
+    <td style="padding: 10px;"><%= @form_info.budget %></td>
+  </tr>
+  <tr>
+    <td style="padding: 10px;">Move-in date</td>
+    <td style="padding: 10px;"><%= @form_info.move_in_date %></td>
+  </tr>
+  <tr>
+    <td style="padding: 10px;">Employed?</td>
+    <% if @form_info.is_employed? %>
+      <td style="padding: 10px;">Yes</td>
+    <% else %>
+      <td style="padding: 10px;">No</td>
+    <% end %>
+  </tr>
+  <tr>
+    <td style="padding: 10px;">Subway Lines</td>
+    <td style="padding: 10px;"><%= @form_info.transportation.join(",") %></td>
+  </tr>
+  <% if !@form_info.wechat.nil? %>
+  <tr>
+    <td style="padding: 10px;">WeChat</td>
+    <td style="padding: 10px;"><%= @form_info.wechat %></td>
+  </tr>
+<% end %>
+  <tr>
+    <td style="padding: 10px;">Email</td>
+    <td style="padding: 10px;"><%= @form_info.email %></td>
+  </tr>
+  <% if !@form_info.referral.nil? %>
+  <tr>
+    <td style="padding: 10px;">Referral</td>
+    <td style="padding: 10px;"><%= @form_info.referral %></td>
+  </tr>
+<% end %>
+
+</table></body></html>

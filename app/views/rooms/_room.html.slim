@@ -1,0 +1,40 @@
+.col-xs-12.col-sm-6.col-md-3
+  a.sublet-link href="#{room_path(post)}"
+    .sublet-post
+      - if post.photos.any?
+          - background_url = post.photos.first.url
+      - else
+          - background_url = post.account.medium_image_url
+
+      .blurred-bg [
+        style="background-image: url('#{background_url}')"
+      ]
+        .sublet-post-body
+          .prof-pic
+            = image_tag post.account.medium_image_url,
+              alt: post.account.name,
+              title: post.account.name
+
+          h4.sublet-user-name = post.account.name
+
+          p.sublet-type
+            | (Room Offer)
+
+          h5 Posted on #{post.created_at.strftime("%B %d, %Y")}
+
+          - if post.political_area
+            h5.sublet-location
+              | #{post.political_area.long_name}
+
+      .container.budget-and-date
+        .row
+          .sublet-budget.col-xs-6.center
+            .all-caps-heading
+              | Rent / Month
+            h3
+              | $#{post.price_month}
+          .sublet-date.col-xs-6
+            .all-caps-heading
+              | Available From
+            h3
+              = post.available_begin_at.strftime("%b %d")

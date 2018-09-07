@@ -1,0 +1,10 @@
+- url ||= nil; collect_url ||= nil; text ||= nil
+- %w{facebook twitter }.each do |s|
+  = link_to share_link(s, url), data:{count: 'none'}, target: "_blank", :onclick=>"window.open(this.href,'_blank', 'height=600, width=600');return false;", class: "#{s}-share-button" do
+	i class="i fa fa-#{s}-square"
+- if collect_url
+  = link_to collect_url, class: "shared #{collect_class}", data: {reverse_url: reverse_url}, remote: true do
+    = content_tag :i, class: "fa fa-heart" do
+      span.collect-num
+        = text
+

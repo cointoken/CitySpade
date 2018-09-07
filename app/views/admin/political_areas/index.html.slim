@@ -1,0 +1,38 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_political_areas_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Political Area
+          .input-text
+            = select_tag :city_id, options_for_select(PoliticalArea.all_cities.map{|s| [s.long_name, s.id]},selected: params[:city_id]), include_blank: true,  placeholder: 'Long Name', id: "political_area_select", class: 'col-md-5'
+            = text_field_tag :long_name, params[:long_name], class: 'col-md-5'
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "political_ares.long_name", "Long Name"
+            th
+              = sortable "political_areas.second_name", "Second Name"
+            th
+              | City
+            th
+              | Type
+            th Edit
+        tbody
+          - @political_areas.each do |pa|
+            tr
+              td = pa.long_name
+              td = pa.second_name
+              th = pa.city.try :long_name
+              td = pa.target
+              td
+                = link_to "Edit", edit_admin_political_area_path(pa), class: 'btn btn-info'
+      = paginate @political_areas

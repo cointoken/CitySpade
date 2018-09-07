@@ -1,0 +1,27 @@
+#flashsaleModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+
+        h2 No-Fee Deals in:
+
+      .modal-body
+        .row.nofee-city-images
+          .col-xs-4.center
+            h4 Long Island City
+            = image_tag "home/flashsale_modal/longIslandCity.jpg"
+          .col-xs-4.center
+            h4 Midtown West
+            = image_tag "home/flashsale_modal/midtown.jpg"
+          .col-xs-4.center
+            h4 Financial District
+            = image_tag "home/flashsale_modal/fidi.jpg"
+
+        h3.center
+          ' NO-FEE apartments with
+          b MOVE-IN BONUS
+
+        a.call-to-action href=flashsales_path Show deals
+

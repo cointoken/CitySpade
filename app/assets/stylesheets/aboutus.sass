@@ -1,0 +1,294 @@
+@import 'modules'
+#aboutus-container
+  margin-top: -72px
+  .aboutus-img
+    position: relative
+    text-align: center
+    background-image: image-url('aboutus/about_banner.jpg')
+    background-repeat: no-repeat
+    background-position: top center
+    background-size: cover
+    width: 100%
+    height: 545px
+
+    h1
+      font-family: 'Gilroy Extrabold'
+      font-size: 55px
+      color: #ffffff
+      text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16)
+      margin-bottom: 43px
+      margin-top: 0px
+      padding-top: 210px
+
+    .line
+      width: 212px
+      border-bottom: solid 3px #f6fafc
+      margin: 0 auto
+
+    h2
+      font-family: 'Renner Light'
+      font-size: 28px
+      color: #f6fafc
+      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16)
+      margin-top: 43px
+
+  h1.header
+    font-family: 'Gilroy Extrabold'
+    font-size: 55px
+    color: #262d3f
+    margin: 0
+  
+  .about-cmp
+    margin-left: 10%
+    margin-right: 10%
+    padding-top: 180px
+    padding-bottom: 180px
+    border-bottom: 1px solid rgba(150, 155, 170, 0.5)
+    h5
+      font-family: 'Renner Book'
+      font-size: 26px
+      color: #262d3f
+      margin-top: 20px
+      margin-bottom: 60px
+    p
+      font-family: 'Renner Light'
+      font-size: 21px
+      color: #7e849c
+    .right-div
+      padding-left: 80px
+  .our-team , .locations
+    padding-top: 112px
+    text-align: center
+    p
+      margin-top: 18px
+      font-size: 20px
+      color: #7e849c
+      font-family: "Gilroy Light"
+    img
+      margin-top: 80px
+  .our-staff
+    background-color: #f6fafc
+    padding-top: 105px
+    text-align: center
+    padding-bottom: 150px
+    margin-top: 150px
+    .row
+      margin-top: 120px
+    h2
+      font-family: "Gilroy Light"
+      font-size: 55px
+      color: #262d3f
+    .name
+      font-family: "Renner Book"
+      font-size: 33px
+      color: #262d3f
+    .title
+      font-family: "Renner Light"
+      font-size: 23px
+      color: #7e849c
+      
+
+  .locations
+    margin-left: 10%
+    margin-right: 10%
+    //border-top: 1px solid #969baa
+    p
+      margin-bottom: 150px
+  .location-imgs
+    .img, .img-card
+      display: inline-block
+    .img
+      width: 48%
+    .img-card
+      width: 55%
+      background-color: #f6fafc
+      box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.16)
+      padding-top: 100px
+      padding-bottom: 100px
+      h4
+        font-family: "Gilroy Light"
+        font-size: 45px
+        color: #262d3f
+        opacity: 0.6
+      h5
+        font-family: "Renner Light"
+        font-size: 30px
+        color: #7e849c
+        margin: 0
+    .card1
+      margin-left: -3%
+      padding-left: 14%
+    .card2
+      margin-right: -3%
+      position: relative
+      top: 40px
+      margin-top: 150px
+      text-align: right
+      padding-right: 14%
+    .img-left
+      display: inline-block
+      height: 636px
+    .img-right
+      display: inline-block
+      float: right
+      height: 636px
+    .left-txt-card, .right-txt-card
+      position: relative
+      background-color: #f6fafc
+      box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.16)
+      padding-top: 6%
+      width: 63%
+      height: 240px
+      h4
+        font-family: "Gilroy Light"
+        font-size: 40px
+        color: #7e849c
+      h5
+        margin: 0
+        font-family: "Renner Light"
+        font-size: 21px
+        color: #7e849c
+    .left-txt-card
+      padding-left: 8%
+      bottom: 280px
+      left: 42%
+    .right-txt-card
+      bottom: 580px
+      right: 6%
+      text-align: right
+      padding-right: 8%
+      
+
+/******* Media Queries*********
+
+@media screen and (max-width: 767px)
+  #aboutus-container
+    margin-top: 0px
+    .aboutus-img
+      height: 240px
+      h1
+        font-size: 18px
+        padding-top: 100px
+        margin-bottom: 12px
+      .line
+        width: 58px
+      h2
+        font-size: 10px
+        margin-top: 15px
+    .about-cmp
+      padding-top: 35px
+      padding-bottom: 45px
+      text-align: center
+      h5, p
+        font-size: 12px
+      h5
+        margin-bottom: 20px
+      .right-div
+        padding-left: 15px
+    h1.header
+      font-size: 16px
+    .our-team
+      padding-top: 50px
+      img
+        margin-top: 32px
+        width: 302px
+      p
+        font-size: 8px
+    .our-staff
+      margin-top: 35px
+      padding-top: 20px
+      padding-bottom: 38px
+      h2
+        font-size: 16px
+      .row
+        margin-top: 32px
+      .name
+        font-size: 12px
+      .title
+        font-size: 8px
+    .locations
+      padding-top: 49px
+      p
+        margin-bottom: 32px
+        font-size: 8px
+    .location-imgs
+      text-align: center
+      .img
+        width: 100%
+        text-align: center
+      .img-clss-one
+        width: 90%
+        height: auto
+      .card1, .card2
+        margin-left: 0
+        padding-left: 0
+        width: 100%
+        background-color: transparent
+        padding: 0px
+        box-shadow: none
+        position: relative
+        bottom: 85px
+        left: 10%
+      .card1
+        text-align: left
+      .card2
+        margin-top: 0px
+        left: 10%
+        top: 35px
+        text-align: left
+      .img-card 
+        h4
+          font-family: "Gilroy Extrabold"
+          font-size: 12px
+          opacity: 1
+          color: white
+          text-shadow: 0 10px 20px rgba(0, 0, 0, 0.8)
+        h5
+          font-size: 8px
+          color: white
+      .img-left, .img-right
+        width: 90%
+        height: 220px
+        float: none
+        margin-left: auto
+        margin-right: auto
+        img
+          width: 100%
+          height: auto
+      .left-txt-card
+        width: 100%
+        height: auto
+        background-color: transparent
+        box-shadow: none
+        bottom: 95px !important
+        left: -30px !important
+        text-align: right
+      .right-txt-card
+        width: 100%
+        height: auto
+        background-color: transparent
+        box-shadow: none
+        padding-right: 0px
+        bottom: 95px !important
+        left: 8%
+        text-align: left
+      .left-txt-card, .right-txt-card
+        h4
+          font-family: "Gilroy Extrabold"
+          font-size: 12px
+          opacity: 1
+          color: white
+          text-shadow: 0 10px 20px rgba(0, 0, 0, 0.8)
+        h5
+          font-size: 8px
+          color: white
+      .shanghai
+        margin-top: 10px
+        
+@media screen and (max-width: 321px)
+  #aboutus-container .location-imgs .card2
+    top: 12px
+  #aboutus-container .location-imgs .left-txt-card
+    bottom: 85px !important
+  #aboutus-container .location-imgs .right-txt-card
+    bottom: 85px !important

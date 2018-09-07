@@ -1,0 +1,69 @@
+/ REQUIRED
+/ ========
+/ - Run App.ListingItemSetup() wherever this is included
+/ - Keep flashsales/flashsale as similar as possible to this
+
+.listing [
+  data= {\
+    id: listing.id,
+    lat: listing.lat,
+    lng: listing.lng,
+    title: listing.display_title,
+    price: number_to_currency(listing.price, precision: 0),
+    index: index,
+    preview: fancybox_listing_path(listing) \
+  }
+]
+  - if listing.featured
+    div.corner-ribbon Featured
+
+  .row
+    .col-xs-7
+      .listing_img
+        = link_to listing.permalink, target: '_blank',
+          title: listing.display_title do
+
+          = image_tag listing_image_url(listing), alt: listing.title,
+            title: listing.img_alt
+
+        = link_to "Preview", listing.permalink, class: "fancybox-preview hidden-xs",
+          data: {'fancybox-href' => fancybox_listing_path(listing)}
+
+    .col-xs-5
+      .diagonal
+      .listing-content
+        h4
+          = link_to listing.display_title, listing_path(listing.id)
+
+        .full-neighborhood
+          = full_neighborhood(listing, :short)
+
+        .beds-and-baths
+          p #{display_beds_and_baths(listing)}
+        
+        div.price
+          div = number_to_currency(listing.price, precision: 0)
+
+
+        //- if listing.has_review?
+          .listing-review-rating
+            .rating-all-items.square-star
+              - overall_quality =  listing.review_building.overall_quality || 0
+              - floor_overall = (overall_quality * 2 + 0.5).floor / 2.0
+
+              //- 5.times do |t|
+                i.fa.fa-square-star-big [
+                  class="#{t < floor_overall ? "selected" : nil} #{floor_overall - t == 0.5 ? "half" : nil }"
+                ]
+
+  - if listing.video_url?
+    i.fa.fa-video-camera.fa-2x data-toggle="tooltip"
+
+  - if listing.is_flash_sale
+    .discount
+      h5 Special Promotion
+
+  - elsif listing.no_fee
+    .discount
+      | NO-FEE
+

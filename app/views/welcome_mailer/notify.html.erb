@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to CitySpade - Spot your next move</title>
+</head>
+<body style="text-align:center;">
+<table cellspacing=0 cellpadding=0 border=0 width='100%' style="background-color:#fff">
+  <tbody>
+  <tr>
+    <td style="background-color:#fff;padding: 15px">
+      <table cellspacing=0 cellpadding=0 border=0 align='center' width=700>
+        <tr>
+          <td align='center' style='width: 100%;height:60px'>
+            <div class="logo" style="float:left;margin-left:10px;padding:10px;width:35%;">
+              <%= link_to "https://www.cityspade.com" do %>
+                <%= image_tag "logo/City-logo2.png", alt: "CitySpade", style: "width:100%" %>
+            <% end %>
+            </div>
+            <div class="pull-right" style="float:right;margin-right:10px;padding:10px;font-size:16px;margin-top:26px;">
+              <span><%= link_to "Find Your Home", "https://www.cityspade.com", style: "color:#29bcb8;text-decoration:none;" %></span>
+              &nbsp;|&nbsp;<span>Follow us:
+                <i style="padding:10px 0;">
+                  <%= link_to Settings.external_links.twitter, style: "text-decoration:none;" do %>
+                    <%= image_tag "share-t-mail.png", alt: "twitter-share" %>
+                <% end %>
+                </i>
+                <i style="padding:10px 0;">
+                  <%= link_to Settings.external_links.facebook, style: "text-decoration:none;" do %>
+                    <%= image_tag "share-f-mail.png", alt: "facebook-share" %>
+                <% end %>
+                </i>
+              </span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="wrapper">
+              <%= image_tag "banner-mail.jpg", alt: "banner", style: "width:700px;" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td align='left' style='font-size: 16px;'>
+            <br/>
+            <p style='line-height:30px'>
+            Hi <%= @account.first_name %>!
+            <br />
+            <br/>
+            Nice move. You just found new partners in your search for the next home. CitySpade is here to guide you to the best deals with the most comprehensive details.
+            <br />
+            <br/>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td align='left' style='font-size:16px;'>
+            Now that you are an official CitySpade member, you will have our full service at hand to:
+            <p style="color:#29bcb8;line-height:24px;list-style:none;margin-left:0;padding:0;">
+            -Consult helpful building reviews or be helpful and write one for others.<br />
+            -Rank your search results by cost efficiency and other criteria<br />
+            -Save listings to your favorites<br />
+            -Soon you will also be able to receive suggested listings, but of course you can shut off the function (No worries, we won't be offended)<br />
+            </p>
+            <br />
+            <p>
+            That's all for now. Welcome to the pack!
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td align='left' style='font-size:16px;'>
+            <p style='line-height:30px'>
+            Best,
+            <br />
+            The CitySpade Team
+            </p>
+
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size: 12px;">
+            <%= link_to "Unsubscribe",
+              unsubscribe_mail_notify_url(
+                email: @account.email,
+                token: @account.hex_api_key
+            ),
+            target: "_blank"
+          %>
+        </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,50 @@
+#availModal.modal.fade role="dialog"
+  .md-header
+    h2 Check Availability
+  button#msgClose type="button" class="close hidden-xs" data-dismiss="modal"
+    = image_tag 'social/No.png'
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button type="button" class="close visible-xs" data-dismiss="modal" &times;
+        h4.modal-title =@building.name
+      .modal-body
+        = form_tag building_page_send_message_path(@building.id), id: "modalMessage", remote: true do
+          .row
+            .col-sm-6.form-group
+              = label_tag 'fname', 'First Name *'
+              = text_field_tag 'fname', nil, class: "form-control", placeholder: "First Name"
+            .col-sm-6.form-group
+              = label_tag 'lname', 'Last Name *'
+              = text_field_tag 'lname', nil, class: "form-control", placeholder: "Last Name"
+          .row
+            .col-sm-6.form-group
+              = label_tag 'email', 'Email *'
+              = email_field_tag 'email', nil, class: "form-control", placeholder: "Email"
+            .col-sm-6.form-group
+              = label_tag 'wechat', 'WeChat#'
+              = text_field_tag 'wechat', nil, class: "form-control", placeholder: "WeChat ID"
+          .row
+            .col-xs-12
+              = label_tag 'message', 'Message *'
+              = text_area_tag 'message', nil, class: "form-control", placeholder: "I want to ask about..."
+          .row
+            .col-xs-12.form-group.submit-btn
+              button.btn.btn-default#sendMsg Submit
+      .modal-footer
+        .row
+          .col-sm-6.left-div
+            p Want to contact us directly?
+
+            h4 Scan the QR Code using WeChat
+          .col-sm-6
+            .row
+              .col-sm-4
+                div.wechat1
+                  span Wechat
+                div.wechat2
+                  span nyu_rental
+              .col-sm-8
+                = image_tag 'social/qr_border.png', class: "qr_border"
+                = image_tag 'social/qr_code.png', width: '100', class: "qr_code"
+

@@ -1,0 +1,25 @@
+.box
+  .cell
+    .pull-right
+      = link_to 'Back to users management', admin_accounts_path, class: 'btn'
+    .clear
+  .cell
+    .form-horizontal
+      .input
+        label First Name
+        = @account.first_name
+      .input
+        label Last Name
+        = @account.last_name
+      .input
+        label Email
+        = @account.email
+      .input
+        label Phone Number
+        = @account.phone_number
+
+
+
+
+
+

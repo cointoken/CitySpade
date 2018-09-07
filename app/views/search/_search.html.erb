@@ -1,0 +1,17 @@
+<%= form_for(Listing.new, url: area_index_search_path(current_area: current_area.long_name.to_url)) do |f| %>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :political_area_id %><br>
+    <%= f.select :political_area_id, nested_set_options(current_political) {|i| "#{'--' * (i.depth - current_political.depth)} #{i.long_name}"},{},multiple:true,class: 'chosen-select'%>
+  </div>
+ <div class="field">
+    <%= f.label :zipcode %><br>
+    <%= f.text_field :zipcode %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Search Listing', class: 'btn btn-success' %>
+  </div>
+<% end %>

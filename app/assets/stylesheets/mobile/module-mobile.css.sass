@@ -1,0 +1,68 @@
+/** 用于整合mobil变量 **/
+
+$font-family: Avenir
+$dark-gray: #444
+$light-grey: #888
+$link-color: #29bcb8
+
+/** logo **/
+@mixin logo($size,$color)
+  font-family: CenturyGothic,Avenir
+  font-size: $size
+  color: $color
+  span
+    color: #29bcb8
+
+@mixin font
+　font-size：16px
+  font-family: Avenir
+@mixin size-color($size,$color)
+  font-size: $size
+  color: $color
+@mixin size-color-family($size,$color,$family)
+  font-size: $size
+  color: $color
+  font-family: $family
+
+@mixin width-height($width,$height)
+  width: $width
+  height: $height
+
+/********************* font-family *********************/
+/** review **/
+@mixin review-title
+  font-family: Avenir
+  font-weight: normal
+
+@mixin review-text
+  font-family: "Avenir Book"
+  font-weight: normal
+
+/** body default family **/
+$body-head-font: Avenir
+$body-font: "Avenir Book"
+$body-bold-font: "Avenir Roman"
+
+/** header and footer**/
+$header-menu-font: 'Arial Rounded MT Bold',Arial
+$footer-title-font: 'Renner Medium'
+$footer-list-font: 'Renner Light'
+
+/** btn **/
+$btn-text-font: Arial
+$btn-font: Helvetica
+
+/** link **/
+$link-font: Helvetica
+
+/** home **/
+$home-component-font: Avenir
+
+/** blog **/
+$blog-content-font: "Avenir Book"
+$blog-time-font: Helvetica
+
+/** listing **/
+$listing-text-font: Avenir
+$listing-show-font: "Avenir Book"
+$listing-title-font: Palatino

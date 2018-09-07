@@ -1,0 +1,27 @@
+.row.review-container
+  .col-md-2.user-info
+    .user-avatar
+      = image_tag review.account_avatar_url('55'), class: 'avatar-55 circle'
+    h4.user-name
+      = review.display_name
+
+    .user-star-rating
+      = render_inline_rating_by review,
+          target: :listing_review,
+          rating_class: 'center building-ratings'
+
+    .user-rating
+      = review.overall_quality
+
+  .col-md-10.review-content-body
+    = truncate(strip_tags(review.comment), length: 240, separator: ' ')
+
+    .read-more
+      - if created_obj?(:reviews)
+        = link_to_review(review, "READ MORE...")
+      - else
+        -if current_account.nil?
+          /a#readMore data-target="#writeAReview" data-toggle="modal" READ MORE...
+          a#readMore herf='#' data-target="#sign_in" data-toggle="modal" WRITE REVIEW TO THIS.
+        -else          
+          a#readMore = link_to "WRITE REVIEW TO THIS", new_review_path 

@@ -1,0 +1,680 @@
+@import 'modules'
+
+.signup-box
+  .new_account
+    .first_name_div
+      width: 49%
+      margin-left: 2px
+    .last_name_div
+      width: 49%
+      input
+        width: 91%
+
+.signup-box .error_info_border
+  border: 1px solid #cc2232
+.error_info
+  @include size-color-family(12px,#cc2232,Arial)
+  min-height: 20px
+  line-height: 24px
+  text-align: left
+  padding-left: 10px
+
+.sign-btn
+  margin-top: 5px
+#signin
+  margin-bottom: 0
+  margin-top: 0
+  @include image-bg('login_banner.jpg', true)
+  min-height: 600px
+  .container
+    padding-top: 50px
+    .title
+      @include size-color(26px,white)
+      text-align: center
+      margin-bottom: 30px
+    .signin-box
+      @include width-height(630px,275px)
+      @include margin-padding-border(0 auto,40px 40px 30px,1px solid #DFDDDD)
+      background: rgba(186, 186, 186, 0.5)
+      border: 1px solid rgba(255, 255, 255, 0.3)
+      .left-column
+        width: 300px
+        input.textfield
+          @include box-sizing
+          @include width-height(100%,40px)
+          margin-bottom: 20px
+          font: 16px Arial
+          &:last-of-type
+            margin-bottom: 15px
+        .remember-me
+          margin-bottom: 10px
+          input.pull-left
+            margin-right: 10px
+          label
+            @include size-color-family(14px,#333,$body-font)
+            display: inline-block
+          .forget-pw
+            font-size: 14px
+            color: #fff
+          .forget-pw:hover
+            color: #ccc
+        .btn-custom.sign-btn
+          border-bottom: 1px solid #479290
+          &:hover
+            background-color: #2fcdc9
+
+        @include marginDir-paddingDir-borderDir(30px,40px,1px solid white,right)
+      .right-column
+        @include width-height(210px,100%)
+        position: relative
+        .signin-notice
+          @include size-color-family(16px,#333,Avenir)
+          @include marginDir-paddingDir-borderDir(20px,10px,1px solid white,bottom)
+          margin-top: 0px
+        .signup-direct
+          font: 16px Arial
+          margin-top: 15px
+          span
+            color: #444444
+          .sign-up-email
+            color: #fff
+          .sign-up-email:hover
+            color: #ccc
+
+.house_img_container
+  img
+    @include width-height(90px,90px)
+
+@media(max-width: 767px)
+  #signin
+    .container
+      .signin-box
+        .forget-pw,.sign-up-email
+          color: #29bcb8 !important
+        .forget-pw:hover,.sign-up-email:hover
+          color: #176876 !important
+
+@media(max-width: 767px)
+  #signin
+    min-height: 0
+    .container
+      margin-top: 0
+      padding-left: 0
+      .signin-box
+        width: 90%
+        padding: 20px
+        .left-column
+          form
+            width: 100%
+            padding-left: 0
+            input.textfield
+              border: 1px solid #aeaeae
+              background-color: #fff
+            input.btn-custom
+              width: 100%
+      .title
+        margin-bottom: 0
+        color: #666
+
+#signup
+  @include marginDir-paddingDir(0,60px,bottom)
+  @include image-bg('signup_banner.jpg', true)
+  margin-top: 0
+#signup .container
+  text-align: center
+  padding-top: 15px
+.signup-facebook
+  display: inline-block
+  margin-bottom: 30px
+.signup-title, .signup-notice
+  color: white
+.signup-title
+  font-size: 26px
+.signup-notice, .signup-notice-mobile
+  font: 16px Arial
+  margin-top: 0
+  margin-bottom: 30px
+.signup-notice-mobile
+  display: none
+.signup-notice-wrapper
+  width: 550px
+  margin: 0 auto
+.signup-box
+  @include margin-padding-border(0 auto,40px 40px 30px,1px solid #DFDDDD)
+  width: 595px
+  background: rgba(255, 255, 255, 1)
+  border: none
+  li
+    text-align: left
+    list-style: none
+    color: groove
+    margin-bottom: 5px
+  form
+    margin-top: 10px
+    margin-left: 25px
+    margin-right: 25px
+  .textfield
+    @include size-color-family(16px,#333,Arial)
+    width: 96%
+  .btn-custom.sign-btn
+    border-bottom: 1px solid #479290
+    &:hover
+      background-color: #2fcdc9
+
+[id^="sp-header-"] #sp-main-menu > ul.level-0 > li > a.user-name
+  text-transform: none
+
+.signup-notice
+  position: relative
+  overflow: hidden
+  text-align: center
+  span
+    display: inline-block
+    vertical-align: baseline
+    zoom: 1
+    *display: list-inline
+    *vertical-align: auto
+    position: relative
+    padding: 0 20px
+    &:before, &:after
+      content: ''
+      display: block
+      width: 1000px
+      position: absolute
+      top: 0.73em
+      border-top: 1px solid white
+    &:before
+      right: 100%
+    &:after
+      left: 100%
+
+
+#profile
+  //@include marginDir-paddingDir(0,20px,bottom)
+  //@include image-bg('setting_bg.jpg', true)
+  .topbar
+    border-top: 1px solid rgba(132, 130, 130, 0.5)
+    border-bottom: 1px solid rgba(132, 130, 130, 0.5)
+    padding-top: 20px
+    padding-left: 15%
+    .menu-item
+      font-family: "Renner Medium"
+      font-size: 21px
+      color: #28d8d8
+      &:focus
+        outline: none
+    .item
+      display: inline-block
+      padding-bottom: 20px
+    .item:not(:first-child)
+      margin-left: 44px
+    .my-style
+      border-bottom: 5px solid #28d8d8
+  .title
+    @include size-color-family(22px,#fff,Avenir)
+    margin-top: 40px
+    margin-bottom: 25px
+    line-height: 1em
+  .profile-edit
+    margin-top: 10px
+    margin-bottom: 20px
+  .side-bar
+    li
+      border-bottom: 1px solid #e6e6e6
+      list-style: none
+      background-color: #cdcdcd
+      &:last-child
+        border-bottom: none
+      a
+        @include size-color-family(18px,#444,$body-font)
+        display: block
+        padding: 15px 0 15px 45px
+      &.current
+        background-color: #29bcb8
+        a
+          color: #ffffff
+
+  .setting-box
+    background: rgba(255, 255, 255, .8)
+    padding: 20px
+    margin-left: auto
+    margin-right: auto
+    padding-left: 10%
+    padding-right: 10%
+    .col-left
+      text-align: center
+    .title
+      margin-top: 0
+      margin-bottom: 26px
+      color: #262d3f
+      font-family: "Renner Book"
+      font-size: 30px
+    .avatar
+      width: 140px
+      margin-bottom: 20px
+      margin-left: auto
+      margin-right: auto
+      img
+        width: 85px
+        border-radius: 50%
+
+    .avatar-upload
+      input
+        position: absolute
+        top: 0
+        right: 0
+        margin: 0
+        padding: 0
+        opacity: 0
+        cursor: pointer
+      .button
+        background: transparent
+        color: #28d8d8
+        width: 150px
+        position: relative
+        overflow: hidden
+        font-family: "Renner Medium"
+        font-size: 18px
+      span
+        text-shadow: none
+
+    .form.normal
+      .main-form
+        width: 75%
+        margin: 0 auto
+      .recommend-emails
+        label
+          width: 100%
+      label
+        display: block
+        text-align: left
+        font-family: "Renner Light"
+        color: #7e849c
+        font-size: 18px
+        font-weight: 600
+        letter-spacing: 0.05em
+      .textfield
+        width: 80%
+        border: 1px solid rgba(132, 130, 130, 0.5)
+        border-radius: 10px
+        outline: none
+      .first-phone
+        width: 25%
+      .last-phone
+        width: 50%
+      span
+        margin-left: 10px
+        margin-right: 10px
+    .form.password
+      label
+        font: 18px $body-font
+        display: block
+        float: left
+        margin-right: 20px
+        text-align: right
+        width: 23.520485%
+      .textfield
+        width: 40.97116843%
+        background-color: #f5f5f5
+    .submit
+      text-align:  center
+      margin-top: 40px
+      width: 80%
+      .profile-edit
+        border-radius: 10px
+        background-color: #28d8d8
+        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.16)
+        font-family: "Renner Medium"
+        font-size: 18px
+
+
+@media(max-width: 767px)
+  #profile
+    >.container
+      padding: 0
+      .title
+        margin: 5px 0 15px 20px
+        color: black
+      .side-bar
+        li a
+          padding-left: 20px
+      .wishlist-wrapper
+        .btn-group
+          width: 100%
+          margin: 0
+          a
+            display: inline-block
+            width: 50%
+            padding: 7px 0
+            margin: 0
+            height: auto
+        .wishlist
+          .row
+            background-color: white
+            margin-left: 0px
+            margin-right: 0px
+          .listing
+            margin: 0
+            border: 0
+            margin-bottom: 20px
+            .listing_img
+              width: 100%
+              height: 200px
+              margin: 0
+            .listing-content
+              margin-right: 10px
+              h3
+                margin: 5px 0 0
+                overflow: hidden
+                font-weight: bold
+                a
+                  color: #222
+                  display: block
+                  white-space: normal
+                  max-width: 215px
+              strong
+                font-size: 15px
+                display: block
+                margin: 1px 0 -14px
+              strong.pull-right
+                font-size: 19px
+                color: #29bcb8
+                float: none
+                margin: 0
+                position: absolute
+                right: 10px
+                top: 0
+              span
+                color: #333
+                font-weight: 100
+                font-size: 16px
+              span.num
+                float: right
+    .container
+      .row
+        margin-left: 0px
+        margin-right: 0px
+    .setting-box
+      padding: 10px
+      h3.title
+        margin: 15px 0 0
+      form
+        padding: 0
+      .form.normal,.form.password
+        .form-field
+          margin: 0 0 5px
+          label
+            width: 100%
+            text-align: left
+          .textfield
+            width: 99%
+            padding: 8px 0
+            border: 1px solid #aeaeae
+          .first-phone,.last-phone
+            width: 45%
+        .submit
+          margin-top: 20px
+          input
+            width: 100%
+            margin: 0
+
+
+
+
+.form
+  .form-field
+    margin-bottom: 20px
+    input.textfield
+      @include size-color-family(16px,#333,Arial)
+      padding: 9px
+    label
+      @include size-color(16px,#444)
+      margin-top: 0.5em
+
+.wishlist-wrapper
+  background: rgba(255, 255, 255, .8)
+  margin-left: auto
+  margin-right: auto
+  margin-top: 80px
+  margin-bottom: 100px
+  .btn-group
+    margin-left: 20px
+    margin-top: 25px
+    margin-bottom: 20px
+    .btn-custom
+      color: white
+      margin-right: 10px
+  .wishlist
+    margin-left: 5%
+    margin-right: 5%
+    .btn-add-listing
+      @include size-color-family(18px,#fff,Helvetica)
+      height: 35px
+      text-align: center
+      padding: 6px 15px
+      margin-right: 10px
+      background-color: #29bcb8
+    .row
+      margin-bottom: 0px
+    .row:not(:first-child)
+      margin-top: 50px
+    .listing
+      @include box-sizing
+      width: auto
+      padding-bottom: 15px
+      margin: 0 auto
+      background-color: white
+      max-width: 312px
+      border-radius: 10px
+      box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.16)
+      background-color: #ffffff
+      border: 1px solid rgba(150, 155, 170, 0.5)
+      &:first-of-type
+        padding-top: 0
+      .img
+        img
+          width: 310px
+          height: 201px
+          max-width: 310px
+          max-height: 201px
+          border-top-left-radius: 10px
+          border-top-right-radius: 10px
+      .room-btns
+        margin-top: 10px
+      span.account-listing-btn
+        display: inline-block
+      .edit-listing, .expire-listing, .refresh-listing, .deactive-listing
+        text-align: center
+        padding: 3px 10px
+        background: #29bcb8
+        color: #fff
+        margin-right: 10px
+        display: block
+        width: 60px
+        &:hover
+          background: #3acdc9
+      .delete-post
+        text-align: center
+        padding: 3px 10px
+        background: #C71D1D
+        color: #fff
+        margin-right: 10px
+        display: block
+        width: 60px
+        &:hover
+          background: #EA0D0D
+    .header
+      line-height: 30px
+      height: 30px
+    .listing-content
+      // copy from Liu's Search Index
+      padding-left: 18px
+      padding-right: 18px
+
+      h3
+        font-size: 19px
+        font-family: "Renner Medium"
+        color: #262d3f
+        border-bottom: 1px solid rgba(224, 224, 224, 0.5)
+        padding-bottom: 10px
+      .full-addr
+        margin-bottom: 10px
+      .addr
+        font-family: "Renner Light"
+        color: #7e849c
+        font-size: 14px
+        margin-bottom: 0px
+      a
+        font-family: "Renner Book"
+        font-size: 14px
+        color: #28d8d8
+        position: absolute
+        bottom: 10px
+      .bddr
+        span
+          font-size: 14px
+          color: #7e849c
+          font-family: "Renner Light"
+        span:not(:first-child)
+          margin-left: 30px
+          
+        img
+          vertical-align: sub
+          margin-left: 5px
+
+  .listing_img
+    @include width-height(190px,115px)
+    margin-top: 30px
+    // use background-image to hack img's size
+    background-position: center
+  #sp-listing-expired
+    background: none
+    .listing-expired
+      @include margin-padding(0 20px,0px)
+      background-color: #fff
+
+#password-reset,#password-edit
+  @include global-font
+
+/** responstive **/
+@media (max-width: 767px)
+  /** Sign In page**/
+  #signin
+    /*background-image: image-url('login_banner.jpg')*/
+    background-color: #f1f1f1
+    form
+      background-image: none
+    .container .signin-box
+      background: none
+      border: 0
+      .left-column
+        @include margin-padding-border(0,0,0)
+        width: 100%
+        .remember-me
+          label, .forget-pw
+            font-size: 14px
+          label
+            color: #888
+      .right-column
+        width: 100%
+        a[href*=facebook]
+          display: block
+          background-color: #357bdb
+        .signin-notice
+          margin: 0
+          color: #888
+          margin-top: 15px
+        .signup-direct
+          position: relative
+          margin-top: -15px
+          span
+            color: #888
+  /** Sign Up page**/
+  #signup
+    /*background-image: image-url('signup_banner.jpg')*/
+    background-color: #f1f1f1
+    .container
+      a.signup-facebook
+        display: block
+        background-color: #357bdb
+        width: 94%
+        margin: 0 auto
+      h3,h6
+        color: #666
+      form
+        background-image: none
+        width: 94%
+        padding: 15px 0
+        input.btn-custom
+          width: 100%
+    .signup-notice-mobile
+      color: white
+  .signup-box
+    border: 0
+    .new_account
+      .textfield
+        @include margin-padding-border(0,10px 4%,1px solid #aeaeae)
+        background-color: #fff
+        width: 92%
+      .first_name_div
+        margin: 0
+      .last_name_div input
+        width: 92%
+
+  .signup-facebook
+    margin: 0
+  .signup-notice-mobile
+    margin: 10px 0
+
+@media(max-width: 767px)
+  #signup
+    min-height: 0
+    padding-bottom: 0
+  #signup .container
+    margin-top: 0
+  .signup-box
+    width: 90%
+  .signup-notice-mobile
+    display: inline-block
+    margin-bottom: 0
+  .signup-notice
+    display: none
+  .signup-box
+    @include margin-padding(0 auto 20px,0)
+    background: none
+    width: 100%
+
+#mylistings
+  .listing-title
+    h3
+      margin-bottom: 0
+      font-size: 20px
+    strong
+      font-family: Avenir Book
+      font-size: 16px
+      color: #777
+  .listing_img
+    margin-top: 10px
+    height: 120px
+    width: 200px
+    img
+      height: 120px
+      width: 200px
+  .basic-info
+    margin-top: 10px
+    font-size: 16px
+  .price
+    color: $link-color
+    font: 20px avenir
+    margin-top: 50px
+    text-align: right
+  .listing
+    position: relative
+  .tools
+    position: absolute
+    bottom: 20px
+    right: 0px
+
+#password-reset
+  label
+    margin-right: 15px

@@ -1,0 +1,61 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_photos_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Photos
+          .input-text
+            = number_field_tag :review_id, params[:review_id], min: 1, placeholder: "Reviw ID", class: "col-md-5"
+            = text_field_tag :formatted_address, params[:formatted_address], placeholder: "Full Address", class: "col-md-5"
+          .radio-btns
+            label.radio.list-inline
+              | Building
+              = radio_button_tag :region_type, 'Building', params[:region_type] == 'Building'
+            label.radio.list-inline
+              | StreetNeighborhood
+              = radio_button_tag :region_type, 'StreetNeighborhood', params[:region_type] == 'StreetNeighborhood'
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    = form_tag  do
+      .cell
+        Strong Photos
+        .pull-right
+          = hidden_field_tag :region_type, params[:region_type]
+          = hidden_field_tag :formatted_address, params[:formatted_address]
+          = hidden_field_tag :review_id, params[:review_id]
+          = submit_tag 'Set Top Photo', class: 'btn btn-success'
+      .clear
+      .cell
+        table.table.table-striped
+          thead
+            tr
+              th
+                = sortable "id", "ID"
+              th Address
+              th Image
+              th Create At
+              th Operate
+          tbody
+            - @images.each do |image|
+              - @object ||= image.imageable
+              tr
+                td
+                  = image.id
+                  | &nbsp;
+                  = hidden_field_tag 'image_ids[]', image.id
+                  label.list-inline
+                    = check_box_tag 'top_ids[]', image.id, image.is_top
+                    | top?
+                th
+                  = @object .formatted_address
+                th
+                  = link_to  image.url, target: "_blank" do
+                    = image_tag image.url, class: 'avatar-55'
+                th = image.created_at
+                th
+                  = link_to "DELETE", admin_photo_path(image), method: :delete, data:{confirm: 'Do you want to expired the image ?'}, class: 'btn btn-danger'
+    = paginate @images

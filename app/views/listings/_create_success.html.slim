@@ -1,0 +1,11 @@
+.done
+  i.fa.fa-check-circle
+  div
+    p
+      | Congratulations! Your listing has been successfully posted.
+    p
+      | Now you can:
+  div.create-success-bts
+    = link_to 'View Your Listing', @listing, class: 'success-btn'
+    = link_to 'Add Another Listing', new_listing_path, class: 'success-btn red'
+    = link_to 'Visit My Account', account_listings_path(Settings.listing_status.actived), class: 'success-btn'

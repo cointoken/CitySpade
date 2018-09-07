@@ -1,0 +1,61 @@
+- content_for :custom_title,
+  "Building Search"
+-if mobile?
+  script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
+#build-filter
+  button.btn.btn-default.price-filter type="button"
+    | $0 - $10000
+  button.btn.btn-default.more-filter type="button"
+    | More Filters
+  button.btn-apply.pr-filter type="button" Apply
+
+  .dropdown-price
+    span $
+    span.min 
+      | 0
+    span 
+      |  to $
+    span.max 10000
+    span
+      | /month
+    #slider
+    //.apply-btns
+      button.btn-cancel.pr-filter type="button" Cancel
+      button.btn-apply.pr-filter type="button" Apply
+  .dropdown-location
+    p City
+    .cities
+      .btn-group data-toggle="buttons"
+        label.btn.btn-primary.loc-label
+          input type="radio" name="location" autocomplete="off" value="NY" New York
+        label.btn.btn-primary.loc-label
+          input type="radio" name="location" autocomplete="off" value="Chicago" Chicago
+        label.btn.btn-primary.loc-label
+          input type="radio" name="location" autocomplete="off" value="Boston" Boston
+        label.btn.btn-primary.loc-label
+          input type="radio" name="location" autocomplete="off" value="Philadelphia" Philadelphia
+        label.btn.btn-primary.loc-label
+          input type="radio" name="location" autocomplete="off" value="Los Angeles" Los Angeles
+        label.btn.btn-primary.loc-label
+          input type="radio" name="location" autocomplete="off" value="Houston" Houston
+    //p.sch School
+    //.schools
+    //  .btn-group data-toggle="buttons"
+    //    label.btn.btn-primary.sch-label
+    //      input type="radio" name="school" autocomplete="off" value="NYU" New York University
+    //    label.btn.btn-primary.sch-label
+    //      input type="radio" name="school" autocomplete="off" value="Pratt Institute" Pratt Institute
+    //    label.btn.btn-primary.sch-label
+    //      input type="radio" name="school" autocomplete="off" value="NYU Poly" NYU Tandon
+    //    label.btn.btn-primary.sch-label
+    //      input type="radio" name="school" autocomplete="off" value="Columbia University" Columbia University
+      
+
+.container-fluid#building-list
+  = render 'index'
+
+javascript:
+  App.BuildingList();
+  window.App.AjaxSpinner();
+
+script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=#{Settings.google_maps.js_keys.sample}&callback=window.Maps.buildingIndex"

@@ -1,0 +1,28 @@
+@import 'modules'
+
+.autocomplete-suggestions
+  @include size-color(15px,#333)
+  border: 1px solid #999
+  background: #FFF
+  cursor: default
+  overflow: auto
+  -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64)
+  -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64)
+  box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64)
+.autocomplete-suggestion
+  padding: 2px 5px
+  word-wrap: break-word
+  position: relative
+  font-family: $body-font
+.autocomplete-selected 
+  background: #e0e0e0
+  &.autocomplete-parent
+    background: #e0e0e0
+.autocomplete-suggestions 
+  strong
+    font-weight: normal
+    color: #29bcb8
+.autocomplete-parent
+  float: right
+  color: #666
+  margin-left: 2px

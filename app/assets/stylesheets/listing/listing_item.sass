@@ -1,0 +1,99 @@
+// Used on:
+// ========
+// - flashsales/_flashsale.html.slim
+// - listings/_listing.html.slim
+
+// Styles to make listings look better on small screens
+@media screen and (max-width: 520px)
+  .flash-listing-row, .listing-row
+    [class*=col-]
+      padding-left: 0
+      padding-right: 0
+
+      .flashsale, .listing
+        margin: 20px 10px
+
+        .diagonal
+          left: -29px
+
+.flashsale, .listing
+  border-radius: 3px
+  position: relative
+  overflow: hidden
+  margin: 20px
+  background: #34495e
+  min-height: 160px
+  .listing-content
+    color: white
+
+  .diagonal
+    background: #34495e
+    height: 300px
+    width: 39px
+    left: -37px
+    top: -10px
+    position: absolute
+    transform: rotate(6deg)
+    -webkit-transform: rotate(6deg)
+    z-index: 1
+
+  .listing-content
+    height: 230px
+    padding-top: 10px
+    padding-right: 5px
+    position: relative
+    z-index: 1
+    font-family: Avenir
+
+    a
+      font-size: 20px
+
+    .full-neighborhood, .beds-and-baths
+      font-size: 16px
+
+  .listing_img
+    img
+      width: 100%
+      min-height: 160px
+      height: 240px
+
+    a.fancybox-preview
+      top: 50%
+      margin-top: -17px
+      height: 33px
+
+  .fa-video-camera
+    position: absolute
+    bottom: 13px
+    left: 3%
+    color: #2fcdc9
+
+  .discount
+    background: rgba(47, 205, 201, 0.79)
+    padding: 5px 10px
+    position: absolute
+    top: 17px
+    left: 0
+
+    h5
+      color: white
+
+  .price
+    position: absolute
+    left: 0
+    bottom: 0
+    color: white
+    font-size: 1.8em
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4)
+
+.listing_on_search
+  margin-left: 1em
+  height: 1000px  
+
+@media screen and (min-width: 1920px)
+  .listing_on_search
+    width: 78%
+  .listings-map-wrapper
+    width: 120%
+    &.affix
+      width: 60%

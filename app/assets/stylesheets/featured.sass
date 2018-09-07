@@ -1,0 +1,278 @@
+@import 'modules'
+
+.corner-ribbon
+  position: absolute
+  bottom: 0
+  text-align: center
+  line-height: 35px
+  letter-spacing: 1px
+  color: white
+  background: #3498db
+  padding: 0 15px
+  z-index: 999
+  border-radius: 3px 0 3px 0
+  right: 0
+  font-family: "Avenir Book"
+  text-transform: uppercase
+  font-weight: bold
+
+#new-listing-wrapper
+  .sublet-header
+    background: image-url('list-with-us.png')
+    height: 160px
+    text-align: center
+    h2
+      @include size-color(28px,#fff)
+      line-height: 150px
+      margin: 0
+    p
+      @include size-color(16px,#d9d5d2)
+  #new_sublet_form
+    width: 850px
+    margin: 40px auto
+    .input
+      &.select-input
+        margin-bottom: 6px
+      .selectize-input
+        top: 14px
+        height: 36px
+      label
+        display: inline-block
+        width: 210px
+        text-align: right
+        font: 16px Avenir
+        padding-right: 20px
+        &.state-label
+          width: 60px
+    input[type="text"]
+      background-color: white
+      border: 1px solid #b3b3b3
+      padding: 5px 5px 5px 10px
+      font: 16px Avenir
+      //width: 260px
+      width: 200px
+      height: 28px
+      margin: 0px 4px 4px 0px
+      &.large
+        width: 500px
+    i.fa.fa-usd
+      position: relative
+      left: 10px
+      z-index: 1
+    input#listing_price
+      position: relative
+      right: 10px
+      padding-left: 20px
+      width: 190px
+    .sublet-label
+      display: inline-block
+      vertical-align: top
+      margin-top: 4px
+      label,span
+        @include size-color-family(16px,#333,"Avenir Roman")
+        display: inline-block
+        text-align: right
+        margin-left: 40px
+        margin-right: 23px
+        margin: 0px 23px 0px 40px
+        width: 200px
+    .section-1
+      margin-bottom: 40px
+      .sublet-label
+        label.error
+          float: right
+      div
+        label[for="single"],label[for="entire"]
+          width: 138px
+          height: 38px
+          font-family: "Avenir Book"
+          text-align: center
+          border: 1px solid #b3b3b3
+          line-height: 40px
+          margin-bottom: 4px
+          margin-left: -12px
+          &:hover,
+            border-color: #2fcdc9
+            background-color: #2fcdc9
+            color: #fff
+        label[for="entire"]
+          border-left: none
+          margin-left: -36px
+        label[for="single"]
+          margin-right: 20px
+        input[type="radio"]
+          visibility: hidden
+        input:checked+label,label.radio:hover
+          border-color: #2fcdc9 !important
+          background-color: #2fcdc9
+          color: #fff
+      .input
+        margin-bottom: 20px
+        //#sublet-select
+          margin-top: 25px
+        .selectize-control.single
+          display: inline-block
+          width: 220px
+          .selectize-dropdown.single
+            .selectize-dropdown-content
+              font-size: 16px
+              font-family: Avenir Book
+          .selectize-input.full.has-options.has-items
+            display: inline-block
+            height: 38px
+            //width: 260px
+            .item
+              vertical-align: middle
+              font-family: Avenir Book
+              font-size: 16px
+              padding-top: 3px
+    .section-2
+      height: 480px
+      div
+        input[type="checkbox"]
+          margin-top: -4px
+        span
+          display: inline-block
+          margin-left: 8px
+        ul
+          display: inline-block
+          text-align: left
+          li
+            padding: 5px 5px 5px 0px
+            font-family: Avenir Book
+            margin: 0px 4px 4px 0px
+            label #sublet_sublet_detail_attributes_features_,
+            #sublet_sublet_detail_attributes_extras_
+              margin-bottom: 5px
+        .pull-left
+          width: 50%
+          text-align: left
+          .sublet-label
+            vertical-align: top
+        .pull-right
+          width: 50%
+          .sublet-label
+            vertical-align: top
+            span
+              width: 100px
+    .section-3
+      margin-bottom: 20px
+      textarea
+        width: 530px
+        height: 130px
+        background-color: white
+        border: 1px solid #b3b3b3
+        padding: 5px
+        font: 16px Avenir
+        resize: vertical
+        margin: 4px 4px 4px 0px
+      .input.sublet-image
+        margin-top: 30px
+        .uploadify
+          display: inline-block
+      .input
+        #sublet_title
+          width: 498px
+          padding-left: 6px
+        .cal-characters
+          margin-right: 75px
+          text-align: right
+        .cal-char, .characters
+          font-size: 14px
+          color: #666
+        label.error
+          display: inline-block
+          margin-left: 270px
+    input[type="submit"]
+      @include width-height(121px,35px)
+      @include size-color-family(16px,#fff,"Avenir Book")
+      border: 0
+      border-bottom: 1px solid #479290
+      background-color: #2fcdc9
+      &:hover
+        background-color: #2fcdc9
+      margin-left: 230px
+    .verify
+      margin-left: 262px
+
+  .section-title
+    height: 35px
+    width: 850px
+    padding-left: 220px
+    margin-bottom: 20px
+    img
+      margin-top: -10px
+    div.title
+      height: 35px
+      line-height: 35px
+      display: inline-block
+      font-size: 20px
+      font-weight: bold
+      font-family: avenir
+      margin-left: 10px
+  #new_sublet_basic
+    padding-top: 20px
+    .section
+      margin-bottom: 30px
+      .input
+        margin-bottom: 20px
+      .sublet-label
+        display: inline-block
+        vertical-align: top
+        margin-top: 4px
+        label, span
+          font-size: 16px
+          color: #333333
+          font-family: "Avenir Roman"
+          display: inline-block
+          text-align: right
+          margin-left: 40px
+          margin-right: 23px
+          margin: 0px 23px 0px 40px
+          width: 200px
+        input[type="text"], input[type="number"], input[type="email"]
+          background-color: white
+          border: 1px solid #b3b3b3
+          padding: 5px 5px 5px 10px
+          font: 16px Avenir
+          width: 260px
+          height: 28px
+          margin: 0px 4px 4px 0px
+        label.error
+          float: right
+    .input.sublet-image
+      margin-top: 30px
+      .uploadify
+        display: inline-block
+    input[type="submit"]
+      @include width-height(121px,35px)
+      @include size-color-family(16px,#fff,"Avenir Book")
+      border: 0
+      border-bottom: 1px solid #479290
+      background-color: #2fcdc9
+      &:hover
+        background-color: #2fcdc9
+      margin-left: 262px
+
+
+
+  @media(max-width: 850px)
+    #new_sublet_form
+      width: 340px
+      display: block
+      margin: 0 auto
+      .sublet-label
+        label,span
+          display: block
+          margin: 0
+          text-align: left
+            height: 28px
+        label[for="single"],label[for="entire"]
+          display: inline-block
+      .section-2
+        height: 550px
+      .section-title
+        span.num-span
+          margin: 0 auto
+      input[type="submit"]
+        margin: 0

@@ -1,0 +1,14 @@
+.well
+  .hidden-sm.fullwidthbanner-container.blogs-banner style='background: whitesmoke'
+    img.blogs-banner-img src=asset_path("blogs_list_banner.jpg")
+    /img src="assets/bolgs_list_banner.jpg"
+  .blogs_list
+    - @blogs.each do |blog|
+      = render 'show', blog: blog
+    - if @blogs.present?
+      #infscr-loading.hidden
+        img alt="Loading..." src=image_path('loading.gif')
+#navigation
+  a href="blog.json?page=1"
+= hidden_field_tag "page_size", @blogs.total_pages
+

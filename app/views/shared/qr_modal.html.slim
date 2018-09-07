@@ -1,0 +1,17 @@
+#qr_modal[class="modal-backdrop fade in"]
+  #inner_modal[class="modal-dialog"]
+    .modal-header#qr_modal-header
+      a.close href= roomsearch_path data-dismiss='modal' class='close' aria-hidden='true' &times;
+      h3.modal-title
+        | Scan this wechat QR right now.
+    .modal-body#qr_modal-body
+      =image_tag ("newhome/qrcode_new.png")
+      div
+        p
+          | We ask that you login via qr to write / contact a post
+          | so we may ensure the quality of the forum.
+        p
+          | We will NOT post anything on your page without
+          | your permission and all your information will be
+          | kept private.
+        p#qrModalPrivacy = link_to 'Our Privacy Policy', static_page_path('privacy'), target: '_blank'

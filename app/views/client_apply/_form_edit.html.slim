@@ -1,0 +1,25 @@
+.container#client_apply_update
+  h1.edit-head Edit your application
+  #client_update_form
+    //= render 'form_edit'
+    = form_for @application, url: apply_update_path, html: {class: 'form-horizontal', multipart: true} do |f|
+      = f.hidden_field :id, value: @application.id
+      #docu-fields
+        - if !@application.is_employed? && @application.residency == "international"
+          = render 'client_apply/int_student', f: f
+        - elsif !@application.is_employed? && @application.residency == "local"
+          = render 'client_apply/local_student', f: f
+        - elsif @application.is_employed? && @application.residency == "international"
+          = render 'client_apply/int_employed', f: f
+        - elsif @application.is_employed? && @application.residency == "local"
+          = render 'client_apply/local_employed', f: f
+
+        = render 'client_apply/square', is_edit: true
+    
+      .update-btn
+        = submit_tag "Submit", class: "btn btn-default"
+      
+
+javascript:
+  App.ClientApply();
+  App.ClientApplyEdit();

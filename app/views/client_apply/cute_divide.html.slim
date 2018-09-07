@@ -1,0 +1,72 @@
+.deposit-form.container
+  h2 CuteDivide Payment
+  .deposit-cal.deposit-cd
+    = form_for @client, url: cutedividepayment_path, method: :post, remote: true do |f|
+      .cd-fields.row
+        = f.label 'Legal Name', '*Legal Name', class: 'col-sm-4'
+        .col-sm-6
+          = f.text_field :name, required: true
+      .cd-fields.row
+        = f.label 'Email', '*Email', class: 'col-sm-4'
+        .col-sm-6
+          = f.text_field :email, required: true
+      .cd-fields.row
+        = f.label 'Phone', '*Phone', class: 'col-sm-4'
+        .col-sm-6
+          = f.text_field :phone, required: true
+      .cd-fields.row
+        = f.label 'Building', '*Building/Address', class: 'col-sm-4'
+        .col-sm-6
+          = f.text_field :building, required: true
+      .cd-fields.row
+        = f.label 'Unit', '*Unit', class: 'col-sm-4'
+        .col-sm-6
+          = f.text_field :unit, required: true
+      .cd-fields.row
+        = f.label 'Wechat', class: 'col-sm-4'
+        .col-sm-6
+          = f.text_field :wechat
+      .cd-fields.row
+        = f.label 'Amount', '*Amount', class: 'col-sm-4', required: true
+        .col-sm-6
+          = f.number_field :amount, id: "dep-amt"
+      .cd-fields.row
+        = label_tag 'fee', 'Convenience Fee   +', class: 'col-sm-4'
+        .col-sm-6
+          = text_field_tag 'con-fee' , nil, disabled: true
+      .cd-fields.row
+        = label_tag 'total', 'Total Amount', class: 'col-sm-4'
+        .col-sm-6
+          = text_field_tag 'final-amt' , nil, disabled: true
+      #sq-appfee.sq-cd style="padding-top: 8%"
+        .card-errors
+        .card-fields.row
+          .col-sm-4.labels
+            label Card Number
+          .col-sm-6
+            #sq-card-number
+          .credit-logos.row
+            .col-sm-6.col-sm-offset-4
+              //img alt="Credit Card Logos" title="Credit Card Logos" src="http://www.credit-card-logos.com/images/multiple_credit-card-logos-1/credit_card_logos_17.gif" width="200" height="30" border="0"
+              = image_tag "icons/payment.png", width: '190', height: '30'
+        .card-fields.row
+          .col-sm-4.labels
+            label CVV
+          .col-sm-6
+            #sq-cvv
+        .card-fields.row
+          .col-sm-4.labels
+            label Expiration Date
+          .col-sm-6
+            #sq-expiration-date
+        .card-fields.row
+          .col-sm-4.labels
+            label Postal Code
+          .col-sm-6
+            #sq-postal-code
+        input type="hidden" id="card-nonce" name="nonce"
+        button.payment type="button" id="pay-by-card" onclick="this.disabled = true"
+          | Submit Payment
+              
+javascript:
+  App.SquareApi();

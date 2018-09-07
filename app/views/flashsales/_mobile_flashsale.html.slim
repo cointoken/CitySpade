@@ -1,0 +1,39 @@
+.flash-listing
+  .listing_img
+    = link_to listing.permalink, target: '_blank',
+      title: listing.display_title do
+
+      = image_tag listing_image_url(listing), alt: listing.title,
+        title: listing.img_alt
+
+    = link_to "Preview", listing.permalink, class: "fancybox-preview hidden-xs",
+      data: {'fancybox-href' => fancybox_listing_path(listing)}
+
+    div.price
+      div = number_to_currency(listing.price, precision: 0)
+
+    .discount
+      h5 Special Promotion
+
+  .listing-content
+    h4
+      = link_to listing.display_title,
+        listing_path(listing.id, contact_name: "Cityspade")
+
+    - if listing.building.try(:name)
+      h5.building-name Building: #{listing.building.name}
+
+    .full-neighborhood
+      = full_neighborhood(listing, :short)
+
+    .beds-and-baths
+      p
+        |  #{display_beds_and_baths(listing)}
+
+        - if listing.video_url?
+          i.fa.fa-video-camera.fa-2x data-toggle="tooltip"
+
+
+coffee:
+  $(document).ready ->
+    App.ListingFancyboxSetup()

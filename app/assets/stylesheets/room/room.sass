@@ -1,0 +1,108 @@
+#fontReset
+  font-family: 'Avenir' !important
+
+#pets
+  display: inline-flex
+  margin-left: 78px
+  width: 60%
+  label
+    text-align: left
+    width: 70px
+    height: 46px
+    width: 46px
+    border: 1px solid #8B8681
+    padding: 3px
+    border-radius: 20%
+  #Dog
+    margin-left: 20px
+  input
+    visibility: hidden
+
+/******************* Contact Modal *************/
+#contactModal
+  .modal-header
+    background-color: #2fcdc9
+    .modal-title
+      color: #fff
+      font-family: Avenir
+      font-weight: bold
+      letter-spacing: 0.5px
+
+#contact-modal-form
+  .form-group
+    font-family: Avenir
+    font-weight: bold
+  #contact-send-btn
+    font-family: Avenir
+    font-weight: bold
+    background: none
+    background-color: #2fcdc9
+    color: #fff
+    width: 100px
+    height: 41px
+    letter-spacing: 1.0px
+    font-size: 19px
+
+.room-form-header
+  margin-bottom: 40px
+
+  & [class*="col-"]
+    &.room-column, &.roommate-column
+      background-position: center bottom
+      background-size: 100%
+      height: 250px
+      transition: background-size 0.5s ease-out
+      position: relative
+
+      @media screen and (max-width: 768px)
+        height: 100px
+
+      .table-wrapper
+        display: table
+        width: 100%
+        height: 100%
+
+      .triangle
+        height: 0
+        width: 0
+        border-left: 20px solid transparent
+        border-right: 20px solid transparent
+        border-bottom: 20px solid transparent
+        border-top: 20px solid grey
+        position: absolute
+        top: 250px
+        left: 47%
+
+        @media screen and (max-width: 768px)
+          top: 100px
+          left: 40%
+
+      a
+        display: block
+
+      &:hover
+        background-size: 130%
+
+        a
+          color: white
+
+      h2
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.4)
+        margin: 0
+        display: table-cell
+        vertical-align: middle
+
+        &.current_section
+          color: white
+
+        a
+          text-decoration: none
+
+        @media screen and (max-width:768px)
+          font-size: 1.5em
+
+  .room-column
+    background: url(asset-path("sublet/room-offer.jpg"))
+
+  .roommate-column
+    background: url(asset-path("sublet/roommate-post.jpg"))

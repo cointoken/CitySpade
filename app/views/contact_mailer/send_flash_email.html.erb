@@ -1,0 +1,9 @@
+<h3>Contact Info: <%= @contact['name'] %></h3>
+<h3>Email: <%= @contact['email'] %></h3>
+<% if @contact['phone'].present?%>
+  <h3>Tel: <%= @contact['phone'] %></h3>
+<%end%>
+
+<p style="word-wrap: break-word; white-space: pre-line;">
+<%= @contact['description'] %>
+</p>

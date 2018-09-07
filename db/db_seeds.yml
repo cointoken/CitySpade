@@ -1,0 +1,689 @@
+---
+:brokers:
+- :name: ' Abbolone & Scullin Realty-Philadelphia'
+  :tel: '2155462030'
+  :email: mark@as-realty.com
+- :name: ' ABC Capital Realty'
+  :tel: '2673243926'
+  :email: 
+- :name: ' Able Real Estate Inc'
+  :tel: '2153700'
+  :email: Ablerealestate1@aol.com
+- :name: ' Absolute Realty Group'
+  :tel: '2159539500'
+  :email: 
+- :name: ' Addison Real Estate Company Inc'
+  :tel: '2157353020'
+  :email: info@addisonre.com
+- :name: ' Addison Wolfe Real Estate - Newtown'
+  :tel: '2158625500'
+  :email: 
+- :name: ' Advance Realty Express LLC'
+  :tel: '2159698989'
+  :email: 
+- :name: ' Alliance Real Estate'
+  :tel: '2152242101'
+  :email: dburrows@alliancerealestatepa.com 
+- :name: ' Alpha Realty Group'
+  :tel: '2154630777'
+  :email: 
+- :name: ' AMC Delancey Group Inc'
+  :tel: '2156276500'
+  :email: 
+- :name: ' Anew Properties LLC'
+  :tel: '2154646098'
+  :email: mbatley@anewpropertiesllc.com
+- :name: ' Apple Professionals Inc'
+  :tel: '2156432000'
+  :email: Jay@appleprofessionals.com
+- :name: ' Benjamin Cobrin & Company Inc'
+  :tel: '6106671122'
+  :email: kgmcgrath@cobrincondopro.com
+- :name: ' Best City Homes Inc'
+  :tel: '2155451144'
+  :email: rick@bestcityhomes.com
+- :name: ' Beth Scheid Real Estate Inc'
+  :tel: '2154836454'
+  :email: bethscheid@comcast.com
+- :name: ' BHHS Fox & Roach-Art Museum'
+  :tel: '2157632100'
+  :email: 
+- :name: ' BHHS Fox & Roach-Blue Bell'
+  :tel: '2155422200'
+  :email: 
+- :name: ' BHHS Fox & Roach-Bryn Mawr'
+  :tel: '6105270900'
+  :email: 
+- :name: ' BHHS Fox & Roach-CC 1818 Rittenhouse'
+  :tel: '2158939800'
+  :email: 
+- :name: ' BHHS Fox & Roach-CC Rittenhouse Hotel'
+  :tel: '2155460550'
+  :email: 
+- :name: ' BHHS Fox & Roach-Chestnut Hill'
+  :tel: '2152473750'
+  :email: Sue.Walsh@foxroach.com
+- :name: ' BHHS Fox & Roach-Devon'
+  :tel: '6106512700'
+  :email: 
+- :name: ' BHHS Fox & Roach-Haverford'
+  :tel: '6106494500'
+  :email: 
+- :name: ' BHHS Fox & Roach-Haverford Stn'
+  :tel: '6106497410'
+  :email: 
+- :name: ' BHHS Fox & Roach-Wayne'
+  :tel: '6106884310'
+  :email: 
+- :name: ' Blue Square Property Management and Realty LLC'
+  :tel: '2156270300'
+  :email: 
+- :name: ' Bridgeford RE LLC'
+  :tel: '2154763296'
+  :email: 
+- :name: ' Bryant & Wilde Realty LLC'
+  :tel: 2158936100/6105298000
+  :email: dianebryant@bryantwilderealty.com
+- :name: ' Capozzi Real Estate/Insurance LTD'
+  :tel: '2155515100'
+  :email: 
+- :name: ' CB Hearthside-Regional Sales Center'
+  :tel: '2153643900'
+  :email: info@cbhearthside.com
+- :name: ' Century 21 Advantage Gold-Castor'
+  :tel: '2157227170'
+  :email: 
+- :name: ' Century 21 Advantage Gold-Elkins Park'
+  :tel: '2158877858'
+  :email: 
+- :name: ' Century 21 Advantage Gold-Southampton'
+  :tel: '2153220158'
+  :email: 
+- :name: ' Century 21 Alliance- Manayunk'
+  :tel: '2154833131'
+  :email: 
+- :name: ' Century 21 Alliance-Blue Bell'
+  :tel: '2156419500'
+  :email: 
+- :name: ' Century 21 Alliance-Lafayette Hill'
+  :tel: '6108282700'
+  :email: 
+- :name: ' Century 21 Montague-Canale'
+  :tel: '2153555500'
+  :email: 
+- :name: ' Century 21 New Horizons Real Estate'
+  :tel: '2153438100'
+  :email: info@c21newhorizons.com
+- :name: ' Century 21 Rauh & Johns'
+  :tel: '8565820366133'
+  :email: 
+- :name: ' Century 21 Target Realty'
+  :tel: '2152180939'
+  :email: 
+- :name: ' Century 21 Thomas Realty Inc'
+  :tel: '8565820123'
+  :email: 
+- :name: ' Christopher Real Estate Services'
+  :tel: '8888961034'
+  :email: info@chrisres.com
+- :name: ' City Wide Realty Inc'
+  :tel: '2153106888'
+  :email: Info@citywrealty.com
+- :name: ' CITYSPACE'
+  :tel: '2156003674'
+  :email: 
+- :name: ' Coldwell Banker Hearthside Realtors-Huntingdon Val'
+  :tel: '2153220940'
+  :email: 
+- :name: ' Coldwell Banker Preferred-Blue Bell'
+  :tel: '2156412727'
+  :email: 
+- :name: ' Coldwell Banker Preferred-Conshohocken'
+  :tel: '6108289558'
+  :email: 
+- :name: ' Coldwell Banker Preferred-Old City'
+  :tel: '2159237600'
+  :email: 
+- :name: ' Coldwell Banker Preferred-Philadelphia'
+  :tel: '2159237600'
+  :email: 
+- :name: ' Coldwell Banker Realty Corporation-Lansdale'
+  :tel: '2158555600'
+  :email: 
+- :name: ' Coldwell Banker Realty One-Academy'
+  :tel: '2156374000'
+  :email: ddemarco@cbrealtyone.com
+- :name: ' Coldwell Banker Welker Real Estate'
+  :tel: '2155462700'
+  :email: 
+- :name: ' Coldwell Banker Welker Real Estate-Center City'
+  :tel: '2152357800'
+  :email: 
+- :name: ' Commerce Real Estate Inc'
+  :tel: '2153321700'
+  :email: 
+- :name: ' Concept Realty LLC'
+  :tel: '2122579600'
+  :email: info@conceptreg.com
+- :name: ' Continental Real Estate Group'
+  :tel: '6106303700'
+  :email: 
+- :name: ' Coren J Wise'
+  :tel: '2159894530'
+  :email: info@wisephiladelphialawyer.com
+- :name: ' Dan Realty'
+  :tel: '2156772200'
+  :email: 
+- :name: ' Del Val Realty & Property Management'
+  :tel: '2156953007'
+  :email: mlautensack@DelValProperty.com
+- :name: ' Diallo Real Estate'
+  :tel: '2676272627'
+  :email: 
+- :name: ' Disston Realty'
+  :tel: '2153330750'
+  :email: info@disstonrealtyinphilly.com
+- :name: ' DJCRE Inc.'
+  :tel: '2152717070'
+  :email: 
+- :name: ' Dolan Family Real Estate'
+  :tel: '2154234915'
+  :email: Dolanfamilyrealty@comcast.net
+- :name: ' Domain Real Estate Group'
+  :tel: '2159216075'
+  :email: 
+- :name: ' Dome Real Estate International Inc'
+  :tel: '2156718852'
+  :email: info@domere.com 
+- :name: ' Dranoff Properties Realty Inc'
+  :tel: '2152223300'
+  :email: info@dranoffproperties.com
+- :name: ' Duffy Real Estate-Narberth'
+  :tel: '6106676655'
+  :email: 
+- :name: ' Elfant Wissahickon-Chestnut Hill'
+  :tel: '2152473600'
+  :email: 
+- :name: ' Elfant Wissahickon-Rittenhouse Square'
+  :tel: '2152473600'
+  :email: 
+- :name: ' Equity Pennsylvania Real Estate'
+  :tel: ''
+  :email: 
+- :name: ' ERA Aarch'
+  :tel: '2157281101'
+  :email: 
+- :name: ' EveryHome Realty'
+  :tel: '2156995555'
+  :email: EveryHome@EveryHome.com
+- :name: ' Exeter Realty'
+  :tel: '6108283200'
+  :email: 
+- :name: ' Exit Benchmark Realty'
+  :tel: '2154272870'
+  :email: 
+- :name: ' Francis E Mcgill Realtor'
+  :tel: '2154830970'
+  :email: mmcgill@mcgillrealtor.com
+- :name: ' Fred R Levine Real Estate'
+  :tel: '2154653733'
+  :email: 
+- :name: ' Gardner Realty'
+  :tel: '2158441788'
+  :email: 
+- :name: ' Genesis Real Estate Services'
+  :tel: '2152266200'
+  :email: office@genesisrealtyphilly.com
+- :name: ' George A Moscony Real Estate'
+  :tel: '2153656030'
+  :email: 
+- :name: ' George James Realty & Property Management'
+  :tel: '2153831818'
+  :email: george@georgejamesrealty.com
+- :name: ' GH Realty LLC'
+  :tel: '2159893600'
+  :email: info@grassholdings.com
+- :name: ' Giraldo Real Estate Group'
+  :tel: '2157450101'
+  :email: 
+- :name: ' Greystoke Realty'
+  :tel: '6106608303'
+  :email: davidgray@verizon.net
+- :name: ' H2 Real Estate'
+  :tel: '2052029192'
+  :email: 
+- :name: ' Herbert Realty'
+  :tel: '2153874622'
+  :email: 
+- :name: ' Herbert Yentis & Company-Philadelphia'
+  :tel: '2158770955'
+  :email: locate@yentis.com
+- :name: ' Heritage Homes Realty'
+  :tel: '2154905948'
+  :email: hhaws@comcast.net
+- :name: ' HG Realty Services Ltd'
+  :tel: '2672504913'
+  :email: howard1714@hotmail.com
+- :name: ' Higgins & Welch Real Estate Inc'
+  :tel: '2152475000'
+  :email: EWelch@welchgroup.net
+- :name: ' Homestarr Realty'
+  :tel: '2153555565'
+  :email: Homestarr@Homestarrinc.com
+- :name: ' Huntingdon Valley Realtors'
+  :tel: ''
+  :email: 
+- :name: ' HW & Assosciates Realty Corp'
+  :tel: '2156273700'
+  :email: HWinig@PhillyRetailRE.com/JWinig@PhillyRetailRE.com
+- :name: ' Icon Realty Group LLC'
+  :tel: '2152797235'
+  :email: 
+- :name: ' Ideal Realty LLC'
+  :tel: '2157451168'
+  :email: 
+- :name: ' Independent Custom Realty LLP'
+  :tel: '2157327427'
+  :email: info@icrphilly.com
+- :name: ' Integrity Real Estate Services'
+  :tel: '2158491111'
+  :email: trentpettus@aol.com
+- :name: ' JG Real Estate LLC'
+  :tel: '2154674100'
+  :email: info@jg-realestate.com
+- :name: ' JMH Realty Concepts-Philadelphia'
+  :tel: 2157636300/2158299909
+  :email: afolkman@jmhrealty.com/jhill@jmhrealty.com
+- :name: ' Jordan & Clark Realty'
+  :tel: '2159929056'
+  :email: 
+- :name: ' Joseph D Petrone Real Estate Inc'
+  :tel: '2158494000'
+  :email: info@petronerealestate.com
+- :name: ' Keller Williams Center City Realty'
+  :tel: '2156273500'
+  :email: klrw772@kw.com
+- :name: ' Keller Williams Delaware Valley Realty'
+  :tel: '6099878889'
+  :email: 
+- :name: ' Keller Williams Main Line Realty'
+  :tel: '6105200100'
+  :email: timbeverlin@kw.com
+- :name: ' Keller Williams Real Estate-Blue Bell'
+  :tel: '2156462900'
+  :email: klrw234@kw.com
+- :name: ' Keller Williams Real Estate-Horsham'
+  :tel: '2156578100'
+  :email: klrw748@kw.com
+- :name: ' Keller Williams Real Estate-Lafayette Hill'
+  :tel: '6108282224'
+  :email: klrw234@kw.com
+- :name: ' Keller Williams Real Estate-Langhorne'
+  :tel: '2156055497'
+  :email: 
+- :name: ' Keller Williams Real Estate-Montgomeryville'
+  :tel: '2158850880'
+  :email: 
+- :name: ' Keller Williams Real Estate-West Chester'
+  :tel: '6103634300'
+  :email: coached@kw.com
+- :name: ' Kershaw Real Estate'
+  :tel: '2154835717'
+  :email: MKershawRealty@aol.com
+- :name: ' Keystone State Properties Group'
+  :tel: '6109807000'
+  :email: 
+- :name: ' Korman Residential Properties'
+  :tel: '8882'
+  :email: CustomerRelations@LiveKorman.com
+- :name: ' Kurfiss Sotheby''s International Realty'
+  :tel: '2157352225'
+  :email: info@kurfiss.com
+- :name: ' Kurfiss Sotheby''s International Realty-New Hope'
+  :tel: '2157352225'
+  :email: info@kurfiss.com
+- :name: ' Legacy Real Estate Inc'
+  :tel: '2158368000'
+  :email: info@realtorsforinvestors.com 
+- :name: ' Legal Real Estate LLC'
+  :tel: ''
+  :email: 
+- :name: ' Lerch & Associates Real Estate-Abington'
+  :tel: '2158849980'
+  :email: 
+- :name: ' Liberty Bell Real Estate Agents LLC'
+  :tel: '2158853332'
+  :email: 
+- :name: ' Liberty Real Estate'
+  :tel: '2156254725'
+  :email: 
+- :name: ' Listing Houses for Less'
+  :tel: '8775115478'
+  :email: info@listinghousesforless.com
+- :name: ' Long and Foster-Devon'
+  :tel: '6102257400'
+  :email: 
+- :name: ' Long and Foster-Haverford'
+  :tel: '6106588900'
+  :email: 
+- :name: ' Long and Foster-Philadelphia'
+  :tel: '2154096900'
+  :email: 
+- :name: ' Long and Foster-West Chester'
+  :tel: '6104318500'
+  :email: 
+- :name: ' Luxury Condo Realty Services'
+  :tel: '2157838731'
+  :email: 
+- :name: ' Martin Elfant Inc. Real Estate'
+  :tel: '2158441200'
+  :email: contact@elfantre.com
+- :name: ' Marvin Capps Realty Inc'
+  :tel: '2155587000'
+  :email: marvin.capps@yahoo.com
+- :name: ' Maxwell Realty'
+  :tel: 2155466000/2156200099
+  :email: 
+- :name: ' Maxwell Realty Company'
+  :tel: 2155466000/2156200099
+  :email: 
+- :name: ' Mega Realty LLC'
+  :tel: '2159470575'
+  :email: info@mymegarealty.com
+- :name: ' Mercury Real Estate Group'
+  :tel: '2154625100'
+  :email: 
+- :name: ' Metropolitan Management Corporation'
+  :tel: '6106671700'
+  :email: inquire@mmcrent.com
+- :name: ' MG Real Estate Group'
+  :tel: '2159280221'
+  :email: info@mgrealestate.com
+- :name: ' MGM Development Commercial Industrial'
+  :tel: '2159280221'
+  :email: 
+- :name: ' Moore & Ryan Real Estate'
+  :tel: '4844204941'
+  :email: info@mooreandryan.com
+- :name: ' Mount Airy Real Estate'
+  :tel: '2158486030'
+  :email: mar6330@comcast.net 
+- :name: ' My Philly Condo'
+  :tel: '2672383737'
+  :email: info@myphillycondo.com
+- :name: ' National Realty Old City LLC'
+  :tel: '7326706496'
+  :email: 
+- :name: ' New Age Realty Group Inc'
+  :tel: '2153871002'
+  :email: 
+- :name: ' Newport Capital Management LLC'
+  :tel: '2158252509'
+  :email: info@npropertygroup.com
+- :name: ' Noble Realty Group'
+  :tel: '2153790300'
+  :email: 
+- :name: ' OCF Realty LLC'
+  :tel: '2157357368'
+  :email: info@ocfrealty.com
+- :name: ' Olde Towne Real Estate'
+  :tel: '2153222020'
+  :email: info@OldeTowneRealEstate.biz
+- :name: ' Onyx Management Group'
+  :tel: '2153550500'
+  :email: Info@onyxmgt.com
+- :name: ' Onyx Real Estate LLC'
+  :tel: '2159530500'
+  :email: 
+- :name: ' Orens Brothers Real Estate Inc'
+  :tel: '2152224412'
+  :email: lea@orensbrothers.com
+- :name: ' P C First Realty Inc'
+  :tel: '2156258953'
+  :email: 
+- :name: ' PA RealtyWorks LLC'
+  :tel: '2157325899'
+  :email: info@PARealtyWorks.com 
+- :name: ' Pan Am Realty Company Inc'
+  :tel: '2155927088'
+  :email: panamrealty@gmail.com
+- :name: ' Pappas Realty'
+  :tel: '6106684040'
+  :email: 
+- :name: ' Paramount Realty Inc'
+  :tel: '7329618137'
+  :email: pconte@paramountrealty.com
+- :name: ' Penn Select Real Estate'
+  :tel: '2154520200'
+  :email: 
+- :name: ' Perfect Place Real Estate'
+  :tel: '2159219053'
+  :email: perfectplacere@gmail.com
+- :name: ' PGM Real Estate Associates'
+  :tel: '6103440600'
+  :email: info@pgmrealestate.com
+- :name: ' Philadelphia Real Estate Professionals'
+  :tel: '2159659701'
+  :email: eileenpag1@gmail.com
+- :name: ' Philip Fortuna & Associates'
+  :tel: '2159251212'
+  :email: fortuna.diflumeri@philaappraiser.com
+- :name: ' Philly Rentals Online'
+  :tel: '2159411460'
+  :email: info@PhillyRentalsOnline.com
+- :name: ' Philomeno & Salamone Real Estate Inc'
+  :tel: '6108257007'
+  :email: lsisson@philomenoandsalamone.com
+- :name: ' Plumer & Associates Inc'
+  :tel: 215/9224200
+  :email: info@PlumerRE.com
+- :name: ' Police & Firefighter Realty LTD'
+  :tel: '2153517437'
+  :email: 
+- :name: ' Premier Access Property Management'
+  :tel: '2675192819'
+  :email: info@paxmanagement.com
+- :name: ' Premier Property Sales & Rentals'
+  :tel: '6103282400'
+  :email: 
+- :name: ' Premium Realty Group Inc'
+  :tel: '2157257080'
+  :email: 
+- :name: ' Quality Real Estate-Broad St'
+  :tel: '2154572600'
+  :email: info@qualityrealestatepa.com
+- :name: ' RE/MAX 2000'
+  :tel: '2156982000'
+  :email: 
+- :name: ' RE/MAX Access'
+  :tel: '2154002600'
+  :email: 
+- :name: ' RE/MAX Achievers-Collegeville'
+  :tel: '6104895900'
+  :email: 
+- :name: ' RE/MAX Affiliates-Northeast'
+  :tel: '2159921728'
+  :email: info@gophillyhomes.com
+- :name: ' RE/MAX Central'
+  :tel: '2156433200'
+  :email: 
+- :name: ' RE/MAX Centre Realtors'
+  :tel: '2153622260'
+  :email: 
+- :name: ' RE/MAX Classic'
+  :tel: '6106872900'
+  :email: 
+- :name: ' RE/MAX Eastern-Feasterville'
+  :tel: '2159538800'
+  :email: 
+- :name: ' RE/MAX Eastern-Philadelphia-Frankford'
+  :tel: '2153352900'
+  :email: 
+- :name: ' RE/MAX Eastern-Philadelphia-Grant Ave'
+  :tel: '2159616000'
+  :email: 
+- :name: ' RE/MAX Elite'
+  :tel: '2153284800'
+  :email: 
+- :name: ' RE/MAX Home Experts'
+  :tel: '2154672892'
+  :email: johnbenson@remax.net
+- :name: ' RE/MAX Legacy-Plymouth Meeting'
+  :tel: '2158228200'
+  :email: info@legacyparealestate.com
+- :name: ' RE/MAX Millennium-Huntingdon Valley'
+  :tel: '2153791100'
+  :email: 
+- :name: ' RE/MAX Performance Realty'
+  :tel: '2152486200'
+  :email: 
+- :name: ' RE/MAX Preferred-Newtown Square'
+  :tel: '6103254100'
+  :email: 
+- :name: ' RE/MAX Preferred-Sewell'
+  :tel: '8565894848'
+  :email: 
+- :name: ' RE/MAX Properties-Newtown'
+  :tel: '2159687400'
+  :email: 
+- :name: ' RE/MAX Realty Services-Bensalem'
+  :tel: '2152452100'
+  :email: 
+- :name: ' RE/MAX Services'
+  :tel: '3037705531'
+  :email: 
+- :name: ' RE/MAX Signature'
+  :tel: '2153439950'
+  :email: 
+- :name: ' Real Property Management Delaware Valley'
+  :tel: '8772451855'
+  :email: 
+- :name: ' Realty Broker Direct'
+  :tel: '2154877283'
+  :email: 
+- :name: ' Realty Mark Absolute'
+  :tel: '2159956850'
+  :email: 
+- :name: ' Realty Mark Associates'
+  :tel: '2153764444'
+  :email: 
+- :name: ' Realty Mark Associates - CC'
+  :tel: '2153764444'
+  :email: 
+- :name: ' Realty Mark Cityscape'
+  :tel: '2155837777'
+  :email: 
+- :name: ' Realty Mark The Diamond Group'
+  :tel: '6104491919'
+  :email: 
+- :name: ' REDBLOCK Realty Inc.'
+  :tel: '2153315252'
+  :email: info@redblockrealty.com
+- :name: ' Reddington Property Management'
+  :tel: '2158861200'
+  :email: 
+- :name: ' Reliance Realty'
+  :tel: '2672358464'
+  :email: 
+- :name: ' RHC Realty LLC'
+  :tel: '2676871017'
+  :email: 
+- :name: ' Rittenhouse REO Specialist'
+  :tel: '2155687177'
+  :email: 
+- :name: ' S E Armstead Real Estate'
+  :tel: '2155482411'
+  :email: info@searmsteadrealestate.com
+- :name: ' Sassi Real Estate'
+  :tel: '2672465308'
+  :email: constablesassi@verizon.net
+- :name: ' Settle Down Philadelphia'
+  :tel: '2152533439'
+  :email: 
+- :name: ' SJI Jackson Real Estate'
+  :tel: '2153319950'
+  :email: jreinert@sjijackson.com
+- :name: ' Sky City Properties'
+  :tel: '2157823666'
+  :email: skycityproperties@comcast.net
+- :name: ' Skyline Realty Property Managment LLC'
+  :tel: '2158001762'
+  :email: 
+- :name: ' Soldier Real Estate'
+  :tel: '2677701168'
+  :email: 
+- :name: ' Solo Real Estate Inc.'
+  :tel: '2155647656'
+  :email: info@solorealty.com
+- :name: ' SRS Real Estate'
+  :tel: '2155610900'
+  :email: 
+- :name: ' SSH Real Estate'
+  :tel: '2158933000'
+  :email: 
+- :name: ' Stonehenge Advisors Inc'
+  :tel: '2153203777'
+  :email: 
+- :name: ' Streamline Realty LLC'
+  :tel: '6105130419'
+  :email: mgmt@thestreamlinenetwork.com
+- :name: ' Summit Real Estate'
+  :tel: '2157551100'
+  :email: 
+- :name: ' Superior Real Estate Philadelphia LLC'
+  :tel: '2159953098'
+  :email: 
+- :name: ' T. Wells Real Estate Services'
+  :tel: '2673043500'
+  :email: 
+- :name: ' The Condo Shop'
+  :tel: '2156926636'
+  :email: info@thecondoshops.com
+- :name: ' The Galman Group'
+  :tel: '2158862000'
+  :email: 
+- :name: ' The People''s Choice Real Estate'
+  :tel: '2156987400'
+  :email: Gorypa@gmail.com
+- :name: ' Triad Realty Inc.'
+  :tel: '2159227501'
+  :email: 
+- :name: ' Tri-County Realty'
+  :tel: '2155458700'
+  :email: 
+- :name: ' Turchi Inc'
+  :tel: '2155466700'
+  :email: rturchi@turchiproperties.com
+- :name: ' U S Spaces Inc'
+  :tel: '2158298850'
+  :email: 
+- :name: ' United Real Estate'
+  :tel: 888503750/6104537300
+  :email: kenochs@unitedrealestate.com
+- :name: ' VIP Realty Corporation-Philadelphia'
+  :tel: '2157255700'
+  :email: 
+- :name: ' Weichert Realtors-Blue Bell'
+  :tel: '2156288300'
+  :email: 
+- :name: ' Weichert Realtors-Jenkintown'
+  :tel: '2158858100'
+  :email: 
+- :name: ' Weichert Realtors-Paoli'
+  :tel: '6106475600'
+  :email: JRavegum@weichertrealtors.net
+- :name: ' Weichert Realtors-Yardley'
+  :tel: '2154930900'
+  :email: 
+- :name: ' White Acre Realty'
+  :tel: '2159954222'
+  :email: 
+- :name: ' XRealty.NET LLC'
+  :tel: '8888389044'
+  :email: 
+- :name: ' Zommick McMahon Commercial Real Estate Inc.'
+  :tel: '6103591100'
+  :email: 
+- :name: RE/MAX Keystone
+  :tel: '2158858900'
+  :email: 

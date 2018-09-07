@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thank you for using CitySpade!</title>
+  </head>
+  <body>
+    <div class="container" style="padding-left: 10%;padding-right: 10%;">
+      <div class="heading" style="background: #dadada;">
+        <div class="logo" style="display: inline-block;">
+          <img src="https://s3.amazonaws.com/cityspade-test/Logos/City-logo.png" alt="logoimage" width="250">
+        </div>
+        <div class="logo-txt" style="display: inline-block;float: right;font-size: 20px;margin-right: 8%;">
+          <p>Thank you for using CitySpade!</p>
+        </div>
+      </div>
+      <div class="main-body">
+        <h2>Hello <%= @client.try(:first_name).nil? ? @client.name : @client.first_name %></h2>
+        <p>Thank you for the payment! Below is your receipt for your records:</p>
+        <div class="receipt" style="padding-top: 2%;background: #dadada;padding-bottom: 2%;padding-left: 3%;">
+          <div class="row" style="display: inline-block;width: 100%;">
+            <p class="label" style="display: inline-block;width: 14%;">Payment Date: </p>
+            <p class="data" style="display: inline-block;"><%= @paytime %></p>
+          </div>
+          <div class="row" style="display: inline-block;width: 100%;">
+            <p class="label" style="display: inline-block;width: 14%;">Paid by:</p>
+            <p class="data" style="display: inline-block;"><%= @client.try(:first_name).nil? ? "#{@client.name}" : "#{@client.first_name} #{@client.last_name}" %></p>
+          </div>
+          <div class="row" style="display: inline-block;width: 100%;">
+            <p class="label" style="display: inline-block;width: 14%;">Payment type: </p>
+            <p class="data" style="display: inline-block;"><%= @resp.card_details.card.card_brand %></p>
+          </div>
+          <div class="row" style="display: inline-block;width: 100%;">
+            <p class="label" style="display: inline-block;width: 14%;">Card No.: </p>
+            <p class="data" style="display: inline-block;">****<%= @resp.card_details.card.last_4 %></p>
+          </div>
+          <div class="row" style="display: inline-block;width: 100%;">
+            <p class="label" style="display: inline-block;width: 14%;">Amount: </p>
+            <p class="data" style="display: inline-block;">$<%= (@resp.amount_money.amount)/100.0 %></p>
+          </div>
+        </div>
+        <p>If you have any additional questions, please feel free to contact us using the email contact@cityspade.com. Thank you!</p>
+      </div>
+    </div>
+  </body>
+</html>

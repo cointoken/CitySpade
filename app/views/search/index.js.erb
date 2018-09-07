@@ -1,0 +1,6 @@
+$("<%= j render('listings/index', listings: @listings)%>").replaceAll('.listing_on_search');
+$("<%= j paginate @listings, remote: true, window: 3%>").replaceAll('.pagination');
+window.history.pushState({path: <%== full_url.inspect %>},'',<%== full_url.inspect %>);
+Maps.listingIndex();
+App.Search.WindowScroll();
+App.Search.WindowResize();

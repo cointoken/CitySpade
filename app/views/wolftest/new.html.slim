@@ -1,0 +1,42 @@
+.container-fluid#wolftest
+  = form_tag '/wolftest', method: 'post', form_info: params, id: "wolftest_form" do
+    fieldset#origin
+      = hidden_field_tag 'page-no', 'page1'
+
+      .row style="margin-top: 60px"
+        = image_tag "wolftest/logo-horizontal.png", style: "width: 120px", class: "center"
+
+      .row style="margin-top: 80px"
+        h2 命中注定你是个怎样的</br>狼人杀玩家？
+
+      .row style="margin-top: 80px"
+        = text_field_tag 'form_test[name]', nil, class: 'name', placeholder: '你的名字'
+
+      .button-wrapper style="margin-top: 40px"
+        input type="button" name="show" class="submit" value="查看结果"
+
+    fieldset#result
+      = hidden_field_tag 'page_no', 'page2'
+
+      .row style="margin-top: 100px"
+        = image_tag "wolftest/logo-horizontal.png", style: "width: 120px; height: 24.09px", class: "center"
+
+      .row style="margin-top: 100px"
+        img#resultimg src="https://s3.amazonaws.com/cityspade-test/wolfentest/1.png"
+
+
+
+coffee:
+  $(document).ready ->
+    $(".navbar").css("display","none");
+    $("#sp-footer-wrapper").css("display","none");
+    $("#sp-coppyright-wrapper").css("display","none");
+
+    $(".submit").click ->
+      parent = $(this).parents('fieldset')
+      next_fs = parent.next()
+      prob = Math.floor(Math.random() * 30) + 1
+      resul = next_fs.find('#resultimg')
+      resul.attr 'src', 'https://s3.amazonaws.com/cityspade-test/wolfentest/' + prob + '.png'
+      parent.slideUp('fast', ->
+        next_fs.show('slide', {direction: 'down'}, 50))

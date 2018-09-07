@@ -1,0 +1,5 @@
+.img-row
+  - bimages.each_with_index do |image|
+    .img-thumb
+      a.img-fancy href="#{image.image_url}" data-fancybox="images"
+        = image_tag image.image_url(:thumb)

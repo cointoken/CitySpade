@@ -1,0 +1,247 @@
+/* * --------------------------------------------------------------------
+  # Package - JoomlaMan JMNewsPro
+  # Version 1.0
+  # --------------------------------------------------------------------
+  # Author - JoomlaMan http://www.joomlaman.com
+  # Copyright © 2012 - 2013 JoomlaMan.com. All Rights Reserved.
+  # @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
+  # Websites: http://www.JoomlaMan.com
+  ---------------------------------------------------------------------* */
+.doublelines {
+  padding: 20px 0;
+  position: relative;
+}
+.doublelines  .slide-item-image{
+  /* padding: 3px; */
+}
+.doublelines  .slide-item-title{
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.doublelines  .slide-item-title a{
+	font-size:20px;color:#fff;
+	font-family:'MuseoSlab';font-weight:normal;
+	text-transform:uppercase;
+}
+.doublelines  .slide-item-title a:hover{}
+
+.doublelines span.slide-item-readmore, 
+.doublelines span.slide-item-zoom {
+	display:inline-block;
+}
+
+.doublelines span.slide-item-readmore a ,.doublelines span.slide-item-zoom a {
+	background: none repeat scroll 0 0 transparent;
+    border: 1px solid #29BCB8;
+    border-radius: 1px 1px 1px 1px;
+    color: #29BCB8;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    height: 15px;
+    line-height: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 15px;
+}
+.doublelines span.slide-item-readmore a {
+	margin-right: 10px;
+}
+
+.doublelines span.slide-item-readmore a:hover{
+
+}
+.doublelines .slide-item-desc {
+  font-size:12px;
+  padding-bottom:10px;
+}
+.doublelines .jmnewspro-prev,
+.doublelines .jmnewspro-next{
+    cursor: pointer;
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	font-size: 60px;
+	vertical-align: middle;
+	font-weight: normal;
+	padding: 50px 20px;
+	line-height:22px;
+	width: 600px;margin-top: -60px;
+	height: 65px;background: #dadbde;
+}
+.doublelines .jmnewspro-prev{
+	left: -660px;
+	text-align: right;
+}
+.doublelines .jmnewspro-next{
+	right: -660px;
+	text-align: left;
+}
+
+.doublelines .slide-inner{
+  padding:0px!important;
+}
+.doublelines .slide-inner .padding{
+  padding: 0 8px !important
+}
+.doublelines .bx-wrapper {
+  position: relative;
+  margin: 0 auto 0;
+  padding: 0;
+  *zoom: 1;
+}
+.doublelines .bx-wrapper img {
+  max-width: 100%;
+  display: block;
+}
+/** THEME
+===================================*/
+.doublelines .bx-pager ul{
+  list-style-type: none !important;
+  margin: 3px 0 0 !important;
+  padding: 0 !important;
+  float: left;
+}
+.doublelines .bx-pager ul li {
+  float: left;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px 0 0 !important;
+}
+.doublelines .bx-pager ul li a{
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAABICAYAAADGScSgAAACYUlEQVR42u2VQWcDURSFQ+lqKCGEIWQVGUpWIYQQQlcllCzyX0roqv8g/6CEbEtXJTFk1WVk01XpqoRZlZKeo/fFeO67k4YsSodvvLlzj7nv3TfvlEretdlsYvAA3gSO45J1IaEBPsDOg7HEEs4UkWNuCbeGMDuJcH5sqclRi5NrBxfpXZgVtoPXeDyOwQN4EziOi0QN8AF2HowllnCmiBxzS7g1hNlJhPNjS02OWpxcO7hI78KssB3r9ToCtyAFX0IqsSgk6oFXcA864EzoSIzver5oCJ7ByKhmJDlDFyiDDAyKtiNzJLfMhzviJ02n08uA+CcftxfQUoQLkCjCFjUcfIJzRVgFS9DwhBdgy8GWD1pZEHX5ZaVlmVVqHaQgDpXKyU4UIcusKXOcuMWpyBL3PaEm6ktuxQVuwNO+uXobrsEjc7Xmui3XzsXbuS13ZW1yzmEFdsJKYpH1S0XgFqTgS0glFoVEPfAK7kEHnAkdifFdzxcNwTMYGdWMJGfoAmUeRGBwwGE9kNwyH+6In9RsNi8D4p983F5ASxEuQKIIW9Rw8AnOFWEVLEHDE17w/HWHsPp3QNTll5WWZVapdZCCOFQqJztRhCyzpsxx4hanIkvc94SaqC+5FRe4AU/75uptuAaPzNWa67ZcOxdv57bclbXJOYdVznBWEov+vaPAPw7xjsQ/xQu9g34hB3JVEYa9Q5yqa7RM9w76hfhG3So15B01lvtr79D84987/p53hPzjEO9I/FO80DvoF3IgVxVh2DvEqbpGy3TvoF+Ib9StUkPeUWO5v/YOzT/+qHd8A+NAegnqyeocAAAAAElFTkSuQmCC') no-repeat 50% 0;
+  text-indent: -999em;
+  cursor: pointer;
+  display: block;
+  width: 8px;
+  height: 8px;
+  overflow: hidden;
+}
+.doublelines .bx-pager ul li a:hover, .bx-pager ul li a.active {
+  background-position: 50% -8px;
+}
+.doublelines .bx-wrapper .bx-controls-direction{
+  display: none;
+}
+.slide-inner {
+  padding: 0 8px!important;
+  float: left;
+}
+.css3 .view{
+  float: none!important;
+}
+/** CSS3 effect
+===================================*/
+.doublelines .slide-item-wrap-item img {
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.doublelines .slide-item-wrap-item .slide-item-desc-warp {
+  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: none repeat scroll 0 0 rgba(30, 30, 30, 0.8);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+
+}
+
+
+.doublelines .slide-item-wrap-item .slide-item-title {
+  b,order-bo.ttom: 1px solid rgba(0, 0, 0, 0.3);
+  background: transparent;
+  margin: 40px 5px 20px 5px;
+  -webkit-transform: translate(0, -200px);
+  -moz-transform: translate(0, -200px);
+  -o-transform: translate(0, -200px);
+  -ms-transform: translate(0, -200px);
+  transform: translate(0, -200px);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.doublelines .slide-item-wrap-item .slide-item-desc {
+  -webkit-transform: translate(-200px, 200px);
+  -moz-transform: translate(-200px, 200px);
+  -o-transform: translate(-200px, 200px);
+  -ms-transform: translate(-200px, 200px);
+  transform: translate(-200px, 200px);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.doublelines .slide-item-wrap-item .slide-item-readmore {
+  -webkit-transform: translate(-200px, 0);
+  -moz-transform: translate(-200px, 0);
+  -o-transform: translate(-200px, 0);
+  -ms-transform: translate(-200px, 0);
+  transform: translate(-200px, 0);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+.doublelines .slide-item-wrap-item .slide-item-zoom {
+  -webkit-transform: translate(200px, 0);
+  -moz-transform: translate(200px, 0);
+  -o-transform: translate(200px, 0);
+  -ms-transform: translate(200px, 0);
+  transform: translate(200px, 0);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+
+.doublelines .slide-item-wrap-item:hover .slide-item-desc-warp {
+  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+.doublelines .slide-item-wrap-item:hover .slide-item-title,
+.doublelines .slide-item-wrap-item:hover .slide-item-desc, 
+.doublelines .slide-item-wrap-item:hover .slide-item-readmore, 
+.doublelines .slide-item-wrap-item:hover .slide-item-zoom {
+  -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -o-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+}
+.doublelines .slide-item-wrap-item:hover .slide-item-desc {
+  -webkit-transition-delay: 0.1s;
+  -moz-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  -ms-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.doublelines .slide-item-wrap-item:hover .slide-item-readmore a {
+  -webkit-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -ms-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+.doublelines .slide-item-wrap  .view .slide-item-desc-warp{
+	/* width:98%;
+	height:96.5%;
+	margin:3px; */
+}

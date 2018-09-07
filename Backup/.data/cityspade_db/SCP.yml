@@ -1,0 +1,36 @@
+---
+- !ruby/object:Backup::Package
+  trigger: cityspade_db
+  extension: tar.enc
+  chunk_suffixes: []
+  no_cycle: false
+  version: 4.0.1
+  time: 2014.08.01.07.22.13
+- !ruby/object:Backup::Package
+  trigger: cityspade_db
+  extension: tar.enc
+  chunk_suffixes: []
+  no_cycle: false
+  version: 4.0.1
+  time: 2014.08.01.03.26.03
+- !ruby/object:Backup::Package
+  trigger: cityspade_db
+  extension: tar.enc
+  chunk_suffixes: []
+  no_cycle: false
+  version: 4.0.1
+  time: 2014.07.30.03.26.03
+- !ruby/object:Backup::Package
+  trigger: cityspade_db
+  extension: tar.enc
+  chunk_suffixes: []
+  no_cycle: false
+  version: 4.0.1
+  time: 2014.07.29.03.26.03
+- !ruby/object:Backup::Package
+  trigger: cityspade_db
+  extension: tar.enc
+  chunk_suffixes: []
+  no_cycle: false
+  version: 4.0.1
+  time: 2014.07.28.03.26.03

@@ -1,0 +1,16 @@
+= form_tag '/agents/contact-agent', id: "contact-agent-modal-form", remote: true do
+  = hidden_field_tag 'agent_id', params[:id]
+  .form-group
+    span To: #{@agent.name}
+  .form-group
+    = text_area_tag "Message", nil, placeholder: "I want to ask about...", class: "form-control", id: "contact-description", rows: 8
+  .form-group
+    = text_field_tag 'Name', nil, placeholder: "Your Name", class: "form-control", required: true
+  .form-group
+    = text_field_tag 'Email', nil, placeholder: "Your Email", class: "form-control", id: "contact-email", type: "email", required: true
+  .form-group
+    = text_field_tag 'Phone', nil, placeholder: "Phone Number", class: "form-control", required: true
+  .form-group.text-center
+    = submit_tag "Ask Question", class: "btn btn-default", id: "contact-send-btn"
+
+end

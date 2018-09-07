@@ -1,0 +1,309 @@
+window.Maps = Maps =
+  getLocal: ->
+    if gon.local
+      $.get '/api/geoip/outdoor.js?lat=' + gon.local.lat + '&lng=' + gon.local.lng
+  listingShow: ->
+    geocoder = new google.maps.Geocoder()
+    # Get data through #js-listing.data-attr
+    data = $('#js-listing').data()
+    lat = data.lat
+    lng = data.lng
+    address= data.address
+
+    # Map drawing
+    myLatlng = new google.maps.LatLng(lat,lng)
+    mapOptions =
+      center: myLatlng
+      zoom: 15
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
+    marker = new google.maps.Marker(
+      position: myLatlng
+      map: map
+      title: address
+    )
+  streetViewShow: ->
+    data = $('#js-listing-data').data()
+    lat = data.lat
+    lng = data.lng
+    latlng = new google.maps.LatLng(lat,lng)
+    panoramaOptions =
+      position: latlng
+      pov:
+        heading: 90
+        pitch: 0
+    panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'),panoramaOptions)
+    false
+
+  StreetView: (latlng, panoEle)->
+    if gon.local && gon.local == latlng
+      $.getJSON '/api/geoip/outdoor?lat=' + latlng.lat + '&lng=' + latlng.lng, (data)->
+        console.log data
+        data = latlng unless data
+        ll = new google.maps.LatLng(data.lat, data.lng)
+        panoOptions =
+          position: ll
+          pov:
+            heading: 90
+            pitch: 0
+        panorama = new google.maps.StreetViewPanorama(document.getElementById(panoEle), panoOptions)
+        false
+    else
+      ll = new google.maps.LatLng(latlng.lat, latlng.lng)
+      panoOptions =
+        position: ll
+        pov:
+          heading: 90
+          pitch: 0
+      panorama = new google.maps.StreetViewPanorama(document.getElementById(panoEle), panoOptions)
+      false
+
+  currentMarkerIndex: -1
+
+  infoWindows: []
+
+  DrawMarker: (listing,map,markers)->
+    ele      = $('#show_maps')
+    marker =  ''
+    infowindow = new google.maps.InfoWindow
+    content: "holding..."
+
+    if listing.data && listing.data()
+      data = listing.data()
+    else
+      data = listing
+
+    if data.lat && data.lng
+      latlng = new google.maps.LatLng(data.lat, data.lng)
+
+      marker = new google.maps.Marker
+        position: latlng
+        map: map
+        title: data.title
+
+      marker.html = "<h5>" + data.title + "</h5>"
+      marker.id = data.id
+
+      if data.price
+        marker.html = marker.html + '<p>' + data.price + '</p>'
+
+      marker.html = marker.html + '<a href="javascript:;" onclick="$(\'a.fancybox-preview\').eq('+data.index+').click()">Preview</a>'
+
+      markers.push(marker)
+      Maps.infoWindows.push(infowindow)
+
+    google.maps.event.addListener marker, 'click', (m)->
+      Maps.closePreviousInfoWindow()
+      Maps.currentMarkerIndex = data.index
+
+      infowindow.setContent this.html
+      infowindow.open map, this
+
+  closePreviousInfoWindow: ->
+    if Maps.currentMarkerIndex > -1
+      Maps.infoWindows[Maps.currentMarkerIndex].close()
+
+  listingOffset: (m)->
+    id = map.getDiv().id
+    pos = $("#" + id).offset()
+    width = $("#" + id).width()
+    height = $("#" + id).height()
+    offsetX = width - (m.pageX - pos["left"] + 180) # 150为listing宽度+20padding,180是加上各边框等内容的估算
+    offsetY = height - (m.pageY - pos["top"] + 230) # 220为listing高度，230是加上各边框等内容的估算
+    if offsetX < 0 then x = offsetX else x = 0
+    if offsetY < 0 then y = offsetY else y = 0
+    return new google.maps.Size(x, y, "px", "px")
+
+  listingIndex: ->
+    ele      = $("#listingIndexMap")
+    latlng   = new google.maps.LatLng(40.7143528, -74.0059731)
+    opts     = {zoom: 11, center: latlng, zoomControl: boolean: true, scaleControl: true, streetViewControl: true}
+    window.map = new google.maps.Map(document.getElementById('listingIndexMap'), opts)
+    markers  = []
+    listings = $('.listing')
+
+    if listings.length > 0
+      listing = $(listings[0])
+      for listing in listings
+        Maps.DrawMarker($(listing), map, markers)
+
+    if markers.length > 0
+      map.setCenter markers[0].getPosition()
+
+    $(document).on 'mouseenter', '.listing', ->
+      marker = markers[$(this).data().index]
+      map.panTo marker.getPosition()
+      marker.setAnimation(google.maps.Animation.BOUNCE)
+      setTimeout(
+        -> marker.setAnimation(null),
+        1450
+      )
+
+  buildingIndex: ->
+    ele      = $("#buildingIndexMap")
+    if $('.card').length > 0
+      data = $('.card').first().data()
+      latlng = new google.maps.LatLng(data.lat, data.lng)
+    else
+      latlng   = new google.maps.LatLng(40.7143528, -74.0059731)
+    opts     = {zoom: 12, center: latlng, zoomControl: boolean: true, scaleControl: true, streetViewControl: true}
+    window.map = new google.maps.Map(document.getElementById('buildingIndexMap'), opts)
+    markers = []
+    buildings = $('.card')
+    markers.forEach( (m) ->
+      m.setMap(null)
+    )
+
+    if buildings.length > 0
+      for building in buildings
+        Maps.DrawMarker($(building), map, markers)
+      
+    $('.card').mouseenter (e) ->
+      e.stopPropagation()
+      marker = markers[$(this).data().index]
+      map.panTo marker.getPosition()
+      marker.setAnimation(google.maps.Animation.BOUNCE)
+      setTimeout(
+        -> marker.setAnimation(null),
+        1450
+      )
+    
+
+  reviewsList: ->
+    ele = $("#map-canvas")
+    data = ele.data()
+    latlng = new google.maps.LatLng(data.lat, data.lng)
+    opts   = {zoom: 11, center: latlng}
+    map = new google.maps.Map(document.getElementById('map-canvas'), opts)
+    markers = []
+    reviews = $('.review-list')
+    for review in reviews
+      Maps.DrawMarker($(review), map, markers)
+    if markers.length > 0
+      map.setCenter markers[0].getPosition()
+
+    $(".review-list").hover ->
+      for m in markers
+        m.setMap null
+      markers = []
+      Maps.DrawMarker($(this),map,markers)
+      map.setCenter markers[0].getPosition()
+      map.setZoom(15)
+
+  reviewShow: ->
+    ele = $("#review-map")
+    latlng = new google.maps.LatLng(gon.local.lat, gon.local.lng)
+    zoom = 14
+    opts     = {zoom: zoom, center: latlng, scaleControl: false, streetViewControl: false}
+    window.map      = new google.maps.Map(document.getElementById('map-canvas'), opts) unless window.map == null
+    marker = new google.maps.Marker
+      position: latlng,
+      map: window.map
+    false
+    Maps.StreetView(gon.local, 'sv-pano')
+
+  reviewNeighborhoodShow: ->
+    # Maps.loadMarkerwithLabel()
+    # Maps.loadInfoBox()
+    ele = $(".review-title-info")
+    latlng = new google.maps.LatLng(gon.local.lat, gon.local.lng)
+    zoom = 14
+    opts     = {zoom: zoom, center: latlng, zoomControl: boolean: true, scaleControl: true, streetViewControl: true}
+    window.map      = new google.maps.Map(document.getElementById('map-canvas'), opts) unless window.map == null
+    marker = null
+    $(".reviews .review").hover ->
+      marker.setMap null if marker
+      self = $(this)
+      latlng = new google.maps.LatLng(self.data('lat'), self.data('lng'))
+      marker = new google.maps.Marker
+        position: latlng
+        map: window.map
+      map.setCenter latlng
+
+  Contact: ->
+    # Get data through #js-contact.data-attr
+    data = $('#js-contact').data()
+    lat = data.lat
+    lng = data.lng
+    address= data.address
+
+    # Map drawing
+    myLatlng = new google.maps.LatLng(lat,lng)
+    mapOptions =
+      center: myLatlng,
+      zoom: 13
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
+    image = '<%= image_path 'icons/map-icon.png' %>'
+    marker = new google.maps.Marker(
+      position: myLatlng
+      map: map
+      icon: image
+    )
+
+  roomShowMap: ->
+    # Get data through #js-room.data-attr
+    data = $('#js-room').data()
+    lat = data.lat
+    lng = data.lng
+    address= data.address
+
+    # Map drawing
+    myLatlng = new google.maps.LatLng(lat,lng)
+    mapOptions =
+      scrollwheel: false,
+      center: myLatlng,
+      zoom: 15
+
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions)
+    image = '<%= image_path 'icons/map-icon.png' %>'
+    marker = new google.maps.Marker(
+      position: myLatlng
+      map: map
+      icon: image
+    )
+
+  showMap: ->
+    $(".reviews .review .head-portrait .show-map").bind "click", (e) ->
+      e.preventDefault()
+      lat = $(this).data("lat")
+      lng = $(this).data("lng")
+      if gon.mobiled
+        mapWh = "width:250px;height:350px;"
+      else
+        mapWh = "width:950px;height:550px;"
+      $.fancybox("<div id='neighborhood-map-canvas' style='" + mapWh + "'></div>")
+      ele = $(".review-title-info")
+      latlng = new google.maps.LatLng(lat, lng)
+      zoom = 14
+      opts     = {zoom: zoom, center: latlng, zoomControl: boolean: true, scaleControl: true, streetViewControl: true}
+      window.map      = new google.maps.Map(document.getElementById('neighborhood-map-canvas'), opts) unless window.map == null
+      marker = new google.maps.Marker
+        position: latlng
+        map: map
+  neighborhoodStreetView: ->
+    $(".reviews .review .head-portrait .street-view").bind "click", (e) ->
+      e.preventDefault()
+      lat = $(this).data("lat")
+      lng = $(this).data("lng")
+      $.getJSON '/api/geoip/outdoor?lat=' + lat + '&lng=' + lng, (data)->
+        if gon.mobiled
+          streetViewWh = "width:250px;height:350px;"
+        else
+          streetViewWh = "width:950px;height:550px;"
+        $.fancybox("<div id='neighborhood-street-view' style='" + streetViewWh + "'></div>")
+        Maps.StreetView(data, 'neighborhood-street-view')
+
+  buildingMap: ->
+    data = $('#js-build').data()
+    lat = data.lat
+    lng = data.lng
+    address= data.address
+    uluru =
+      lat: lat
+      lng: lng
+    map = new (google.maps.Map)(document.getElementById('map'),
+      zoom: 16
+      center: uluru)
+    marker = new (google.maps.Marker)(
+      position: uluru
+      map: map
+      title: address)

@@ -1,0 +1,141 @@
+.form-group
+  label
+  = f.label :title, "Post Title"
+  = f.text_field :title, placeholder: "This is a simple title for your post"
+
+.aside-text
+  span About you
+hr.divider
+
+.form-group
+  = f.label :gender, "Gender"
+  - male_checked = @roommate.gender == "Male"
+  - female_checked = @roommate.gender == "Female"
+
+  .row
+    .col-sm-6
+      .aligned-checklist
+        label.checkbox-label
+          = f.radio_button :gender, "Male",
+            checked: male_checked
+          .styled-checkbox
+          | Male
+
+    .col-sm-6
+      .aligned-checklist
+        label.checkbox-label
+          = f.radio_button :gender, "Female",
+            checked: female_checked
+          .styled-checkbox
+          | Female
+
+.form-group
+  .row
+    .col-sm-5
+      = f.label :budget, "Budget"
+      .input-group
+        span.input-group-addon $
+        = f.text_field :budget, placeholder: "0.00", required: true
+        span.input-group-addon
+          | / Month
+
+    .col-sm-5.col-sm-push-1
+      = f.label :move_in_date, "Move-In Date"
+      = f.text_field :move_in_date, placeholder: "mm/dd/yy",
+        id: "roommateMoveDate", required: true
+
+.aside-text
+  span Your preferences
+hr.divider
+
+
+.form-group
+  .row
+    .col-sm-5
+      = f.label :num_roommates, "Number of Roommates"
+      .input-group
+        = f.text_field :num_roommates, placeholder: "e.g. 2"
+        span.input-group-addon Roommate(s)
+
+    .col-sm-5.col-sm-push-1
+      = f.label :duration, "Duration of Stay"
+      .input-group
+        = f.text_field :duration, placeholder: "e.g. 10",
+          required: true
+        span.input-group-addon Month(s)
+
+
+.form-group
+  label Students Only?
+  br
+  .row
+    .col-xs-6
+      .aligned-checklist
+        label.checkbox-label
+          = f.radio_button :students_only, true,
+            checked: @roommate.students_only
+          .styled-checkbox
+          | Yes
+
+    .col-xs-6
+      .aligned-checklist
+        label.checkbox-label
+          = f.radio_button :students_only, false,
+            checked: (@roommate.students_only == false)
+          .styled-checkbox
+          | No
+
+.form-group
+  label Preferred Borough
+
+  .row
+    - boroughs = Settings.roommates["location"]
+    - for location in boroughs
+      - is_checked = @roommate.borough.empty? ? false : @roommate.borough.include?(location)
+
+      .col-xs-6
+        .aligned-checklist
+          label.checkbox-label
+            = check_box_tag "roommate[borough][]",location , is_checked
+            .styled-checkbox
+            = location
+
+.form-group
+  = f.label :location, "Preferred Neighborhood"
+  = f.text_field :location,
+    placeholder: "e.g. Bushwick, Ridgewood, Williamsburg"
+
+.form-group
+  label Pets Allowed?
+
+  .row.center
+    - pets_allowed = Settings.roommates["pets_allowed"]
+    - for pet in pets_allowed
+      - is_checked = @roommate.pets_allowed.empty? ? false : @roommate.pets_allowed.include?(pet)
+
+      .col-xs-4
+        label.checkbox-label
+          = check_box_tag "roommate[pets_allowed][]", pet,
+            is_checked, id: pet
+          .styled-checkbox
+          = pet
+
+.aside-text
+  span Tell us more
+hr.divider
+
+.form-group
+  = f.label :about_me, "Tell us more", class: "visible-xs-inline-block"
+  = f.text_area :about_me, required: true,
+    placeholder: "Tell other more about you and what kind of roommates you are looking for! What are your living habits? etc."
+
+- if @roommate.new_record?
+  = submit_tag "Create Your Post", data: { disable_with: "Creating..." }
+
+- else
+  = submit_tag "Save Updates", data: { disable_with: "Saving..." }
+
+
+coffee:
+  $(document).ready ->
+    App.RoommateFormSetup();

@@ -1,0 +1,30 @@
+#neighborhoods.global-container class=current_area.long_name.to_url
+  .container
+    .main
+      .row-fuild
+        #neighborhood-current-area
+          = render_cities_btn href_method: 'current_area_neighborhoods_path'
+          /= link_to 'New York City', current_area_neighborhoods_path(current_area: 'new-york'), class:"current-area-link #{current_area.long_name == 'New York' ? 'active' : nil}"
+          /= link_to 'Philadelphia',  current_area_neighborhoods_path(current_area: 'philadelphia'), class:"current-area-link #{current_area.long_name == 'Philadelphia' ? 'active' : nil}"
+          /= link_to 'Boston',  current_area_neighborhoods_path(current_area: 'boston'), class:"current-area-link #{current_area.long_name == 'Boston' ? 'active' : nil}"
+      h1.custom-title.title
+        | #{city_name_by_current_area} Neighborhoods
+      p.content
+        - if current_area.long_name == 'New York'
+          | Passionate and driven, #{city_name_by_current_area} is the incubator of dreams, wherever they may come from.
+    .row
+      - if @neighborhoods.is_a?(Array)
+        - @neighborhoods.each do |nghs|
+          .col-md-4.borough
+            ul
+              - nghs.each do |ngh|
+                li
+                  = link_to ngh, search_area_neighborhood_path(current_area: current_area.long_name.to_url, neighborhood: ngh.to_url), class: 'content'
+      - else
+        - @neighborhoods.each do |key, nghs|
+          .col-md-4.borough
+            h3.subtitle #{key.titleize}
+            ul
+              - nghs.each do |ngh|
+                li
+                  = link_to ngh, search_area_neighborhood_path(current_area: current_area.long_name.to_url, neighborhood: ngh.to_url), class: 'content'

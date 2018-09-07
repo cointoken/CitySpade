@@ -1,0 +1,24 @@
+.container#client-apply-conf
+  i class="fa fa-check-circle-o fa-5x"
+  h1 Thank you
+
+  .code
+    p 
+      | Your Confirmation Code:
+      span 
+        | #{@application.access_token}
+    h5 Please retain this code to gain access to your application information.
+  
+  = render 'square', is_edit: false
+  #square-payment.modal.fade role="dialog"
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close type="button" data-dismiss="modal" &times;
+          h4.modal-title Application Fee Payment
+        .modal-body
+          = render 'square_api'
+
+  //= link_to "Download", @document.passport_url
+javascript:
+  App.SquareApi();

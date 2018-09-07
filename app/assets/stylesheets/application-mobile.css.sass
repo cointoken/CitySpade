@@ -1,0 +1,37 @@
+/*
+ id和class命名规范：长名字不同单词之间一律使用 - 来分隔，比如: new-account
+
+ 所有的CSS分为两大类：通用类和业务类。
+
+ 通用的CSS文件，放在根目录中：
+ 主要的 style.sass       通用组件和基本样式
+ 模块 module.sass        sass中的variables和mixin
+ 基本共用 base.sass      再多个页面都可能用到的复杂样式，比如Header, Footer， 提醒，Google Map等
+ 布局，版面 layout.sass  布局相关的样式
+ 主题 themes.sass
+ 专栏 columns.sass        页面中的栏位
+ 字体 font.sass
+ 手机 PC 公用 common.css.sass
+
+ 业务用的CSS文件，放在/business目录中：
+ /business/account
+ /business/blog
+ /business/home
+ /business/listing
+ /business/inbox
+ /business/staticpages
+
+ *= require font
+ *= require_self
+ *= require common
+ *= require_tree ./mobile
+ *= require_tree ./flashsale
+ *= require_tree ./listing
+ *= require home
+ *= require home_building
+ *= require home_mobile
+ */
+
+@import "bootstrap-sprockets"
+@import "bootstrap"
+@import font-awesome

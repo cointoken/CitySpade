@@ -1,0 +1,12 @@
+= content_for :footer_script do
+  = google_maps_script("Maps.listingShow")
+
+#js-listing data={address: @listing.title, lat: @listing.lat, lng: @listing.lng}
+
+/ Marker's infoWindow
+#listing-marker
+  h5 = @listing.title   
+  h6 = number_to_currency(@listing.price)
+  h6 = @listing.listing_type
+  
+#map-canvas

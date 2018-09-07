@@ -1,0 +1,21 @@
+#square-api style=(is_edit ? 'padding-left: 11%' : '')
+  - if @application.paid
+    button#pay-btn.btn type="button" data-toggle="modal" data-target="#square-payment" disabled=""
+      i.fa.fa-credit-card.fa-lg
+      | Pay Application Fee
+  - else
+    -if is_edit
+      =link_to apply_appfee_path(id: @application.id), target: "_blank" do
+        button#pay-btn.btn type="button"
+          i.fa.fa-credit-card.fa-lg
+          | Pay Application Fee
+    - else
+      button#pay-btn.btn type="button" data-toggle="modal" data-target="#square-payment"
+        i.fa.fa-credit-card.fa-lg
+        | Pay Application Fee
+    
+  =link_to apply_deposit_path(@application) do
+    button#deposit-btn type="button"
+      i.fa.fa-credit-card.fa-lg
+      | Pay Deposit
+

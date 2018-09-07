@@ -1,0 +1,10 @@
+.row
+  .col-sm-4
+    p Appointment:
+  .col-sm-8.apts
+    -listings.each do |listing|
+      p 
+        | #{listing.title} - Unit #{@info[:units][@list_ids.index(listing.id)]}
+        a#btn1 data-id="#{listing.id}"
+          i.fa.fa-minus-circle.fa-lg aria-hidden="true"
+

@@ -1,0 +1,121 @@
+@import 'modules'
+
+.checkin-title
+  text-align: center
+  background: #1E2A36
+  padding-top: 1.5%
+  padding-bottom: 1.5%
+  h1
+    color: $link-color
+    font-weight: bold
+    font-size: 52px
+    @media (max-width: 767px)
+      font-size: 48px
+
+#client-checkin
+  padding-right: 23%
+  text-align: center
+  @media (max-width: 767px)
+    padding-right: 20px
+  .form-checkin
+    padding-top: 5%
+    padding-bottom: 5%
+    font-family: Avenir
+    .form-group
+      text-align: right
+      @media (max-width: 767px)
+        text-align: center
+      input
+        border: none
+        border-bottom: 2px solid
+        padding: 0
+        font-size: 17px
+        &:focus
+          outline: none
+        @media (max-width: 767px)
+          width: 45%
+          font-size: 19px
+      .name
+        margin-right: 25px
+      .email, .phone
+        width: 407px
+        text-align: center
+        @media (max-width: 767px)
+          width: 100%
+      .building
+        margin-right: 20px
+      label
+        font-size: 17px
+        letter-spacing: 0.03em
+        margin-right: 20px
+        @media (max-width: 767px)
+          display: block
+          margin-right: 0
+          font-size: 19px
+
+    .add_roommate
+      font-size: 21px
+      color: #2fcdc9
+      border: 2px solid
+      padding: 2px
+      padding-left: 8px
+      padding-right: 8px
+      border-radius: 50%
+      font-weight: bold
+      margin-right: 20px
+      &:focus
+        text-decoration: none
+
+    .checkin-building
+      .links
+        text-align: right
+        margin-right: 22%
+      .add_building
+        font-size: 21px
+        color: #2fcdc9
+
+    .pad-group
+      margin-bottom: 32px
+    .client-roommates
+      text-align: right
+      @media (max-width: 767px)
+        text-align: center
+      margin-bottom: 32px
+      .form-group
+        margin-top: 25px
+      .form-group:nth-of-type(1)
+        margin-top: 0px
+
+    .submit-button
+      text-align: right
+      padding-top: 20px
+      padding-right: 25%
+      @media (max-width: 767px)
+        text-align: center
+        padding-right: 0
+      input
+        background: none
+        border: 3px solid #2fcdc9
+        color: #2fcdc9
+        font-size: 22px
+        font-weight: bold
+        letter-spacing: 0.05em
+        padding-left: 15px
+        padding-right: 15px
+
+    .field_with_errors
+      display: inline
+      label
+        color: red
+      input
+        border-bottom-color: red
+
+/***** Show page ******/
+
+#client-confirm
+  text-align: center
+  padding-top: 8%
+  padding-bottom: 10%
+  h1
+    font-size: 52px
+

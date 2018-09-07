@@ -1,0 +1,86 @@
+kr:
+  home_page:
+    index:
+      where_live: "어느 지역을 찾으시나요?"
+      schools: "학교"
+      whatis_detail: "시티스페이드는 2015년 뉴욕에 설립된 도시 생활의 퀄리티를 향상 시키고자하는 열정을 나누는 사람들로 구성된 차세대 부동산 회사입니다."
+      learnmore: "자세히"
+      apart_hunt: "방 찾기"
+      apart_apply: "신청서 제출"
+      enjoy_home: "입주"
+      what_can: "어떻게 도와드릴까요?"
+      consult_agent: "조건과 희망사항을 바탕으로 에이전트와 컨설트"
+      reserve_online: "조건에 맞는 리스팅 제공"
+      confirm_apt: "마음에 드는 방 찾기"
+      assist_proc: "신청서 제출"
+      go_over: "계약서내 조건과 가격 재확인"
+      pay_fee: "보증금과 계약금 지불"
+      pre_move: "가구 배달 및 조립 서비스"
+      space_move: "가벽 서비스"
+      air_pick: "공항 픽업"
+      room_pair: "룸메이트 매칭"
+      free_move: "무료 이사"
+      get_quote: "문의하기"
+      save_money: "시간과 지출을 최소화"
+      save_money_detail: "시티스페이드는 시카고, 보스턴, 필라델피아, 상해에 지점을 두며 텍사스와 캘리포니아에도 지점을 준비하고 있습니다. 렌탈 업계의 선두를 달리는 시티스페이드는 모든 고객이 꿈에 그린 집을 찾을 수 있도록 끊임없이 노력합니다."
+      broker_fee: "중개 수수료 $0"
+      instead_of: "고객의 부담을 덜어들이기 위해 중개 수수료가 발생이 되지 않는 매물을 최우선으로 찾아드립니다."
+      one_on_one: "24시간 1:1 컨설팅"
+      one_on_one_detail: "시티스페이드의 경험과 정보가 많은 전문 에이전트와 24시 컨설팅을 해드립니다. "
+      roommate_mat: "룸메이트 매칭"
+      ideal_room: "시티스페이드의 에이전트가 룸메이트를 찾아드립니다."
+      flat_rate: "무료 이사"
+      move_team: "시티스페이드의 자회사이자 주정부 보험가입 업체의 무료 이사 서비스"
+      furn_delieve: "가구 배달 및 조립"
+      furn_team: "IKEA에서 구매하신 가구의 배송과 조립을 도와드립니다."
+      room_divide: "가벽"
+      room_divide_detail: "시티스페이드 제휴 가벽 설치없체와 가벽 설치 할인권을 드립니다"
+      rent_quick: "빠르고 쉽게 방찾기"
+      phone_number: "전화"
+      wechat_kakao: "Kakao"
+      w_k_id: "Cityspade"
+      en_kr_email: "contactkr@cityspade.com"
+
+  aboutus:
+    p2h1header: "회사소개"
+    right_div_h5: "시티스페이드는 2015년 설립 이후 뉴욕 진출을 꿈꾸는 여러분들께 최상의 부동산 임대 서비스 제공을 위해 꾸준히 노력하고 있습니다."
+    right_div_p: "시티스페이드는 NYU 졸업생이 본인의 유학경험과 부동산에 대한 관심을 바탕으로 2015년 설립한 차세대 부동산 중개 컨설턴트입니다. 수많은 꿈과 열정이 모이는 도시 뉴욕. 이곳에 진출하기 위해 가장 기본이 되는 첫걸음은 바로 ‘주거공간 확보’ 입니다. 그렇기에 시티스페이드의 전문가들은 풍부한 경험과 지식을 바탕으로 정보가 택없이 부족한 여러분이 새로운 환경에서 보다 쉽고 안전하게 주거공간을 마련할 수 있도록 도와드리고자 노력하고 있습니다. 저희는 단순히 예산 범위에 부합하는 임대 서비스를 제공하는 것에 그치지 않고 필수 활동범위, 희망사항, 생활 안정 등의 현실적인 조건들을 고려하여 여러분께 최상의 맞춤형 공간을 제시합니다. 더 나아가 여러분이 새 보금자리에 조금 더 편리하게 자리 잡을 수 있도록 공항픽업, 이사 서비스, 가벽 설치 등 이주에 필요한 전반적인 서비스 역시 무료로 제공합니다. 시티스페이드 전문가들은 실질적인 경험과 이를 통해 쌓아온 노하우로 여러분이 꿈꾸는 환상적인 뉴욕 라이프를 완성하겠습니다."
+    p3h1header: "팀소개"
+    p4h1header: "시티스페이드 위치"
+
+  footer:
+    p1title: "회사"
+    p1li1: "회사소개"
+    p1li2: "구직 정보"
+    p1li3: "개인정보 취급방침"
+    p1li4: "이용약관"
+    p1li5: "문의하기"
+
+  header:
+    buildings: "빌딩 안내"
+    about: "회사소개"
+    sign_in: "로그인"
+
+  services:
+    litaba1: "Moving"
+    litaba2: "Funiture Delivery"
+    litaba3: "Room Divider"
+    tab1h3: "Flat-rate Moving"
+    tab1p: "The licensed moving team at Cityspade has years of experience with providing efficient moving service. More importantly, we offer free moving for our clients."
+    tab1h51: "Book moving time & Reserve elevator"
+    tab1h52: "Pack your luggage"
+    tab1h53: "Enjoy the incredible moving service"
+    tab2h3: "Furniture Purchase and Installation"
+    tab2p: "Our professional furniture team assist with purchasing and installing IKEA furnitures before clients moving in."
+    tab2h51: "Choose desired furniture"
+    tab2h52: "We buy for you"
+    tab2h53: "Enjoy the convenient installation service"
+    tab3h3: "Room Divider"
+    tab3p: "We closely cooperate with professional partition company CuteDivide to provide a discount partition price, so that our clients can spend the living price but enjoy the master bedroom experience."
+    tab3h51: "Make measurement appointment"
+    tab3h52: "Confirm design"
+    tab3h53: "Enjoy the practical partition wall"
+
+  search_for_me:
+    p1h4l3: 'Or contact our specialist on Kakao:'
+    p1image: "newhome/kakaoqr.png"

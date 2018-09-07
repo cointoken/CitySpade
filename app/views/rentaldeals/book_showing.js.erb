@@ -1,0 +1,5 @@
+$('#book-showing').find('.modal-body').html("<div class='confirmation'><h4>Thank You!</h4><p>We will confirm your showing within 24hrs.</p></div>")
+$.removeCookie('listing_ids')
+setTimeout(function() {
+  location.reload();
+},2000);

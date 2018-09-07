@@ -1,0 +1,25 @@
+.grocery-and-laundry
+  - if review.groceries.present? && review.groceries.any?{|s| s.name.present?}
+    .place-title
+      h4
+        | Grocery
+    - review.groceries.each do |grocery|
+      - if grocery.name.present?
+        .place-name
+          h5
+            = grocery.name
+        .place-comment
+          p
+            = grocery.comment
+  - if review.laundries.present? && review.laundries.any?{|s| s.name.present?}
+    .place-title
+      h4
+        | Laundry
+    - review.laundries.each do |laundry|
+      - if laundry.name.present?
+        .place-name
+          h5
+            = laundry.name
+        .place-comment
+          p
+            = laundry.comment

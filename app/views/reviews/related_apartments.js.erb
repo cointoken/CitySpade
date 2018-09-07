@@ -1,0 +1,3 @@
+<% if @related_apartments.present? %>
+  $("#review-home-right").append('<%= j(render("related_apartments", listings: @related_apartments, review_type: @review_type))%>')
+<% end %>

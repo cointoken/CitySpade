@@ -1,0 +1,9 @@
+$("<%=j render(:partial => 'openhouse', :object => @listings) %>")
+  .appendTo($(".col-md-10.open-house-lists"));
+
+<% if @listings.last_page? %>
+  $('#openHousePagination').html("No more listings");
+<% else %>
+  $('#openHousePagination').html("<%=j link_to_next_page(@listings,
+                                'Next Page', :remote => true) %>");
+<% end %>

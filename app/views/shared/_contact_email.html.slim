@@ -1,0 +1,40 @@
+#contact-email-modal class=add_class
+  .modal-dialog
+    .modal-content
+      .modal-header
+        a.close  data-dismiss="modal" aria-hidden="true" X
+        .contact-name-title
+          | Send Message to #{agent_name}
+        a.contact-tel-title style='color:#ffffff' href="tel:#{agent_tel}"
+          | #{agent_tel}
+      .modal-body
+        = form_tag(send_message_listings_path(agent_id: agent_id, listing_id: listing_id) , remote: true, id: 'contact-email-form') do |f|
+          .contact-input
+            input name='contact[name]' placeholder='Your Name' type='text' value=name required=true
+          .contact-input
+            input name='contact[from_email]' placeholder='Your Email Address (Required)' type='email' value=email required=true
+          .contact-input
+            input name='contact[tel]' placeholder='Your Phone (Optional)' type='text' value=tel
+          .contact-input
+            input name='contact[type]' type='hidden' value=type
+            textarea name='contact[message]' placeholder='Your Message' type='text' required=true minlength=150
+              | Hi,
+
+                I found your listing on CitySpade and am very interested in more details.
+
+                This is the listing I am interested in:
+                #{url}
+
+                Could you contact me back with its availability and viewing times please.
+
+                Thank you.
+          .action
+            = submit_tag "Send", class: 'btn-custom'
+        .message-success style='display: none;'
+          i.fa.fa-check-circle
+          p.success-info
+            | Your message has been sent! #{agent_name} will contact you back soon!
+          div.campany
+            | Best of luck,
+            br
+            | CitySpade Team

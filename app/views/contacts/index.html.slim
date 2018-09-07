@@ -1,0 +1,21 @@
+.global-container
+  .container
+    h1 Listing contacts
+
+    table.table.table-striped.table-hover
+      tr
+        th Name
+        th Email
+        th Subject
+        th
+        th
+        th
+
+      - @contacts.each do |contact|
+        tr
+          td = contact.name
+          td = contact.email
+          td = contact.subject
+          td = link_to 'Show', contact
+          td = link_to 'Edit', edit_contact_path(contact)
+          td = link_to 'Destroy', contact, data: {:confirm => 'Are you sure?'}, :method => :delete

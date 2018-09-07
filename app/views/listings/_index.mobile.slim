@@ -1,0 +1,83 @@
+#listings_list.listings_content
+  - listings.each_with_index do |listing, index|
+    - direction = (index % 2 == 0 ? 'listing-left' : 'listing-right')
+
+    = content_tag :div, data: \
+        { \
+          listing_id: listing.id,
+          lat: listing.lat,
+          lng: listing.lng,
+          title: listing.title,
+          price: listing.price \
+        },
+        class: "listing #{direction}" \
+      do
+
+      .listing_img
+        = link_to listing.permalink,
+          target: '_blank',
+          title: listing.display_title do
+
+          =image_tag listing_image_url(listing, '480X400'),
+            alt: listing.display_title,
+            title: listing.img_alt
+
+        - if listing.has_review?
+          .listing-review-rating-mobile
+            .pull-left
+              .rating-all-items.square-star
+                - overall_quality = listing.review_building.overall_quality || 0
+                - floor_overall = (overall_quality * 2 + 0.5).floor / 2.0
+
+                - 5.times do |t|
+                  = content_tag :i, nil, class: "fa fa-square-star-big \
+                    #{t < floor_overall ? "selected" : nil} \
+                    #{floor_overall - t == 0.5 ? "half" : nil }"
+
+                .list-inline
+                  | #{overall_quality}/5
+
+              .reviews-count
+                = link_to_review listing.review_building,
+                  "#{listing.review_building.reviews_count} \
+                  #{'review'.pluralize(listing.review_building.reviews_count)} \
+                  on this building", target: '_blank', class: 'aggravated-color'
+
+        - if listing.is_flash_sale
+          .pull-left.mb-no_fee
+            h5 Special promotion
+        - elsif listing.no_fee
+          .pull-left.mb-no_fee
+            | NO-FEE
+
+      .listing-content class=listing.flag_name
+        .listing-item
+          h3.pull-left.listing-title [
+            class="title-length#{listing.price.to_i.to_s.size}"
+          ]
+
+            = link_to listing.display_title, listing
+          .pull-right.listing-price
+              = number_to_currency(listing.price, precision: 0)
+          .clear
+
+        div.full-neighborhood
+          = full_neighborhood(listing)
+
+        span
+          .beds-and-baths
+            = "#{display_bedrooms(listing)}, #{display_baths(listing)}"
+
+        div.cost-efficiency
+          | Cost-Efficiency:
+          .pull-right =display_score(listing, :score_price)
+
+        div.transportation
+          | Transportation:
+          .pull-right =display_score(listing, :score_transport)
+        br
+
+        = link_to listing, class: "pull-right", target: '_blank' do
+          | More Details &nbsp;
+          i.fa.fa-caret-right
+        .clearfix

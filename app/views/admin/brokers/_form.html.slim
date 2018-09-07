@@ -1,0 +1,9 @@
+= simple_form_for [:admin, @broker] do |f|
+  .field
+    = f.input :name
+  .field
+    = f.input :tel
+  .field
+    = f.input :email
+  .form-actions
+    = f.submit 'Save', class: 'btn btn-primary'

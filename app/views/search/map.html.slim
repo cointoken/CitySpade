@@ -1,0 +1,63 @@
+= content_for :footer_script do
+  = google_maps_script("Maps.SearchMap", '&libraries=drawing')
+  = render 'tmpls/search_map'
+#search-map-container data-lng="#{params[:lng] || current_area.lng}" data-lat="#{params[:lat] || current_area.lat}" data-ne_lat=params[:ne_lat] data-ne_lng=params[:ne_lng] data-sw_lat=params[:sw_lat] data-sw_lng=params[:sw_lng] data-zoom=params[:zoom]
+  #map-loading style='display: none;'
+    i.fa.fa-spinner.fa-spin
+  #google-search-map
+  #side-content-form
+    .search-map-form-bar
+      = link_to "-", "#", class: "btn btn-sm pull-right", title: "hide"
+    #search-map-form
+      h4
+        | Search Filters
+      .filter-field
+        .for-search-flag
+          .for-search-flag-rentals  data-url=search_map_flag_path(flag: :rentals) class="#{params[:flag] !~ /^sale/i ? 'selected' : nil}"
+            | For Rent
+          .for-search-flag-sales    data-url=search_map_flag_path(flag: :sales) class="#{params[:flag] =~ /^sale/i ? 'selected' : nil}"
+            | For Sale
+      .filter-field
+        label
+          | Location
+        #filter-input-location
+          = text_field_tag :location, params[:location] , class: 'any-neighborhood-input'
+      .filter-field
+        label
+          | Price
+        #filter-input-prices
+          = text_field_tag :price_from, params[:price_from]
+          span
+            | to
+          = text_field_tag :price_to, params[:price_to]
+      .filter-field
+        label
+          | Bedrooms
+        #filter-input-beds
+          = hidden_field_tag :beds, params[:beds]
+          == render_search_map_span_beds
+      .filter-field
+        label
+          | Bathrooms
+        #filter-input-baths
+          = hidden_field_tag :baths, params[:baths]
+          == render_search_map_span_baths
+      .filter-field
+        label
+          | Key
+        #filter-input-key
+          = text_field_tag :title, params[:title]
+      .filter-field
+        = submit_tag "Search", class: 'custom-btn'
+  #switch-list
+    = link_to 'Switch List', search_path
+  #drawing-tools
+    a#drawing-polygon href='javascript:void(0);'
+      i class="fa fa-pencil-square-o"
+      | Draw Your Search
+    a#cancel-draw href='javascript:void(0);' Cancel Draw
+  #zoom-btns
+    a#zoom-btn class="btn zoom-in"
+      | +
+    a#zoom-btn class="btn zoom-out"
+      | -

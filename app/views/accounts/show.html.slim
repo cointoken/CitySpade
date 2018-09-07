@@ -1,0 +1,23 @@
+- content_for :banner_wrapper do
+  .hidden-sm.fullwidthbanner-container
+    .search-banner-bg style="background-image: url(#{asset_path('search_banner.jpg')})"
+  .row-fluid#banner-container
+    .container
+      #banner-search
+
+.container
+  #search-results
+    #search-results-titles
+      h2 My collection
+  .clear
+  = render 'listings/index', listings: @listings
+
+  #search_result_sidebar
+    h4
+      = current_account.email
+  .clear
+  .listings_content
+    = paginate @listings
+= content_for :footer_script
+  = google_maps_script('maps.listings')
+

@@ -1,0 +1,18 @@
+- if @listings.empty?
+  .nolisting
+    h4
+      ' Sorry, there are currently no deals in this area.
+      | Please check back later for daily updates.
+
+- else
+    .row.flash-listing-row
+      - @listings.each do |listing|
+        .col-sm-6
+          - if mobile?
+            = render "mobile_flashsale", listing: listing
+          - else
+            = render "flashsale", listing: listing
+
+coffee:
+  $(document).ready ->
+    App.ListingItemSetup()

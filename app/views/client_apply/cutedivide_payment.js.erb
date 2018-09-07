@@ -1,0 +1,12 @@
+<% if @resp %>
+  $('.deposit-cal').html('<div class="cd-success-cont"><p class="cd-success"><i class="fa fa-check"></i>Thank you for your payment.</p></div>');
+  $('.cd-success').after('<p class="cd-ptag">An email confirmation has been sent to you.</p>');
+  $('#pay-btn').attr('disabled','true');
+<% else %>
+  $('.card-errors').empty();
+  <% flash[:error].each do |err| %>
+    $('.card-errors').append("<p class='sq-error'>*<%= err["detail"] %></p>");
+  <% end %>
+  $('#pay-by-card').attr('disabled', false);
+<% end %>
+

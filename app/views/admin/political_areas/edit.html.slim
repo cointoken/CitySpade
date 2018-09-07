@@ -1,0 +1,9 @@
+.box
+  .cell
+    Strong
+      | Edit Political Area(#{@political_area.long_name})
+    .pull-right
+      = link_to 'Back to political_area management', admin_political_areas_path, class: 'btn'
+    .clear
+  .cell
+    == render 'form'

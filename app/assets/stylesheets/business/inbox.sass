@@ -1,0 +1,102 @@
+@import "modules"
+
+#inboxes
+  background: rgba(255, 255, 255, .8)
+  line-height: 1
+  padding-top: 10px
+  margin-left: auto
+  margin-right: auto
+  .inboxes-wrapper
+    min-height: 130px
+    margin-bottom: 65px
+  .inbox
+    padding: 10px 35px 0 20px
+    height: 35px
+    @include box-sizing
+    display: block
+    font: 15px $body-font
+    & > *
+      vertical-align: top
+    &:hover
+      background-color: #f5f5f5
+    .inbox-title
+      color: #333333
+      margin-right: 30px
+      display: inline-block
+    &.unread .inbox-title
+      //unable to put this color within .inbox-title
+      color: #29bcb8
+    .time
+      color: #666666
+  .pagination
+    margin-bottom: 29px
+
+#inbox
+  background: rgba(255, 255, 255, .8)
+  line-height: 1
+  padding: 20px 35px 80px
+  font-family: $body-font
+  a.back
+    font-size: 16px
+  .inbox-title
+    @include size-color(18px,#333)
+    margin-top: 30px
+    margin-bottom: 12px
+    text-align: center
+  .time
+    @include size-color(16px,#999)
+    margin-top: 0
+    margin-bottom: 40px
+    text-align: center
+  .content
+    @include size-color(16px,#444)
+    text-align: justify
+    line-height: 28px
+    p
+      margin-bottom: 25px
+      &:last-of-type
+        margin-bottom: 0
+
+.inbox-delete
+  @include width-height(20px,20px)
+  display: inline-block
+  background-image: image-url('icons/inbox_delete.png')
+
+.side-bar
+  .inbox > *
+    vertical-align: bottom
+.inbox-number
+  margin-left: 5px
+  display: inline-block
+  height: 22px
+  background-image: image-url('icons/inbox_number.png')
+  background-repeat: no-repeat
+  .number
+    @include size-color-family(20px,#fff,$body-font)
+    float: left
+    margin-left: 9px
+    padding: 2px 7px 0 5px
+    line-height: 100%
+
+
+@media(max-width: 767px)
+  #inbox
+    padding: 20px
+    h4.time
+      margin-bottom: 0
+  #inboxes 
+    .inbox
+      padding-right: 55px
+      position: relative
+      .inbox-title
+        font-size: 17px
+      .inbox-delete
+        position: absolute
+        right: 20px
+        top: 7px
+      .time
+        font-size: 14px
+
+
+
+

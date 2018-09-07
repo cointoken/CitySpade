@@ -1,0 +1,88 @@
+module Spider
+  module NYC
+    class Skymanagement < Spider::NYC::Base
+      def initialize(accept_cookie: true)
+        super
+        @simple_listing_css = ".hloop table.apprcelly td.apprcelly a#lislnkwid2"
+        @listing_image_css  = "td#dtlimgbox p a img"
+      end
+
+      def domain_name
+        "http://skymanagement.com"
+      end
+
+      def base_url
+        domain_name + "/nyc-apartments-rent/apartments.php"
+      end
+
+      def page_urls(opt={})
+        [[base_url, 1]]
+      end
+
+      def get_listing_url simple_doc
+        abs_url simple_doc["href"]
+      end
+
+      def retrieve_detail(doc, listing)
+        listing[:title] = doc.css("td#spce strong").text.split("\n").first.strip.split("(").first
+        listing[:unit] = doc.css("td#spce strong").text.split("\n").first.strip.split("Apt").last
+        details = doc.css("td#spce").text.strip.split("\n").reject(&:blank?).map(&:strip)
+        details.each_with_index do |detail, i|
+          listing[:price] = detail.gsub(/\D+/, "") if detail.strip.match(/\$[\d\,]{3,}/)
+          listing[:description] = detail if i <=3 && i>=2 && detail.match(/[\w\,\s]+/).present?
+          listing[:beds] = detail.split(":").last.strip.to_f if detail.match(/beds\:/i)
+          listing[:baths] = detail.split(":").last.strip.to_f if detail.match(/baths\:/i)
+        end
+        listing[:amenities] = doc.css("td#spce table").text.split("\n").map(&:strip).reject do |amen|
+          amen.blank? or amen.match(/\:/)
+        end
+        listing[:no_fee] = true
+        retrieve_agents(doc, listing)
+        retrieve_images(doc, listing)
+        retrieve_broker(doc, listing)
+        if listing[:agents].first.present?
+          listing[:contact_name] = listing[:agents].first[:name]
+          listing[:contact_tel] = listing[:agents].first[:tel]
+        end
+        listing[:contact_name] ||= listing[:broker][:name]
+        listing[:contact_tel] ||= listing[:broker][:tel]
+        listing
+      end
+
+      def retrieve_agents doc, listing
+        agent_detail = doc.css("tr td#spce p").text.split("\n").reject(&:blank?).map(&:strip)
+        listing[:agents] = []
+        agent = {}
+        agent_detail.each_with_index do |de, i|
+          if de.match(/\d{2,}\-\d{2,}/)
+            if agent_detail[i-1].match(/@/)
+              agent[:name] = agent_detail[i-1].strip.gsub(/\S+\@\S+\.com/, "")
+              agent[:email] = agent_detail[i-1].strip.match(/(\S+\@\S+\.com)/)[1]
+            else
+              agent[:name] = agent_detail[i-1].strip
+            end
+            agent[:tel] = de.gsub(/\D+/, "")
+            agent[:email] = agent_detail[i+1] if agent_detail[i+1].match(/@/)
+          end
+        end
+        listing[:agents] << agent
+      end
+
+      def retrieve_broker doc, listing
+        listing[:broker] = {
+          name: "Sky Management",
+          email: "info@skymanagement.com",
+          tel: "2127591300",
+          street_address: "226 East 54 Street",
+          zipcode: "10022",
+          website: domain_name,
+          introduction: %q{
+            Sky Management Corp. owns and manages rental properties in New York City’s most desirable neighborhoods spanning Manhattan from Nolita, East Village, Greenwich Village, West Village, Midtown East, Upper East Side, Yorkville, and the Upper West Side. Established in 1990, we competently manage a diverse portfolio of pre-war residential buildings mixing modern renovations with old world charm at affordable price points.
+             Our primary goal is to provide the best quality service to our Tenants and our Owners.
+          }
+        }
+      end
+
+    end
+  end
+end

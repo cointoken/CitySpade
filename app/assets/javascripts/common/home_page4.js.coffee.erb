@@ -1,0 +1,77 @@
+class HomePage4
+  constructor: ->
+    @searchAutocomplete()
+    @searchDropdwn()
+    @showUnivs()
+    
+  searchAutocomplete: ->
+    $input = $('#search-container')
+    $input.autocomplete
+      source: (req, resp) ->
+        $.ajax
+          url: '/buildingsearch'
+          data:
+            search: req.term
+          success: (data) ->
+            if !data.buildings.length
+              result = [
+                {value: "No matches found", url: ""},
+                {value: "Show all Buildings", url:"/buildings"}]
+            else
+              result= $.map(data.buildings, (item) ->
+                value: item.name + ', ' + item.address
+                url: item.url
+              )
+              result.push({value: "Show all buildings", url:"/buildings"})
+
+            resp(result)
+      minLength: 2
+      appendTo: '.search-result'
+      select: (event, ui) ->
+        $input.val('')
+        window.location = ui.item.url
+        return false
+
+  searchDropdwn: ->
+    $('#search-container').focusin( ->
+      checkSearch($(this))
+    ).keyup( ->
+      checkSearch($(this))
+    )
+
+    $('.close-btn').click ->
+      $('#search-dropdwn').hide()
+
+    
+  checkSearch = (e) ->
+    if e.val() == ""
+      $('#search-dropdwn').show()
+    else
+      $('#search-dropdwn').hide()
+
+  showUnivs: ->
+    $('a[data-toggle="pill"]').on 'show.bs.tab', (e) ->
+      target = $(this).attr("href")
+      url = $(this).data("school")
+      tab = $(this)
+      $(target).empty()
+
+
+      $.getJSON url, (data) ->
+        items = []
+        data = data.buildings
+        $.each data, (key, val) ->
+          items.push('<div class="univ"><a class="my-sch" href="/buildings?school='+val.name+'">'+val.name+'</a></div>')
+        $(target).append($("<div/>", {html: items.join("")}))
+        
+        tab.tab('show').fadeIn('slow')
+      
+
+    $('#ny-link').tab('show').fadeIn('slow')
+        
+
+
+  @setup: ->
+    new HomePage4
+
+App.HomePage4 = HomePage4.setup

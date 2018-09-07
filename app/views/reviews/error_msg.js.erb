@@ -1,0 +1,5 @@
+$(document).find('#review-content, .modal-content').prepend('<%= escape_javascript(render("shared/error_messages", :formats => [:html])) %>');
+$("html, body").animate({ scrollTop: 0 }, "slow");
+$("#review-alert").fadeTo(2500, 500).slideUp(500, function(){
+  $("#review-alert").alert("close")
+});

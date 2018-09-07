@@ -1,0 +1,8 @@
+#login-facebook.modal.hide.fade
+  .modal-header#login-facebook-header
+    a.close data-dismiss='modal' aria-hidden='true' &times;
+    h3.modal-title
+      | Login in with your facebook account
+  .modal-body#login-facebook-body
+    = link_to account_omniauth_authorize_path(:facebook), class: 'signup-facebook', target: '_blank' do
+      img src=asset_path('signup_facebook.jpg')

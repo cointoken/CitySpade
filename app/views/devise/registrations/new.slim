@@ -1,0 +1,40 @@
+/ - content_for :banner_wrapper do
+/   .hidden-sm.fullwidthbanner-container
+/     .signup-bg style="background-image: url(#{asset_path('signup_banner.jpg')})"
+.row-fluid#signup.global-container
+  .container
+    h3.custom-title.signup-title Join CitySpade. Find Your Home.
+    = link_to account_omniauth_authorize_path(:facebook), class: 'signup-facebook' do
+      img src=asset_path('signup_facebook.jpg')
+    .signup-notice-wrapper  
+      h6.signup-notice
+        span or sign up using your email
+    h6.signup-notice-mobile or sign up using your email  
+    .signup-box.origin      
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+        .first_name_div.pull-left
+          = f.text_field :first_name, :autofocus => true, :placeholder => "Your First Name", class: 'textfield'
+          .error_info
+        .last_name_div.pull-right 
+          = f.text_field :last_name, :placeholder => "Your Last Name", class: 'textfield'
+          .error_info
+        = f.email_field :email, :placeholder => "Your Email Address", class: 'textfield'
+        .error_info.email
+          / - resource.errors.full_messages.each do |msg|
+          /   / li
+          /   = msg
+          - if resource.errors[:email].any?
+            / li
+            = 'Your email were incorrect / This email has been registered.'
+        = f.password_field :password, :placeholder => "Choose a Password", class: 'textfield'
+        .error_info
+          - resource.errors[:password].each do |msg|
+            / li
+            = "password " + msg
+        = f.password_field :password_confirmation, :placeholder => "Confirm your password", class: 'textfield'
+        .error_info
+        = f.submit "Get Started", class: 'btn-custom sign-btn'
+
+
+
+

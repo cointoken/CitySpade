@@ -1,0 +1,26 @@
+.container#apply-retrieval
+  h2 Retrieve Your Application
+  p The following information is required to access your application information.
+
+  .retrieve-form
+    = form_tag apply_edit_path, method: 'post', class: "form-horizontal", remote: true do
+      .form-group
+        = label_tag "token", "Confirmation Code", class: "control-label col-sm-3 col-sm-offset-3"
+        .col-sm-6
+          = text_field_tag "token", nil, class: "form-control"
+      .form-group
+        = label_tag "dob", "Date of Birth", class: "control-label col-sm-3 col-sm-offset-3"
+        .col-sm-6
+          = text_field_tag "dob", nil, class: "form-control date-format", placeholder: "mm/dd/yyyy"
+      .form-group
+        = label_tag "email", "Email", class: "control-label col-sm-3 col-sm-offset-3"
+        .col-sm-6
+          = text_field_tag "email", nil, class: "form-control"
+      .submit-btn
+        = submit_tag "Retrieve"
+
+//.container#apply_retrieval_smd.visible-xs.visible-sm
+  h5 This feature is available only on Laptop and Desktop computers.
+
+javascript:
+  App.ClientApply();

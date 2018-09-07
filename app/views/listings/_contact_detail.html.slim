@@ -1,0 +1,23 @@
+.contact-detail.row
+  .col-md-5.clearfix
+    = render_broker_and_agent_info @listing
+
+  .col-md-7
+    .contact-detail-btns
+      = render_contact_email @listing
+      = collect_listing_link @listing do
+        .oprate-button
+          .left-button.pull-left
+            i.fa.fa-heart
+          .text ADD TO WISHLIST
+
+      = link_to display_to_url(@listing.final_url),
+          target: '_blank', \
+          class: \
+            "#{@listing.final_url.blank? ? 'cursor-not-allow' : nil}" \
+          do
+
+        .oprate-button
+          .left-button.pull-left
+            i.fa.fa-plus
+          .text CLICK FOR DETAILS

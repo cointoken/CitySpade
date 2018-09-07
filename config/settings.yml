@@ -1,0 +1,678 @@
+defaults: &defaults
+  # 出售 出租
+  flags:
+    sales: 0
+    rental: 1
+  listing_flags:
+    sale: 'sale'
+    rental: 'rental'
+  # 房产类型
+  listing_types:
+    - 'Mixed Use Townhouse'
+    - 'Condo'
+    - 'Co-op'
+    - 'Multi-Family Townhouse'
+    - 'Single Family Townhouse'
+    - 'Townhouse'
+    - 'Condop'
+    - 'Commercial'
+    - 'Healthcare Property'
+    - 'House'
+    - 'Office Building'
+    - 'Vacant Land'
+  aws:
+    access_key_id: 'AKIAI27NI2SJXECXUH6A'
+    secret_access_key: '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'
+    s3_bucket: "cityspade-<%= Rails.env %>"
+    email_address: 'cityspade@gmail.com'
+  omniauth:
+    facebook_id: '432521193545372'
+    facebook_secret: '52ffccd51ffd6fbbce2ddc5a523ed849'
+  foursquare:
+    client_id: 'DG5EJMTETBXUMNCEZWNHGBCDVSH1IXE4KBJM2XEMFQQ0MFXT'
+    client_secret: 'RP0DZR5RCIHF5NGJT1YDZ5YLC4N1YKAZK4AHUD3NMAIKQ2X1'
+  yelp:
+    consumer_key: 'Ls9K7B8qGdKEEm6rsv3v0g'
+    consumer_secret: 'ZUW-GEE0n8zVNUOPktC3ypKRM1g'
+    token: 'tkTt8PbdbJBeGtcExJRbzbJ1KbaXPei2'
+    token_secret: '9bvjp2Q1Go2IHenqD9OYtNyqo1Q'
+  captcha:
+    site_key: '6LfbqUwUAAAAAAWSdcR4676fhP5aWbZOdjvFn6aq'
+    secret_key: '6LfbqUwUAAAAAFdKe95qSWGfQ7VCRDu6k-fVZ6JX'
+  square:
+    development:
+      application_id: 'sandbox-sq0idp-JP0rtyy61dPQLN6hcVF-fg'
+      access_token: 'sandbox-sq0atb-MXgr5xnV0M-oDLfwYh42Ow'
+      escrow_id: 'sandbox-sq0idp-ilsOWI6lYIoTVfJknC5GQA'
+      escrow_token: 'sandbox-sq0atb-OWVKJAu7VA-AADaGTeGRmA'
+    staging:
+      application_id: 'sq0idp-JP0rtyy61dPQLN6hcVF-fg'
+      access_token: 'sq0atp-mVnhqIXyKBlWvhYUdFi22Q'
+    production:
+      application_id: 'sq0idp-JP0rtyy61dPQLN6hcVF-fg'
+      access_token: 'sq0atp-mVnhqIXyKBlWvhYUdFi22Q'
+      escrow_id: 'sq0idp-ilsOWI6lYIoTVfJknC5GQA'
+      escrow_token: 'sq0atp-BGTWPLaqLygp9CLgjQ0oZQ'
+  proxy_host: #'172.31.36.72'
+  proxy_port: #'4127'
+  building_states:
+    ny:
+      name: "New York"
+      code: "NY"
+    nj:
+      name: "New Jersey"
+      code: "NJ"
+    ma:
+      name: "Massachusetts"
+      code: "MA"
+    ca:
+      name: "California"
+      code: "CA"
+    md:
+      name: "Maryland"
+      code: "MD"
+    dc:
+      name: "Washington DC"
+      code: "DC"
+    pa:
+      name: "Pennsylvania"
+      code: "PA"
+    tx:
+      name: "Texas"
+      code: "TX"
+    il:
+      name: "Illinois"
+      code: "IL"
+    fl:
+      name: "Florida"
+      code: "FL"
+    ri:
+      name: "Rhode Island"
+      code: "RI"
+    al:
+      name: "Alabama"
+      code: "AL"
+    az:
+      name: "Arizona"
+      code: "AZ"
+    ar:
+      name: "Arkansas"
+      code: "AR"
+    co:
+      name: "Colorado"
+      code: "CO"
+    ct:
+      name: "Connecticut"
+      code: "CT"
+    de:
+      name: "Delaware"
+      code: "DE"
+    ga:
+      name: "Georgia"
+      code: "GA"
+    id:
+      name: "Idaho"
+      code: "ID"
+    in:
+      name: "Indiana"
+      code: "IN"
+    ia:
+      name: "Iowa"
+      code: "IA"
+    ks:
+      name: "Kansas"
+      code: "KS"
+    ky:
+      name: "Kentucky"
+      code: "KY"
+    la:
+      name: "Louisiana"
+      code: "LA"
+    me:
+      name: "Maine"
+      code: "ME"
+    mi:
+      name: "Michigan"
+      code: "MI"
+    mn:
+      name: "Minnesota"
+      code: "MN"
+    ms:
+      name: "Mississippi"
+      code: "MS"
+    mo:
+      name: "Missouri"
+      code: "MO"
+    mt:
+      name: "Montana"
+      code: "MT"
+    ne:
+      name: "Nebraska"
+      code: "NE"
+    nv:
+      name: "Nevada"
+      code: "NV"
+    nh:
+      name: "New Hampshire"
+      code: "NH"
+    nm:
+      name: "New Mexico"
+      code: "NM"
+    nc:
+      name: "North Carolina"
+      code: "NC"
+    nd:
+      name: "North Dakota"
+      code: "ND"
+    oh:
+      name: "Ohio"
+      code: "OH"
+    ok:
+      name: "Oklahoma"
+      code: "OK"
+    or:
+      name: "Oregon"
+      code: "OR"
+    sc:
+      name: "South Carolina"
+      code: "SC"
+    sd:
+      name: "South Dakota"
+      code: "SD"
+    tn:
+      name: "Tennessee"
+      code: "TN"
+    ut:
+      name: "Utah"
+      code: "UT"
+    vt:
+      name: "Vermont"
+      code: "VT"
+    va:
+      name: "Virginia"
+      code: "VA"
+    wa:
+      name: "Washington"
+      code: "WA"
+    wv:
+      name: "West Virginia"
+      code: "WV"
+    wi:
+      name: "Wisconsin"
+      code: "WI"
+    wy:
+      name: "Wyoming"
+      code: "WY"
+  cities:
+    nyc:
+      long_name: 'New York'
+      target: 'locality'
+    philadelphia:
+      long_name: 'Philadelphia'
+      target: 'locality'
+    boston:
+      long_name: 'Boston'
+      target: 'locality'
+    #la:
+      #long_name: 'Los Angeles'
+      #target: 'locality'
+    #sf:
+      #long_name: 'San Francisco'
+      #target: 'locality'
+    chicago:
+      long_name: "Chicago"
+      target: 'locality'
+  google_maps:
+    server_keys:
+      - "AIzaSyAhh7fcNxkrOrhfUZzy5XIi36vc1N58mss"
+      - "AIzaSyDWSTb1dKl_c7UrBdg8p-Dko2w3URQoJdM"
+      - "AIzaSyDYwzwbltTaV85ojJ-9EmKYcy430rYw5RY"
+      - "AIzaSyCSWgTIls58vLiEm99B7Oj5d9F-4MYD8Ms"
+      - "AIzaSyAk1u0gjCfCZqDGeXQgdTA2FklqCaBGYuU"
+      - "AIzaSyDhhMJse4isa8hVUeL7i6GpyJLWj46dCWk"
+      - "AIzaSyBFdMf6hGU-C5UjKMithKK9H1MQ9FXauUU"
+      - "AIzaSyAHYHnUqw3iVWRnzXF2RUDnPycE7y0JC_s"
+      - "AIzaSyD71-U4X-fJNvmjm6a9Py4fkIHk5DsUQSs"
+      - "AIzaSyBuLPUSlO490gJTi_2AMB45WPVeVBGHpU0"
+      - "AIzaSyC8J72PpUng3mms3QxrQIupA8j7DmnKeOo"
+      - "AIzaSyCUn9SsTAxaWntYPye43bRfoSFShZSHia8"
+      - "AIzaSyCHtXNtbHSyoMvchvpMS7KfhOqlrnt9YII"
+      - "AIzaSyCsM5rQHYQWtVR5dLrlkTziVNcXZjzgOGA"
+      - "AIzaSyB6ZMnBRXZfsJsQM5NDZidGE-QWLk-4J24"
+      - "AIzaSyD_xJpznp8HoHUz4bvTO7EfV0vct9R4Kvc"
+        #- "AIzaSyC4aBx8N1rxMDcxfue-6HhkTsBbZsjSvC4"
+        #- "AIzaSyAeepIiKxSPHMJKui_3NHk-s_7kBx-R-9E"
+        #- "AIzaSyB9wLagMaNdhKC1kqYWQfmTaup6MZPuayc"
+        #- "AIzaSyCWDFGg0zl4jVAIWpf2g-TjkixbiMNqZdY"
+        #- "AIzaSyA9-dTcyLmwIG1-Yslxkwg80ku3URF5BOA"
+        #- "AIzaSyBQiRcYibYV3sFcJLVDSOu0ALgzBt-Fwd4"
+        #- "AIzaSyAJAcpGF1WI4zrVIgwY11yVZV6ZBe7z9fA"
+        #- "AIzaSyAQYsZ6tJaEYUpyjhdRDh526hTZJV1dipo"
+        #- "AIzaSyAxCf9TwkLoTvHJuAT25vTWG7z2svjn5zQ"
+        #- "AIzaSyCM-yVOwHmRWIdmUxrdrCN4KsifiQi8X4k"
+        #- "AIzaSyC_zznycasEbybP_3ArPm5CwHaMrAGgfwQ"
+      - "AIzaSyAXNTFA9VrLZugDb7tJwLNavKrem9y78fw" #VS
+      - "AIzaSyBveRB5pdp6zmN67Sx86KnLy6-rbl9HA-0" #VS
+      - "AIzaSyDLpW8kvvvCkx_839zQ6MH_I6wK3EpGejU" #VS
+      - "AIzaSyBD8O6JIrRyiKQAqqBrGlG6p5Aj7e7tPvE" #VS
+      - "AIzaSyBo5OW8ACHJ1u9h4_6wk0FSKJ-pVldrLaE" #VS
+      - "AIzaSyBzFIz6pCtrAUZoAaG_BWyzCN3UFeWS3Rs" #VS
+      - "AIzaSyB8wrdyLVTdvKFwWqAbzC-tlLgFoegQsDA" #VS
+      - "AIzaSyB2MwljoRMnWK3Jmk-tD4pAWA3Vcf_QsJw" #VS
+      - "AIzaSyAG1pc_beMOlCDgnC6u_LpZ79JnS1qk3Ro" #VS
+      - "AIzaSyBwKh_JSZRaPpGSN5LS1NO9uSnCHzS94XM" #VS
+      - "AIzaSyBpPM7fjF0ZyZaqJW-Qa1-I3Vl9onIGke4"
+      - "AIzaSyBAQ5gjZWF9XHEyAFm1bJnBHHaOLhpETt8"
+      - "AIzaSyAZhsv_IJuqgtZYQgxbsbs-suPX4tuniZg"
+      - "AIzaSyBkoS3oraXf4M43KmBR7cZldR-OBhWA9JM"
+      - "AIzaSyC_rC84Ie6KfgYkj-rXGdxqsoo1kfi6fuY"
+      - "AIzaSyDzovtq4hVyfEFK0pIETcH4yBsxwIqL78Y"
+      - "AIzaSyBcga3zIMVqYQPkC_66TLP2KatZ6_Ttg_o"
+      - "AIzaSyDFPKkqYPMFRwh9FBhhl4bAcXxjlYhw1Hk"
+      - "AIzaSyDZ8n0fK0S3IpDi1r3-8qVfuPPFYF3j1gs"
+      - "AIzaSyDYgGL8fmXIG6WSTox2zP5UF_b9aus2rFk"
+      - "AIzaSyB57hCxxu5pqeB9H8d4EDX-hqYDIGtGopM"
+      - "AIzaSyDZa6XjZ0pFBEYF6L7-89pMPvEImoeGnQk"
+      - "AIzaSyBoO5uKLGi_9VSJ6w-NA_sSyGEBzoclutA"
+      - "AIzaSyBth4gWsRpc2dbCiGcY_Cqnyz0HSvGJRKk"
+      - "AIzaSyAHubjQPxGZYcY-LL6TYdTN6HuApxEJQOo"
+      - "AIzaSyBCPazcF4_CT8HtT18FeGiJCqepMtM2Sg0"
+      - "AIzaSyAOUqnwWeQ6BGAEALa2r0LxMA5x-ykgD9g"
+      - "AIzaSyDOy9iEWqL96V8HRqwJhwjci47jTnL1qc4" #VS
+      - "AIzaSyCFQwcGXuwBvULNptkrvcmqi2cWUu2xLz8" #VS
+      - "AIzaSyBV4qJaBY_hZRlBCdbPLJ6XSCnLJpgXhuM" #VS
+      - "AIzaSyAH0xeaTUvxHCkS7BwBRN6itxjqmAJr6ro" #VS
+      - "AIzaSyBizCoNm4BghPL_ZNPmrEDvpKNNrvDSewA" #VS
+      - "AIzaSyBd3r1kqqWZTRhkHvOIH1ik3Bles2HyM-0" #VS
+      - "AIzaSyD0I1jd5rToC8PqgkG-ZIuWZizEiA-XfOs" #VS
+      - "AIzaSyD2SrCeTgRPmqnML6qY9IjETpDPeuP4ak8" #VS
+      - "AIzaSyB621mUCElM9wgZ6TFaU5QYvz6qW0tmsM0" #VS
+      - "AIzaSyC4NgR5ioGyLkkWSSXNAvjs7AJjaiAE85Y" #VS-city
+      - "AIzaSyADK6g4c2WFhwh1H5lC9TdzmQpsgUFD7TM" #VS-city
+    js_keys:
+      - "AIzaSyC4NgR5ioGyLkkWSSXNAvjs7AJjaiAE85Y" #VS-city
+      - "AIzaSyADK6g4c2WFhwh1H5lC9TdzmQpsgUFD7TM" #VS-city
+      - "AIzaSyAXNTFA9VrLZugDb7tJwLNavKrem9y78fw" #VS
+      - "AIzaSyBveRB5pdp6zmN67Sx86KnLy6-rbl9HA-0" #VS
+      - "AIzaSyDLpW8kvvvCkx_839zQ6MH_I6wK3EpGejU" #VS
+      - "AIzaSyBD8O6JIrRyiKQAqqBrGlG6p5Aj7e7tPvE" #VS
+      - "AIzaSyBo5OW8ACHJ1u9h4_6wk0FSKJ-pVldrLaE" #VS
+      - "AIzaSyBzFIz6pCtrAUZoAaG_BWyzCN3UFeWS3Rs" #VS
+      - "AIzaSyB8wrdyLVTdvKFwWqAbzC-tlLgFoegQsDA" #VS
+      - "AIzaSyB2MwljoRMnWK3Jmk-tD4pAWA3Vcf_QsJw" #VS
+      - "AIzaSyAG1pc_beMOlCDgnC6u_LpZ79JnS1qk3Ro" #VS
+      - "AIzaSyBwKh_JSZRaPpGSN5LS1NO9uSnCHzS94XM" #VS
+    brower_key: 'AIzaSyAiiGNdYlBOpgSP_-EA3kR7xuEGsQNp7pA'
+  site_url: 'http://cityspade.com'
+  external_links:
+    facebook: 'https://www.facebook.com/cityspade'
+    twitter: 'https://www.twitter.com/cityspade'
+    pinterest: 'https://www.pinterest.com/cityspade'
+    linkedin: 'https://www.linkedin.com/company/cityspade-inc-'
+  email:
+    noreply: 'CitySpade<noreply@cityspade.com>'
+    contact: 'CitySpade<contact@cityspade.com>'
+    system: 'CitySpade<cityspade@gmail.com>'
+    bcc: 'cityspade@gmail.com'
+    list_with_us:
+      - 'zijun.wang@cityspade.com'
+      - 'hang.zhang@cityspade.com'
+  image_sizes:
+    Listing:
+      - '360X240'
+      - '60X60'
+      - '480X400'
+    ListingImage:
+      - '360X240'
+      - '60X60'
+      #- '480X400'
+      - '600X420'
+    Agent:
+      - '60X75'
+    FloorPlan:
+      - '600X420'
+  default_area:
+    long_name: 'New York'
+    target: 'locality'
+  agent_addresses:
+    - '70 West 36th Street, Suite 6C, New York, NY 10018'
+    - '1315 Walnut St, Suite 1718, Philadelphia, PA 19107'
+    - '68 Harvard St, G1, Brookline, MA 02445'
+    - '230 East Ohio Street, Suite 106, Chicago, IL 60611'
+    - '3660 Wilshire Blvd, Los Angeles, CA 90010'
+    - '2700 Post Oak Blvd, Houston, TX 77056'
+    - '2081 Business Center Drive, Suite 268, Irvine, CA 92612'
+  default_boroughs:
+    - long_name: 'Manhattan'
+      target: 'sublocality'
+    - long_name: 'Brooklyn'
+      target: 'sublocality'
+    - long_name: 'Queens'
+      target: 'sublocality'
+    - long_name: 'Philadelphia'
+      target: 'locality'
+
+  office_locations:
+    - 'New York, NY'
+    - 'Los Angeles, CA'
+    - 'Boston, MA'
+    - 'Philadelphia, PA'
+    - 'Chicago, IL'
+    - 'Houston, TX'
+
+  job_types:
+    - 'full time'
+    - 'part time'
+    - 'internship'
+    - 'free lancer'
+
+  transport_places:
+    - borough:
+        long_name: 'Manhattan'
+        target: 'sublocality'
+      places:
+        - name: 'Grand Central'
+          formatted_address: 'Grand Central, New York, NY'
+        - name: 'Wall Street'
+          formatted_address: 'Wall Street, New York, NY'
+        - name: 'Columbus Circle'
+          formatted_address: 'Columbus Circle, New York, NY'
+        - name: 'Barclay Center'
+          formatted_address: 'Barclay Center, Brooklyn, NY'
+        - name: 'NYU'
+          formatted_address: 'New York University, New York, NY'
+          place_type: 'College'
+        - name: 'Columbia University'
+          formatted_address: 'Columbia University, New York, NY'
+          place_type: 'College'
+    - borough:
+        long_name: 'Brooklyn'
+        target: 'sublocality'
+      places:
+        - name: 'Barclay Center'
+          formatted_address: 'Barclay Center, Brooklyn, NY'
+        - name: 'Grand Central'
+          formatted_address: 'Grand Central, New York, NY'
+        - name: 'SoHo'
+          formatted_address: 'Soho, New York, NY'
+        - name: 'Dumbo'
+          formatted_address: 'Dumbo, Brooklyn, NY'
+        - name: 'NYU Poly'
+          formatted_address: 'NYU Polytechnic School of Engineering, 6 Metrotech Center, Brooklyn, NY 11201, USA'
+          place_type: 'College'
+        - name: 'Pratt Institute'
+          formatted_address: 'Pratt Institute, Brooklyn, New York'
+          place_type: 'College'
+    - borough:
+        long_name: 'Queens'
+        target: 'sublocality'
+      places:
+        - name: 'Grand Central'
+          formatted_address: 'Grand Central, New York, NY'
+        - name: 'SoHo'
+          formatted_address: 'Soho, New York, NY'
+        - name: 'Court Square'
+          formatted_address: 'Court Square, Queens, NY'
+        - name: 'Forest Hills'
+          formatted_address: 'Forest Hills, Queens, NY'
+        - name: 'Queens College'
+          formatted_address: 'Queens College, Queens, NY'
+          place_type: 'College'
+        - name: "St. John's University"
+          formatted_address: "St. John's University, New York, NY"
+          place_type: 'College'
+    - borough:
+        long_name: 'Philadelphia'
+        target: 'locality'
+      places:
+        - name: 'Comcast Building'
+          formatted_address: 'Comcast Center, 1701 John F Kennedy Boulevard, Philadelphia, PA 19103, USA'
+        - name: 'Reading Terminal Market'
+          formatted_address: '51 North 12th Street, Philadelphia, PA 19107, USA'
+        - name: 'South Street'
+          formatted_address: 'South Street, Philadelphia, PA, USA'
+        - name: 'Liberty Bell'
+          formatted_address: 'Liberty Bell, 525 Market Street, Philadelphia, PA 19106, USA'
+        - name: 'University of Pennsylvania'
+          formatted_address: 'University of Pennsylvania, Philadelphia, PA 19104, USA'
+          place_type: 'College'
+        - name: 'Drexel University'
+          formatted_address: 'Drexel University, 3141 Chestnut Street, Philadelphia, PA 19104, USA'
+          place_type: 'College'
+    - borough:
+        long_name: 'Boston'
+        target: 'locality'
+      places:
+        - name: 'North Station'
+          formatted_address: 'North Station Commuter Rail, 135 Causeway Street, Boston, MA 02114, USA'
+        - name: 'Qunicy Market'
+          formatted_address: 'Faneuil Hall Marketplace, Boston, MA 02109, USA'
+        - name: 'Boston Public Library'
+          formatted_address: 'Boston Public Library, Boston, MA, USA'
+        - name: 'Post Office Square'
+          formatted_address: 'Post Office Square, Boston, MA'
+        - name: 'Harvard/MIT'
+          formatted_address: 'Harvard-MIT Division of Health Sciences and Technology, Cambridge, MA'
+          place_type: 'College'
+        - name: 'Northeastern U'
+          formatted_address: 'Northeastern University, Boston, MA'
+          place_type: 'College'
+    - borough:
+        long_name: 'Chicago'
+        target: 'locality'
+      places:
+        - name: 'City Hall'
+          formatted_address: 'City of Chicago City Hall, 121 North LaSalle Street, Chicago, IL 60602, USA'
+        - name: 'Chicago Union Station'
+          formatted_address: 'Chicago Union Station, 500 West Jackson Boulevard, Chicago, IL 60661, USA'
+        - name: 'Grant Park'
+          formatted_address: 'Grant Park, Chicago, IL, USA'
+        - name: 'LaSalle Street'
+          formatted_address: 'LaSalle Street, West Congress Parkway, Chicago, IL 60605, USA'
+        - name: 'Art Institute of Chicago'
+          place_type: 'College'
+          formatted_address: 'The Art Institute of Chicago, 111 South Michigan Avenue, Chicago, IL 60603, USA'
+        - name: 'University of Chicago'
+          place_type: 'College'
+          formatted_address: 'The University of Chicago, 5801 South Ellis Avenue, Chicago, IL 60637, USA'
+    # - borough:
+    #     long_name: 'Los Angeles'
+    #     target: 'locality'
+    #   places:
+    #     - name: ''
+    #       formatted_address: ""
+    # - borough:
+    #     long_name: 'San Francisco'
+    #     target: 'locality'
+    #   places:
+    #     - name: ''
+    #       formatted_address: ""
+    # - borough:
+    #     long_name: 'Chicago'
+    #     target: 'locality'
+    #   places:
+    #     - name: ''
+    #       formatted_address: ""
+
+
+  neighborhoods:
+    boroughs:
+      - name: 'Manhattan'
+        neighborhoods:
+          - "Battery Park City"
+          - "Chelsea"
+          - "Chinatown"
+          - "Civic Center"
+          - "East Harlem"
+          - "East Village"
+          - "Financial District"
+          - "Flatiron"
+          - "Gramercy Park"
+          - "Greenwich Village"
+          - "Harlem"
+          - "Hell's Kitchen"
+          - "Inwood"
+          - "Kips Bay"
+          - "Little Italy"
+          - "Lower East Side"
+          - "Midtown"
+          - "Midtown East"
+          - "Midtown West"
+          - "Morningside Heights"
+          - "Murray Hill"
+          - "NoHo"
+          - "NoLita"
+          - "SoHo"
+          - "Theater District"
+          - "Tribeca"
+          - "Upper East Side"
+          - "Upper West Side"
+          - "Washington Heights"
+          - "West Village"
+      - name: 'Brooklyn'
+        neighborhoods:
+          - 'Bay Ridge'
+          - 'Bedford-Stuyvesant'
+          - 'Boerum Hill'
+          - 'Brooklyn Heights'
+          - 'Bushwick'
+          - 'Clinton Hill'
+          - 'Cobble Hill'
+          - 'Coney Island'
+          - 'Crown Heights'
+          - 'Ditmas Park'
+          - 'Downtown Brooklyn'
+          - 'DUMBO'
+          - 'Flatbush'
+          - 'Fort Greene'
+          - 'Gowanus'
+          - 'Greenpoint'
+          - 'Kensington'
+          - 'Park Slope'
+          - 'Prospect Heights'
+          - 'Red Hook'
+          - 'Williamsburg'
+          - 'Windsor Terrace'
+      - name: 'Queens'
+        neighborhoods:
+          - "Astoria"
+          - "Corona"
+          - "Ditmars"
+          - "East Elmhurst"
+          - "Elmhurst"
+          - "Forest Hills"
+          - "Glendale"
+          - "Jackson Heights"
+          - "Jamaica"
+          - "Long Island City"
+          - "Maspeth"
+          - "Middle Village"
+          - "Rego Park"
+          - "Ridgewood"
+          - "Sunnyside"
+          - "Woodside"
+#rooms
+  room_details:
+    amenities:
+      - "Doorman"
+      - "Gym"
+      - "Pool"
+      - "Laundry"
+      - "Elevator"
+      - "Parking"
+      - "Wi-Fi"
+      - "Rooftop"
+    pets_allowed:
+      - "Dog"
+      - "Cat"
+      - "No"
+  roommates:
+    location:
+      - "Manhattan"
+      - "Brooklyn"
+      - "Queens"
+      - "Other"
+    pets_allowed:
+      - "Dog"
+      - "Cat"
+      - "No"
+
+#buildings
+  building_details:
+    amenities:
+      - "Doorman"
+      - "Elevator"
+      - "Gym"
+      - "Lounge"
+      - "Parking"
+      - "Swimming Pool"
+      - "Rooftop"
+      - "Laundry in unit"
+      - "Pets Allowed"
+      - "Yoga and pilates studio"
+      - "Chef's catering kitchen"
+      - "Juice Bar"
+      - "Whirlpool hot tub"
+      - "SPA Treatment"
+
+#listing amenities
+  listing_details:
+    features:
+      - "Electricity"
+      - "Water"
+      - "Gas"
+      - "Internet/TV"
+    extras:
+      - "Hot Tub"
+      - "Washer"
+      - "Pool"
+      - "Dryer"
+      - "Free Parking on Premises"
+      - "Gym"
+      - "Elevator in Building"
+      - "Indoor Fireplace"
+      - "Buzzer/wireless Intercom"
+      - "Doorman"
+  listing_status:
+    actived:
+      "actived"
+    expired:
+      "expired"
+#微信小程序
+  mini_wechat:
+    app_id: "wx5bd3e3bae6fd937e"
+    appsecret: "0969dff32866c5c5994d2a31991fe449"
+
+
+
+
+
+development:
+  <<: *defaults
+  email:
+    noreply: 'CitySpade<noreply@cityspade.com>'
+    contact: 'dev@cityspade.com'
+    system: 'dev@cityspade.com'
+    bcc: 'cityspade.dev@gmail.com'
+    list_with_us:
+      - 'cityspade@gmail.com'
+      - 'cityspade.dev@gmail.com'
+test:
+  <<: *defaults
+  email:
+    noreply: 'test@cityspade.com'
+    contact: 'test@cityspade.com'
+    system: 'test@cityspade.com'
+    bcc: 'cityspade.dev@gmail.com'
+staging:
+  <<: *defaults
+  email:
+    noreply: 'staging@cityspade.com'
+    contact: 'staging@ctyspade.com'
+    system: 'staging@cityspade.com'
+    bcc: 'cityspade.dev@gmail.com'
+    list_with_us:
+      - 'cityspade@gmail.com'
+      - 'cityspade.dev@gmail.com'
+production:
+  <<: *defaults

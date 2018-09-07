@@ -1,0 +1,11 @@
+.prompt
+  .promt-container
+    .words
+      - if has_review_in_city?
+        | Lived or visited here before? Share your story with us.
+      - else
+        | Lived or visited here before? Be the first to review
+
+    .write-review
+      = link_to image_tag('write-a-review-btn.png'), new_review_path(from: 'index')
+

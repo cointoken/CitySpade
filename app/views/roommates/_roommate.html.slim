@@ -1,0 +1,49 @@
+ruby:
+  borough_abbrev = {
+    "Manhattan" => "M",
+    "Brooklyn" => "Bk",
+    "Queens" => "Q",
+    "Other" => nil
+  }
+
+.col-xs-12.col-sm-6.col-md-3
+  a.sublet-link href="#{roommate_path(post)}"
+    .sublet-post
+      .blurred-bg [
+        style="background-image: url('#{post.account.medium_image_url}')"
+      ]
+        .sublet-post-body
+          .prof-pic
+            = image_tag post.account.medium_image_url,
+              alt: post.account.name,
+              title: post.account.name
+
+          h4.sublet-user-name = post.account.name
+
+          p.sublet-type
+            | (Roommate)
+
+          h5 Posted on #{post.created_at.strftime("%B %d, %Y")}
+
+          - Array(post.borough).each do |borough|
+            - if borough_abbrev[borough]
+
+              .borough-abbrev [
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="#{borough}"
+              ]
+                = borough_abbrev[borough]
+
+      .container.budget-and-date
+        .row
+          .sublet-budget.col-xs-6.center
+            .all-caps-heading
+              | Budget / Month
+            h3
+              | $#{post.budget}
+          .sublet-date.col-xs-6
+            .all-caps-heading
+              | Move-in date
+            h3
+              = post.move_in_date.strftime("%b %d")

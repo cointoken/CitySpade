@@ -1,0 +1,5 @@
+<% if @building.new_record? %>
+  alert("error");
+<% else %>
+  $('.existing-img').append("<%= j render(partial: 'show_images', locals: {build_img: @buildingimage}) %>");
+<% end %>

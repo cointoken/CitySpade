@@ -1,0 +1,37 @@
+//= content_for :footer_script do
+	= google_maps_script('Maps.Contact')
+
+#contact.global-container
+  #contact-googlemap-img
+    / 147 Prince Street #17 Brooklyn, NY 11201
+		/ 78 Mott Street, lat: '40.7165150', lng: '-73.9978090'
+    #js-contact data ={address: '70 West 36th Street, Suite 6C, New York, NY 10018', lat: '40.750604', lng: '-73.9862857'}
+    #map-canvas
+  .container
+    = flash[:notice]
+    h2.contact-title Contact Us
+    .row
+      #contact-form.col-md-7
+        == render 'form'
+      .sidebar.col-md-4.col-md-offset-1
+        .contact-misc
+          h4.misc-title We’d Love to Hear From You
+          p Feel free to send us comments and questions. We will get back to you as soon as we can.
+          p.address
+            | 70 West 36th Street, Suite 6C
+            br
+            | New York, NY 10018
+          a.email-link href="mailto:contact@cityspade.com" contact@cityspade.com
+          a.phone href="tel:+1-646-552-4238" (646) 552-4238
+        .contact-links
+          h4 Other contact links
+          ul
+            li
+              a.btn-sm.icons-facebook href="#{Settings.external_links.facebook}" facebook
+            li
+              a.btn-sm.icons-twitter href="#{Settings.external_links.twitter}" twitter
+            li
+              a.btn-sm.icons-google href="https://plus.google.com/106599793068250194090/" google
+            /li
+            /  a.btn-sm.icons-flicker href="http://www.google.com/" flicker
+script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=#{Settings.google_maps.js_keys.sample}&callback=window.Maps.Contact"

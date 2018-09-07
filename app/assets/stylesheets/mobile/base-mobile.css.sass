@@ -1,0 +1,82 @@
+/** default title font-family **/
+@import "module-mobile"
+
+body
+  h1,h2,h3,h4,h5
+    font-family: $font-family
+    font-weight: 600
+  #mb-banner-search
+    @include font
+  a
+    color: $link-color
+    &:hover
+      text-decoration: none
+#mb-banner-search
+  .listing-flag
+    line-height: 24px
+
+.btn-group
+  .fa
+    width: 32px
+    @include size-color(22px,#c2c2c2)
+  //.fa.fa-heart
+    //color: #f59696
+
+.pagination ul > li
+  &> a, &> span
+    padding: 4px 10px !important
+//.pagination ul > li.next_page > a
+  //padding: 4px 16px !important
+//.pagination ul > li.prev > a
+  //padding: 4px 16px !important
+.clear
+  clear: both
+.collected
+  .fa-heart
+    color: rgb(253, 96, 100)!important
+
+.app-bban
+  z-index: 100
+  width: 100%
+  height: 70px
+  background: rgba(20, 20, 20, 0.8)
+  position: fixed
+  display: block
+  bottom: 0
+  left: 0
+  .aban
+    width: 100%
+    height: 100%
+    position: absolute
+    padding: 0 10px
+    text-align: center
+    .cityspade-apple-img
+      float: left
+      width: 50px
+      margin: 10px 10px 0 0
+    .text
+      float: left
+      margin-top: 16px
+      color: #fff
+      p
+        @include size-color(14px,#fff)
+        line-height: 22px
+        margin: 0
+      .p2
+        margin-left: -7px
+    .aban-btn
+      background-color: #E2E2E2
+      border-radius: 3px
+      color: #282828
+      float: right
+      margin: 20px 40px 0 0
+      padding: 4px
+  a.x
+    background-size: auto 16px
+    background: image-url("close_app.png") no-repeat left top
+    height: 25px
+    right: 0
+    position: absolute
+    top: 0
+    width: 25px
+

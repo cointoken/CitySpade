@@ -1,0 +1,36 @@
+// REQUIRED VARIABLES:
+// - total_post_count
+// - heading
+// - posts
+// - new_path
+// - link_hash => { link_text: link_url } (used for filter links)
+
+= render 'rooms/index_header',
+  heading: heading,
+  link_hash: link_hash
+
+.container-fluid.center.create-new-post-section
+  h2
+    | We found you #{total_post_count} results in New York City
+
+  a.btn.sublet-btn.letter-spaced [
+    href="#{new_path}"
+  ] + CREATE YOUR POST
+
+.container-fluid.center.sublet-list
+  - posts.each_slice(4) do |post_group|
+    .row.sublet-list-row
+
+      - post_group.each do |post|
+        - if post.class == Room
+          = render "rooms/room",
+            post: post
+
+        - else
+          = render "roommates/roommate",
+            post: post
+
+  = paginate posts
+
+javascript:
+  App.RoomIndex();

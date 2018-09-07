@@ -1,0 +1,45 @@
+#list_with_us
+  .header
+    h1 List with us
+  /= render 'manually_list_prompt'
+  = form_for @list_with_us, url: {action: "create"} do |f|
+    .top
+      div
+        span Are you a:
+        label for="agent" Broker
+        = f.radio_button :identity, "agent", id: "agent", required: true
+        label for="manager" Property Manager
+        = f.radio_button :identity, "manager", id: "manager", required: true
+
+    .center
+      div
+        span Listing Type:
+        label for="noFee" No-Fee
+        = f.radio_button :listing_type, "noFee", id: "noFee", required: true
+        label for="brokerFee" Broker Fee
+        = f.radio_button :listing_type, "brokerFee", id: "brokerFee", required: true
+      div
+        span Syndication Service:
+        label for="yes" Yes
+        = f.radio_button :sydication, true, id: "yes", required: true
+        label for="no" No
+        = f.radio_button :sydication, false, id: "no", required: true
+      div style="display:none"
+        label for="specify" If so, Please Specify:
+        = f.text_field :specify, id: "specify"
+
+    .bottom
+      div
+        label for="website" Your Company Website:
+        = f.text_field :company_website, id: "website"
+      div
+        label for="url" Listing Feed URL:
+        = f.text_field :listing_feed_url, id: "url"
+      div
+        label for="email" Email:
+        = f.text_field :email, required: true, type: "email", id: "email"
+      div
+        label for="phone" Contact Number:
+        = f.text_field :contact_number, id: "phone", required: true
+    div.submit-div
+      input type="submit" value="Submit"

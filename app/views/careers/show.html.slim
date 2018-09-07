@@ -1,0 +1,14 @@
+#job-details
+  h2 #{@career.title}
+  h3 #{@career.location}
+
+  .detail-part
+    = raw @career.description
+    p  &nbsp
+    p  &nbsp
+    span Job Type: #{@career.job_type}
+
+  .extra-detail
+    span If you are interested, please send your resume to&nbsp
+    a href="mailto:hr@cityspade.com"
+      | hr@cityspade.com

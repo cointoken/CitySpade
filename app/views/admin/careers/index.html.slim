@@ -1,0 +1,29 @@
+.row
+  .box.col-md-12
+    .cell
+      .field.fieldset.center
+        h3 Careers
+.row
+  .box.col-md-12
+    .cell
+      = link_to 'New', new_admin_career_path
+      table.table.table-hover
+        thead
+          tr
+            th
+              | Job Title
+            th
+              | Location
+            th
+              | Job Type
+            th
+              | Open now?
+        tbody
+          -@careers.each do |career|
+            tr
+              td = career.title
+              td = career.location
+              td = career.job_type
+              td = career.open == true ? 'Open' : 'Closed'
+              td = link_to 'Edit', edit_admin_career_path(career)
+              td = link_to 'Delete', admin_career_path(career.id), method: :delete

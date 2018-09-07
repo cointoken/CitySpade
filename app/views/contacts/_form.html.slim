@@ -1,0 +1,37 @@
+h4 Contact Form
+legend Send us an email. All fields are required.
+
+= form_for @contact do |f|
+  - if @contact.errors.any?
+    #error_explanation
+      //h2 = "#{pluralize(@contact.errors.count, "error")} prohibited this contact from being saved:"
+      ul
+        - @contact.errors.full_messages.each do |message|
+          li 
+            | *#{message}
+  .two.clearfix
+    .column
+      = f.label :name do
+        | Name
+        span.star *
+      = f.text_field :name
+      .error_info
+    .column
+      = f.label :email
+        | Email
+        span.star *
+      = f.text_field :email
+      .error_info
+  .one.clearfix
+    = f.label :subject
+      | Subject
+      span.star *
+    = f.text_field :subject
+    .error_info
+  .one.clearfix
+    = f.label :message
+      | Message
+      span.star *
+    = f.text_area :message
+  = recaptcha_tags
+  .actions = f.submit 'Send', class: 'btn-custom contact-validation'

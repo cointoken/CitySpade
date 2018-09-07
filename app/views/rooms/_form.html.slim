@@ -1,0 +1,145 @@
+.container
+  = form_for room, html: {\
+      class: "center-block", id: "roomForm"\
+    } do |f|
+
+    .form-group
+      = f.label :title, "Listing Name"
+      = f.text_field :title,
+        placeholder: "This is a simple title for your listing",
+        required: true
+
+    .form-group
+      = f.label :street_address, "Street Address"
+      = f.text_field :street_address, placeholder: "e.g. 123 Grand Street",
+        required: true
+
+    .form-group
+      .row
+        .col-sm-6.col-xs-12
+          = f.label :city
+          = f.text_field :city, placeholder: "City",
+            placeholder: "e.g. Bushwick",
+            required: true
+
+        .col-sm-6.col-xs-12
+          = f.label :zipcode, "Zip Code"
+          = f.text_field :zipcode, placeholder: "e.g. 11201",
+            required: true
+
+    .form-group
+      = f.label :available_begin_at, 'Availability'
+      .row
+        .col-sm-5.col-xs-12
+          = f.text_field :available_begin_at, placeholder: "Start date",
+            id: "roomStartDate",
+            required: true
+
+        .col-sm-2.col-xs-12.center
+          div.middle-text to
+
+        .col-sm-5.col-xs-12
+          = f.text_field :available_end_at, placeholder: "End date",
+            id: "roomEndDate",
+            required: true
+
+
+    .form-group
+      label Apartment Type
+      .row
+        .col-sm-5.col-xs-12
+          = f.select :rooms_available, options_for_select([ \
+              ['1 room', 1],
+              ['2 rooms', 2],
+              ['3 rooms', 3],
+              ['4 rooms', 4]\
+            ], room.rooms_available),
+            required: true
+
+        .col-sm-2.col-xs-12
+          div.middle-text in a
+
+        .col-sm-5.col-xs-12
+          = f.select :bedrooms, options_for_select([ \
+              ['Studio', 0],
+              ['1-Bed Apartment', 1],
+              ['2-Bed Apartment', 2],
+              ['3-Bed Apartment', 3],
+              ['4-Bed Apartment', 4]\
+            ], room.bedrooms),
+            required: true
+
+    .form-group
+      = f.label :price_month, "Price"
+      .row
+        .col-sm-5.col-xs-12
+          .input-group
+            span.input-group-addon $
+            = f.text_field :price_month, placeholder: "0.00",
+              required: true
+
+    = f.fields_for :room_detail, @room_detail do |room_detail|
+      .form-group
+        label Amenitites
+
+        - amenities = Settings.room_details["amenities"]
+        .row
+          - for amenity in amenities
+            .col-xs-6
+              div.aligned-checklist
+                label
+                  - is_checked = @room_detail.amenities.empty? ? false : @room_detail.amenities.include?(amenity)
+                  = check_box_tag "room[room_detail_attributes][amenities][]", amenity, is_checked
+                  span.styled-checkbox
+                  = amenity
+
+      .form-group
+        label Allow Pets?
+        - pet_choices = Settings.room_details["pets_allowed"]
+        .row
+          - for pet in pet_choices
+            .col-xs-4.center
+              label.room-pet-label
+                - is_checked = @room_detail.pets_allowed.empty? ? false : @room_detail.pets_allowed.include?(pet)
+                = check_box_tag "room[room_detail_attributes][pets_allowed][]", pet, is_checked, id: pet
+                span.styled-checkbox
+                = pet
+
+      .form-group
+        = room_detail.label :description, 'Description'
+        = room_detail.text_area :description, required: true,
+          placeholder: "Tell everyone about your space! \
+             Are there other people living there? Is it furnished? \
+             What are your house rules? etc."
+
+      .form-group
+        label Upload Photos
+
+        = render 'tmpls/photo'
+
+        #roomImageForm.uploadify
+          - if @images
+            - @images.each do |image|
+              .uploadImg
+                img.deleteIcon alt="deletePic" src="#{image_path('uploadify-cancel.png')}"
+                img.img src="#{image.small.url}" alt="pic"
+                input.photo-delete-url [type="hidden" data-id="#{image.thumb.model.id}"
+                  data-target="#uploadify-photo-#{image.thumb.model.id}"
+                  value="#{photo_url(image.thumb.model, review_token: image.thumb.model.review_token)}"
+                ]
+
+          #queue
+          input#hide-photo-ids name='photo_ids' type='hidden'
+          input#file_upload name="file_upload" type="file"multiple="true"
+          br.clear
+
+    - if room.new_record?
+      = submit_tag "Create Your Post", id: "roomFormSubmit",
+        data: { disable_with: "Creating..." }
+
+    - else
+      = submit_tag "Save Updates", id: "roomFormSubmit",
+        data: { disable_with: "Saving..." }
+
+javascript:
+  App.RoomFormSetup();

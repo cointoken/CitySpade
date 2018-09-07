@@ -1,0 +1,3 @@
+<% if @venues.present? %>
+    $("#nearby-venues").html('<%= j(render('nearby_venues', venues: @venues, venue_category_order: @venue_category_order))%>')
+<% end %>

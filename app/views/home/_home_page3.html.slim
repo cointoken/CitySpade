@@ -1,0 +1,23 @@
+#home-page3
+  h2 style="color: #0fcecd; font-size: 2.2em; font-family: 'Roboto Bold'"
+    = t('home_page.index.discover_homes')
+
+  .center#p3-carousel
+    .left-water.center.carousel-control#prev-water
+
+    .right-water.center.carousel-control#next-water
+
+    img src=asset_path("interior/interior-1.jpg")
+    img src=asset_path("interior/interior-2.jpg")
+    img src=asset_path("interior/interior-3.jpg")
+    img src=asset_path("interior/interior-4.jpg")
+    img src=asset_path("interior/interior-5.jpeg")
+    img src=asset_path("interior/interior-6.jpg")
+    /= image_tag "interior/interior-1.jpg"
+    /= image_tag "interior/interior-2.jpg"
+    /= image_tag "interior/interior-3.jpg"
+    /= image_tag "interior/interior-4.jpg"
+    /= image_tag "interior/interior-5.jpeg"
+    /= image_tag "interior/interior-6.jpg"
+  /.p3-overlay.center
+  /  = image_tag "interior/citylogo.gif", class: "p3-logo"

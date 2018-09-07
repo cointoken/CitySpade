@@ -1,0 +1,134 @@
+// color
+@import 'modules'
+
+#neighborhoods
+  .container
+    min-height: 1188px
+  h1,h3,h6,p, li
+    @include reset-font-space
+  &.new-york
+    @include image-bg('neigh_bg-new-york.jpg', true)
+  &.philadelphia
+    @include image-bg('neigh_bg-philadelphia.jpg', true)
+  &.boston
+    @include image-bg('neigh_bg-boston.jpg', true)
+  &.chicago
+    @include image-bg('neigh_bg-chicago.jpg', true)
+  @include font-color
+  .main
+    text-align: center
+    margin: 35px 0 35px
+    h1
+      font-size: 35px
+      margin-bottom: 26px
+    p.content
+      @include size-color-family(16px,$p-comment-white,Avenir)
+      line-height: 22px
+  #neighborhood-current-area
+    margin-bottom: 10px
+  .borough
+    text-align: center
+    h3
+      margin-bottom: 20px
+      font: bold 18px Helvetica
+    ul
+      margin-left: 0
+      padding-left: 0px
+      li, a
+        @include size-color-family(16px,$p-comment-white,Avenir)
+        list-style: none
+        margin-bottom: 14px
+
+.staticpage.support
+  .container
+    .content
+      h1,h2,h3
+        margin-top: 28px
+
+.staticpage
+  padding-top: 30px
+  padding-bottom: 60px
+  min-height: 660px
+  @include font-color
+  //@each $staticpage in privacy, privacy-ch, privacy-kr
+    &.privacy
+      @include image-bg('bgimg/privacy.jpg', true)
+  //@each $staticpage in terms, terms-ch, terms-kr
+    &.terms
+      @include image-bg('bg/terms.jpg', true)
+  @each $staticpage in about, privacy, support, terms
+    &.#{$staticpage}
+      @include image-bg('bgimg/#{$staticpage}.jpg', true)
+  .container
+    padding: 0 20px !important
+    p
+      font-family: "Open Sans"
+    .title
+      font-size: 22px
+      @include reset-font-space
+    // set font
+    .content
+      text-align: left
+      p
+        font-size: 14px
+        line-height: 160%
+        margin-bottom: 18px
+        &:last-of-type
+          margin-bottom: 0
+      h1, h2, h3
+        font-size: 16px
+        @include reset-font-space
+        line-height: 1.6em !important
+        margin-top: 5px
+        margin-bottom: 10px
+    // set-space
+    .text-container
+      max-width: 718px
+      margin: 0 auto
+      .title
+        text-align: center
+      .content
+        margin-top: 25px
+  &.support
+    .content
+      p
+        font-size: 15px
+@media (max-width: 767px)
+  .staticpage .content p
+    color: #444
+  #neighborhoods
+    .main p.content, .borough ul a
+      color: $color444
+  #neighborhood-current-area
+    a
+      border-color: #888
+      background-color: #888
+      &:hover,&.active
+        border-color: $link-color
+        background-color: $link-color
+
+@media (max-width: 544px)
+  #neighborhoods
+    background-color: #f1f1f1
+    .main
+      margin-top: -15px
+      .row-fuild
+        margin: 0 -20px
+        #neighborhood-current-area
+          a.current-area-link
+            @include size-color(14px,#949494)
+            @include margin-padding(0,0)
+            background-color: #fff
+            border-width: 0 1px 1px 0
+            border-color: #ccc
+            width: 33%
+          a[href$="boston"]
+            border-right-width: 0
+          a:hover, a.active
+            color: #22bbaa
+      h1
+        font-size: 30px
+        margin: 30px 0 15px
+        line-height: 1.2em
+    .row
+      text-align: center

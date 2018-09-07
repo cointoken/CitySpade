@@ -1,0 +1,11 @@
+h1 
+ | Editing review
+h3
+  = @admin_review.address + "  (#{@admin_review.review_type_name})"
+
+== render 'form'
+
+= link_to 'Show', @admin_review
+'|
+= link_to 'Back', admin_reviews_path
+

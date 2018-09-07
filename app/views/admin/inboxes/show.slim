@@ -1,0 +1,14 @@
+.box
+  #inbox
+    h2.inbox-title
+      = @inbox.title
+    h4.time
+      = @inbox.created_at.strftime("%Y/%-m/%d")
+    .content
+      = simple_format @inbox.content
+
+    = link_to 'Edit', edit_admin_inbox_path(@inbox)
+    br
+    = link_to 'Destroy', admin_inbox_path(@inbox), data: {:confirm => 'Are you sure?'}, :method => :delete
+    br
+    = link_to 'Back', admin_inboxes_path

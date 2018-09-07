@@ -1,0 +1,6 @@
+#profile.global-container.row
+  .container
+    h1.title My Past Wishlist
+    .row
+      = render partial: '/accounts/sidebar'
+      = render partial: 'wishlist', locals: { listings: @listings } 

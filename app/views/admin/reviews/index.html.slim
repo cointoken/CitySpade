@@ -1,0 +1,68 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_reviews_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Reviews
+          .input-text.triple-input
+            = number_field_tag :id, params[:id], min: 1, placeholder: "ID", class: "col-md-5"
+            = text_field_tag :address, params[:address], placeholder: "Address", class: "col-md-5"
+            = text_field_tag :building_name, params[:building_name], placeholder: "Building Name", class: "col-md-5"
+            = text_field_tag :cross_street, params[:cross_street], placeholder: "Cross Street", class: "col-md-5"
+            = text_field_tag :city, params[:city], placeholder: "City", class: "col-md-5"
+            = text_field_tag :state, params[:state], placeholder: "State", class: "col-md-5"
+     
+          .radio-btns
+            label.radio.list-inline
+              | Enable
+              = radio_button_tag 'status', '1', params[:status] == '1'
+            label.radio.list-inline
+              | Disable
+              = radio_button_tag 'status', '0', params[:status] == '0'
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+.row
+  .box.col-md-12
+    .cell
+      Strong Reviews
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "id", "ID"
+            th
+              = sortable "address", "Address"
+            th Type
+            th Account
+            th
+              = sortable "building_name", "Building"
+            th
+              = sortable "cross_street", "Cross"
+            th
+              = sortable "city", "City"
+            th
+              = sortable "state", "State"
+            th Is Enable?
+            th
+              = sortable "created_at", "Created"
+        tbody
+          - @reviews.each do |review|
+            tr
+              td
+                = review.id
+                | &nbsp;&nbsp;
+                strong
+                  = link_to "Edit", edit_admin_review_path(review)
+              td = review.address
+              th = review.review_type_name
+              th = review.account.try :name
+              td = review.building_name
+              td = review.cross_street
+              td = review.city
+              th = review.state
+              th = review.status
+              th = review.created_at
+      = paginate @reviews

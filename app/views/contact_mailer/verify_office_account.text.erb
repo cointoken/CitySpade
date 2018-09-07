@@ -1,0 +1,9 @@
+Forwarded from CitySpade.com
+
+Dear <%= @account.name %>
+
+Here is the link to create a new Listing:
+ <%= new_listing_path(token: @account.office_token) %>
+
+Best,
+  CitySpade

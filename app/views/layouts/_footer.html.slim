@@ -1,0 +1,120 @@
+- privacy_link = '/privacy'
+- terms_link = '/terms'
+- if params[:locale] = 'ch'
+  - privacy_link = '/privacy-ch'
+  - terms_link = '/terms-ch'
+- elsif params[:locale] = 'kr'
+  - privacy_link = '/privacy-kr'
+  - terms_link = '/terms-kr'
+
+footer#sp-footer-wrapper class="#{(action_name == 'map' && controller_name == 'search') ? 'search-map-footer' : nil}"
+  .container.foot-contain
+    #footer.row style='margin-top: 43px'
+      .footer-first.col-md-2.col-xs-6
+        = link_to root_path do
+          = image_tag "logo/Group_560.png"
+
+        /p
+        /  | Spot your next move
+        /p style="color: #939393;"
+        /  em &copy; 2015 CitySpade
+
+        //p
+          //| Contact Us through WeChat:
+
+          //"newhome/qrcode_new.png"
+
+        = image_tag t('search_for_me.p1image'), style: "margin-bottom: 15p"
+
+        p.hidden-xs style='margin-left: 0px'
+          | (646) 552-4238
+
+        p.hidden-xs style=' margin-bottom: 20px; margin-left: 0px'
+          | pr@cityspade.com
+        p.visible-xs
+          | Contact us through WeChat
+
+        .row.hidden-xs style='border-top: 1px; border-style: solid; border; color: #6b6b6b; border-bottom: 0px; border-right: 0px; border-left: 0px; padding-top: 20px'
+          ul style='display: inline-block; padding-left: 10px'
+            - Settings.external_links.each do |key,value|
+              li style='display: inline-block; margin-left: 10px; color: #28d8d8'
+                = link_to value, class: 'jmsocials_link asTip', target: '_black', rel: 'publisher'
+                  i.fa class="fa-#{key.split('_').first}" style="color: #28d8d8"
+
+        p.hidden-xs style='margin-left: 0px'
+          | © 2018 CitySpade. All rights reserved.
+
+      //.footer-first.col-md-3.hidden-xs
+        .dropdown style='margin-top: 55px'
+          .dropdown-toggle href='#' data-toggle="dropdown"
+            | Language
+          ol.dropdown-menu
+            li
+              = link_to "English", locale: "en", style: 'color: #ffffff'
+            li
+              = link_to "中文", locale: "ch", style: 'color: #ffffff'
+
+        //.dropdown style='margin-top: 25px'
+          .dropdown-toggle href='#' data-toggle='dropdown'
+            | #{current_area.short_name.titleize}
+          ol.dropdown-menu
+            li
+              = link_to "New York", root_path(current_area: 'new-york')
+            li
+              = link_to "Pholadelphia", root_path(current_area: 'philadelphia')
+            li
+              = link_to "Boston", root_path(current_area: 'boston')
+            li
+              = link_to "Chicago", root_path(current_area: 'chicago')
+
+      #sp-footer-b.footer-last.col-md-2.col-xs-6
+        h3.header.footer-ul-title #{t('footer.p1title')}
+        ul.list-unstyled
+          li.footer-ul-list
+            = link_to t('footer.p1li1'), aboutus_path
+          li.footer-ul-list
+            = link_to t('footer.p1li2'), careers_path
+          //li.footer-ul-list
+            = link_to 'Support', static_page_path('support')
+          li.footer-ul-list
+            = link_to t('footer.p1li3'), "#{privacy_link}"
+          li.footer-ul-list
+            = link_to t('footer.p1li4'), "#{terms_link}"
+          li.footer-ul-list
+            = link_to t('footer.p1li5'), contact_us_path
+          //li.footer-ul-list
+            = link_to 'Location', new_search_for_me_path
+
+      div.hidden-xs
+        =render 'layouts/footer_center'
+    .row.visible-xs style="margin-top: 25px"
+      =render 'layouts/footer_center'
+
+    .row.visible-xs style="margin-left: 25px;margin-right: 25px;border-top: 1px solid grey;font-family: 'Renner Light';padding-top: 30px"
+      .col-xs-12 style="text-align: left"
+        p style="font-size: 22px"
+          | Contact Us
+
+        p style="margin: 0; color: #28d8d8; font-size: 16px"
+          | (646) 552-4238
+        p style="color: #28d8d8; font-size: 16px"
+          | contact@cityspade.com
+
+
+    p.visible-xs
+      | © 2018 CitySpade. All rights reserved.
+
+//section#sp-coppyright-wrapper  class="#{(action_name == 'map' && controller_name == 'search') ? 'search-map-footer' : nil}"
+  .container
+    #coppyright.row
+      #sp-footer.col-md-12
+        #jmsocials_wrap184.default.jmsocials_wrap
+          ul.jmsocials_items
+            - Settings.external_links.each do |key,value|
+              li.jmsocials_item
+                = link_to value, class: 'jmsocials_link asTip', target: '_blank', rel: 'publisher'
+                  i.fa class="fa-#{key.split('_').first}"
+
+- if content_for?(:footer_script)
+  = yield :footer_script
+= render 'layouts/google_analytics'

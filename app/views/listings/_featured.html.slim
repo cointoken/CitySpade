@@ -1,0 +1,71 @@
+#listings_list.listings_content
+  - listings.each_with_index do |listing, index|
+    - direction = (index % 2 == 0 ? 'listing-left' : 'listing-right')
+    = content_tag :div, data:{id: listing.id, lat: listing.lat, lng: listing.lng, title: listing.display_title, price: listing.price},class: "listing #{direction}" do
+      .listing_img
+        = link_to listing.permalink, target: '_blank', title: listing.display_title do
+          =image_tag listing_image_url(listing), alt: listing.title, title: listing.img_alt
+        div.corner-ribbon
+          | Featured
+        - if listing.has_review?
+          .listing-review-rating
+            .pull-left
+              .rating-all-items.square-star
+                - overall_quality =  listing.review_building.overall_quality || 0
+                - floor_overall = (overall_quality * 2 + 0.5).floor / 2.0
+                - 5.times do |t|
+                  = content_tag :i,nil ,class: "fa fa-square-star #{t < floor_overall ? "selected" : nil} #{floor_overall - t == 0.5 ? "half" : nil }"
+                .inline
+                  |   #{overall_quality}/5
+              .reviews-count
+                = link_to_review listing.review_building, "#{listing.review_building.reviews_count} #{'review'.pluralize(listing.review_building.reviews_count)} on this building", target: '_blank', class: 'aggravated-color'
+            .pull-right
+              = number_to_currency(listing.price, precision: 0)
+        /= collect_listing_link(listing)
+          /.collect-box
+            /i.fa.fa-heart
+      .listing-content class=listing.flag_name
+        .listing-item
+          h3.pull-left.listing-title class="title-length#{listing.price.to_i.to_s.size}"
+            /= listing.title
+            = link_to listing.display_title, listing
+          - if listing.no_fee
+            .pull-left.listing-no-fee
+              | NO-FEE
+          - if !listing.has_review?
+            .pull-right.listing-price
+              = number_to_currency(listing.price, precision: 0)
+          .clear
+        div.full-neighborhood
+          = full_neighborhood(listing, :short)
+        - if listings[index / 2 * 2].try(:open_houses).present? || listings[index / 2 * 2 + 1].try(:open_houses).present?
+          - if listing.open_houses.first
+            .open-house itemscope='' itemtype="http://schema.org/Event"
+              meta itemprop= "name" content= "OPEN HOUSE:#{listing.open_houses.first.open_time}"
+              time itemprop= "startDate" datetime= "#{listing.open_houses.first.open_date}"
+              meta itemprop= "location" content= "#{listing.title} #{full_neighborhood(listing, :short)}" display= 'hidden'
+              /= listing.open_houses.first.open_time
+              | OPEN HOUSE:
+              = listing.open_houses.first.open_time
+              = link_to listing.display_title, listing, itemprop: 'url', style: "visibility:hidden"
+              | &nbsp;
+              = render_calendar_link listing, OpenHouse.default
+          - else
+            .blank-open-house
+        span
+          .beds-and-baths
+            = "#{display_bedrooms(listing)}, #{display_baths(listing)}"
+        div
+          | Cost-Efficiency:
+          .pull-right =display_score(listing, :score_price)
+        div
+          | Transportation:
+          .pull-right =display_score(listing, :score_transport)
+        - if !mobile?
+          br
+        = link_to listing, class: "pull-right", target: '_blank' do
+          | More Details &nbsp;
+          i.fa.fa-caret-right
+        - if mobile?
+          br
+

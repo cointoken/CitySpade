@@ -1,0 +1,3 @@
+$('#client_apply_update').replaceWith("<%= escape_javascript(render partial: 'form_edit') %>");
+$('#notice-wrapper').append("<%= escape_javascript(render partial: 'shared/notice') %>");
+setTimeout(function() { $('#notice-wrapper .alert').slideUp(); },2000);

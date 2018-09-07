@@ -1,0 +1,9 @@
+.build-img
+  = image_tag build_img.image_url(:thumb)
+  //.name
+    = build_img.name
+  .actions
+    = link_to "Set cover", set_cover_admin_building_page_path(build_img.id)
+    span 
+      |  | 
+    = link_to "delete", delete_bimage_admin_building_page_path(build_img.id), method: :delete, data: {confirm: 'Are you sure?'}

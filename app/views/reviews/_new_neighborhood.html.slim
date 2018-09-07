@@ -1,0 +1,21 @@
+- @review.review_type = 1
+= form_for @review, remote: true do |f|
+  #review-left.pull-left.col-md-8.new-review-form
+    #location-info
+      #location-title
+        = image_tag "location.png"
+        | Location Info
+        = f.hidden_field :token
+      #location-content
+        = render 'review_base_form', f: f, review_type: Review::REVIEW_TYPE['street-neighborhood']
+    #payment-info
+      #payment-title
+        = image_tag "payment.png"
+        | Your review for this place:
+      #payment-content
+        = render 'street_form', f: f
+        .actions.row
+				  .col-md-8
+					  = f.submit 'Post review'
+  #review-right.pull-right.col-md-4
+    = render 'review_tips'

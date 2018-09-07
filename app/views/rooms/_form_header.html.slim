@@ -1,0 +1,22 @@
+.room-form-header
+  .container-fluid
+    .row
+      .col-xs-6.center.room-column
+        .table-wrapper
+          - if request.path == new_room_path
+            h2.current_section ROOM OFFER
+            .triangle
+
+          - else
+            h2
+              = link_to "ROOM OFFER", new_room_path
+
+      .col-xs-6.center.roommate-column
+        .table-wrapper
+          - if request.path == new_roommate_path
+            h2.current_section ROOMMATE REQUEST
+            .triangle
+
+          - else
+            h2
+              = link_to "NEED A ROOMMATE?", new_roommate_path

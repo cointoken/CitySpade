@@ -1,0 +1,100 @@
+<div id="agent-index">
+    <div class="agents-header">
+        <div class="agents-content">
+            <h1>Our Agents</h1>
+            <div class="horizontal-line"></div>
+            <div class="span-wrap">
+              <span>A concierge team for you</span>
+            </div>
+        </div>
+    </div>
+    <div class="container section" id='section1'>
+        <div class="row">
+            <div class="col-md-6" style="padding-top: 20px">
+                <p class="lead-tile">A dedicated concierge team just for you.</p>
+                <!-- <h1>A dedicated Concierge team just for you.</h1> -->
+                <p class="lead">
+                    Familiar with diversified rental aparments located in different areas in the city, our experienced sales team are able to provide quality services and tailored suggestions based on client's unique needs. Our professional sales team are also available online 24/7 to provide answers to any of your questions.
+                </p>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <div class="lead-support">
+                    <div class="support-title">
+                        <p>What we can do for you</p>
+                    </div>
+                    <div class="support-body">
+                        <ul>
+                          <li>
+                            <%= image_tag 'icons/ag_check.png' %>
+                            <span>Consultation with Professional Agent</span>
+                          </li>
+                          <li>
+                            <%= image_tag 'icons/ag_check.png' %>
+                            <span>Reservation for Online Showing</span></li>
+                          <li>
+                            <%= image_tag 'icons/ag_check.png' %>
+                            <span>Go over local Legal Terms</span></li>
+                          <li>
+                            <%= image_tag 'icons/ag_check.png' %>
+                          <span>Assist Filing the Application</span></li>
+                          <li>
+                            <%= image_tag 'icons/ag_check.png' %>
+                            <span>Roomate Matching</span></li>
+                        </ul>
+                    </div>
+                    <div class="btm-img">
+                      <%= image_tag 'icons/ag_icon.png' %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='section2'>
+        <div class="jumbotron">
+            <div class="jumbotron-title">
+              <h1>We help you find</h1>
+              <h1>dream homes.</h1>
+            </div>
+            <div class="jumbotron-body">
+                <p>With Comprehensive knowledge of local rental market and exceptional one-on-one client services, CitySpade empowers its clients to find their dream homes.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="agents-explore" id="section3">
+        <div class="explore-title">
+            <h1>Explore Our Agents</h1>
+        </div>
+        <div class="explore-body">
+            <%= form_for :agent, url: url_for(controller: 'agents', action: 'index'), remote: true, method: :get do |f| %>
+              <div class="agent-form-group">
+                <div class="agent-input-group">
+                  <div class="name-container">
+                    <%= f.text_field :name, placeholder: "Find by first or last Name", class: "form-control"%>
+                  </div>
+                  <div class="office-container">
+                    <%= f.select :office_address,
+                          Settings.agent_addresses,
+                                         { include_blank: "Find by Office" },
+                                         { class: 'form-control chosen-select office_select' }
+                          %>
+                  </div>
+                  <div class="languages-container">
+                    <%= f.select :languages,
+                      Language.all.map {|l| l.name},
+                                         { include_blank: "Find by Language" },
+                                         { class: 'form-control chosen-select languages_select' }
+                          %>
+                  </div>
+                </div>
+                <%= f.submit :search, class: "search-btn" %>
+              </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="agents-index" id="section4">
+      <%= render :partial => "agents" %>
+    </div>
+</div>
+

@@ -1,0 +1,30 @@
+- if venues && venues.size == 3
+  .most-related-reviews.row
+    - venues.each do |venue|
+      - review = venue.reviews.last
+      .related-review.col-md-4
+        .review-img
+          .reviews-count
+            = "#{pluralize(venue.reviews_count.to_i, "Review")}"
+          = link_to venue_path(review.venue_param.slice(:review_type, :permalink)), rel: 'review-gallery'
+            = image_tag venue.images.last.try(:thumb), class: 'review-img thumb', title: review.img_title, alt: review.img_title
+        .review-title
+          - if !mobile?
+            = link_to review.title, review_path(review), class: "review-title-link"
+          - else
+            = link_to review.title, review_path(review), class: "review-title-link"
+        .head-portrait
+          = image_tag review.account_avatar_url, class: 'avatar-55 circle'
+          .name
+            = review.display_name || current_account.name
+        .rating-right
+          - if venue.overall_quality && venue.overall_quality > 0
+            .rating-result
+              .review-comment
+                == truncate(strip_tags(review.comment), length: 30)
+              .rating-all-items
+                - rating = venue.round_rating(:overall_quality)
+                - 5.times do |t|
+                  = content_tag :i,nil ,class: "fa fa-square-star-big #{t < rating ? "selected" : nil} #{rating - t == 0.5 ? "half" : nil }"
+              .rating-score
+                = "#{venue.overall_quality}/5"

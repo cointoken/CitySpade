@@ -1,0 +1,77 @@
+@import 'modules'
+.h30
+  height: 30px
+.h10
+  height: 10px
+strong,b
+  font-family: Arial,Avenir,sans-serif
+p
+  word-break: break-word
+
+/** Carousel Slide **/
+.carousel-control
+  line-height: 37px
+
+/** END **/
+.circle
+  @include border-radius(50%)
+.btn-thin
+  height: 30px
+.btn-thinner
+  height: 25px
+.list-inline
+  display: list-inline
+.white-background
+  background-color: white
+#banner-search
+  .btn-search
+    padding: 4px 14px
+    margin-left: -5px
+    border-radius: 0 3px 3px 0
+    background: #29bcb8
+    height: 50px
+    font-size: 17px
+    color: white
+    font-family: "Avenir"
+    letter-spacing: 0.05em
+    text-shadow: none
+    font-weight: bold
+  .search-base-input
+    @include input-placeholder-color($placeholder-color)
+    @include size-color-family(14px,#666,Avenir)
+    height: 30px
+    background-color: white
+
+.avatar-35
+  @include width-height(35px,35px)
+.avatar-40
+  @include width-height(40px,40px)
+.avatar-50
+  @include width-height(50px,50px)
+.avatar-55
+  @include width-height(55px,55px)
+a.light
+  color: #888
+.review-list
+  i
+    .collect-num
+      font-size: 16px
+.uncollect
+  .fa-heart
+    color: #f59797
+#login-facebook-body
+  text-align: center
+a.current-area-link
+  @include size-color-family(16px,$full-white,$body-font)
+  @include margin-padding-border(10px,0 15px,1px solid $full-white)
+  width: 135px
+  line-height: 40px
+  display: inline-block
+  &:hover,&.active
+    border-color: $link-color
+    background-color: $link-color
+    color: $full-white
+a.tel-view-at-broker-site
+  text-decoration: underline
+  font-size: 14px
+

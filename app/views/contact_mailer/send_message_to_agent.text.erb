@@ -1,0 +1,15 @@
+Forwarded from CitySpade.com 
+
+Dear <%= @agent.name %>
+
+<%= @contact['message'] %>
+
+Contact Info: <%= @contact['name'] %>
+Email: <%= @contact['from_email'] %>
+<% if @contact['tel'].present?%>
+Tel: <%= @contact['tel'] %>
+<%end%>
+
+Best,
+<%= @contact['name'] %>
+

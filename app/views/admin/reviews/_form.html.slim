@@ -1,0 +1,30 @@
+= form_for [:admin,  @admin_review] do |f|
+  - if @admin_review.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@admin_review.errors.count, "error")} prohibited this admin_review from being saved:"
+      ul
+        - @admin_review.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :building_name
+    = f.text_field :building_name
+  .field
+    = f.label :cross_street
+    = f.text_field :cross_street
+  .field
+    = f.label :city
+    = f.text_field :city
+  .field
+    = f.label :state
+    = f.text_field :state
+  .field
+    = f.label :status, "Is enable?"
+    = f.check_box :status
+  .field
+    = f.label :comment
+    = f.text_area :comment, class: 'rich-textarea'
+  .actions = f.submit 'Save'

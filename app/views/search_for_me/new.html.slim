@@ -1,0 +1,154 @@
+.container-fluid#searchforme
+  = form_tag '/searchforme', method: 'post', form_info: params, id: "search_me_form" do
+    .progress
+      #progress-form.progress-bar role="progressbar" aria-valuenow="12.5" aria-valuemin="0" aria-valuemax="100" style="width: 12.5%"
+
+    - if @referral
+      = hidden_field_tag 'form_info[referral]', 'dealmoon'
+
+    fieldset
+      = hidden_field_tag 'page-no', 'page0'
+
+      h3 style="color: #29bcb8;"
+        | Hello. Welcome to CitySpade.
+
+      h4 Is apartment searching a headache to you? We are here to help!
+      h4 Please help us complete a one-minute survey.
+      h4 #{t('search_for_me.p1h4l3')}
+      = image_tag(t('search_for_me.p1image'), width: "100px")
+      .button-wrapper
+        input type="button" name="next" class="next action-button" value="GET STARTED" style="margin-right: 0%; margin-top: -40px"
+
+    fieldset
+      = hidden_field_tag 'page-no', 'page1'
+      h3 What is your name?
+      = text_field_tag 'form_info[name]', nil, class: 'name'
+      .button-wrapper
+        input type="button" name="next" class="next action-button pull-right" value="NEXT"
+
+    fieldset.boroughs
+      = hidden_field_tag 'page-no', 'page2'
+      h3 Which borough do you want to live in?
+      div.checkbox-wrapper
+        = check_box_tag 'form_info[boroughs][]','Brooklyn', false, id: "brooklyn"
+        label for="brooklyn"
+          span Brooklyn
+
+        = check_box_tag 'form_info[boroughs][]','Manhattan', false, id: "manhattan"
+        label for="manhattan"
+          span Manhattan
+
+        = check_box_tag 'form_info[boroughs][]', 'Queens', false, id: "queens"
+        label for="queens"
+          span Queens
+
+        = check_box_tag 'form_info[boroughs][]', 'Jersey City', false, id: "jersey"
+        label for="jersey"
+          span Jersey City
+
+      p
+        | *Select any number of boroughs
+
+      .button-wrapper.button-page2
+        input type="button" name="prev" class="prev action-button pull-left" value="BACK"
+        input type="button" name="next" class="next action-button pull-right" value="NEXT"
+
+    fieldset.page-3
+      .bed-bath
+        = hidden_field_tag 'page-no', 'page3'
+        .bedrooms
+          .row
+            .col-xs-4.labels
+              span Beds
+            .col-xs-8.inputs
+              = select_tag 'form_info[beds]', options_for_select({"Studio" => "0", "1"=>"1", "2"=>"2", "3"=>"3", "4"=>"4", "5+"=>"5"}), prompt: "Select one"
+              span.error.bed-error
+                | *Please select one
+        .bathrooms
+          .row
+            .col-xs-4.labels
+              span Baths
+            .col-xs-8.inputs
+              = select_tag 'form_info[baths]', options_for_select({"1"=>"1", "1.5"=>"1.5", "2+"=>"2"}), prompt: "Select one"
+              span.error.bath-error
+                | *Please select one
+        .date
+          .row
+            .col-xs-4.labels
+              span Move-in
+            .col-xs-8.inputs
+              = text_field_tag 'form_info[move_in_date]', nil, class: 'form-datepicker'
+              span.error.date-error
+                | *Select a date
+        .price
+          .row
+            .col-xs-4.labels
+              span Monthly Budget
+            .col-xs-8.inputs
+              = text_field_tag 'form_info[budget]', nil, maxlength: 8, class: 'budget'
+              span.error.budget-error
+                | *Fill-in a valid number
+
+      .button-wrapper
+        input type="button" name="prev" class="prev action-button pull-left" value="BACK"
+        input type="button" name="next" class="next action-button pull-right" value="NEXT"
+        /= submit_tag "SUBMIT", class: " next action-button pull-right"
+
+    fieldset.page-4
+      = hidden_field_tag 'page-no', 'page4'
+      h3 I want to be close to:
+      .first-line
+        - for i in 1..7
+          = check_box_tag 'form_info[transportation][]',"#{i}", false, id: "mta-#{i}"
+          label for="mta-#{i}" #{i}
+        - for i in ['A', 'C', 'E']
+          = check_box_tag 'form_info[transportation][]',"#{i}", false, id: "mta-#{i}"
+          label for="mta-#{i}" #{i}
+      .second-line
+        - for i in ['B', 'D', 'F', 'M', 'G', 'J', 'Z', 'L', 'S', 'N', 'Q', 'R', 'W']
+          = check_box_tag 'form_info[transportation][]',"#{i}", false, id: "mta-#{i}"
+          label for="mta-#{i}" #{i}
+      p
+        | *Select any number of subway lines to be close to
+      .button-wrapper
+        input type="button" name="prev" class="prev action-button pull-left" value="BACK"
+        input type="button" name="next" class="next action-button pull-right" value="NEXT"
+
+    fieldset.page-5
+      = hidden_field_tag 'page-no', 'page5'
+      h3 Are you employed or a student?
+      .is-employed
+        = radio_button_tag 'form_info[is_employed]', true, false, id: "employed"
+        label for="employed"
+        span or
+        = radio_button_tag 'form_info[is_employed]', false, false, id: "student"
+        label for="student"
+      p
+        | Note: All information are confidential. We only ask to speed up the application process.
+      .button-wrapper
+        input type="button" name="prev" class="prev action-button pull-left" value="BACK"
+        input type="button" name="next" class="next action-button pull-right" value="NEXT"
+
+    fieldset.page-6
+      = hidden_field_tag 'page-no', 'page6'
+      h3 Please enter your WeChat username if you have one.
+      = text_field_tag 'form_info[wechat]', nil, class: 'wechat'
+      .wechatqr
+        span.qr-code Feel free to add us on WeChat:
+        = image_tag("newhome/qrcode_new.png", width: "150px")
+      .button-wrapper
+        input type="button" name="prev" class="prev action-button pull-left" value="BACK"
+        input type="button" name="next" class="next action-button pull-right" value="NEXT"
+
+    fieldset.page-7
+      = hidden_field_tag 'page-no', 'page7'
+      h3 Please enter your email
+      = text_field_tag 'form_info[email]', nil, class: 'email'
+      p
+        | *We promise to never send you junk mail.
+      .button-wrapper
+        input type="button" name="prev" class="prev action-button pull-left" value="BACK"
+        = submit_tag "SUBMIT", data: {disable_with: "SUBMIT"}, class: " submit action-button pull-right"
+
+javascript:
+  App.SearchForMe();

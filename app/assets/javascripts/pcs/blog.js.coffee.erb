@@ -1,0 +1,29 @@
+App.Blog =
+  init: ->
+    this.blogsScroll()
+
+  blogsScroll: ->
+    _renderItem  = (data) ->
+      return data.html
+    $(".blogs_list").infinitescroll
+        navSelector: "#navigation a"
+        nextSelector: "#navigation a"
+        itemSelector: ".blogs_list .blog_details"
+        binder: $(window)
+        loadingImg: "<%= image_path('loading.gif')%>"
+        debug: false
+        dataType: "json"
+        extraScrollPx: 600
+        appendCallback: false
+        finished: undefined
+        finishedMsg: ""
+        behavior: 'local'
+        # state: isBeyondMaxPage: true
+        maxPage: $("#page_size").val()
+      , (data) ->
+        blogs = data
+        $theCntr = $(".blogs_list")
+        newElements = ""
+        for blog in blogs
+          item = $(_renderItem(blog))
+          $theCntr.append item

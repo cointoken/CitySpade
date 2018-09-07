@@ -1,0 +1,14 @@
+.venues-images.tab-content
+  - @venue_category_order.each do |addr|# if @review.groceries.present? && @review.groceries.any?{|s| s.name.present?}
+    - venues = @venues[addr]['venues']# YelpAPI.search("grocery", {lat: @review.lat, lng: @review.lng})["venues"].first
+    .venue.tab-pane.active id="review-#{addr}-pane"
+      - venues.each do |venue|
+        .venue-li
+          a href=venue.connection_url target='_blank'
+            img.venue-img src=venue.l_image_url onerror="this.src='#{image_url(venue.default_image_url)}'"
+            .distance
+              - n = (venue.distance / 1609.3)
+              = sprintf("%.2f",n)
+              span &nbsp;miles
+            .venue-name
+              = venue.name

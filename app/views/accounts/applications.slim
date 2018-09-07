@@ -1,0 +1,6 @@
+#profile.global-container.row
+  .container
+    h1.title Applications
+    .row
+      = render partial: '/accounts/sidebar'
+      = render partial: 'applies_list', locals: { client_applies: @client_applies } 

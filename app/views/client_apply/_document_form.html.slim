@@ -1,0 +1,32 @@
+.form-selection.row#resident-option
+  h3 = t ".ques1"
+  .col-xs-6.col-sm-4.col-md-offset-2.international
+    = f.radio_button :residency, "international", id: "international"
+    label for="international" = t ".an1"
+  .col-xs-6.col-sm-4.col-md-offset-1.local
+    = f.radio_button :residency, "local", id: "local"
+    label for="local" = t ".an2"
+.row.resident-info
+  .col-xs-6.col-sm-4.col-md-offset-2
+  .col-xs-6.col-sm-4.col-md-offset-1
+    p
+      | *US Citizens, Green card holders only.
+
+#docu-fields
+  = f.hidden_field :paid, value: false
+  p.doc-msg = t ".docmsg"
+  #int-student-docs
+    = render 'int_student', f: f
+  #int-employed-docs
+    = render 'int_employed', f: f
+  #local-student-docs
+    = render 'local_student', f: f
+  #local-employed-docs
+    = render 'local_employed', f: f
+    
+.submit-btn#form-submit
+  p 
+    | ***All information provided to CitySpade is confidential. By filling out this application form, you agree to allow CitySpade to register you as a client with buildings that best fit your needs.
+  
+  = f.button t(".back"), id: "back-btn", type: "button", class: "btn btn-default"
+  = f.submit t(".submit"), data: {disable_with: t(".submit")}, class: "btn btn-default"

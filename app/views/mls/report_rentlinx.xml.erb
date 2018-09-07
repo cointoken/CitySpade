@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- The DatePosted attribute value is the date and time that the current report was generated,
+in YYYY-MM-DDThh:mm:ss.sssTZD format, per ISO 8601 - see http://www.w3.org/TR/NOTE-datetime -->
+<PropertyLocationReport xmlns="http://www.rentlinx.com" DatePosted="<%= Time.now.utc.iso8601%>">
+  <%@listings.each do |l|%>
+    <Property RentLinxID="<%= l.listing_provider.provider_id%>">
+      <Url><%= listing_url l%> </Url>
+    </Property>
+  <%end%>
+<%#  <!-- Examples of some property listings with no problems, which will appear on your website. -->%>
+  <%#<Property RentLinxID="111110">%>
+    <%#<Url>https://apartments.example.com/listings?property=ABC123</Url>%>
+  <%#</Property>%>
+  <%#<Property RentLinxID="111111">%>
+    <%#<Url>https://apartments.example.com/listings?property=DEF456</Url>%>
+  <%#</Property>%>
+  <%#<Property RentLinxID="111112">%>
+    <%#<Url>https://apartments.example.com/listings?property=GHI789</Url>%>
+  <%#</Property>%>
+
+  <%#<!-- If your website has an individual webpage per unit of a property, please include the RentLinx%>
+                                      <%#unit ID value as well, as in this example.  (The RentLinxUnitID element may also be included in the%>
+  <%#Property element when an error is being reported, as in the later examples below.)-->%>
+  <%#<Property RentLinxID="111113" RentLinxUnitID="2222222">%>
+    <%#<Url>https://apartments.example.com/listings?property=JKL012</Url>%>
+  <%#</Property>%>
+
+
+  <%#<!-- Below are some examples of properties that were included in the RentLinx feed but which your%>
+              <%#site will not display, because there was some problem with the property.  Note that these examples%>
+                <%#represent only a subset of the available reason codes.  Please see the table at %>
+                  <%#http://www.rentlinx.com/docs/propertylocationreport for the full list! -->%>
+
+                    <%#<!-- Example of a property that will not appear on your website due to being a duplicate of an %>
+                      <%#existing property being displayed on your website  The Error element value should be the URL of the %>
+                        <%#duplicate property. -->%>
+                          <%#<Property RentLinxID="111114">%>
+                            <%#<Error ID="1001">https://apartments.example.com/listings?property=GHI789</Error>%>
+                          <%#</Property>%>
+
+                          <%#<!-- Example of a property that will not appear on your website due to being a duplicate of another%>
+                                      <%#property in the RentLinx feed being processed.  The Error element value should be the RentLinx ID %>
+  <%#of the duplicate property. -->%>
+  <%#<Property RentLinxID="111115">%>
+    <%#<Error ID="1002">111112</Error>%>
+  <%#</Property>%>
+
+  <%#<!-- For the "Duplicate listing in feed" error, if it's a specific unit of a property that has %>
+              <%#been identified as a duplicate, also include the RentLinx Unit ID separated by a space. -->%>
+  <%#<Property RentLinxID="111115" RentLinxUnitID="2222225">%>
+    <%#<Error ID="1002">111113 2222222</Error>%>
+  <%#</Property>%>
+
+  <%#[> Example of a property that will not appear on the website due to a missing phone number. <]%>
+  <%#<Property RentLinxID="111116">%>
+    <%#<Error ID="2007" />%>
+  <%#</Property>%>
+
+  <%#<!-- Example of a property that will not appear on the website because the property doesn't have%>
+                          <%#any photos. -->%>
+  <%#<Property RentLinxID="111117">%>
+    <%#<Error ID="2013" />%>
+  <%#</Property>%>
+
+  <%#[> Example of a property that will not appear on the website because it doesn't have a rent amount. <]%>
+  <%#<Property RentLinxID="111118">%>
+    <%#<Error ID="2015" />%>
+  <%#</Property>%>
+
+  <%#[> Example of a property that will not appear on the website due to an invalid email address value. <]%>
+  <%#<Property RentLinxID="111119">%>
+    <%#<Error ID="3006" />%>
+  <%#</Property>%>
+
+  <%#<!-- Example of a property that will not appear because it's a suspected fraudulent (scam) listing. %>
+                                      <%#Note that RentLinx will *not* display this information to the user that submitted this property; we %>
+  <%#dislike scams as much as you do, if not more! -->%>
+  <%#<Property RentLinxID="111120">%>
+    <%#<Error ID="4001" />%>
+  <%#</Property>%>
+
+  <%#[> Example of a property that will not appear because the property has a hidden address. <]%>
+  <%#<Property RentLinxID="111121">%>
+    <%#<Error ID="5001" />%>
+  <%#</Property>%>
+
+  <%#<!-- Example of a property that will not appear because the property manager hasn't updated the %>
+                          <%#property info recently (i.e. the listing is too stale). -->%>
+  <%#<Property RentLinxID="111122">%>
+    <%#<Error ID="6001" />%>
+  <%#</Property>%>
+
+  <%#<!-- Example of a property that does not appear because the a moderator (employee of your site), or %>
+              <%#a site user, flagged the property's contact info as not working. -->%>
+  <%#<Property RentLinxID="111123">%>
+    <%#<Error ID="7001" />%>
+  <%#</Property>%>
+
+  <%#<!-- Example of a property that does not appear because the property owner contacted you directly%>
+              <%#and requested that the listing be taken down. -->%>
+  <%#<Property RentLinxID="111124">%>
+    <%#<Error ID="7002" />%>
+  <%#</Property>%>
+
+  <%#<!-- Example of a property that does not appear due to a user or site admin flagging the property%>
+              <%#for a reason other than those provided in the other 7xxx reason codes. -->%>
+  <%#<Property RentLinxID="111125">%>
+    <%#<Error ID="7999">Too many users downvoted this property.</Error>%>
+  <%#</Property>%>
+
+  <%#<!-- Example of a property that will not appear because it doesn't have enough units, i.e. your %>
+              <%#site only displays properties with more units than this property. -->%>
+  <%#<Property RentLinxID="111126">%>
+    <%#<Error ID="8001" />%>
+  <%#</Property>%>
+
+  <%#<!-- Example of a property that will not appear because it has too many units, i.e. your site only%>
+              <%#displays properties with fewer units than this property. -->%>
+  <%#<Property RentLinxID="111127">%>
+    <%#<Error ID="8002" />%>
+  <%#</Property>%>
+
+  <%#<!-- Example of a property that will not appear because it is located in a geography that your%>
+              <%#site does not cover. -->%>
+  <%#<Property RentLinxID="111128">%>
+    <%#<Error ID="8003" />%>
+  <%#</Property>%>
+
+  <%#<!-- Example of a property that will not appear due to a site requirement other than those provided%>
+              <%#in the other 8xxx reason codes. -->%>
+  <%#<Property RentLinxID="111129">%>
+    <%#<Error ID="8999">Building has more than one story and does not have an elevator.</Error> %>
+  <%#</Property>%>
+
+  <%#[> Example of a property that has multiple errors. <]%>
+  <%#<Property RentLinxID="111130">%>
+    <%#<Error ID="2002" />%>
+    <%#<Error ID="2003" />%>
+    <%#<Error ID="3015" />%>
+  <%#</Property>%>
+
+</PropertyLocationReport>
+

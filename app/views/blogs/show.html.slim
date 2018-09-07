@@ -1,0 +1,29 @@
+= content_for :seo
+  meta property='og:description' content=text_content(@blog.content, 200)
+  - if @blog.image_urls.present?
+    - @blog.image_urls.each do |img_url|
+      meta property='og:image' content=img_url
+  - else
+    meta property='og:image' content=asset_url('default_blog.jpg')
+  meta property='og:type' content='blog'
+.well.show
+  .hidden-sm.fullwidthbanner-container.blogs-banner style='background: whitesmoke'
+    img.blogs-banner-img src=asset_path("blogs_list_banner.jpg") 
+  /= link_to 'Back', :back, class: 'btn btn-success pull-right hidden-sm'
+
+  .blogs_list
+    .blog_details.row
+      .blog_release_time.col-md-3
+        = @blog.created_at.strftime("%b. %d. %Y")
+        .hidden-sm
+          .blog-share-link.show
+            = render 'shared/share_link'
+      .blog_content.col-md-9
+        .blog_title
+          = link_to @blog.title, permalink_for_blog(@blog) 
+        .show-phone
+          .blog-share-link.show
+            = render 'shared/share_link'
+          br
+        = raw @blog.content
+

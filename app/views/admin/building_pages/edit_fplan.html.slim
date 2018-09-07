@@ -1,0 +1,23 @@
+= form_for @fplan, url: edit_fplan_admin_building_page_path(@fplan), method: :put  do |f|
+    .floorplans.form-inline
+      .nested-fields
+        .row
+          .floor.col-sm-4
+            = f.label :image, "Floorplan"
+            = f.file_field :image, class: "form-control floor-ip"
+            = image_tag @fplan.image_url(:thumb)
+          .form-group.col-sm-2
+            = f.label :beds, "Beds:"
+            = f.text_field :beds, class: "form-control floor-ip"
+          .form-group.col-sm-2
+            = f.label :baths, "Baths:"
+            = f.text_field :baths, class: "form-control floor-ip"
+          .form-group.col-sm-2
+            = f.label :price, "Price:"
+            = f.text_field :price, class: "form-control floor-ip"
+          .form-group.col-sm-2
+            = f.label :sqft, "Sqft"
+            = f.text_field :sqft, class: "form-control floor-ip"
+
+    .submit-button
+      = f.submit "SAVE", class: "floor-submit"

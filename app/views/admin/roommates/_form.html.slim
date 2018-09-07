@@ -1,0 +1,9 @@
+.container
+  = form_for @admin_roommate, html: {\
+      class: "center-block", id: "roommateForm"\
+    } do |f|
+
+    = render 'roommates/form', f: f
+
+javascript:
+  App.RoommateFormSetup();

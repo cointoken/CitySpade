@@ -1,0 +1,11 @@
+tr
+  td = floorplan.id
+  //td = link_to "#{File.basename(floorplan.image.url)}", floorplan.image.url, target: "_blank"
+  td = image_tag floorplan.image_url(:thumb)
+  td = floorplan.beds
+  td = floorplan.baths
+  td = floorplan.price
+  td = floorplan.sqft
+  td = link_to "Edit", edit_fplan_admin_building_page_path(floorplan.id),method: :get
+  td = link_to "Remove", delete_fplan_admin_building_page_path(floorplan.id), method: :delete
+

@@ -1,0 +1,15 @@
+.row
+  .col-sm-6
+    - count = 0
+    - if @buildings.empty?
+      .empty-result
+        h3.no-result No results found.
+    - else
+      - @buildings.each_slice(2) do |build_arr|
+        = render 'building_card', build_arr: build_arr, count: count
+        - count = count+2
+      .paginate
+        = paginate @buildings, remote: true
+  .col-sm-6.col-map.hidden-xs
+    #buildingIndexMap
+

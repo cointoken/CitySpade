@@ -1,0 +1,56 @@
+#profile.global-container.row
+  .container
+    h1.title My Listings
+    .row
+      = render partial: '/accounts/sidebar'
+      .col-md-9.row.wishlist-wrapper
+        .wishlist#mylistings
+          .btn-group
+            = render_actived_and_expired_link
+          .clearfix
+          - @listings.each do |listing|
+            .row
+              - if listing.expired?
+                .row-fuild#sp-listing-expired
+                  .listing-expired
+                    | This listing might have expired.
+              - elsif listing.is_deactived?
+                .row-fuild#sp-listing-expired
+                  .listing-expired
+                    | We have deactivated this listing. Click "refresh" to restore this listing.
+              .listing.row
+                .col-md-4.listing_img
+                  = image_tag listing_image_url(listing, '300X246')
+                .col-md-5
+                  .listing-title
+                    h3
+                      = link_to listing.display_title, listing
+                    strong
+                      = listing.area_zipcode
+                  .basic-info
+                    .posted-time
+                      | Posted
+                      = posted_time_for(listing)
+                    .beds-and-baths
+                      = display_beds(listing)
+                      |,
+                      '
+                      = display_baths(listing)
+                    /.cost-efficiency
+                      /| Cost-Efficiency: <span class="num">#{display_score(listing, :score_price)}</span>
+                    /.transportation
+                      /| Transportation: <span class="num">#{display_score(listing, :score_transport)}</span>
+                  /strong.pull-right
+                    = number_to_currency(listing.price, precision: 0)
+                .col-md-3
+                  .price
+                    = number_to_currency(listing.price, precision: 0)
+                  .tools
+                    span.account-listing-btn
+                      = link_to "Edit", edit_listing_path(listing), class: "edit-listing"
+                    - if params[:status] == Settings.listing_status.actived
+                      span.account-listing-btn
+                        = link_to "Expire", expire_listing_path(listing), class: "expire-listing"
+                    - if listing.is_deactived? or listing.is_expired?
+                      span.account-listing-btn
+                        = link_to "Refresh", refresh_listing_path(listing), class: "refresh-listing"

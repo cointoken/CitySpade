@@ -1,0 +1,328 @@
+@import 'modules'
+@import "compass/css3/border-radius"
+
+// Sublet styles refer to styles applied to both Roommates and Room Offers
+.sublet-index-header
+  background: url(asset-path("nyc-rooftop3.jpg"))
+  background-position: center bottom
+  background-size: cover
+  border-radius: 0
+  color: white
+  margin-bottom: 0
+
+  @media (screen and max-width: 600px)
+    padding: 10px
+    padding-bottom: 60px
+
+  .header-btn-wrapper
+    width: 400px
+
+    @media (screen and max-width: 600px)
+      width: auto
+
+  .header-index-btn
+    color: white
+    background: transparent
+    border: 2px solid white
+    font-family: 'Avenir'
+    padding: 10px
+    display: inline-block
+    width: 150px
+    margin-top: 50px
+
+    &:hover
+      text-decoration: none
+      color: $link-color
+      border: 2px solid $link-color
+
+.sublet-btn.btn
+  border: 1px solid black
+  font-family: 'Avenir', sans-serif
+  background: transparent
+  height: 35px
+  padding-top: 5px
+  font-size: 1.2em
+  font-family: 'Avenir', sans-serif
+
+  &.letter-spaced
+    letter-spacing: 2px
+
+  &:hover
+    background-color: #E6E6E6
+
+.create-new-post-section
+  padding-top: 20px
+  padding-bottom: 20px
+
+.sublet-list
+  background: #f4f4f4
+  margin-top: 10px
+  padding-top: 20px
+  padding-bottom: 30px
+
+  .sublet-list-row
+    margin-top: 20px
+    padding-left: 20px
+    padding-right: 20px
+
+    .sublet-link
+      text-decoration: none
+      color: black
+      display: block
+
+    .sublet-post
+      background: white
+      border: 1px solid rgba(0, 0, 0, 0.1)
+      border-radius: 4px
+      margin-top: 25px
+      margin-bottom: 25px
+      margin-left: 10px
+      margin-right: 10px
+
+      h5
+        color: white
+
+      &:hover
+        .blurred-bg .prof-pic
+          height: 50px
+
+        .sublet-post-body
+          background: rgba(0, 0, 0, 0.4)
+          color: white
+
+      .sublet-post-body
+        color: white
+        background: rgba(0, 0, 0, 0.6)
+        border-radius: 4px 4px 0 0
+        height: 250px
+        transition: all 0.25s ease-out
+
+        .borough-abbrev
+          border: 2px solid white
+          display: inline-block
+          padding: 5px
+          height: 30px
+          font-size: 1.3em
+          margin: 10px
+          line-height: 20px
+          width: 40px
+
+        .sublet-type
+          color: white
+          margin: 0
+          padding-bottom: 10px
+
+        .sublet-user-name
+          color: white
+
+        .sublet-location
+          color: white
+          border: 2px solid white
+          margin-left: auto
+          margin-right: auto
+          width: 180px
+          font-size: 1.3em
+          padding: 3px
+
+      .blurred-bg
+        background-size: cover
+        background-position: center center
+        background-repeat: no-repeat
+        border-radius: 4px 4px 0 0
+
+        .prof-pic
+          position: relative
+          top: -45px
+          height: 75px
+          margin-left: auto
+          margin-right: auto
+          width: 90px
+          transition: all 0.25s ease-out
+
+          img
+            height: 90px
+            width: 90px
+            border-radius: 100%
+            border: 5px solid white
+            margin-bottom: 20px
+
+      .budget-and-date
+        border-top: 1px solid rgba(0, 0, 0, 0.1)
+        width: auto
+
+        .sublet-budget
+          border-right: 1px solid rgba(0, 0, 0, 0.1)
+
+        .sublet-budget, .sublet-date
+          padding: 0
+
+          h3
+            font-size: 2em
+            margin-bottom: 18px
+            margin-top: 12px
+            text-transform: uppercase
+            white-space: nowrap
+
+          .all-caps-heading
+            margin-top: 8px
+            text-transform: uppercase
+            font-size: 13px
+            white-space: nowrap
+            color: #666666
+
+.new-sublet-post-banner
+  background: #34495e
+  padding-top: 30px
+  padding-bottom: 30px
+
+  h1
+    color: white
+
+  .new-post-tiles
+    .row
+      & > div[class*="col-"]
+        display: table
+        margin-top: 20px
+
+    .new-room-tile, .new-roommate-tile
+      display: inline-block
+      border: 6px solid white
+      height: 150px
+      font-weight: bold
+      background-size: cover
+      background-position: center 70%
+      text-transform: uppercase
+      font-size: 1.5em
+      color: white
+      margin-top: 20px
+      letter-spacing: 4px
+      display: table-cell
+      vertical-align: middle
+
+      &:hover
+        border: 6px solid $link-color
+        text-decoration: none
+
+    .new-room-tile
+      background-image: url(asset-path("sublet/room-offer.jpg"))
+
+    .new-roommate-tile
+      background-image: url(asset-path("sublet/roommate-post.jpg"))
+
+#upperImageSection
+  width: 100%
+  background: url(asset_path("nyc-penthouse3.jpg")) no-repeat bottom center
+  h2
+    color: #fff
+    margin-top: 1%
+    font-size: 2em
+
+#roommateSpecificRM
+  font-family: "Avenir Book", sans-serif
+
+#headpicRM
+  margin-top: 18%
+  height: 100px
+  width: 100px
+  display: block
+  margin-left: auto
+  margin-right: auto
+  .phAvatar
+    width: 100px
+    height: 100px
+    border: 2px solid black
+
+#budgetpriceRM
+  color: #fff
+  font-weight: 100
+  font-size: 1.70em
+  letter-spacing: 0.06em
+
+#numberRoommate
+  font-size: 1.2em
+  font-weight: normal
+
+#numberRoommate2
+  font-size: 1.2em
+  font-weight: normal
+
+#genderRM
+  font-size: 1.2em
+  font-weight: normal
+
+#genderRM2
+  font-size: 1.2em
+  font-weight: normal
+
+#ageRM
+  font-size: 1.2em
+  font-weight: normal
+
+#ageRM2
+  font-size: 1.2em
+  font-weight: normal
+
+#moveinDateRM
+  font-size: 1.2em
+  font-weight: normal
+
+#moveinDateRM2
+  font-size: 1.2em
+  font-weight: normal
+
+#preferredNeighborhoodRM
+  font-size: 1.2em
+  font-weight: normal
+
+#preferredNeighborhoodRM2
+  font-size: 1.2em
+  font-weight: normal
+
+#petsRM
+  font-size: 1.2em
+  font-weight: normal
+
+#petsRM2
+  font-size: 1.2em
+  font-weight: normal
+
+/* Row Sections */
+#numberRoommateRow
+  margin-top: 4%
+
+#genderRMRow
+  margin-top: 20px
+#ageRMRow
+  margin-top: 20px
+#budgetpriceRMRow
+  margin-top: 20px
+#moveinDateRMRow
+  margin-top: 20px
+#preferredNeighborhoodRMRow
+  margin-top: 20px
+#petsRMRow
+  margin-top: 20px
+#roommatedurationRow
+  margin-top: 20px
+  font-size: 1.20em
+#aboutmeSectionRM
+  font-size: 1.05em
+  letter-spacing: 0.025em
+
+@media screen and (max-width: 768px)
+  #numberRoommateRow
+    margin-top: 30px
+  #genderRMRow
+    margin-top: 20px
+  #ageRMRow
+    margin-top: 20px
+  #budgetpriceRMRow
+    margin-top: 20px
+  #moveinDateRMRow
+    margin-top: 20px
+  #preferredNeighborhoodRMRow
+    margin-top: 20px
+  #petsRMRow
+    margin-top: 20px
+  #roommatetitle
+    margin-top: 20px

@@ -1,0 +1,29 @@
+#$(document).ready ->
+#	$('.picwechat img').popover
+#		placement: 'top',
+#		trigger: 'click',
+#		html: true,
+#		content: '<div class="popQR"> <%= image_tag("newhome/qr.png", height: '100', width: '100')%> </div>'
+
+$(document).ready ->
+	$('.picwechat h5').popover
+		placement: 'top',
+		trigger: 'click',
+		html: true,
+		content: '<div class="popQR"style="width: 120px"><a href="weixin://qr/gh"> Wechat ID: cityspade1 </a></div>'
+
+
+#$(document).ready ->
+#	$('.pictele h5').popover
+#		placement: 'top',
+#		trigger: 'click',
+#		html: true,
+#		content: '<div class="popNumber" style="width: 120px"><a href="tel:+1(929)301-8606"> +1 (929) 301-8608 </a></div>'
+
+
+$(document).ready ->
+	$('.picmail h5').popover
+		placement: 'top',
+		trigger: 'click',
+		html: true,
+		content: '<div class="popMail" style="width: 150px"><a href="mailto:contact@cityspade.com"> contact@cityspade.com</a></div>'

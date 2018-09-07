@@ -1,0 +1,48 @@
+.row
+  .box.col-md-12
+    .cell
+      = link_to "Add Agent", new_admin_agent_path, class: 'btn btn-primary'
+      //= form_tag admin_agents_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Agent
+          .input-text.row
+            = text_field_tag :name, params[:name], placeholder: "Name", class: "col-sm-3"
+            .col-sm-1.col-sm-offset-1
+            = text_field_tag :tel, params[:tel], placeholder: "Tel", class: "col-sm-3"
+            .col-sm-1.col-sm-offset-1
+            = text_field_tag :email, params[:email], placeholder: "Email", class: "col-sm-3"
+            //= text_field_tag :broker_name, params[:broker_name], placeholder: "Broker Name", class: "col-md-5"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "agents.name", "Name"
+            th
+              = sortable "agents.tel", "Tel"
+            th
+              = sortable "agents.email", "Email"
+            //th Broker Name
+            //th
+              | Listing Number
+            th Edit
+            th Delete
+        tbody
+          - @agents.each do |agent|
+            tr
+              td = agent.name
+              td = agent.tel
+              td = agent.email
+              //td = agent.broker.try(:name)
+              //th = agent.listing_num
+              td
+                = link_to "Edit", edit_admin_agent_path(agent), class: 'btn btn-info'
+              td
+                = link_to "Delete", admin_agent_path(agent), method: :delete, confirm: 'Do you want to delete the blog ?', class: 'btn btn-danger'
+      = paginate @agents

@@ -1,0 +1,33 @@
+.title
+  | Nearby Apartments:
+hr
+- if mobile?
+  - slide_page_num = 2
+- else
+  - slide_page_num = 5
+- slide_total_page = (listings.size / slide_page_num.to_f).ceil
+#nearby-homes.carousel.slide
+  .carousel-inner
+    - (0...slide_total_page).each do |s_page|
+      .item class="#{s_page == 0 ? 'active' : nil}"
+        ul.listing-homes
+          - ((s_page * slide_page_num)...((s_page + 1) * slide_page_num)).each do |i|
+            - if i < listings.size
+              - listing = listings[i]
+              li.listing-show
+                .listing-img
+                  = link_to listing, target: '_blank', title: listing.display_title do
+                    =image_tag listing_image_url(listing), alt: listing.display_title, title: listing.img_alt
+                .listing-loc
+                  h5.listing-title
+                    /= listing.title
+                    = link_to listing.display_title, listing
+                  div.full-neighborhood
+                    = full_neighborhood(listing, :short)
+                .listing-info
+                  .pull-left.listing-price
+                     = number_to_currency(listing.price, precision: 0)
+                  .pull-right.beds-and-baths
+                    = "#{listing.beds} Beds, #{listing.baths} Baths"
+  = link_to "<", "#nearby-homes", class: "carousel-control left", data: {slide: "prev"}
+  = link_to ">", "#nearby-homes", class: "carousel-control right", data: {slide: "next"}

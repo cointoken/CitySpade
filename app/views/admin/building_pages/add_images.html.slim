@@ -1,0 +1,20 @@
+.container#bpage-bimages
+  h3 
+    | Add new images for #{@building.address}
+  .existing-img
+    - if !@images.empty?
+      - @images.each do |build_img|
+        = render 'show_images', build_img: build_img
+  
+  .mybuilding-img
+    = form_for BuildingImage.new, url: create_images_admin_building_page_path(@building) do |f|
+      #progress
+        .bar style="width: 0%"
+      = render 'building_image_fields', f: f
+
+    //.submit-button
+      = f.submit "SAVE"
+
+javascript:
+  App.AdminSection();
+

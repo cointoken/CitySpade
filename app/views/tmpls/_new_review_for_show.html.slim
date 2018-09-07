@@ -1,0 +1,89 @@
+script#tmpl-new-review-location type='text/tmpl'
+  .input
+    = f.hidden_field :review_type, value: '${review_type}'
+	  = f.hidden_field :token
+    | {%if review_type == 0%}
+    .form-group
+      = label_tag "review_address", class: 'label-title'
+        span.star *
+        span Street Address:
+      | {%else%}
+      = label_tag "review_address"
+        span.star *
+        span Neighborhood:
+      | {%/if%}
+      = f.text_field :address, required: true, class: 'form-control'
+  .input
+    | {%if review_type == 0%}
+    .form-group
+      = label_tag 'review_building_name', 'Building Name:'
+      | {%else%}
+      = label_tag 'review_building_name', 'Street Name:'
+      | {%/if%}
+      = f.text_field :building_name, id: 'review_building_name', class: 'form-control'
+
+  | {%if review_type != 0%}
+  .input
+    .form-group
+      = label_tag 'review_cross_street', 'Cross Street:'
+      = f.text_field :cross_street, class: 'form-control'
+  | {%/if%}
+  .input
+    .row
+      .col-md-6
+        = render_required_label 'review_city', "City:"
+        = f.text_field :city, required: true, class: 'form-control'
+      .col-md-6
+        = render_required_label 'review_state', 'State:'
+        = f.select :state, City.states, required: true, class: 'form-control'
+      br style="clear:both"
+
+script#tmpl-new-review-comment type='text/tmpl'
+  label.label-title
+    | {%if review_type == 0%}
+    | Please rate the overall quality of the apartment/building
+    | {%else%}
+    | Please rate the overall quality of the street/neighborhood
+    | {%/if%}
+  .input.select-overall-container
+    .select-items
+      - 5.times do |time|
+        = content_tag :i,nil ,class: "fa fa-square-star" , data:{index: time, name: :overall_quality}
+      = f.hidden_field :overall_quality
+  span.clickToRates
+    | Click to Rate
+  .clearfix
+
+  label.label-title style='margin-top: 10px'
+    | {%if review_type == 0%}
+    | Please rate the following aspects of the apartment/building
+    | {%else%}
+    | Please rate the following aspects of the street/neighborhood
+    | {%/if%}
+  == render_rating_stars(f, Review.new, true)
+
+  .clearfix
+  .input style='margin-top: 5px'
+    = render_required_label 'review_comment', "Tell us more about your ratings above:", class: 'label-title'
+    textarea minlength=150 id="review_comment" name='review[comment]' rows=3 placeholder='Share your experience and advice. Help others make smarter rental choices. Thank you!' required=true
+    .cal-characters.pull-right style="margin-right:20px"
+      span.cal-char
+        |0
+      span.characters data-num=150
+        |&nbsp;characters (150 minimum)
+
+
+  .clearfix
+  .input
+    label.label-title for="review_display_name" style="margin-top:0 !important"
+      span.star
+        | *
+      span
+        | Post as
+      span.tip
+        | &nbsp;(We protect your privacy)
+    = f.text_field :display_name, required: true
+
+
+  .input
+    input type="submit" value="Submit" id="submitBtn"

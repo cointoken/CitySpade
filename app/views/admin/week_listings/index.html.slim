@@ -1,0 +1,44 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_week_listings_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Check Lisings Per Week
+          .control-group.col-md-10.check-boxes-div
+            - Listing.all_sites.each do |site|
+              - is_checked = params[:week_listings_sites].blank? ? false : params[:week_listings_sites].include?(site)
+              .collection-boxes-row
+                = label_tag nil, class: "check_boxes_label" do
+                  = check_box_tag 'week_listings_sites[]', site, is_checked, class: "collection-boxes-row"
+                  = render_error_sign_site(site).first
+          .radio-btns
+            label.select-all
+              = link_to "Select All", "#", class: "btn"
+          .input-text
+            = text_field_tag :week_listings_start, params[:week_listings_start], placeholder: 'Begin Created At', class: "datepicker col-md-5"
+            = text_field_tag :week_listings_end, params[:week_listings_end], placeholder: 'End Created At', class: "datepicker col-md-5"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th rowspan=2 style="text-align:center;vertical-align:middle"
+              = "Site"
+            th colspan=(@dates.count - 1) style="text-align:center"
+              | Sum / New / Expired
+          tr
+            - @dates.each_with_index do |date, index|
+              th
+                = "#{date.strftime('%Y/%m/%d')}-#{@dates[index+1].strftime('%Y/%m/%d')}" if index < @days
+          - @sites.each_with_index do |site, i|
+            tr
+              td
+                = "#{site}"
+              - @week_new_listings_counts[i].each_with_index do |count, index|
+                td
+                  = "#{@sum_listings_counts[i][index]} / #{count} / #{@week_expired_listings_counts[i][index]}"

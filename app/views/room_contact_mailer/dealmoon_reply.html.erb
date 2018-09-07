@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+</head>
+<body>
+<h4>
+  Hello <%= @name %>,
+</h4>
+<p>
+
+  感谢您联系CitySpade，我们已经收到了您的信息。我们想要更了解您对房子的更具体的期待，请通过微信，邮件或者电话联系我们，让我们更好的为您服务。
+</p>
+<div class="signature" style="padding-bottom: 30px;padding-top: 15px;">
+<div class="footer" style="display: inline-block;">
+  <h4>Warm Regards,</h4>
+  <p style="margin: 0;color: gray;">CitySpade</p>
+  <%= image_tag attachments['logo.png'].url, style: "width: 250px" %>
+  <p style="margin: 0;color: gray;">Wechat: cityspade1</p>
+  <p style="margin: 0;color: gray;">E-Mail: elsa@cityspade.com or mufan@cityspade.com</p>
+  <p style="margin: 0;color: gray;">Work: 929-279-8012</p>
+  <p style="margin: 0;color: gray;">147 Prince Street, #17 | Brooklyn, NY 11201</p>
+</div>
+<div class="qrcode" style="display: inline-block;margin-left: 40px;position: relative;top: 20px;">
+  <%= image_tag attachments['qrcode.png'].url, style: "width: 160px" %>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,46 @@
+- if current_account.nil?
+  .col-xs-6.col-sm-2
+    button.room-contact-btn data-toggle="modal" data-target="#fbModal"
+      span.glyphicon.glyphicon-envelope
+      br
+      | Contact
+
+  .col-xs-6.col-sm-2
+    = button_to save_wishlist_rooms_path(room_id: @room.id) do
+      span.glyphicon.glyphicon-heart-empty
+      br
+      | Save
+- else
+  .col-xs-6.col-sm-2
+    button.room-contact-btn data-toggle="modal" data-target="#contactModal"
+      span.glyphicon.glyphicon-envelope
+      br
+      | Contact
+
+  - if current_account.room_saved? @room
+    .col-xs-6.col-sm-2
+      = button_to save_wishlist_rooms_path(room_id: @room.id) do
+        span.glyphicon.glyphicon-heart
+        br
+        | Saved
+
+  - else
+    .col-xs-6.col-sm-2
+      = button_to save_wishlist_rooms_path(room_id: @room.id) do
+        span.glyphicon.glyphicon-heart-empty
+        br
+        | Save
+
+  - if @room.account == current_account
+    .col-xs-6.col-sm-2.room-edit-btn
+      = button_to edit_room_path(@room), :method => :get do
+        span.glyphicon.glyphicon-pencil
+        br
+        | Edit
+
+    .col-xs-6.col-sm-2.room-delete-btn
+      = button_to room_path(id: @room.id), :method => :delete,
+        data: { confirm: "Are you sure you want to delete this post?" } do
+        span.glyphicon.glyphicon-trash
+        br
+        | Delete

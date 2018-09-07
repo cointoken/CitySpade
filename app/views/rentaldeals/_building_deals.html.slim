@@ -1,0 +1,68 @@
+.building-deals
+  button.btn-default#cart-button
+    i.fa.fa-calendar.fa-2x.fa-inverse aria-hidden="true"
+    span.badge 0
+  - @buildings.each do |building|
+    - index = @buildings.index(building)
+    h3
+      = image_tag "icons/location_icon.png", size: "40"
+      | #{@building_names[index]} (
+      =building.address
+      | )
+    p =@deal_msgs[index]
+
+    .building-imgs
+      #img-carousel.carousel.slide
+        .carousel-inner
+          - list_img = Listing.find(@images_list[index]).images.where(floorplan: false).each_slice(4).to_a
+          /- list_img = Listing.find(653870).images.where(floorplan: false).each_slice(4).to_a
+          - list_img.each do |images|
+            .item class="#{list_img.index(images)==0 ? 'active' : nil}"
+              .row
+                - images.each do |img|
+                  .col-sm-3
+                    a.thumbnail.fancybox href=img.url rel="gallery"
+                      = image_tag img.url, class: "img-responsive"
+          a.left.carousel-control href="#img-carousel" data-slide="prev"
+            span.glyphicon.glyphicon-chevron-left
+          a.right.carousel-control href="#img-carousel" data-slide="next"
+            span.glyphicon.glyphicon-chevron-right
+
+    .apt-list
+      -counter = 0
+      - building.listings.limit(6).each_slice(3) do |listings|
+        - ids=[]
+        .row.apt-deal-row
+          - listings.each do |listing|
+            - ids << listing.id
+            .col-sm-4
+              .listing-img
+                = image_tag deals_or_default_url(listing)
+                -if check_cookie
+                  - if @cookies.include? listing.id.to_s
+                    p.cart-msg View In Cart
+                    button.add-to-cart data-id="#{listing.id}" style="display:none"
+                      | BOOK SHOWING
+                  - else
+                    button.add-to-cart data-id="#{listing.id}"
+                      | BOOK SHOWING
+                -else
+                  button.add-to-cart data-id="#{listing.id}"
+                    | BOOK SHOWING
+              .info
+                .row
+                  .unit.col-sm-4.col-md-4
+                    span =@info[:units][counter]
+                  .beds.col-sm-4.col-md-4
+                    span =@info[:beds][counter]
+                    span =image_tag "sublet/bed.png", size: "30"
+                  .baths.col-sm-4.col-md-4
+                    span =@info[:baths][counter]
+                    span =image_tag "sublet/bath.png", size: "30"
+                .row.price
+                  .col-sm-4.col-md-4
+                  .col-sm-4.col-md-4.value
+                    span.strike = number_to_currency(@info[:prices][counter], precision: 0)
+                  .col-sm-4.col-md-4.discount
+                    span = rent_one_month_free_13month(@info[:prices][counter])
+                  - counter =  counter+1

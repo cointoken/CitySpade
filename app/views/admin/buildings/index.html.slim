@@ -1,0 +1,67 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_buildings_path, method: :get do
+       .field.fieldset.center
+          legend
+            | Buildings
+          .input-text.triple-input.row
+            .col-sm-3
+              = select_tag :state, options_for_select(Settings.building_states.collect {|p, val| [val["name"], val["code"]]}, params[:state]), prompt: "Select State", class: "form-control"
+            .col-sm-3
+              = text_field_tag :city, params[:city], placeholder: "City", class: "form-control"
+            .col-sm-3
+              = text_field_tag :street_name, params[:street_name], placeholder: "Street Number and Name", class: "form-control"
+            //= text_field_tag :street_name, params[:street_name], placeholder: "Street Name", class: "list-inline"
+            .col-sm-3
+              = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+.row
+  .box.col-md-12
+    .cell
+      Strong Buildings
+      | &nbsp;&nbsp;
+      = link_to 'Add New Building', new_admin_building_path, class: 'btn btn-primary'
+      .pull-right
+        span Buildings Count:
+        span = @count
+
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable 'id', 'ID'
+            th
+              = sortable "state", "State"
+            th
+              = sortable "city", "City"
+            th
+              = sortable "address", "Address"
+            th Year Built
+            th Add Images
+            th Add Floorplans
+            th
+            th
+
+        tbody
+          - @buildings.each do |building|
+            tr
+              th = building.id
+              td = building.state
+              td = building.city
+              th = building.address
+              td = building.year_built
+              td = link_to "Edit Images", add_images_admin_building_page_path(building.id), class: 'btn btn-primary', target: '_blank'
+              td = link_to "Edit Floorplans", add_floorplan_admin_building_page_path(building.id) , class: 'btn btn-primary', target: '_blank'
+              td = link_to "Edit", edit_admin_building_path(building.id), target: '_blank'
+              td = link_to "Delete", admin_building_path(building.id), method: :delete, data:{confirm: 'Do you want to delete this buildingd?'}, class: 'btn btn-danger'
+              //td
+                = link_to building.address_translator_url, target: :_blank do
+                  i.fa.fa-external-link
+
+              //td = link_to 'promote', promote_admin_building_path(building),
+                method: :post,
+                data:{confirm: 'Do you want to promote this building?'},
+                class: 'btn btn-info'
+      = paginate @buildings

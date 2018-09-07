@@ -1,0 +1,3 @@
+var block = $("#collect-listing-<%= @listing.id %>-box").html()
+$("#collect-listing-<%= @listing.id %>-box").replaceWith('<%= j collect_listing_link(@listing){} %>')
+$("#collect-listing-<%= @listing.id %>-box").html(block)

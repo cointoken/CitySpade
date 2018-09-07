@@ -1,0 +1,243 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_client_apply_index_path, method: :get do
+        .field.fieldset.center
+          h3 Client Application
+          .input-text.row
+            = text_field_tag :first_name, params[:first_name], placeholder: "First name", class: "col-md-5", style: "margin-right: 10px;"
+            = text_field_tag :last_name, params[:last_name], placeholder: "Last name", class: "col-md-5"
+            = text_field_tag :email, params[:email], placeholder: "Email", class: "col-md-5", style: "margin-right: 10px;"
+            = text_field_tag :building, params[:building], placeholder: "Building", class: "col-md-5", id: "building_field"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    .cell
+      = link_to "Export to CSV", admin_client_apply_index_path(format: "csv"), method: :get, class: 'btn btn-primary'
+
+.row
+  .box.col-md-12
+    .cell
+      Strong Client Application
+      Strong
+        | Count: #{@form.count}
+      .clear
+    .cell
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th
+              | ID
+            th
+              | Name
+            th
+              | Building
+            th
+              | Unit
+            th
+              | Email
+            th
+              | Phone
+            th
+              | Paid
+            th
+              | Status
+            th
+              | Deposit
+            th
+              | Created Time
+        tbody
+          -@form.each_with_index do |form|
+            tr.clickable data-toggle="collapse" data-target="#acc-#{form.id}"
+              td = form.id
+              td = form.first_name+" "+form.last_name
+              td = form.building
+              td = form.unit
+              td = form.email
+              td = form.phone
+              td = form.paid ? 'Yes' : 'No'
+              td.stat-update = form.app_status == 0? 'Not Applied':'Applied'
+              td = form.deposit
+              td = form.created_at.in_time_zone('America/New_York').strftime("%m/%d/%Y %H:%M")
+            tr
+              td colspan="12"
+                div.collapse id="acc-#{form.id}"
+                  = simple_form_for form, url: apply_update_admin_client_apply_path(form.id), method: :patch do |f|
+                    .row
+                      .col-md-6
+                        ul.list-group
+                          li.list-group-item
+                            span DOB:
+
+                            = f.text_field :dob
+
+                            //, params[:dob], placeholder: "#{form.dob.strftime("%m/%d/%Y")}"
+
+                            //|   #{form.dob.strftime("%m/%d/%Y")}
+                          li.list-group-item
+                            span SSN:
+
+                            = f.text_field :ssn
+
+                              //|   #{form.ssn}
+                          li.list-group-item
+                            span Addr:
+                            = f.text_field :current_addr
+
+                              //|   #{form.current_addr}
+                          li.list-group-item
+                            span landlord:
+                            = f.text_field :current_landlord
+
+                              //|   #{form.current_landlord}
+                          li.list-group-item
+                            span landlord Ph:
+                            = f.text_field :current_landlord_ph
+
+                              //|   #{form.current_landlord_ph}
+                          li.list-group-item
+                            span Rent:
+                            = f.text_field :current_rent
+
+                              //|   #{form.current_rent}
+                      .col-md-6
+                        ul.list-group
+                          li.list-group-item
+                            span Position:
+                            = f.text_field :position
+
+                              //|   #{form.position}
+                          li.list-group-item
+                            span Company:
+                            = f.text_field :company
+
+                              //|   #{form.company}
+                          li.list-group-item
+                            span Start date:
+                            = f.text_field :start_date
+
+                              //|   #{form.start_date.strftime("%m/%d/%Y")}
+                          li.list-group-item
+                            span Salary:
+                            = f.text_field :salary
+
+                              //|   #{form.salary}
+                          li.list-group-item
+                            span Hear about us?:
+                            = f.text_field :referral
+
+                          - if !form.ref_info.nil?
+                            li.list-group-item
+                              span Referral Info:
+                              = f.text_field :ref_info
+
+                          li.list-group-item
+                            span Agent:
+                            = f.text_field :agency
+
+                              //|   #{form.referral}
+                    .row
+                      - if !form.pet.nil?
+                        .col-md-6
+                          ul.list-group
+                            li.list-group-item
+                              span Pet type:
+                              = f.text_field :pet
+
+                                //|   #{form.pet}
+                            li.list-group-item
+                              span Breed:
+                              = f.text_field :breed
+
+                                //|   #{form.breed}
+                            li.list-group-item
+                              span Pet name:
+                              = f.text_field :pet_name
+
+                                //|   #{form.pet_name}
+                            li.list-group-item
+                              span Pet age:
+                              = f.text_field :pet_age
+
+                                //|   #{form.pet_age}
+                            li.list-group-item
+                              span Pet Weight:
+                              = f.text_field :pet_weight
+
+                                //|   #{form.pet_weight}
+                      .col-md-6
+                        ul.list-group
+                          li.list-group-item
+                            span Emerg Name:
+                            = f.text_field :emergency_name
+
+                              //|   #{form.emergency_name}
+                          li.list-group-item
+                            span Emerg Addr:
+                            = f.text_field :emergency_addr
+
+                              //|   #{form.emergency_addr}
+                          li.list-group-item
+                            span Emerg Phone:
+                            = f.text_field :emergency_phone
+
+                              //|   #{form.emergency_phone}
+                          li.list-group-item
+                            span Emerg Relation:
+                            = f.text_field :emergency_relation
+
+                              //|   #{form.emergency_relation}
+                              //|   #{form.referral}
+                      .col-md-6
+                        ul.list-group
+                          li.list-group-item
+                            span Building:
+                            = f.text_field :building
+
+                          li.list-group-item
+                            span Unit:
+                            = f.text_field :unit
+
+                      .col-md-6
+                        ul style="list-style-type:circle"
+                        - if form.account_id.present?
+                          ul.list-group
+                            li.list-group-item
+                              span Account: #{form.account_id}
+                        - else
+                          ul.list-group
+                            li.list-group-item
+                              span No Account Associated
+                        - form.guarantor_status.each do |status|
+                          li =status
+                              //- form.guarantor_status.each do |status|
+
+                    .row style="margin-left: 0px;margin-right: 0px;"
+                      h3 Documents:
+                      - form.documents.each do |doc|
+                        ul style="list-style-type:disc"
+                          li
+                            = link_to "#{File.basename(doc.name.path)}","#{doc.name.url}", target: "_blank"
+                            span
+                              |   :  #{doc.doc_type}
+                            //- form.documents.each do |doc|
+
+                    .send-mail style="margin-top: 10px;"
+                      = link_to "Send e-mail", admin_mailtemplate_path(client_id: form.id), target: "_blank", class: "btn btn-primary"
+                      = link_to "Add Documents", edit_admin_client_apply_path(id: form.id), target: "_blank", class: "btn btn-primary", style: "margin-left: 5%"
+                      = f.submit "Update", class: 'btn btn-primary', style: "margin-left: 5%"
+                      = link_to "Delete Application", admin_client_apply_path(form.id), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger", style: "margin-left: 5%"
+                      - if form.app_status == 0
+                        button.btn.btn-danger.app-status data-id="#{form.id}" data-stat="1" data-remote="true" style= "margin-left: 5%"
+                          | Not Applied
+                      - else
+                        button.btn.btn-success.app-status data-id="#{form.id}" data-stat="0" data-remote="true" style= "margin-left: 5%"
+                          | Applied
+
+      = paginate @form
+
+
+javascript:
+  App.ClientApplyAdmin();

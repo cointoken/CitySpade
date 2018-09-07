@@ -1,0 +1,37 @@
+#writeAReview.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal"
+          | ×
+        h3.modal-title Access ALL reviews
+
+      .modal-body
+        .center-or
+          .inner-or or
+
+        .row
+          .col-md-6
+            =image_tag "reviews/pencil.png"
+            h4.section-heading WRITE A REVIEW
+
+            div.call-to-action
+              = link_to "REVIEW", new_review_path
+            p
+              | It takes only one minute to complete a
+              |  review for FREE access to ALL reviews
+
+          .col-md-6
+            =image_tag "reviews/user-face.png"
+            h4.section-heading LOG IN
+
+            div.call-to-action.fb-btn
+              = link_to account_omniauth_authorize_path(:facebook) do
+                | FACEBOOK LOG IN
+
+            p or
+
+            div.call-to-action
+              = link_to "LOG IN", new_account_session_path
+
+            p Log in if your account contains at least one review

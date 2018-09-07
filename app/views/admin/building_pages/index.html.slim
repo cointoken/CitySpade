@@ -1,0 +1,29 @@
+.row
+  .box.col-md-12
+    .cell
+      Strong Building Pages
+      .clear
+    .cell
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th
+              | ID
+            th
+              | Address
+            th
+              | Name
+            th
+              | Images
+            th
+              | Floorplans
+        tbody
+          -@buildings.each do |building|
+            tr
+              th = building.id
+              th = building.address
+              th = building.name
+              td = link_to "Add Images", add_images_admin_building_page_path(building.id), class: 'btn btn-primary', target: '_blank'
+              td = link_to "Add Floorplans", add_floorplan_admin_building_page_path(building.id) , class: 'btn btn-primary', target: '_blank'
+              td = link_to "Edit", edit_admin_building_path(building.id)
+              //td = link_to "unpromote", unpromote_admin_building_page_path(building.id), class: 'btn btn-danger', method: :post

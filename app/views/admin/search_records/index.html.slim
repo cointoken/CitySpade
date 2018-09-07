@@ -1,0 +1,78 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_search_records_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Search Records
+          .input-text
+            - cities = []
+            - Settings.cities.each_value{ |ct| cities << [ct["long_name"], ct["long_name"].to_url] }
+            = select_tag :current_area, options_for_select(cities), class: "col-md-5"
+            = text_field_tag :title, params[:search_name], placeholder: "Search Name", class: "col-md-5"
+          .radio-btns
+            label.radio.list-inline
+              | All
+              = radio_button_tag :flag, nil, params[:flag].blank?
+            label.radio.list-inline
+              | Sales
+              = radio_button_tag :flag, 'sales', params[:flag] == "sales"
+            label.radio.list-inline
+              | Rentals
+              = radio_button_tag :flag, 'rentals', params[:flag] == "rentals"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    .cell
+      Strong Search Records |
+      p.total 
+        |  Total: #{@search_records.total_count} 
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "id", "ID"
+            th
+              = sortable "title", "Title"
+            th
+              = sortable "current_area", "Current Area"
+            th Beds
+            th Baths
+            th
+              = sortable "min_price", "Min Price"
+            th
+              = sortable "max_price", "Max Price"
+            th
+              = sortable "political_results_count", "Political results count"
+            th
+              = sortable "results_count", "Results count"
+            th Type
+            th Page turning
+            th
+              = sortable "re_search_num", "Repeat Search times"
+            th
+              = sortable "created_at", "Created at"
+            th Delete
+        tbody
+          - @search_records.each do |sr|
+            tr
+              td = sr.id
+              td = sr.title
+              td = sr.current_area
+              td = sr.beds.join(", ")
+              td = sr.baths.join(", ")
+              td = sr.min_price
+              td = sr.max_price
+              td = sr.political_results_count
+              td = sr.results_count
+              td = sr.flag
+              td = sr.page_turning
+              td = sr.re_search_num
+              td = sr.created_at
+              td
+                  = link_to "Delete", admin_search_record_path(sr), method: :delete, confirm: 'Do you want to delete the search record ?', class: 'btn btn-danger'
+
+    = paginate @search_records

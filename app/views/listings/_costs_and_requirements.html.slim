@@ -1,0 +1,67 @@
+.col-md-6
+  table.table.table-striped.estimated
+    thead
+      tr
+        td.title colspan=2
+          | Estimated Move-in Costs
+    tbody
+      tr
+        td.sub-title
+          | First Month's Rent
+        td.first_rent.sub-val
+          = number_to_currency(listing.price, precision: 0)
+      tr
+        td.sub-title
+          | Security Deposit
+        td.security_deposit.sub-val
+          = number_to_currency(listing.price, precision: 0)
+      tr
+        td.sub-title
+          | Broker Fee
+        td.broker_fee.sub-val
+          - if listing.no_fee
+            span.listing_no_fee
+              | NO-FEE
+          - else
+            .broker_fee_chose
+              span.percent-10.chose-btn
+                | 10%
+              span.percent-15.chose-btn.chosen
+                | 15%
+              span.per-month.chose-btn
+                | 1 month
+            .broker_fee_price
+              = "( #{number_to_currency(listing.price * 12 * 0.15, precision: 0)} )"
+      tr
+        td.sub-title
+          | Total
+        td.total.sub-val
+          - if listing.no_fee
+            = number_to_currency(listing.price * 2, precision: 0)
+          - else
+            = number_to_currency(listing.price * 2 + listing.price * 12 * 0.15, precision: 0)
+
+
+.col-md-6
+  table.table.table-striped.estimated
+    thead
+      tr
+        td.title colspan=2
+          | Estimated Application Requirements:
+    tbody
+      tr
+        td.sub-title
+          div
+            | Total Tenant Income
+            br
+            | (usually 40x)
+        td.tenant_income.sub-val
+          = number_to_currency(listing.price * 40, precision: 0)
+      tr
+        td.sub-title
+          div
+            | Or Total Guarantor Income
+            br
+            | (usually 80x)
+        td.gurantor_income.sub-val
+          = number_to_currency(listing.price * 80, precision: 0)

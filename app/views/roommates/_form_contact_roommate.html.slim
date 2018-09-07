@@ -1,0 +1,14 @@
+= form_tag '/roommates/send_message', id: "contact-modal-form" do
+  = hidden_field_tag 'roommate_id', params[:id]
+  .form-group
+    = text_field_tag 'Name', nil, placeholder: 'Your Name:', class: "form-control", required: true
+  .form-group
+    = text_field_tag 'Email', "#{current_account.try(:email)}", placeholder: 'Your E-Mail:', class: "form-control", id: "contact-email", type: "email", required: true
+  .form-group
+    = text_field_tag 'Phone', nil, placeholder: 'Your Phone Number(Optional):', class: "form-control"
+  .form-group
+    - my_text = "Hi,\n\nI saw your post on CitySpade and am interested in being your roommate.\n\nThis is the post I am contacting you about:\n#{request.host_with_port + roommate_path(params[:id])}\n\nI look forward to hearing back from you. Thank you!\n\nBest,\n#{current_account.try(:first_name)} #{current_account.try(:last_name)}"
+    = text_area_tag 'Description', my_text, class: "form-control", id: "contact-description", rows: 10
+  .form-group.text-center
+    = submit_tag 'SEND MY MESSAGE', class: "btn btn-default", id: "contact-send-btn"
+

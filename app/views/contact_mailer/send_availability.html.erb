@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  </head>
+  <body>
+    <div>
+      <h3>Message Info:</h3>
+      <p>First Name: <%= @fname %></p>
+      <p>Last Name: <%= @lname %></p>
+      <p>Email: <%= @email %></p>
+      <% if !@wechat.empty? %>
+        <p>WeChat: <%= @wechat %></p>
+      <% end %>
+      <p>Message: <%= @message %></p>
+    </div>
+  </body>
+</html>

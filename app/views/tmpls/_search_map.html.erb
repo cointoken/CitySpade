@@ -1,0 +1,50 @@
+<script id='tmpl-rich-marker' type='text/tmpl'>
+  <div class='marker-cluster-outer'>
+    <div class='marker-cluster size-${listings.length.toString().length}'>
+      ${listings.length}
+    </div>
+  </div>
+</script>
+<script id='tmpl-rich-marker-infobox' type='text/tmpl'>
+  <div class='infobox-container'>
+    <ul>
+      {%each listings%}
+      <li class='infobox-list'>
+      <table>
+        <tr>
+          <td>
+      <div class='infobox-thumb'>
+        <a href="/listings/${$value.id}" target='_blank'>
+          <img src='<%= listing_default_image_url%>' class='lazy-img' data-real-src='${$value.small_image_url}'>
+    </a>
+      </div>
+    </td>
+    <td>
+      <div class='infobox-detail'>
+        <div class='infobox-price-info'>
+        <b>${$value.price_k}</b> &nbsp;&nbsp;
+        ${$value.beds}bd/ ${$value.baths}ba
+        </div>
+        <div class='infobox-title'>
+          ${$value.title}
+        </div>
+        <div class='infobox-score'>
+          <b>
+        {%if $value.score_price %}
+        Cost-Efficiency: ${$value.score_price}&nbsp;&nbsp;
+        {%/if%}
+        {%if $value.score_transport %}
+        Transportation: ${$value.score_transport}
+          {%/if%}
+        </b>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+     </li>
+      {%/each%}
+    </ul>
+  </div>
+</script>
+

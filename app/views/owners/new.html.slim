@@ -1,0 +1,93 @@
+- content_for :custom_title, "Earn Up To $5,000 More From Rent | List With CitySpade"
+.container-fluid#landlord-header
+  .row
+    .col-sm-12.center
+      h1
+        | List With Us
+  .row
+    .col-sm-12.center
+      h3
+        | For individual landlords, receive more rent without extra work.
+  .row
+    .col-sm-12.center
+      a.btn#ownerlistingheadsection href="#landlordContactSection"
+        .btnTextOwnerListing
+          | EARN MORE RENT
+.container-fluid#landlord-section-slide
+  .row
+    .col-sm-12.center
+      h1
+        | How?
+    .col-sm-8.col-sm-offset-2.center
+      h3
+        | We will take care of marketing your listing, arranging open houses and signing the lease.
+  .row
+    .col-sm-12.center
+      h2
+        | EARN UP TO
+        span $5,000
+        | MORE FROM RENT
+.container-fluid#landlord-section-3
+  .row
+    .col-sm-4.center#landlordThirdFirst
+      h3
+        | RISK FREE
+      = image_tag("moneybag.png")
+      p
+        | We will give you one month's worth of rent as security deposit.
+      p
+        |You keep the money if your place is on the market for more than a month.
+    .col-sm-4.center#landlordThirdSecond
+      h3
+        | SIMPLE
+      = image_tag("simple.png")
+      p
+        | All you have to do is sign an exclusive contract with us, and we will take care of the rest.
+    .col-sm-4.center#landlordThirdThird
+      h3
+        | EXPOSURE
+      = image_tag("exposure.png")
+      p
+        | Your apartment will be placed before all other listings.
+      p
+        | Rent out your apartment quicker without the hassle.
+.container#landlordContactSection
+  .row
+    .col-sm-8.col-sm-offset-2.center
+      h1
+        | Get Started
+  .row
+    = form_for @owner, city: {action: "create"} do |f|
+      .row#landlordnameRow
+        .col-sm-4.col-sm-offset-1.center-xs12#landlordnamelabel
+          label for="name" Your Name:
+        .col-sm-6.col-sm-12#landlordnameinput
+          = f.text_field :name, id: "name"
+      .row#landlordemailRow
+        .col-sm-4.col-sm-offset-1#landlordemaillabel
+          label for="email" Your E-Mail:
+        .col-sm-6#landlordemailinput
+          = f.text_field :email, id: "email"
+      .row#landlordphoneRow
+        .col-sm-4.col-sm-offset-1#landlordphonelabel
+          label for="phone" Your Phone:
+        .col-sm-6
+          = f.text_field :phone, id: "phone"
+      .row#landlordaddressRow
+        .col-sm-4.col-sm-offset-1#landlordaddresslabel
+          label for="street_address" Your Property Address:
+        .col-sm-6
+          = f.text_field :street_address, id: "street_address"
+      .row#landlordCityRow
+        .col-sm-4.col-sm-offset-1#landlordcitylabel
+          label for="city" City:
+        .col-sm-6
+          = f.text_field :city, id: "city"
+      .row#landlordZipcodeRow
+        .col-sm-4.col-sm-offset-1#landlordzipcodelabel
+          label for="zipcode" Zipcode:
+        .col-sm-6
+          = f.text_field :zipcode, required: true, type: "zipcode", id: "zipcode"
+      .row
+        .col-sm-12.center.submit-divOwner
+          = f.submit 'SUBMIT', id:"divOwnerSubmit"

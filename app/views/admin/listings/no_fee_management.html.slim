@@ -1,0 +1,62 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag no_fee_management_admin_listings_path, method: :get do
+        .field.fieldset.center
+          legend
+          .control-group.col-md-10.check-boxes-div
+            - @sites.each do |site|
+              - is_checked = params[:sites].blank? ? false : params[:sites].include?(site)
+              .collection-boxes-row
+                = label_tag nil, site, class: "check_boxes_label"
+                  = check_box_tag 'sites[]', site, is_checked, class: "collection-boxes-row"
+                  = render_error_sign_site(site).first
+          .radio-btns
+            label.select-all
+              = link_to "Select All", "#", class: "btn"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+.row
+  .box.col-md-12
+    .cell
+      Strong Listings |
+      p.list-inline
+        span.total
+          |  Total: #{@listings.total_count} 
+        | | Contacted Agent Times:&nbsp;
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "id", "ID"
+            th
+              = sortable "title", "Title"
+            th Image number
+            th
+              = sortable "broker_name", "Broker"
+            th Type
+            th
+              = sortable "price", "Price"
+            th Contacted Agent Times
+            th
+              = sortable "created_at", "Created at"
+            th
+              = sortable "updated_at", "Updated at"
+            th Set Expired
+        tbody
+          - @listings.each do |listing|
+            tr
+              td = link_to listing.id, listing, target: '_blank'
+              td = link_to listing.display_title, listing.origin_url, target: '_blank'
+              td = listing.images.count
+              td = listing.broker_site_name
+              td = listing.is_rental? ? 'Rental' : 'Sale'
+              td = listing.price
+              td = PageView.where(page_type: 'ContactAgent').where(page_id: listing.id).sum(:num)
+              td = listing.created_at.to_s(:db)
+              td = listing.updated_at.to_s(:db)
+              td
+                = link_to "Delete", admin_listing_path(listing), method: :delete, data:{confirm: 'Do you want to expired the listing ?'}, class: 'btn btn-danger'
+      = paginate @listings

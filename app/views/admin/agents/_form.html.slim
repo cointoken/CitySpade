@@ -1,0 +1,42 @@
+= form_for [:admin, @agent], html: {id: "admin_new_agent"} do |f|
+  .row.agent-row
+    .col-sm-6
+      = f.label :name
+      = f.text_field :name, class: 'agent-field form-control'
+      //= f.input :name, as: :string, input_html: {class: 'agent-field form-control'}
+    .col-sm-6
+      = f.label :email
+      = f.email_field :email, class: 'agent-field form-control'
+      //= f.input :email, input_html: {class: 'agent-field form-control'}
+  .row.agent-row
+    .col-sm-6
+      = f.label :tel, "Telephone"
+      = f.telephone_field :tel, class: 'agent-field form-control'
+    .col-sm-6
+      = f.label :wechat
+      = f.text_field :wechat, class: 'agent-field form-control'
+  .row.agent-row
+    .col-sm-8
+      = f.label :address
+      = f.select :address, Settings.agent_addresses,{}, {class: 'agent-field form-control'}
+    .col-sm-4
+      = f.label :active, "Agent Active?"
+      = f.select :active, [['Active', true], ['Inactive', false]], {}, {class: 'agent-field form-control'}
+  .row.agent-row
+    .col-sm-6
+      = f.label :photo, "Agent Photo"
+      = f.file_field :photo, class: 'agent-field form-control'
+    .col-sm-6
+      = label_tag :languages, "Languages(Hold Ctrl or Command for multiple choices)"
+      = select_tag :languages, options_for_select(Language.all.collect {|l| [l.name, l.id]}), multiple: true, class: 'agent-field form-control'
+  .row.agent-row
+    .col-xs-12
+      = f.label :introduction
+      = f.text_area :introduction, class: 'agent-field form-control'
+  .row.agent-row
+    .col-xs-12
+      = f.label :experience
+      = f.text_area :experience, class: 'agent-field form-control'
+
+  .form-actions
+    = f.submit 'Save', class: 'btn btn-primary'

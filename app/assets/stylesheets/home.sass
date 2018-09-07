@@ -1,0 +1,640 @@
+@import 'modules'
+.home-banner
+  position: relative
+  margin-top: -72px
+  text-align: center
+  box-sizing: border-box
+  background-color: #f1f5f7
+
+  .heading
+    font-size: 58px
+    font-family: 'Gilroy Extrabold'
+    color: #ffffff
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16)
+    padding-top: 200px
+
+  video
+    width: 100%
+  .title2
+    font-size: 34px
+    font-family: 'Gilroy Light'
+    color: #ffffff
+
+  ::placeholder
+    font-size: 30px
+    font-family: 'Renner Book'
+    color: rgba(40, 232, 232, 0.5)
+
+  .input-wrapper
+    margin: 0 auto
+    margin-top: 5%
+    background-color: white
+    width: 50%
+    height: 70px
+    border-radius: 10px
+  .fa-search
+    color: #28d8d8
+  input#search-container
+    background-color: #ffffff
+    width: 85%
+    height: 70px
+    //width: 885px
+    //box-shadow: 6px 10px 15px rgba(0, 0, 0, 0.16)
+    font-size: 30px
+    font-family: 'Renner Book'
+    color: #000000
+    border: none
+    outline: none
+    box-shadow: none
+  #search-dropdwn
+    display: none
+    border-radius: 10px
+    background-color: #f0f9fd
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16)
+    margin-top: 8px
+    text-align: left
+    padding: 33px
+    position: relative
+    z-index: 999
+    .close-btn
+      background: transparent
+      padding: 0
+      outline: none
+    p
+      font-family: "Renner Book"
+      font-size: 14px
+      color: #262d3f
+    .locn
+      display: inline-block
+    a
+      border-radius: 4px
+      background-color: #ffffff
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.16)
+      font-family: "Renner Light"
+      font-size: 14px
+      color: #262d3f
+      padding: 12px
+      letter-spacing: 0.04em
+      &:focus
+        background-color: #28d8d8
+        text-decoration: none
+        outline: none
+    a.sch-link
+      padding: 5px
+    .univ
+      display: inline-block
+      max-width: 250px
+      margin-right: 20px
+      margin-top: 10px
+    a.my-sch
+      padding: 0
+      background: none
+      box-shadow: none
+      border-bottom: 1px solid #28d8d8
+      border-radius: 0
+      letter-spacing: 0.04em
+    li
+      margin-right: 5px
+    li.active
+      a
+        background-color: #28d8d8
+    .tab-content
+      margin-top: 20px
+    .areas + .areas, .schools + .schools
+      margin-top: 26px
+    .locn + .locn
+      margin-left: 12px
+    .sec
+      margin-top: 30px
+
+  .t-cn
+    color: #000000
+    font-size: 200px
+
+  .t-en
+    font-size: 60px
+    color: #ffffff
+  .banner-wrap
+    position: absolute
+    top: 0px
+    width: 100%
+    margin: 0 auto
+
+  //input#search-button
+    color: transparent
+    height: 115px
+    background-image: image-url('header/Group_1868.png')
+    background-repeat: no-repeat
+    background-position: center
+    border: none
+    width: 115px
+    box-shadow: 6px 10px 15px rgba(0, 0, 0, 0.16)
+    position: relative
+    bottom: 8px
+    left: 43px
+    z-index: 2
+.search-result
+  .ui-autocomplete
+    left: 25% !important
+    width: 50% !important
+    border-radius: 10px
+    font-family: "Renner Book"
+    font-size: 16px
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16)
+  .ui-menu-item
+    border-bottom: 1px solid rgba(217, 219, 220, 0.5)
+  .ui-menu-item:last-child
+    color: #28d8d8
+    font-weight: bold
+    letter-spacing: 0.03em
+    font-size: 18px
+  .ui-state-active
+    background-color: #f0f9fd !important
+    color: #262d3f
+    border: 1px solid rgba(217, 219, 220, 0.5)
+    border-radius: 10px
+
+.home-schools
+  background-color: #f1f5f7
+  text-align: center
+  padding-bottom: 110px
+
+  .titlep
+    font-family: 'Gilroy Extrabold'
+    font-size: 52px
+    color: #262d3f
+
+  .title2
+    font-family: 'Gilroy Light'
+    font-size: 26px
+    color: #7e849c
+
+  .school-row
+    margin-top: 110px
+    padding-left: 12%
+    padding-right: 12%
+
+  .school_img
+    height: auto
+    width: 75%
+
+  .scname
+    font-family: 'Gilroy Light'
+    font-size: 26px
+    color: #262d3f
+    margin-top: 30px
+
+  .find_more
+    margin-top: 135px
+    border-radius: 10px
+    border-width: 2px 2px 2px 2px
+    border-style: solid
+    border-color: #28d8d8
+    font-family: 'Renner Book'
+    font-size: 23px
+    padding-left: 48px
+    padding-right: 48px
+    padding-top: 19px
+    padding-bottom: 19px
+    color: #28d8d8
+    &:hover
+      background-color: #28d8d8
+      color: #ffffff
+
+.home-services
+  padding-left: 0px
+  padding-right: 0px
+  //padding-top: 240px
+  //background-image: image-url('header/bk2.png')
+  text-align: center
+  //background-repeat: no-repeat
+  //background-size: cover
+  //background-position: center top
+  .contain1
+    background-image: image-url('header/back6.png')
+    position: relative
+    top: -70px
+    padding-top: 80px
+    padding-bottom: 100px
+    background-repeat: no-repeat
+    background-position: 45% 70%
+
+  .contain2
+    background-image: image-url('header/back7.png')
+    background-position: 45%
+    position: relative
+    top: -72px
+    background-repeat: no-repeat
+    padding-top: 100px
+  .contain3
+    background-image: image-url('header/back3.png')
+    background-size: cover
+    position: relative
+    top: -142px
+    background-repeat: no-repeat
+  .contain4
+    background-image: image-url('header/back4.png')
+    position: relative
+    top: -240px
+    background-size: 1366px
+    padding-top: 140px
+
+  .services-row
+    padding-left: 100px
+    padding-right: 100px
+    margin-bottom: 120px
+  .service-title
+    font-family: 'Gilroy Extrabold'
+    font-size: 52px
+    color: #262d3f
+    margin-bottom: 85px
+
+  .service-content
+    margin-bottom: 105px
+    position: relative
+
+    .service-content-detail
+      width: 50%
+      margin-left: auto
+      margin-right: auto
+
+      p
+        font-family: 'Renner Book'
+        font-size: 1.45vw
+        color: #262d3f
+        line-height: 40px
+
+
+  .service-learn
+    font-family: 'Renner Book'
+    font-size: 21px
+    color: #28d8d8
+    border-style: solid
+    border-radius: 10px
+    border-width: 2px 2px 2px 2px
+    border-color: #28d8d8
+    padding-left: 48px
+    padding-right: 48px
+    padding-top: 19px
+    padding-bottom: 19px
+    position: relative
+    &:hover
+      background-color: #28d8d8
+      color: #ffffff
+
+  .service-title2
+    font-family: 'Gilroy Extrabold'
+    font-size: 52px
+    color: #262d3f
+
+  .service-title3
+    font-family: 'Gilroy Light'
+    font-size: 26px
+    color: #7e849c
+    margin-bottom: 150px
+
+  .step-title
+    text-align: left
+
+    h1
+      font-family: 'Gilroy Light'
+      font-size: 20px
+      color: #7e849c
+  .img-content
+    padding-left: 12%
+
+  .step-img
+    height: auto
+    width: 100%
+
+  .step-wait
+    height: auto
+    width: 60.34%
+
+  .content-title
+    font-family: 'Gilroy Extrabold'
+    font-size: 26px
+    color: #252d3f
+    line-height: 50px
+    margin-bottom: 50px
+    white-space: pre-wrap
+
+  .content-wrapper
+    width: 281px
+    height: 370px
+    border-style: solid
+    border-width: 1px 1px 1px 1px
+    border-color: #7e849c
+    border-radius: 30px
+    margin-left: 0px
+
+    .card-title
+      font-family: 'Renner Book'
+      font-size: 16px
+      color: #262d3f
+      border-bottom: 1px
+      border-style: solid
+      border-color: #7e849c
+      border-top: 0px
+      border-left: 0px
+      border-right: 0px
+      padding-top: 10px
+      padding-bottom: 10px
+
+    .card-content
+      text-align: left
+
+      ul
+        padding-top: 30px
+        li
+          font-family: 'Renner Light'
+          font-size: 16px
+          color: #262d3f
+          line-height: 50px
+          padding-left: 5px
+          list-style-image: image_url('school_img/Path_10569.png')
+
+      .line-img
+        padding-left: 40px
+        margin-right: 10px
+
+  .step-learn
+    font-family: 'Renner Book'
+    font-size: 21px
+    color: #262d3f
+    &:hover
+      text-decoration: underline #262d3f solid
+
+  .get-quote
+    font-size: 25px
+    font-family: 'Renner Medium'
+    color: #ffffff
+    border-radius: 10px
+    background-color: #28d8d8
+    padding-left: 40px
+    padding-right: 40px
+    padding-top: 20px
+    padding-bottom: 20px
+    z-index: 99
+    position: relative
+    &:hover
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.16)
+      color: #ffffff
+      outline: none
+
+  .intro-wrapper
+    padding-left: 200px
+    padding-right: 400px
+    text-align: left
+    height: 620px
+    .intro-left
+      padding-top: 175px
+      padding-bottom: 120px
+    .intro-right
+      padding-top: 180px
+    .intro-title
+      font-size: 40px
+      font-family: 'Gilroy Extrabold'
+      color: #262d3f
+      line-height: 63px
+      margin-bottom: 30px
+
+    .intro-content
+
+      p
+        font-family: 'Renner Light'
+        font-size: 17px
+        color: #7e849c
+        line-height: 24px
+
+  .all-servtitle
+    font-family: 'Gilroy Extrabold'
+    font-size: 52px
+    color: #262d3f
+
+  .all-2ndtitle
+    font-family: 'Gilroy Light'
+    font-size: 26px
+    color: #7e849c
+
+  .services-wrapper
+    padding-left: 100px
+    padding-right: 100px
+    margin-top: 50px
+
+    .service-info
+      //padding-left: 80px
+      //padding-right: 80px
+
+      h1
+        font-family: 'Gilroy Light'
+        font-size: 26px
+        color: #262d3f
+
+      h2
+        font-family: 'Renner Light'
+        font-size: 17px
+        color: #7e849c
+        line-height: 24px
+
+      .service-image
+        width: 270px
+        height: 270px
+  .wrap2
+    margin-top: 75px
+    padding-bottom: 95px
+    background-color: #f7fafc
+    padding-top: 75px
+  .add-serv-btn
+    background-color: #f7fafc
+    padding-bottom: 100px
+  .add-service
+    font-size: 26px
+    font-family: 'Renner Medium'
+    color: #ffffff
+    border-radius: 10px
+    background-color: #28d8d8
+    padding-left: 50px
+    padding-right: 50px
+    padding-top: 20px
+    padding-bottom: 20px
+    &:hover
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.16)
+      color: #ffffff
+      outline: none
+
+.home-contact
+  background-color: #28d8d8
+  padding-bottom: 120px
+  text-align: center
+  .contact-row
+    margin-top: 110px
+    margin-bottom: 125px
+
+  h1
+    padding-top: 90px
+    margin-bottom: 40px
+    font-family: 'Gilroy Extrabold'
+    font-size: 44px
+    color: #262d3f
+
+  h2
+    font-family: 'Gilroy Light'
+    font-size: 30px
+    color: #262d3f
+
+  h3
+    font-family: 'Gilroy Extrabold'
+    font-size: 32px
+    color: #262d3f
+
+  h4
+    font-family: 'Gilroy Light'
+    font-size: 26px
+    color: #262d3f
+
+  .quote-link
+    font-size: 25px
+    font-family: 'Renner Medium'
+    color: #28d8d8
+    border-radius: 10px
+    border-style: solid
+    border-width: 0px 0px 0px 0px
+    background-color: #ffffff
+    padding-left: 50px
+    padding-right: 50px
+    padding-top: 20px
+    padding-bottom: 20px
+    &:hover
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.16)
+      color: #28d8d8
+      outline: none
+
+
+/***** Mobile view CSS ******/
+
+@media screen and (max-width: 767px)
+  .home-banner
+    margin-top: 0px
+    height: 300px
+    z-index: 1
+    video
+      height: 310px
+    .heading
+      font-size: 40px
+      padding-top: 32px
+    .t-en
+      font-size: 23px
+      padding-top: 50px
+    .title2
+      font-size: 18px
+    input#search-container
+      width: 80%
+      font-size: 26px
+      height: 50px
+    #search-dropdwn
+      padding: 20px
+      .locn
+        margin-top: 25px
+        margin-left: 15px
+      li
+        margin-top: 10px
+    .input-wrapper
+      width: 95%
+      height: 50px
+    .search-result .ui-autocomplete
+      width: 94.5% !important
+      left: 3% !important
+  .home-schools
+    z-index: 0
+    padding-top: 20px
+    .school-row
+      padding-left: 0px
+      padding-right: 0px
+      padding-bottom: 0px
+      margin-top: 65px
+    .img-wrap
+      padding-top: 50px
+    .titlep
+      font-size: 40px
+    .title2
+      font-size: 26px
+  .home-services
+    .service-title
+      font-size: 40px
+    .service-title2
+      font-size: 40px
+    .service-title3
+      margin-bottom: 75px
+    .all-servtitle
+      font-size: 40px
+    .contain1
+      padding-top: 70px
+      padding-bottom: 0px
+    .contain2
+      background: none
+      padding-top: 80px
+      .mobile-wrap
+        padding-top: 50px
+    .contain4
+      background-image: image-url('header/back3.png')
+      background-repeat: no-repeat
+      top: -125px
+    .services-row
+      padding-left: 5%
+      padding-right: 5%
+    .step-title
+      padding-bottom: 30px
+    .service-content .service-content-detail
+      width: 80%
+      p
+        font-size: 20px
+    .img-content
+      width: 100%
+      display: inline-block
+      padding-left: 0px
+      img
+        width: 175px
+    .content-title
+      font-size: 22px
+      padding-top: 20px
+      margin-bottom: 35px
+    .content-wrapper
+      display: inline-block
+      margin-left: 1%
+
+    .contain4
+      .services-wrapper
+        padding-left: 50px
+        padding-right: 50px
+        margin-top: 70px
+        background: #f7fafc
+        .service-info
+          padding-left: 0px
+          padding-right: 0px
+          .service-image
+            width: 200px
+            height: 200px
+          .serv-txt
+            padding-top: 0px
+      .wrap2
+        margin-top: 0px
+        background: white
+        padding-top: 0px
+      .add-serv-btn
+        background: white
+
+  .home-contact
+    padding-left: 50px
+    padding-right: 50px
+    .contact-row
+      margin-top: 0px
+      margin-bottom: 80px
+    h1
+      font-size: 42px
+    h2
+      font-size: 28px
+    h3
+      font-size: 30px
+    h4
+      font-size: 24px

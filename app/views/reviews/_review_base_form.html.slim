@@ -1,0 +1,30 @@
+.input
+  = f.hidden_field :review_type, value: review_type
+	= f.hidden_field :token
+  - if review_type == 0
+    = label_tag "review_address", class: 'label-title'
+      span.star *
+      span Street Address:
+  - else
+    = label_tag "review_address"
+      span.star *
+      span Neighborhood:
+  = f.text_field :address, required: true
+.input
+  - if review_type == 0
+    = label_tag 'review_building_name', 'Building Name:'
+  - else
+    = label_tag 'review_building_name', 'Street Name:'
+  = f.text_field :building_name, id: 'review_building_name'
+- if review_type != 0
+  .input
+    = label_tag 'review_cross_street', 'Cross Street:'
+    = f.text_field :cross_street
+.input
+  .pull-left
+    = render_required_label 'review_city', "City:"
+    = f.text_field :city, required: true
+  .pull-right
+    = render_required_label 'review_state', 'State:'
+    = f.select :state, City.states, required: true
+  br style="clear:both"

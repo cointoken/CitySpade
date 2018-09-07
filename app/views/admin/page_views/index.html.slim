@@ -1,0 +1,66 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_page_views_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Page Views
+          .input-text.triple-input
+            = number_field_tag :page_id, params[:page_id], min: 1, placeholder: "Listing ID", class: "col-md-5"
+            = text_field_tag :street_address, params[:street_address], placeholdew: "Street Address", class: "col-md-5"
+            = select_tag :page_type, options_for_select([params[:page_type], "ContactAgent"], "ContactAgent"), class: "col-md-5"
+          .radio-btns.
+            label.radio.list-inline
+              | Sent
+              = radio_button_tag :flag, '0', params[:flag] == '0'
+            label.radio.list-inline
+              | Rental
+              = radio_button_tag :flag, '1', params[:flag] == '1'
+        .control-group.col-md-10
+            = submit_tag 'Search', class: "btn btn-success"
+            |    Total: 
+            = @page_views.total_count
+.row
+  .box.col-md-12
+    .cell
+      Strong Page Views
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "id", "ID"
+            th
+              = sortable "page_id", "Listing ID"
+            th
+              | Street Address
+            th
+              | City
+            th
+              = sortable "created_at", "Created at"
+            th
+              = sortable "updated_at", "Updated at"
+            th
+              | Flag
+            th
+              = sortable "num", "Num"
+            th
+              | Account Name
+            th
+              | Account ID
+        tbody
+          - @page_views.each do |pv|
+            - next if pv.page.blank?
+            tr
+              td = pv.id
+              td = pv.page.id
+              td = pv.page.try(:display_title)
+              td = pv.page.city.try(:long_name)
+              td = pv.created_at
+              td = pv.updated_at
+              td = pv.page.flag_name
+              td = pv.num
+              td = pv.account.try(:name)
+              td = pv.account.try(:id)
+      = paginate @page_views

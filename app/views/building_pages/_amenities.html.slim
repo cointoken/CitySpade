@@ -1,0 +1,10 @@
+.row
+  - amenities.each do |amenity|
+    .col-sm-4
+      .row.amenity-row
+        .col-xs-3
+          = image_tag "amenities/icons/#{amenity.downcase}.png",
+            class: "pull-right", height: "30", width: "30"
+        .col-xs-9
+          h4 = amenity
+       

@@ -1,0 +1,47 @@
+.flash-contact
+  h4 Checkout The Apartment Via CitySpade
+  h4.phone
+    - if mobile?
+      = link_to  "(646-552-4238 )", "tel:6465524238"
+    - else
+      | (646-552-4238 )
+  button.flash-detail data-toggle="modal" data-target="#flash-modal"
+    = image_tag "icons/email-icon.png"
+  button.flash-detail data-toggle="modal" data-target="#wechatqr-modal"
+    = image_tag "icons/wechat-icon.png"
+  #flash-modal.modal.fade
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button type="button" class="close" data-dismiss="modal" &times;
+          h4.modal-title Send message to Kiran Chen
+
+        .modal-body
+          = form_tag flash_email_listings_path(listing_id: @listing.id), id:"flash-contact-form" do
+            .form-group
+              = text_field_tag 'contact[name]', "#{current_account.try(:name)}", placeholder: 'Your Name:', class: "form-control", required: true
+            .form-group
+              = text_field_tag 'contact[email]', "#{current_account.try(:email)}", placeholder: 'Your E-Mail:', class: "form-control", id: "contact-email", type: "email", required: true
+            .form-group
+              = text_field_tag 'contact[phone]', nil, placeholder: 'Your Phone Number(Optional):', class: "form-control"
+            .form-group
+              - descrip = "Hi,\n\nI found your listing on CitySpade and am very interested in more details.\n\nThis is the listing I am interested in:\n#{listing_url(@listing)}\n\nCould you contact me back with its availability and viewing times please.\n\nThank you."
+              = text_area_tag 'contact[description]', "#{descrip}", class: "form-control", id: "contact-description", rows: 12
+            .form-group.text-center
+              = submit_tag 'SEND', class: "btn btn-default", id: "contact-send-btn"
+  #wechatqr-modal.modal.fade
+    .modal-dialog
+      .modal-content
+        - if mobile?
+           .modal-header
+            button type="button" class="close" data-dismiss="modal" &times;
+            h4.modal-title Message us on WeChat
+           .modal-body
+            = link_to "Search WeChat ID: Cityspade1", "weixin://contacts/cityspade1"
+
+        - else
+          .modal-header
+            button type="button" class="close" data-dismiss="modal" &times;
+            h4.modal-title Scan the QR code below to message us on WeChat
+          .modal-body
+            = image_tag "social/wechatqr.jpg"

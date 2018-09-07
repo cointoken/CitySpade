@@ -1,0 +1,47 @@
+label.label-title
+  - if @review.review_type == 0
+    | Please rate the overall quality of the apartment/building
+  -else
+    | Please rate the overall quality of the street/neighborhood
+.input.select-overall-container
+  .select-items
+    - 5.times do |time|
+      = content_tag :i,nil ,class: "fa fa-square-star #{@review.overall_quality ? (@review.overall_quality > time ? \
+      'selected' : nil) : nil}" , data:{index: time, name: :overall_quality}
+    = f.hidden_field :overall_quality
+span.clickToRates
+  | Click to Rate
+.clearfix
+
+label.label-title.ratings-title
+  - if @review.review_type == 0
+    | Please rate the following aspects of the apartment/building
+  -else
+    | Please rate the following aspects of the street/neighborhood
+
+== render_rating_stars(f)
+
+.input
+  = render_required_label 'review_review_apartment_attributes_comment', "Tell us more about your ratings above:", class: 'label-title'
+  = f.text_area :comment, required: true, minlength: 150, value: strip_tags(@review.comment),
+    placeholder: "Share your experience and advice. Help others make smarter rental choices. Don't forget to include #CitySpadeRaffle to win a GoPro/iPad! Thank you!"
+  .cal-characters.pull-right
+    span.cal-char
+      |0
+    span.characters data-num=150
+      |&nbsp;characters (150 minimum)
+
+/ = f.fields_for 'review_places_attributes[]', @review.review_places.build do |place|
+/   = render 'places_form', place: place
+
+.input
+  = render 'tmpls/photo'
+  = label_tag "Upload Photos",'Upload Photos:', class: 'label-title'
+  #form.uploadify
+    #queue
+    input#hide-photo-ids name='photo_ids' type='hidden'
+    input#file_upload name="file_upload" type="file" multiple="true"
+    br.clear
+.input
+  = render_required_label 'review_display_name', "Post as:", class: 'label-title'
+  = text_field_tag 'display_name', (@review.try(:display_name) || current_account.try(:first_name)), name:'review[display_name]', required: true

@@ -1,0 +1,7 @@
+.build-img
+  = image_tag spade_pass_img.image_url
+  .actions
+    = link_to "Set cover", set_cover_admin_spade_pass_path(spade_pass_img.id)
+    span
+      |  |
+    = link_to "delete", delete_image_admin_spade_pass_path(spade_pass_img.id), method: :delete, data: {confirm: 'Are you sure?'}

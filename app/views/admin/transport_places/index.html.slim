@@ -1,0 +1,23 @@
+.row
+  .box.col-md-12
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th Name
+            th Place Type
+            th Area ID
+            th Address
+            th State
+            th Edit
+        tbody
+          - @tplaces.each do |place|
+            tr
+              td = place.name
+              td = place.place_type
+              td = place.political_area_id
+              td = place.formatted_address
+              td = place.state
+              td
+                = link_to "Edit", "#", class: 'btn btn-info'
+

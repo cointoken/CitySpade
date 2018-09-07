@@ -1,0 +1,48 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_brokers_path, method: :get do
+        .fieldset.center
+          legend
+            | Broker
+          .input-text.triple-input
+            = text_field_tag :tel, params[:tel], placeholder: "Tel", class: "col-md-5"
+            = text_field_tag :name, params[:name], placeholder: "Name", class: "col-md-5"
+            = text_field_tag :email, params[:email], placeholder: "Email", class: "col-md-5"
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+
+.row
+  .box.col-md-12
+    .cell
+      Strong Broker
+      = link_to 'New Broker', new_admin_broker_path, class: 'btn btn-success pull-right'
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "name", "Name"
+            th
+              = sortable "tel", "Tel"
+            th
+              = sortable "email", "Email"
+            th State Name
+            th
+              | Listing Number
+            th Edit
+            th Delete
+        tbody
+          - @brokers.each do |broker|
+            tr
+              td = broker.name
+              td = broker.tel
+              td = broker.email
+              th = broker.state
+              th = broker.listing_num
+              td
+                = link_to "Edit", edit_admin_broker_path(broker), class: 'btn btn-info'
+              td
+                = link_to "Delete", admin_broker_path(broker), method: :delete, confirm: 'Do you want to delete the blog ?', class: 'btn btn-danger'
+      = paginate @brokers

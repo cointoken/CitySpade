@@ -1,0 +1,47 @@
+#profile.global-container.row
+  .container
+    h1.title Room Wishlist
+    .row
+      = render partial: '/accounts/sidebar'
+      .col-md-9.row.wishlist-wrapper
+        .wishlist
+          - @posts.each do |post|
+            .row
+              .listing.row
+                - if post.photos.size == 0
+                  .col-md-4.listing_img  style="background-image: url('/assets/default.jpg')"
+                - else
+                  .col-md-4.listing_img  style="background-image: url(#{post.photos.first.url})"
+                .col-md-8.listing-content
+                  h3
+                    = link_to post.title, post
+                  - if post.class == Room 
+                    strong
+                      | #{post.street_address}
+                    br
+                    strong
+                      | #{PoliticalArea.find(post.political_area_id).short_name}
+                    strong.pull-right
+                      = number_to_currency(post.price_month, precision: 0)
+                        | / month
+                    .room-btns
+                      span.account-listing-btn
+                        = link_to "Edit", edit_room_path(post), class: "edit-listing"
+                      span.account-listing-btn
+                        = link_to "Delete", room_path(id: post.id), method: :delete, class: "delete-post", data: {confirm: "Are you sure?"}
+                  - else
+                    strong
+                      | #{Array(post.borough).join(", ")}
+                    br
+                    strong
+                      | Move-in: #{post.move_in_date}
+                    strong.pull-right
+                      = number_to_currency(post.budget, precision: 0)
+                    .room-btns
+                      span.account-listing-btn
+                        = link_to "Edit", edit_roommate_path(post), class: "edit-listing"
+                      span.account-listing-btn
+                        = link_to "Delete", roommate_path(id: post.id), method: :delete, class: "delete-post", data: {confirm: "Are you sure?"}
+
+      
+      = paginate @posts

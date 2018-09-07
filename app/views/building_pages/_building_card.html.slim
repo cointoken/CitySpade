@@ -1,0 +1,31 @@
+.row.card-list
+  - build_arr.each do |building|
+    .col-sm-6.col-card
+      .card-wrap
+        = link_to building_page_path(building), target: "_blank" do
+          -style = "margin-right: auto"
+          -if !mobile?
+            - if count % 2 == 0
+              -style = "margin-right: 0px"
+          .card [
+            data= {\
+              lat: building.lat,
+              lng: building.lng,
+              title: building.name,
+              index: count \
+            }
+            style = "#{style}"
+          ]
+            .img
+              //- img = building.building_images.find_by(cover: true)
+              //= image_tag img.image_url(:thumb)
+              = building_thumb building.building_images
+            - if !building.floorplans.empty?
+              .price
+                span
+                  | $#{building.floorplans.try(:minimum,:price)}
+            .details
+              h4 = building.name.try(:downcase).try(:titleize)
+              p = building.formatted_address
+
+          - count = count+1

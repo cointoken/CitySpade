@@ -1,0 +1,47 @@
+.container-fluid
+  .row.hidden-sm.banner#open-house-banner
+.container.listings#open-houses
+  .row#search-bar
+    #search-sort
+      .subject
+        h3 SORT BY
+      #sort-options.pull-left
+        .input-group.date#filter-date
+          input.col-md-2 type="text" value=params[:date] name='date'
+          span.input-group-addon
+            i.glyphicon.glyphicon-calendar
+      div.visible-xs
+        div.mobile-price-rating.pull-left
+          span.btn-group
+            button.btn.btn-lg.dropdown-toggle data-toggle="dropdown" type="Button"
+              | By Borough
+              span.caret
+            ul.dropdown-menu
+              li
+                = render_sort_link 'Manhattan', 'manhattan', false
+              li
+                = render_sort_link 'Brooklyn', 'brooklyn',  false
+              li
+                = render_sort_link 'Queens', 'queens', false
+        div.mobile-price-rating.pull-right
+          span.btn-group
+            button.btn.btn-lg.dropdown-toggle data-toggle="dropdown" type="Button"
+              = link_to 'Reset', url_for(params.merge(sort: nil,page: nil, only_path: true, date: nil))
+      .sort-input.price.hidden-sm
+        = render_sort_link 'Manhattan', 'manhattan', false
+        = render_sort_link 'Brooklyn', 'brooklyn',  false
+        = render_sort_link 'Queens', 'queens', false
+        = link_to 'Reset', url_for(params.merge(sort: nil,page: nil, only_path: true, date: nil))
+      .clearfix
+  .row
+    .col-md-10.open-house-lists
+      = render partial: 'openhouse', object: @listings
+      .row
+    .col-md-2.hidden-sm.googleADspan
+      script async=true src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      / CitySpade listing page
+      ins class="adsbygoogle" style="display:inline-block;width:100%;height:728px;" data-ad-client="ca-pub-2336842535313539" data-ad-slot="7365828808" data-target='_blank'
+      script
+        | (adsbygoogle = window.adsbygoogle || []).push({});
+  #openHousePagination
+    = link_to_next_page(@listings, 'Next Page', :remote => true)

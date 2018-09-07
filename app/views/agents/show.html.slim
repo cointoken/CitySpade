@@ -1,0 +1,130 @@
+//section#sp-banner-wrapper
+  .row#banner
+    .hidden-sm
+      .banner-bg.listing-banner-bg style="height:160px;"
+
+.container
+  .row#agent-container.clearfix
+    .agent-info-container
+      .col-md-6.agent-info
+        .agent-avatar
+          = image_tag @agent.photo_url, class: 'circle', alt: @agent.img_alt, title: @agent.img_alt
+
+      .col-md-6.agent-info
+        .agent-name
+          = @agent.name
+        .agent-contact
+          .agent-position
+            p Licensed Real Estate Salesperson
+          .agent-tel
+            p C:#{@agent.tel} &nbsp | &nbsp  Email: #{@agent.email}
+        .agent-contact-container
+          button.agent-contact-btn data-toggle="modal" data-target="#contactagentmodal" style="background-color: #28d8d8"
+            span  Contact Me
+
+        //= image_tag @agent.photo_url, class: 'circle', alt: agent.img_alt, title: @agent.img_alt
+
+  .row#agent-basic-info
+    .col-md-3
+      .basic-info-title
+        p Basic Info
+    .col-md-3
+      .basic-info-content-title
+        p Phone
+      .basic-info-content-detail
+        p #{@agent.tel}
+
+      .basic-info-content-title.hidden-xs style="margin-top: 69px"
+      .basic-info-content-title.visible-xs style="margin-top: 35px"
+        p WeChat
+      .basic-info-content-detail
+        p #{@agent.wechat}
+
+    .col-md-3
+      .basic-info-content-title
+        p Email
+      .basic-info-content-detail
+        p #{@agent.email}
+
+      .basic-info-content-title.hidden-xs style="margin-top: 69px"
+      .basic-info-content-title.visible-xs style="margin-top: 35px"
+        p Office
+      .basic-info-content-detail
+        p #{@agent.address}
+
+    .col-md-3
+      .basic-info-content-title
+        p Language
+      .basic-info-content-detail
+        p = @agent.languages.map(&:name).join("/")
+
+  .row#agent-about-info style="margin-bottom: 80px"
+    .col-md-3.col-xs-12
+      .about-title
+        p About Me
+    .col-md-9.col-xs-12
+      .about-detail
+        p #{@agent.introduction}
+
+  - if !@agent.experience = ""
+    .row#agent-about-info style="padding-bottom: 100px"
+      .col-md-3
+        .about-title
+          p Experience
+      .col-md-9
+        .about-detail
+          p #{@agent.experience}
+
+= render "agents/contact_agent_modal"
+
+
+
+  //.row#agent-container.clearfix
+    .agent-info-container
+      .agent-info
+        .agent-avatar
+          = image_tag @agent.photo_url, class: 'circle', alt: @agent.img_alt, title: @agent.img_alt
+        .agent-name
+          = @agent.name
+        .agent-contact
+          .agent-tel
+            i.fa.fa-phone
+            a href="tel:#{@agent.tel}"
+            - if !@agent.tel.nil?
+              = display_tel(@agent.tel)
+          .agent-email
+            i.fa.fa-envelope-o
+            a href="mailto:#{@agent.email}"
+              = @agent.email
+      .agent-remark
+        h3
+          = @agent.about_title || 'About me'
+        div
+          == short_remark(@agent)
+
+
+    //.agent-listings-container
+      h3
+        | Available Listings
+      .agent-listings
+        - @listings.each do |listing|
+          .agent-listing.row
+            .col-md-4
+              = link_to listing  do
+                .pull-left.listing-flag
+                  = flag_and_reviews_count(listing)
+                = image_tag listing_image_url(listing), class: 'agent-listing-img'
+            .col-md-5
+              h3
+                = link_to listing.display_title, listing
+              span
+                = listing.area_zipcode
+              span.bed-bath
+                = display_beds(listing)
+                |,
+                '
+                = display_baths(listing)
+            .col-md-3
+              span.price
+                = number_to_currency(listing.price, precision: 0)
+        = paginate @listings,  window: 3

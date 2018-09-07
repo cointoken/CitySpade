@@ -1,0 +1,30 @@
+.row-fluid#signin.global-container
+  .container
+    h1.custom-title.title Sign In to CitySpade
+    .signin-box.row
+      .left-column.pull-left
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+          .textfield-wrapper
+            = f.email_field :email, :autofocus => true, :placeholder => 'Your Email', class: 'textfield'
+            = f.password_field :password, :placeholder => 'Your Password', class: 'textfield'
+          - if devise_mapping.rememberable?
+            .remember-me
+              = f.check_box :remember_me, checked: "checked", class: 'pull-left'
+              = f.label :remember_me
+              = link_to 'Forgot password?', new_account_password_path , class: 'pull-right forget-pw'
+            .submit_log_in.pull-left
+              = f.submit "Log in", class: 'btn-custom sign-btn'
+            //.fb_log_in.pull-right
+              = link_to account_omniauth_authorize_path(:facebook) do
+                img src=asset_path('facebookbutton.jpg')
+          end
+      .right-column.pull-left
+        h3.custom-title.signin-notice Not A Member Yet?
+        = link_to account_omniauth_authorize_path(:facebook) do
+          img src=asset_path('facebook_icon.jpg')
+        br
+        .signup-direct
+          span
+            | or,
+            '
+          = link_to "Sign up with email", new_account_registration_path, class: "sign-up-email"

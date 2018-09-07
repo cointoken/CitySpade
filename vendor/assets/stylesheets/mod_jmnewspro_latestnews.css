@@ -1,0 +1,138 @@
+/* * --------------------------------------------------------------------
+  # Package - JoomlaMan JMNewsPro
+  # Version 1.0
+  # --------------------------------------------------------------------
+  # Author - JoomlaMan http://www.joomlaman.com
+  # Copyright © 2012 - 2013 JoomlaMan.com. All Rights Reserved.
+  # @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 or Later
+  # Websites: http://www.JoomlaMan.com
+  ---------------------------------------------------------------------* */
+.jmnewspro.latestnews {
+    padding-top: 2px;
+    position: relative;
+		direction: ltr;
+}
+.jmnewspro.latestnews  .slide-item-image{}
+.jmnewspro.latestnews  .slide-item-image a{
+    overflow: hidden;
+    display: block;
+}
+.jmnewspro.latestnews  .slide-item-title{
+    margin: 10px 0 7px;
+}
+.jmnewspro.latestnews .slide-item-title span.name {
+  font-size: 14px;
+  color: #666;
+  font-family: open_sanslight;
+}
+.jmnewspro.latestnews  .slide-item-title span.position{
+    color: #999999;
+}
+.jmnewspro.latestnews  .slide-item-title a:hover,
+.jmnewspro.latestnews span.slide-item-readmore a:hover{}
+.jmnewspro.latestnews .slide-item-title a,
+.jmnewspro.latestnews span.slide-item-readmore a{
+		font-family:'MuseoSlab';
+    
+}
+.jmnewspro.latestnews .slide-item-desc .user_description{
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+    padding: 15px 0;
+}
+.jmnewspro.latestnews .slide-item-desc .user_social{
+    font-size:12px;
+    padding: 15px 0;
+}
+.jmnewspro.latestnews .jmnewspro-prev,
+.jmnewspro.latestnews .jmnewspro-next{
+    cursor: pointer;
+    display: block;
+	font-size: 20px;
+    height: 40px;
+    overflow: hidden;
+    position: absolute;
+    top: 57px!important;
+    width: 20px;
+    opacity: 1;
+	-webkit-transition: all .18s linear;
+    -moz-transition: all .18s linear;
+    -ms-transition: all .18s linear;
+    -o-transition: all .18s linear;
+    transition: all .18s linear;
+}
+.jmnewspro.latestnews .jmnewspro-prev{
+	left:-35px;
+}
+.jmnewspro.latestnews .jmnewspro-next{
+    right: -45px;
+}
+.jmnewspro.latestnews .jmnewsprohover{
+    background: rgba(0,0,0,0.8);
+    color: #e5e5e5;
+    position: absolute;
+    bottom: 0;
+    height: 0;
+    text-align: center;
+}
+.jmnewspro.latestnews .jmnewsprohover .slide-inner{
+    padding: 12px 22px;
+}
+.jmnewspro.latestnews .bx-wrapper {
+    position: relative;
+    margin: 0 auto 0;
+    padding: 0;
+    *zoom: 1;
+}
+.jmnewspro.latestnews .bx-wrapper img {
+    max-width: 100%;
+    display: block;
+    -webkit-transition: all .18s linear;
+    -moz-transition: all .18s linear;
+    -ms-transition: all .18s linear;
+    -o-transition: all .18s linear;
+    transition: all .18s linear;
+}
+/** THEME
+===================================*/
+.jmnewspro.latestnews .bx-pager ul{
+    list-style-type: none !important;
+    margin: 3px 0 0 !important;
+    padding: 0 !important;
+    float: left;
+}
+.jmnewspro.latestnews .bx-pager ul li {
+    float: left;
+    width: 8px;
+    height: 8px;
+    margin: 0 4px 0 0 !important;
+}
+.jmnewspro.latestnews .bx-pager ul li a{
+    background: url('../images/interface.png') no-repeat 50% 0;
+    text-indent: -999em;
+    cursor: pointer;
+    display: block;
+    width: 8px;
+    height: 8px;
+    overflow: hidden;
+}
+.jmnewspro.latestnews .bx-pager ul li a:hover,
+.jmnewspro.latestnews .bx-pager ul li a.active {
+    background-position: 50% -8px;
+}
+.jmnewspro.latestnews .bx-wrapper .bx-controls-direction{
+    display: none;
+}
+.jmnewspro.latestnews .jmnewspro.jmnewspro.latestnews img:hover {
+    -webkit-transform: scale(1.1) rotateZ(-3deg);
+    -moz-transform: scale(1.1) rotateZ(-3deg);
+    -ms-transform: scale(1.1) rotateZ(-3deg);
+    -o-transform: scale(1.1) rotateZ(-3deg);
+    transform: scale(1.1) rotateZ(-3deg);
+}
+.jmnewspro.latestnews .slide-inner{
+    padding: 0!important;
+}
+.jmnewspro.latestnews .created {
+	font-size:10px;
+}

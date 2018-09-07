@@ -1,0 +1,17 @@
+.box
+  .cell
+    h1
+     | Editing roommates
+    h3
+      = @admin_roommate.title
+
+  .container
+    = form_for @admin_roommate, html: {\
+        class: "center-block", id: "roommateForm"\
+      } do |f|
+
+      = render 'roommates/form', f: f
+
+    = link_to 'Show', @admin_roommate
+    '|
+    = link_to 'Back', admin_roommates_path

@@ -1,0 +1,1850 @@
+@import 'modules'
+/** Search results Layout **/
+$blueLight: #29bcb8
+
+.no-border
+  border: none !important
+
+.listings-map-wrapper
+  height: 100vh
+  width: 100%
+  top: 0
+  right: 0
+
+  &.affix
+    width: inherit
+    top: 0
+    right: 0
+
+  &.affix-top
+    position: absolute
+    top: 0
+
+  &.affix-bottom
+    position: absolute
+    bottom: 0
+
+  #listingIndexMap
+    width: 100%
+    height: 100%
+
+#search-results
+  #search-results-titles
+    margin: 19px 0
+    h2
+      @include size-color-family(22px,#444,Arial Black)
+      display: list-inline
+    .short-or-full-address
+      @include size-color-family(15px,#444,helvetica)
+      font-weight: 500
+      display: inline-block
+      padding: 0 10px
+      margin-left: 10px
+      margin-bottom: 5px
+      background-color: #ececec
+      border-radius: 5px
+      &:hover
+        background-color: #f4f4f4
+    .pull-right
+      @include size-color(24px,#444)
+      position: relative
+      bottom: 4px
+
+#search-sort
+  h3
+    @include size-color(16px,#444)
+    font-weight: normal
+    margin: 5px 0
+    padding-right: 15px
+    border-right: 1px solid #ccc
+
+  .title, a
+    @include size-color-family(14px,#444,Avenir)
+    font-weight: inherit
+
+  .mobile-title
+    display: none
+
+  .subject
+    padding-right: 10px
+
+  .sort-input
+    a
+      height: 26px
+      text-align: center
+      border-radius: 5px
+      border: 1px solid #c7c7c7
+      width: 112px
+      display: inline-block
+      margin-left: 10px
+      &.active
+        border: 1px solid #29bcb8
+        color: #29bcb8
+    &.reset
+      a
+        width: 80px
+        background-color: #ececec
+        &:hover
+          background-color: #f4f4f4
+  div
+    float: left
+    margin-left: 13px
+    &.rating
+      margin-left: 25px
+  #sort-options
+    width: 20%
+  .search-result
+    float: right
+    @include size-color(24px,#444)
+
+/** Listing Style **/
+.listings_content
+  width: 58%
+  margin-bottom: 5px
+
+#no-result-matched
+  @include size-color(18px,#888)
+  float: left
+
+/**trans-info**/
+#trans-info
+  h1, h2, h3, h4, h5, h6, span
+    @include reset-font-space
+    font-family: $listing-show-font
+  margin-bottom: 0
+  @include box-sizing
+  // font
+  > .title
+    @include size-color-family(22px,#333,$listing-text-font)
+  .subtitle
+    @include size-color(18px,#333)
+  .subways, .bus
+    @include size-color(16px,#666)
+  .spots, .colleges, .lines
+    .name
+      @include size-color-family(16px,#666,$listing-show-font)
+  // spacing
+  .wrapper
+    width: 97%
+  > .title
+    margin-bottom: 5px
+  .detail-info
+    width: 100%
+    .lines
+      margin-bottom: 25px
+      .subways
+        .title
+          margin-right: 3px
+          width: 100%
+          display: inline-block
+        #display-subway-lines
+          margin-top: 10px
+          width: 100%
+          .unit
+            padding-bottom: 8px
+            width: 100%
+            .pull-right
+              margin-top: 5px
+          img
+            margin-right: 8px
+            display: inline-block
+            height: 30px
+            width: 30px
+
+            &:last-of-type
+              margin-right: 14px
+              display: inline-block
+    .spots, .colleges
+      .subtitle
+        margin-bottom: 15px
+    .spots
+      margin-bottom: 30px
+  .spot, .college
+    width: 100%
+    display: inline-block
+    margin-bottom: 10px
+    &:nth-child(2n)
+      // margin-right: 10px
+        float: right
+    // text-align: right
+    .name
+      display: inline-block
+      margin-top: 2px
+    .trans-type-icon
+      margin-left: 10px
+
+@media(max-width: 767px)
+  #trans-info
+    .bus
+      float: none
+    .spot, .college
+      &:nth-child(2n)
+        float: none
+      width: 100%
+      max-width: 300px
+      display: block
+      .name
+        font-size: 14px
+    .detail-info
+      .lines
+        .subways
+          #display-subway-lines
+            .unit
+              width: 169px
+              max-width: 169px
+              position: relative
+              span
+                position: absolute
+                right: -103px
+                top: 0
+  #listings-show
+    .cs-left
+      h1
+        margin: 10px 0 -5px !important
+    hr, .listing-review
+      border-bottom: 3px solid #E8E8E8 !important
+
+#sp-main-body-wrapper.listing .bg-container
+  background: #f9f9f9
+  border: 0
+  width: 100%
+  max-width: 100%
+  #listing-detail,#transit-and-map,#nearby-venues
+    max-width: 980px
+    margin: 20px auto !important
+    border: 0px !important
+  #nearby-venues .container
+    max-width: 980px
+    .row
+      width: 100%
+      display: block
+
+/*content fixed*/
+.fixed_block
+  position: fixed
+  top: 0px
+  z-index: 1005
+  background-color: #fff
+  width: 1200px
+/* END */
+
+/** Listing show page **/
+body .listing#sp-main-body-wrapper
+  padding: 10px 0 20px 0 !important
+  margin: auto
+  background: none repeat scroll 0 0 #fff !important
+  #content-body
+    /*margin-left: 15px
+    /*margin-right: 15px
+#listings-show
+  // header
+  #listingGallery
+    .carousel-control
+      height: 150px
+  #listing-images
+    width: 62%
+    height: 525px
+    overflow: hidden
+    //border-right: 1px solid $sub-white
+    .carousel-inner
+      width: inherit
+    .image-content
+      img
+        max-height: 400px
+        width: 100%
+        overflow: hidden
+      .carousel-caption
+        color: $full-white
+        width: 100%
+        left: 0px
+        width: 100%
+        padding: 0
+        bottom: 23.4em
+        text-align: left
+        padding-left: 10px
+        background: rgba(0,0,0,0.75)
+        top: 0
+        display: inline-table
+        .open-houses-title
+          font-size: 16px
+        .open-house
+          font-size: 14px
+          margin-left: 0px
+          .plus
+            margin-left: 5px
+            color: $link-color
+            cursor: pointer
+    .floorplan-link
+      position: absolute
+      bottom: 4%
+      right: 15px
+      .floorplan-btn
+        @include size-color-family(14px,#000,"Avenir")
+        background: #fff
+        padding: 2px 5px
+        border-radius: 4px
+        position: absolute
+        bottom: 346px
+        right: 10px
+        z-index: 999
+        &:hover
+          text-decoration: underline
+
+
+    .listing-images-list
+      ul.item
+        li
+          float: left
+          margin-right: 14px
+          padding: 1px
+        #popupVid
+          border: none
+          margin-bottom: -10px
+          &.current-img
+            border: 1px solid $link-color
+          &:last-child
+            margin-right: 0px
+      padding: 10px 0 0 0
+      .carousel-control
+        &.left
+          left: -5px
+        &.right
+          right: -5px
+      .carousel-inner
+        .item img
+          height: 90px
+          width: 120px
+  #listing-info
+    width: 37%
+    margin-left: 1%
+    padding: 20px 0 10px 15px
+    #listingImagesCarousel
+      a.carousel-control
+        height: 88px
+      img
+        width: 100%
+      .image-pannel
+        .carousel-control
+          left: -10px
+          &.right
+            right: -10px
+    .row:first-child
+      margin-bottom: 10px
+      border-bottom: 1px solid $sub-white
+      .listing-price-no-fee
+        margin: 15px 0 10px 0
+        border-top: 1px solid $sub-white
+        padding-top: 10px
+        .listing-price
+          margin-right: 10px
+          color: black
+        .listing_no_fee
+          vertical-align: top
+          line-height: 20px
+        .squarefeet
+          border-left: 1px solid $sub-white
+          font-weight: bold
+          font-size: 1.2em
+          font-family: Avenir
+          padding: 8px
+      .guarantor-logo
+        margin-left: 8px
+      .tooltip
+        opacity: 1
+        .tooltip-inner
+          max-width: 300px
+          background-color: #f3f3f3
+          border: 1px solid black
+          p
+            font-size: 15px
+            font-family: Avenir
+            color: black
+          a
+            font-size: 16px
+            font-family: Avenir
+            font-weight: bold
+       
+      
+    .rating-num
+      font-size: 16px
+      font-family: avenir
+    #ratings-and-price
+      margin-bottom: 10px
+      .rating-num
+        line-height: 2px
+      .building-review span
+        font-family: Avenir
+        font-size: 18px
+      .new-review-for-listing
+        font-size: 16px
+        vertical-align: top
+        margin-left: 5px
+        line-height: 18px
+      .listing-reviews-count .reviews-count-link
+        font-family: Avenir-heavy
+        font-size: 16px
+
+    #beds-and-baths
+      border-top: 1px solid $sub-white
+      border-bottom: 1px solid $sub-white
+      padding: 8px 0px
+      margin-bottom: 18px
+      display: flex
+      .half
+        margin-top: 5px
+        .bb-info
+          margin-top: 5px
+          font-size: 18px
+        &:first-child
+          width: 49%
+          border-right: 1px solid $sub-white
+      img
+        max-width: 40px
+  #listing-images,#listing-info
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+    float: left
+    .row
+      margin-left: 0px
+      margin-right: 0px
+  @media (max-width: 767px)
+    #listing-images,#listing-info
+      float: none
+      width: 100%
+      margin-left: 0
+      padding-left: 0px
+  .listing-images-list
+    height: 100px
+    .image-pannel
+      ul
+        padding-left: 0px
+  // broker/ agent
+  .contact-detail
+    .col-md-5.clearfix
+      margin-top: 5px
+    .col-md-7
+      height: 125px
+      position: relative
+    .contact-detail-btns
+      position: relative
+    .broker-icon
+      width: 100%
+      margin-bottom: 10px
+      border: 1px solid #ccc
+      @media only screen and (max-device-width: 480px)
+        width: 63%
+    .contact-name
+      color: $color333
+      font-size: 16px
+      font-family: Avenir
+    .tel
+      font-size: 16px
+      font-weight: bold
+      font-family: Avenir
+      color: $link-color
+      margin-top: -12px
+  h1
+    @include size-color-family(20px,#333,Palatino)
+    margin-top: 0
+    margin-bottom: 5px
+  h2
+    @include size-color-family(14px,#444,$listing-show-font)
+    margin: 3px 0
+  .rating-all-items
+    margin: 0
+  .listing-price
+    @include listing-price(bold)
+    font-size: 20px
+    line-height: 20px
+  #score-and-related
+    width: 100%
+    display: inline-block
+    border-bottom: 1px solid $sub-white
+    // background-color: #edf4f4
+    margin-top: -18px
+    margin-bottom: 18px
+    ul
+      padding: 10px 0
+    li
+      @include size-color(18px,#444)
+      line-height: 24px
+      margin-top: 7px
+      span
+        background: no-repeat
+        background-image: image-url("icons/dot.png")
+        padding-left: 8px
+        background-position-y: 4px
+      strong
+        font-family: Avenir-heavy
+  .contact-detail.row
+    margin-bottom: 0
+  .btn-group
+    white-space: pre-line
+  .agent-avatar-img
+    margin-right: 10px
+    height: 75px
+    width: 60px !important
+  // transit
+  .title
+    @include size-color-family(22px,#333,$listing-text-font)
+  hr
+    margin: 5px 0 10px
+  #transit-and-map
+    .subtitle
+      @include size-color-family(18px,#333, "Avenir Book")
+      margin-bottom: 12px
+    .subways, .bus
+      @include size-color-family(16px,#333,$listing-text-font)
+    .spots, .colleges, .lines
+      margin-bottom: 18px
+      .name
+        @include size-color-family(16px,#666,"Avenir Book")
+    .detail-info
+      width: 100%
+      .lines
+        .subways
+          .title
+            margin-right: 3px
+            width: 100%
+            display: inline-block
+        #display-subway-lines
+          width: 100%
+          .unit
+            padding-bottom: 8px
+            width: 100%
+            .pull-right
+              margin-top: 5px
+          img
+            margin-right: 8px
+            display: inline-block
+            height: 30px
+            width: 30px
+
+            &:last-of-type
+              margin-right: 14px
+              display: inline-block
+    .spot, .college
+      width: 100%
+      display: inline-block
+      margin-bottom: 5px
+    .name
+      display: inline-block
+      margin-top: 2px
+    .trans-type-icon
+      margin-left: 10px
+    // map
+    .tab-button
+      margin-bottom: 10px
+      li
+        float: left
+      a
+        width: 90px
+        height: 30px
+        line-height: 30px
+        color: $color333
+        border: 1px solid $color666
+        text-align: center
+        text-decoration: none
+        &.a-map
+          border-left: none
+      .active a
+        background-color: $color999
+  #listing-detail
+    min-height: 250px
+    ul
+      li
+        float: left
+        width: 50%
+        padding: 2px 0 8px
+        position: relative
+        right: 40px
+
+  #listingReviews
+    .read-more-reviews
+      text-align: center
+      font-weight: bold
+      font-size: 1.2em
+      margin-bottom: 25px
+      @media (max-width: 767px)
+        border-top: 1px solid $link-color
+        padding-top: 10px
+
+    .overall
+      @media (min-width: 768px)
+        border-right: 1px solid $link-color
+      @media (max-width: 767px)
+        border-bottom: 1px solid $link-color
+
+
+    .rating-category
+      padding-top: 20px
+
+      .rating-stars
+        @media (min-width: 767px)
+          display: none
+
+    .rating-category, .overall
+      text-align: center
+      @media only screen and (max-device-width: 480px)
+        text-align: left
+
+      img
+        height: 50px
+        width: auto
+        padding-right: 10%
+        display: inline-block
+
+        @media (max-width: 767px)
+          display: none
+
+      h2
+        clear: both
+        margin-top: 10px
+
+      h2, h4
+        color: $link-color
+
+        @media (max-width: 767px)
+          display: inline-block
+          width: 49%
+
+      .rating
+        color: $link-color
+        font-size: 2em
+        font-weight: bold
+        vertical-align: bottom
+        display: inline-block
+        @media (max-width: 767px)
+          display: none
+
+      .rating-stars
+        @media (max-width: 767px)
+          display: inline-block
+          width: 49%
+    .review-container
+      margin-top: 30px
+
+      .user-info
+        .user-avatar
+          @media (max-width: 767px)
+            float: left
+
+          img
+            border: 3px solid $link-color
+            border-radius: 100%
+            margin-left: auto
+            margin-right: auto
+            display: block
+
+        .user-name, .user-rating
+          text-align: center
+          color: $link-color
+
+        .user-name
+          @media (max-width: 767px)
+            text-align: left
+            text-indent: 10px
+
+        .user-rating
+          font-size: 1.3em
+
+          @media (max-width: 767px)
+            display: none
+
+        .user-star-rating
+          @media (max-width: 767px)
+            float: left
+            padding-left: 10px
+
+      .review-content-body
+        position: relative
+        font-size: 1.1em
+        padding: 10px
+        border-radius: 5px
+        border: 2px solid $link-color
+        height: 120px
+
+        @media (max-width: 767px)
+          clear: both
+          margin: 45px 0 15px 0
+          height: auto
+
+
+        .read-more
+          text-align: center
+          font-weight: bold
+          font-size: 0.9em
+          position: absolute
+          bottom: 0.3em
+          width: 100%
+
+          @media (max-width: 767px)
+            text-align: right
+            position: static
+
+    #writeAReview
+      .modal-header
+        border-radius: 6px 6px 0 0
+        background: $link-color
+        text-align: center
+        border: 3px solid #11A3A3
+
+        h3
+          color: white
+
+        button.close
+          background: $link-color
+          color: white
+          border: 3px solid #11A3A3
+          border-radius: 100%
+          height: 1.681em
+          width: 1.681em
+          opacity: 1
+          position: relative
+          top: -22px
+          left: 26px
+          font-size: 1.7em
+          padding-bottom: 3px
+
+      .modal-body
+        border-left: 3px solid #11A3A3
+        border-right: 3px solid #11A3A3
+        border-bottom: 3px solid #11A3A3
+        border-radius: 0 0 6px 6px
+        padding: 0
+
+        .row
+          margin-left: 0px
+          margin-right: 0px
+
+        .center-or
+          position: relative
+          top: 10px
+          height: 0
+          width: 0
+          margin-left: auto
+          margin-right: auto
+          display: block
+          padding-right: 11px
+
+          @media (screen and max-width: 767px)
+            // Do not display on mobile
+            display: none
+
+          .inner-or
+            background: white
+            height: 50px
+            width: 50px
+            display: block
+            line-height: 50px
+            text-transform: uppercase
+            text-align: center
+            left: -18px
+            position: relative
+            top: 136px
+            font-weight: bold
+            z-index: 99
+
+        .col-md-6
+          margin-top: 5px
+          margin-bottom: 5px
+          padding: 10px
+          text-align: center
+
+          @media (screen and min-width: 768px)
+            width: 50%
+
+          p
+            margin-top: 20px
+            font-weight: bold
+
+          .section-heading
+            color: $link-color
+            font-weight: bold
+
+          .call-to-action
+            background: $link-color
+            border: 2px solid #11A3A3
+            width: 170px
+            margin-left: auto
+            margin-right: auto
+            display: block
+            border-radius: 25px
+            font-weight: bold
+            text-transform: uppercase
+            margin-top: 20px
+
+            a
+              color: white
+              display: block
+
+            &.fb-btn
+              background: #3b5998
+              border-color: black
+
+          img
+            margin-left: auto
+            margin-right: auto
+            margin-top: 10px
+            margin-bottom: 20px
+            display: block
+
+        .col-md-6:nth-child(2)
+          border-left: 2px solid #11A3A3
+          margin-left: 0
+
+/* END */
+/** Sort part **/
+#scroll-fixed-content
+  padding: 18px 0 10px
+/** END **/
+
+/** responstive **/
+@media (max-width: 767px)
+  #listings-show
+    #cs-right
+      #cs-right-top
+        .set-max-width
+          max-width: 139px
+        .pull-left
+          img
+            margin-right: 15px
+  .spot, .college
+    h6
+      max-width: 221px
+      word-wrap: break-word
+    .trans-type-icon
+      width: 26px
+      margin: 0px
+    /** Listing Show Page **/
+  #listings-show
+    .cs-left, #cs-right
+      width: 100%
+    #cs-right
+      float: left
+      margin-right: 0
+    /** TODO: 新的listing页面图片大小调整 **/
+    #related-reviews .lock-container
+      padding: 10px !important
+      line-height: 16px !important
+    #related-reviews .has-lock
+      height: 100px
+    #listingImagesCarousel
+      img
+        width: 320px
+        height: 220px
+  body.responsive .listing#sp-main-body-wrapper
+    padding: 0
+    .container
+      border: none
+  /** Listing Search Page **/
+  #scroll-fixed-content
+    width: 100%
+    position: relative
+  #search-results-titles .pull-right
+    float: left
+  #listings_list
+    width: 100%
+    border: none
+    min-width: 301px
+    .listing
+      margin: 0 auto
+      float: none
+      min-width: 301px
+      img
+        width: 100%
+        height: auto
+  .listings_content
+    width: 100%
+  #search-sort
+    h3
+      border: 0
+      margin: 5px
+    div.rating
+      margin-left: 5px
+    .sort-input
+      margin-bottom: 10px
+    .sort-input.reset a
+      margin-left: 0
+    .subject
+      float: left
+    #sort-options
+      @include width-height(300px,100%)
+#sp-listing-expired
+  background-color: #fff
+  padding-top: 15px
+  .listing-expired
+    @include size-color-family(14px,red,$listing-show-font)
+    border: 1px solid red
+    text-align: center
+    padding: 12px
+@media (max-width: 768px)
+  #sp-listing-expired
+    padding-top: 0
+@media (max-width: 1199px)
+  #nearby-venues
+    .venues-lists
+      a:first-child
+        .distance
+          right: 6px !important
+
+@media (max-width: 965px)
+  #nearby-venues
+    .venues-lists
+      a:first-child
+        .distance
+          right: 0 !important
+
+@media (max-width: 979px)
+  #listings_list
+    margin-left: -20px
+
+@media (max-width: 767px)
+  #search-results-titles
+    .pull-left
+      width: 100%
+      text-align: center
+      h2
+        display: none !important
+      a.short-or-full-address
+        @include margin-padding-border(5px auto !important,0 !important,1px solid #c7c7c7)
+        text-align: center
+        background-color: #fff !important
+        width: 295px
+        border-radius: 0px !important
+    .pull-right
+      display: none !important
+  #sp-main-body-wrapper
+    .nearby-homes-title
+      font-family: Avenir
+      border-bottom: 1px solid #E8E8E8
+      padding: 0 0 5px
+      margin: 0 20px
+      .carousel-control
+        &.left
+          left: 0
+        &.right
+          right: 0
+    #nearby-venues
+      //margin-bottom: 20px
+      .venues-rows
+        width: 420px
+        margin: 0px auto
+        >.col-md-6
+          width: 200px
+          float: left
+          h3
+            font-size: 18px
+            img
+              width: 20px
+      .venues-lists
+        display: -webkit-box
+        display: -moz-box
+        a:first-child
+          .distance
+            @include size-color(12px,#fff)
+            padding: 1px 2px
+        .col-md-6
+          h4
+            font-size: 14px
+            //font-weight: bold
+            color: #444
+          p
+            line-height: 15px
+            margin-bottom: 0
+        .span6:first-child
+          display: block
+        .rating-all-items
+          display: none
+        p
+          font-size: 12px
+
+  #nearby-apartments
+    #nearby-homes
+      a.carousel-control:hover
+        background: none
+
+@media (max-width: 480px)
+  /** move ad on phone **/
+  .adsbygoogle
+    display: none !important
+  #sp-main-body-wrapper
+    margin-top: -20px
+    #nearby-venues
+      .venues-rows
+        width: 340px
+        >.col-md-6
+          width: 158px
+    .contact-detail
+      .col-md-7
+        .oprate-button
+          width: 197px
+          margin: 3px 0
+@media (max-width: 340px)
+  #sp-main-body-wrapper
+    #nearby-venues
+      .venues-rows
+        width: 280px
+        >.col-md-6
+          width: 135px
+          margin-left: 10px
+        >.span6:first-child
+          margin-left: 0
+
+
+  #search-sort
+    text-align: center
+    width: 295px
+    margin: 0 auto
+    .subject
+      display: none
+    .pull-left#sort-options
+      width: 100%
+      margin: 0 auto
+      text-align: center
+      .sort-input
+        display: none
+
+  #search-sort div.mobile-price-rating
+    width: 295px
+    text-align: center
+    margin: auto auto
+    .mobile-title.btn-group
+      display: inline-block
+      .dropdown-menu
+        border-radius: 0px
+      button
+        width: 145px
+        background: #fff
+        font-family: Avenir
+        border: 1px solid #c7c7c7
+        border-radius: 0px
+      ul
+        width: 145px
+        li:nth-child(odd)
+          border-bottom: 1px solid #c7c7c7
+        li a:hover
+          background: #c7c7c7
+    .mobile-title.price
+      float: left
+    .mobile-title.rating
+      float: right
+
+/***************
+ *   Nearby   *
+ **************/
+#nearby-reviews::-webkit-scrollbar
+  -webkit-appearance: none
+
+#nearby-reviews::-webkit-scrollbar:vertical
+  width: 11px
+
+#nearby-reviews::-webkit-scrollbar:horizontal
+  height: 11px
+
+#nearby-reviews::-webkit-scrollbar-thumb
+  border-radius: 8px
+  border: 2px solid white
+  background-color: rgba(0, 0, 0, $filter-opacity)
+
+#nearby-reviews::-webkit-scrollbar-track
+  background-color: #fff
+  border-radius: 8px
+
+#nearby-reviews-border
+  .carousel-control
+    display: none
+  .carousel-inner > .item
+    display: block
+    padding: 15px 0 5px
+  #nearby-reviews
+    .image
+      float: left
+      width: 110px
+      .relatedImg
+        @include width-height(100%,92px)
+      p
+        width: 108px
+        line-height: 20px
+        color: #848484
+        border: 1px solid #ababab
+        margin-top: 5px
+        text-align: center
+    .comment
+      float: right
+      width: 250px
+      a
+        display: block
+        @include review-title
+        @include size-color(18px,#222)
+      p
+        display: block
+        @include review-text
+        @include size-color(14px,#888)
+        margin-top: 6px
+      .nearby-review-comment
+        margin-top: 10px
+        p
+          @include size-color(14px,#333)
+          line-height: 20px
+/************** related reviews phone ****************/
+@media (max-width: 767px)
+  #nearby-reviews-border
+    .carousel-control
+      display: block
+      background: transparent
+      border: 0
+      opacity: 1
+      color: #888 !important
+    .carousel-control.left
+      left: -28px
+    .carousel-control.right
+      right: -28px
+    .carousel-inner > .item
+      display: none
+    .carousel-inner > .item.active
+      display: block
+    #nearby-reviews .comment
+      width: 70%
+  .venues-lists
+    .venue-img
+      width: 50% !important
+      height: auto !important
+@media (max-width: 435px)
+  #nearby-reviews-border #nearby-reviews .comment
+    width: 64%
+@media (max-width: 385px)
+  #nearby-reviews-border #nearby-reviews .comment
+    width: 57%
+
+
+
+
+.nearby-homes-title
+  max-width: 940px
+  margin: 7px auto
+  padding: 20px 30px
+  font-size: 22px
+  color: #333333
+#nearby-homes
+  height: 270px
+  overflow: hidden
+  text-align: center
+  .listing-price
+    font-size: 16px
+  ul.listing-homes
+    padding: 10px 0px
+    margin: 0px auto
+    li.listing-show
+      text-align: left
+      border: 1px solid #c7c7c7
+      display: inline-block
+      list-style: none
+      margin: 5px 8px
+      padding: 10px
+      .listing-img
+        width: 180px
+        height: 150px
+        a img
+          width: 180px
+          height: 150px
+      .listing-loc
+        margin-bottom: 5px
+        .listing-title
+          margin-top: 5px
+          margin-bottom: 0px
+          width: 180px
+          overflow: hidden
+          white-space: nowrap
+          font-size: 15px
+        .full-neighborhood
+          color: #888888
+          font-size: 12px
+      .listing-info
+        margin-top: 10px
+        h1
+          font-size: 22px
+        .listing-price
+          color: #29bcb8
+          font-family: Avenir
+          font-weight: bold
+  a.carousel-control
+    width: 25px
+    &.left
+      left: 0
+      margin-left: 20px
+    &.right
+      right: 0
+      margin-right: 20px
+    &:hover
+      background: #ddd
+.nearby_reviews_title
+  color: #2ba !important
+.nearby-rating-result .rating-all-items .fa
+  margin-right: 5px
+.nearby-rating-result .rating-all-items .fa
+  color: #c6e6e5
+.nearby-rating-result .rating-all-items .fa.selected
+  color: #29bbbb
+
+#nearby-venues
+  border-width: 0 1px 1px !important
+  background-color: #f9f9f9
+  .venues-rows:first-child
+    border-bottom: 1px solid #dadbde
+  .venues-rows
+    width: 96%
+    margin: 10px auto
+    >.col-md-6
+      margin-left: 19px
+    >.span6:first-child
+      margin-left: 0
+    h3
+      @include size-color(20px,#333)
+      img
+        margin-right: 7px
+    h4
+      @include size-color(16px,#333)
+    p
+      font-size: 13px
+  .venues-lists
+    .venue-img
+      height: 180px
+      width: 100%
+    a:first-child
+      position: relative
+      display: block
+      .distance
+        position: absolute
+        right: 0px
+        top: 0
+        @include size-color(14px,#fff)
+        background-color: rgba(0,0,0,$filter-opacity)
+        padding: 4px 5px
+        span
+          padding-left: 2px
+    .rating-all-items
+      .venueRating
+        display: list-inline
+        position: relative
+        top: -5px
+        @include size-color-family(13px,#22bbaa,Avenir)
+        margin-left: 5px
+        font-weight: bold
+/* END */
+
+
+/* list with us */
+#list_with_us
+  .header
+    background: image-url('list-with-us.png')
+    height: 160px
+    text-align: center
+    h1
+      @include size-color(33px,#fff)
+      line-height: 160px
+      margin: 0
+    p
+      width: 65%
+      @include size-color(15px,#d3d3d3)
+      line-height: 20px
+      margin: -10px auto 0
+  form
+    width: 850px
+    margin: 40px auto
+    label,span
+      display: inline-block
+      @include size-color-family(16px,#333,"Avenir Roman")
+      width: 270px
+      margin-left: 40px
+      margin-right: 20px
+      text-align: right
+      line-height: 40px
+    .top,.center
+      border-bottom: 1px solid #ececec
+      text-align: left
+    .top,.center,.bottom
+      div
+        margin: 20px 0
+    input[type="text"]
+      @include width-height(328px,28px)
+      background-color: white
+      border: 1px solid #b3b3b3
+      padding: 5px
+      font: 16px Avenir
+    label[for="agent"],label[for="manager"],
+    label[for="noFee"],label[for="brokerFee"],
+    label[for="yes"],label[for="no"]
+      margin: 0
+      @include width-height(158px,38px)
+      font-family: "Avenir Book"
+      text-align: center
+      border: 1px solid #b3b3b3
+      line-height: 40px
+      &:hover,
+        border-color: #29bcb8
+        background-color: #29bcb8
+        color: #fff
+    input[type="submit"]
+      @include width-height(121px,35px)
+      @include size-color-family(16px,#fff,"Avenir Book")
+      border: 0
+      border-bottom: 1px solid #479290
+      background-color: #29bcb8
+      &:hover
+        background-color: #2fcdc9
+    input[type="radio"]
+      visibility: hidden
+    .checked
+      border-color: #29bcb8 !important
+      background-color: #29bcb8
+      color: #fff
+  .done
+    width: 490px
+    margin: 40px auto 65px auto
+    text-align: center
+    i.fa.fa-check-circle
+      color: #29bcb8
+      font-size: 60px
+    div
+      margin: 15px 0 50px
+      p
+        @include size-color-family(17px,#333,"Avenir Roman")
+        margin: 0
+  label.error
+    color: red
+  .submit-div
+    text-align: center
+    padding-top: 10px
+
+  #email, #phone
+    width: 328px
+    height: 28px
+    background-color: white
+    border: 1px solid #b3b3b3
+    padding: 5px
+    font: 16px Avenir
+
+  .manually-listings
+    max-width: 850px
+    margin: 0 auto
+    margin-top: 10px
+    margin-bottom: 85px
+    .start-here-link
+      margin:  0 auto
+      padding: 0 10px
+      background-color: #ff779f
+      border-radius: 3px
+      -webkit-border-radius: 3px
+      -moz-border-radius: 3px
+      width: 150px
+      a
+        font-size: 16px
+        color: white
+        line-height: 35px
+@media(max-width: 850px)
+  #list_with_us
+    form
+      width: 100%
+      display: block
+      margin: 0 auto
+      padding: 10px
+      label,span
+        display: block
+        margin: 0
+        text-align: left
+        height: 40px
+      label[for="agent"],label[for="manager"],
+      label[for="noFee"],label[for="brokerFee"],
+      label[for="yes"],label[for="no"]
+        display: inline-block
+        width: 45%
+        overflow: hidden
+        word-break: break-all
+      .bottom input, input#email, input#phone
+        width: 90%
+      .top,.center,.bottom
+        div
+          margin: 0
+@media(max-width: 490px)
+  #list_with_us
+    .done
+      width: 98%
+
+
+.btn.listing-share-twitter.copy_link
+  border-radius: 3px
+  width: 70px
+  text-align: center
+  padding: 3px 0
+
+/* contact email modal*/
+#contact-email-modal.modal
+  @include border-radius(inherit)
+  height: auto
+  .modal-body
+    max-height: 75vh
+    max-height: -webkit-calc(100vh - 150px)
+    max-height: -moz-calc(100vh - 150px)
+    overflow-y: auto
+#contact-email-modal
+  &.mobile
+    .modal-body
+      max-height: inherit
+    a.close
+      display: none
+  .modal-header, .modal-body
+    padding: 0 50px
+  .modal-header
+    background-color: $link-color
+    color: white
+    .contact-name-title
+      padding-top: 10px
+      font-size: 18px
+    .contact-tel-title
+      font-size: 16px
+  .modal-body
+    padding-top: 20px
+    // max-height: calc(100vh - 150px)
+    height: 100%
+    text-align: center
+  a.close
+    width: 40px
+    height: 40px
+    opacity: 1
+    background: white
+    margin-top: -15px
+    margin-right: -65px
+    text-align: center
+    border: 4px solid $link-color
+    color: $link-color
+    @include border-radius(50%)
+    line-height: 34px
+  .contact-input
+    margin-bottom: 10px
+    input, textarea
+      padding: 10px 10px
+      line-height: 1.2em
+      width: 94%
+      @include size-color-family(16px, #333, 'Avenir Book')
+      @include border-radius(inherit)
+    textarea
+      border: 1px solid #CFCFCF
+      background: inherit
+      height: 250px
+  .action
+    text-align: center
+    margin-bottom: 10px
+  .message-success
+    padding-top: 60px
+    font-size: 16px
+    text-align: center
+    i.fa
+      font-size: 48px
+      color: $link-color
+    p.success-info
+      margin-top: 15px
+      margin-bottom: 50px
+    .campany
+      text-align: left
+      margin-bottom: 30px
+
+@media(max-width: 767px)
+  #contact-email-modal.modal
+    width: auto
+    max-height: inherit
+    .contact-input
+      textarea
+        min-height: 80px
+        height: calc(100vh - 400px)
+        height: -webkit-calc(100vh - 400px)
+        height: -moz-calc(100vh - 400px)
+  #contact-email-modal
+    .modal-header, .modal-body
+      padding: 15px 20px
+    a.close
+      opacity: 1
+      background: white
+      margin-top: -25px
+      margin-right: -30px
+
+@media(max-width: 480px)
+  .modal-header
+    a.close
+      padding: initial
+@media(max-width: 767px)
+  body.responsive .listing#sp-main-body-wrapper .container
+    margin-top: 10px
+  .related-reviews-span
+    padding: 0 12px  !important
+    border: none !important
+    margin: 20px 0 5px 0 !important
+    .review-indicator
+      background: none !important
+      .more
+        font-size: 16px !important
+    .listing-review
+      height: auto !important
+
+/** Open Houses **/
+#search-open_houses
+  //#sp-header-fix-header-wrapper
+    //box-shadow: 0px 5px 5px $sub-white
+  //  -moz-box-shadow: 0px 5px 5px $sub-white
+  #open-houses
+    padding: 0 10px
+    margin-top: 10px
+    #search-bar
+      display: inline-block
+      margin-bottom: 10px
+    .banner
+      margin-bottom: 10px
+  .listing_img
+    position: relative
+    color: $full-white
+  .open-house-lists
+    .row
+      margin-bottom: 15px
+      .open-house
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        background: rgba(0,0,0, .7)
+        text-align: center
+        line-height: 1.2
+        padding: 5px
+        font-size: 13px
+      .price
+        font-size: 17px
+        position: absolute
+        bottom: 0
+        right: 0
+        background: rgba(0,0,0, .7)
+        padding: 5px 10px
+        line-height: 1.2
+        div
+          font-size: 20px
+      .listing-content
+        h3
+          color: $color333
+          margin: 5px 0px 0px
+          a
+            font: bold 16px Palatino
+            color: #222
+        .full-neighborhood
+          margin-bottom: 10px
+  .datetimepicker-inline
+    display: none !important
+
+  .date
+    .col-md-2
+      width: 100%
+      height: 31px
+    .input-group-addon
+      height: 18px
+
+@media(max-width:767px)
+  #search-open_houses
+    .listing-content
+      padding: 0 10px
+    #open-houses
+      .visible-sm
+        width: 100%
+      margin-top: 20px
+      .row
+        #sort-options
+          a
+            margin-bottom: 7px
+    .col-md-4
+      .listing_img
+        height: auto !important
+      .listing_content
+        padding: 0 10px
+    .googleADspan
+      margin-left: 1%
+
+    #search-sort
+      text-align: center
+      margin: 0 auto
+      padding: 0 10%
+      .subject
+        display: none
+      .pull-left#sort-options
+        margin: 0 auto
+        text-align: center
+        .sort-input
+          display: none
+      #filter-date
+        position: relative
+      .date
+        .col-md-2
+          width: 100%
+        .input-group-addon
+          right: 0px
+      div
+        margin: 0 !important
+        width: 100%
+        .pull-right
+          float: right
+
+    #search-sort div.mobile-price-rating
+      width: 48%
+      text-align: center
+      margin-top: 10px !important
+      .btn-group
+        display: inline-block
+        width: 100%
+        .dropdown-menu
+          border-radius: 0px
+        button
+          width: 100%
+          background: #fff
+          font-family: Avenir
+          border: 1px solid #c7c7c7
+          border-radius: 4px
+          span.caret
+            margin-left: 5px
+        ul
+          width: 100%
+          li:nth-child(odd)
+            border-bottom: none
+          li a:hover
+            background: #c7c7c7
+@media(max-width:890px)
+  #search-open_houses
+    .subject
+      display: none
+@media(max-width: 340px)
+  #open-houses
+    #search-sort
+      width: inherit
+      .pull-left#sort-options,.visible-sm
+        width: 80%
+
+#mortgage-calculator
+  hr
+    border-bottom: 1px solid #BEBEBE
+  >div
+    padding-left: 40px
+    padding-right: 40px
+    &.mortgage-header
+      padding-top: 20px
+      background: #dfe3e3
+      padding-bottom: 20px
+    &.mortgage-content
+      padding-bottom: 20px
+      padding-top: 10px
+      background: #f5f5f5
+  @media screen and (min-device-width: 1000px)
+    margin: 0px 90px !important
+
+  label
+    font-size: 16px
+  .input-append,.input-group
+    width: 100%
+    .input-group-addon
+      background-color: #f4f4f4
+  input.mortgage, select.mortgage
+    min-height: 26px
+    border: 1px solid $sub-white
+    padding: 1px 10px
+  select.mortgage
+    width: 100%
+  table
+    width: 100%
+    font-size: 16px
+    @media only screen and (max-device-width: 480px)
+      font-size: 12px
+      width: 120%
+      line-height: 20px
+
+    .mortgage-th
+      width: 60%
+  td.mortgage-td, #mortgage-monthly-price
+    font-weight: bold
+    font-family: $body-bold-font
+  .col-md-5
+    text-align: center
+    padding: 20px 0
+    p
+      font-size: 18px
+    #mortgage-monthly-price
+      font-size: 22px
+  #mortgage-price
+    color: black
+    font-size: 1em
+
+@media(max-width: 767px)
+  #listings-show
+    #sp-main-body-wrapper
+      .contact-detail .col-md-7
+        height: inherit
+        max-height: 125px
+      >.container
+        margin-top: 10px
+        margin-bottom: 0
+      #costs-and-requirements
+        .row
+          margin-left: 0px
+          margin-right: 0px
+          .col-md-6
+            margin-bottom: 10px
+            width: 100%
+
+
+
+/** fix datetimpicker **/
+#listings-new
+  .datetimepicker
+    top: 500px !important
+#listings-new, #listing-create, #listings-edit
+  .input label.radio
+    padding: 8px
+    text-align: center
+    margin-left: 0
+    width: 200px
+    left: -12px
+    position: relative
+    border: 1px solid #b3b3b3
+  .done
+    text-align: center
+    padding: 20px
+    font-size: 20px
+    i.fa
+      font-size: 46px
+      color: $link-color
+      margin-bottom: 10px
+    p
+      margin: 3px
+    .create-success-bts
+      .success-btn
+        width: 280px
+        border-radius: 3px
+        color: $full-white
+        background: $link-color
+        display: block
+        margin: 10px auto
+        padding: 10px
+        font: 18px 'Helvetica Neue'
+        &.red
+          background: $bright-red
+
+#listingGallery
+  .carousel-control
+    top: 40%
+    opacity: 1
+    color: #2fcdc9
+    font-size: 90px
+    text-shadow: 0 0 2px white
+    background-image: none
+
+#nearby-apartments
+  width: 100%
+  margin: 0
+
+  .carousel-control
+    top: 40%
+    opacity: 1
+    color: #2fcdc9
+    font-size: 30px
+    background: none
+    height: 41px
+#open-house-banner
+  background-image: url(asset-path('search_banner.jpg'))
+  height: 160px
+  background-size: cover
+
+@media screen and (max-width: 768px)
+  #listingImagesCarousel
+    .carousel-control
+      top: 40%
+      opacity: 1
+      color: #2fcdc9
+      font-size: 90px
+      text-shadow: 0 0 2px white
+      background-image: none
+    .carousel-control.right
+      padding-right: 30px
+
+  #listings-show
+    .title
+      margin-left: 0px
+      font-size: 20px
+
+  #listing-info
+    .contact-detail
+      .col-md-5
+        padding: 0px
+      .col-md-7
+        padding: 0px
+
+  #related-reviews
+    margin-left: 0px
+    margin-right: 0px
+    margin-top: 10px
+
+  #listing-detail, #listingReviews
+    .row
+      margin-left: 0px
+      margin-right: 0px
+
+.long-remark
+  display: none
+
+.openhouse-mobile
+  background: rgba(0,0,0,0.75)
+  color: white
+  padding-left: 10px
+
+//@media screen and (min-device-width: 1000px)
+body .listing#sp-main-body-wrapper #content-body
+  padding-left: 100px
+  padding-right: 140px
+  @media (max-width: 768px)
+    padding-left: 0px
+    padding-right: 0px
+#listingReviews
+  margin: 15px 110px 0px 90px
+  @media (max-width: 768px)
+    margin: 0
+#costs-and-requirements
+  margin: 0px 110px 0px 90px
+  @media (max-width: 768px)
+    margin: 0
+.broker_fee.sub-val
+  .broker_fee_chose
+    margin-bottom: 5px
+    .chose-btn
+      border: 1px solid
+      border-radius: 2px
+      padding: 3px
+      margin-right: 5px
+      cursor: pointer
+    .chose-btn.chosen
+      background-color:  #2fcdc9
+
+
+#nearby-apartments
+  .title
+    margin: 0px 110px 0px 90px
+    @media (max-width: 768px)
+      margin: 0
+
+.amen   
+  padding-left: 38px
+  width: 40%
+  @media (max-width: 768px)
+    padding-left: 0px
+    width: 100%
+.listing_no_fee
+  border: 1px solid
+  border-radius: 2px
+  background: #2fcdc9
+  padding: 3px
+  margin-right: 5px
+
+@media only screen and (max-device-width: 480px)
+  .apart
+    padding: 0px 0px 0px 0px

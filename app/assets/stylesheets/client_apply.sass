@@ -1,0 +1,501 @@
+@import 'modules'
+
+#client_apply, #client_apply_update
+  padding-left: 12%
+  padding-right: 12%
+  @media (min-width: 1400px)
+    padding-left: 12%
+    padding-right: 12%
+  @media (max-width: 1200px)
+    padding-left: 4%
+    padding-right: 4%
+
+  h1
+    color: $link-color
+    text-align: center
+  .language
+    text-align: right
+    font-weight: bold
+
+  .button_container
+    text-align: center
+    margin-bottom: 200px
+    margin-top: 100px
+
+    .sign_in_button
+      position: relative
+      color: white
+      background: #28d8d8
+      font-size: 22px
+      padding: 15px 20px
+      border-radius: 10px
+      outline: none
+
+
+  form
+    .form-selection
+      margin-top: 4%
+      margin-bottom: 5%
+      h3
+        color: #444
+        font-weight: bold
+        font-size: 20px
+        margin-bottom: 25px
+        text-align: center
+      .employed
+        //margin-left: 8%
+        @media (max-width: 768px)
+          margin-left: 0
+      .student
+        //margin-left: 16%
+        @media (max-width: 768px)
+          margin-left: 0
+          padding-left: 11%
+      input[type="radio"]
+        display: none
+      input[type="radio"]
+        + label
+          display: inline-block
+          width: 215px
+          border: 2px solid
+          text-align: center
+          cursor: pointer
+          font-size: 20px
+          border-radius: 10px
+        &:checked
+          + label[for="employed"]
+            background: $link-color
+          + label[for="student"]
+            background: $link-color
+          + label[for="international"]
+            background: $link-color
+          + label[for="local"]
+            background: $link-color
+    #client-fields
+      display: none
+      h3
+        text-align: left
+        font-weight: bold
+        //margin-top: 35px
+        span
+          font-size: 16px
+      label
+        font-size: 17px
+      input
+        border-radius: 4px
+        font-size: 17px
+        font-family: Avenir
+        @media (max-width: 768px)
+          text-align: center
+      #pet-fields
+        display: none
+      .radios
+        text-align: center
+        font-family: Avenir
+        font-size: 17px
+        font-weight: bold
+        input
+          margin-right: 20px
+      .options
+        span
+          font-size: 16px
+          font-weight: 600
+          margin-left: 10px
+      #client_apply_referral
+        font-family: Avenir
+        option
+          font-family: Avenir
+
+      .form-group
+        margin-bottom: 15px
+        label.error
+          font-size: 14px
+          font-weight: normal
+          width: 100%
+          text-align: left
+          @media (max-width: 768px)
+            text-align: center
+        .small-ip
+          width: 220px
+          @media (max-width: 768px)
+            margin: 0 auto
+      #ref-info
+        padding-left: 2.3%
+    #int-student-docs, #int-employed-docs, .visa-ques
+      display: none
+    #local-student-docs, #local-employed-docs
+      display: none
+    #resident-option, .resident-info
+      display: none
+    #resident-option
+      margin-bottom: 0
+    .resident-info
+      margin-bottom: 5%
+    #int-employed-fields
+      display: none
+      margin-top: 45px
+    #form-submit
+      display: none
+      margin-left: 6%
+      p
+        font-size: 13px
+        font-family: Avenir
+
+  #docu-fields
+    @media (max-width: 768px)
+      text-align: center
+    p.doc-msg
+      display: none
+      text-align: center
+      padding-bottom: 10px
+      font-size: 14px
+      font-family: Avenir
+    .visa-ques
+      text-align: center
+      h3
+        font-size: 20px
+        font-weight: 600
+      .radios
+        text-align: center
+        font-family: Avenir
+        font-size: 17px
+        font-weight: bold
+        input
+          margin-right: 20px
+    label
+      font-size: 17px
+    label.error
+      font-size: 14px
+      font-weight: normal
+      width: 100%
+      text-align: center
+    .fancypdf, .fancybox
+      display: block
+      margin-left: 43%
+      font-size: 15px
+      font-family: Avenir
+      font-weight: 600
+      letter-spacing: 0.03em
+    .editlink
+      margin-left: 0
+      padding-left: 51.8%
+    .del-link
+      color: red
+    .file-upload
+      position: relative
+      overflow: hidden
+      background: none
+      border: 1.5px solid
+      border-radius: 10px
+      width: 252px
+      color: #444
+    .file-upload
+      input
+        position: absolute
+        top: 0
+        right: 0
+        margin: 0
+        padding: 0
+        cursor: pointer
+        opacity: 0
+        filter: alpha(opacity=0)
+      .fa-upload
+        padding-right: 8px
+
+  .submit-btn, .update-btn
+    text-align: center
+    margin-top: 50px
+    margin-bottom: 30px
+    input[type="submit"], button
+      color: white
+      background: #2fcdc9
+      font-size: 20px
+      padding: 10px
+      font-family: Avenir
+      text-shadow: none
+      border-radius: 5px
+      letter-spacing: 0.03em
+    #back-btn
+      margin-right: 35px
+    input[type="submit"]
+      margin-left: 15px
+  .form-horizontal
+    label
+      width: 40%
+      @media (max-width: 768px)
+        width: 100%
+        text-align: center
+
+  .edit-head
+    padding-left: 6%
+  #client_update_form
+    padding-top: 5%
+    .update-btn
+      input
+        margin-left: 11%
+
+#client_apply_update form
+  #int-employed-fields
+    margin-top: 0
+
+#client-apply-conf
+  text-align: center
+  padding-top: 100px
+  padding-bottom: 100px
+  h1
+    font-size: 50px
+    color: $link-color
+  .code
+    p
+      font-size: 22px
+      font-family: Avenir
+      span
+        font-weight: bold
+        margin-left: 20px
+        background-color: #cacaca
+        padding: 10px
+        border-radius: 4px
+    h5
+      margin-top: 40px
+      font-size: 17px
+
+#square-api
+  text-align: center
+  padding-top: 2%
+  #pay-btn, #deposit-btn
+    width: 225px
+    padding: 8px
+    border-radius: 10px
+    background: transparent
+    border: 1px solid
+    outline: none
+    color: #444
+    font-size: 17px
+    font-family: Avenir
+    font-weight: bold
+    letter-spacing: 0.03em
+    @media (max-width: 550px)
+      width: 80%
+    .fa-credit-card
+      margin-right: 10px
+  #deposit-btn
+    margin-left: 9%
+    @media (max-width: 550px)
+      margin-left: 0
+      margin-top: 5%
+#square-payment, #sq-fee-payment, .deposit-form
+  .modal-title
+    font-weight: bold
+    letter-spacing: 0.03em
+    color: #444
+  .card-fields
+    margin-bottom: 25px
+  .sq-input
+    border: 1px solid rgb(223, 223, 223)
+    outline-offset: -2px
+    border-radius: 5px
+  .sq-input--focus
+    outline: 5px auto rgb(59, 153, 252)
+  .sq-input--error
+    outline: 5px auto rgb(255, 97, 97)
+  label
+    font-size: 18px
+  .payment
+    background: transparent
+    border: 2px solid
+    outline: none
+    margin-bottom: 20px
+    border-radius: 10px
+    padding-top: 6px
+    padding-bottom: 6px
+    font-size: 16px
+  h2
+    text-align: center
+    font-weight: bold
+    margin-bottom: 35px
+    color: $link-color
+    letter-spacing: 0.03em
+  #nonce-form
+    text-align: center
+  .sq-error
+    color: red
+    font-weight: bold
+    text-align: center
+  .sq-success, .cd-success
+    font-size: 28px
+    font-family: Avenir
+    font-weight: bold
+    letter-spacing: 0.03em
+    text-align: center
+    color: #097709
+    padding-top: 9%
+    .fa-check
+      margin-right: 15px
+  .sq-ptag, .cd-ptag
+    font-size: 16px
+    text-align: center
+  .credit-logos
+    img
+      padding-left: 5px
+      float: left
+  .sq-success-cont, .cd-success-cont
+    padding-top: 9%
+    padding-bottom: 14.5%
+
+.deposit-form
+  padding-left: 15%
+  padding-right: 15%
+  .hid-dep-form
+    //display: none
+  .deposit-cal
+    margin-bottom: 12%
+    text-align: center
+    .dep-fields
+      text-align: right
+      padding-top: 3%
+      @media (max-width: 768px)
+        text-align: left
+    label
+      //margin-right: 3%
+      //float: left
+      text-align: left
+    span
+      font-size: 18px
+      margin-right: 15px
+    input
+      border: 1px solid rgb(204,204,204)
+      border-radius: 4px
+      text-align: center
+      font-size: 18px
+      font-weight: bold
+      padding: 0
+    button
+      background: transparent
+      border: 2px solid
+      outline: none
+      border-radius: 10px
+      padding-top: 6px
+      padding-bottom: 6px
+      font-size: 16px
+      margin-top: 5%
+    p
+      font-size: 10px
+      padding-top: 6px
+      text-align: left
+    @media (max-width: 768px)
+      .dep-input
+        text-align: center
+      #con-fee
+        margin-right: 10%
+  .deposit-cd
+    .cd-fields
+      margin-bottom: 3%
+      label
+        text-align: right
+      input
+        width: 100%
+        text-align: left
+        padding: 2px
+        padding-left: 8px
+      label.error
+        float: left
+        font-size: 14px
+    .sq-cd
+      .card-fields
+        margin-bottom: 3%
+      .sq-error
+        font-size: 12px
+        margin-bottom: 0
+        padding-top: 0
+        text-align: center
+      .labels
+        text-align: right
+    .cd-success-cont
+      p
+        text-align: center
+        font-size: 28px
+
+
+
+
+/********* Application Retrieval **********/
+
+#apply-retrieval
+  text-align: center
+  padding-top: 30px
+  padding-bottom: 30px
+  h2
+    color: $link-color
+  .retrieve-form
+    label
+      //width: 48%
+      //padding-right: 5%
+      margin-right: 0
+      font-size: 18px
+      padding-top: 0
+      width: 25%
+      padding-right: 4%
+      @media (max-width: 768px)
+        width: 100%
+        text-align: center
+    input
+      width: 200px
+      border-radius: 4px
+      @media (max-width: 768px)
+        width: 100%
+    .submit-btn
+      text-align: center
+      margin-top: 50px
+      margin-bottom: 30px
+      input[type="submit"]
+        color: white
+        background: #2fcdc9
+        font-size: 20px
+        padding: 2px
+        font-family: Avenir
+        text-shadow: none
+        border-radius: 5px
+        letter-spacing: 0.03em
+        border: none
+        width: 150px
+
+/******* Admin Client Apply ********/
+
+#mailTemplate
+  .title
+    text-align: center
+    font-weight: bold
+  .mail-fields
+    margin-left: 0px
+    margin-right: 0px
+    margin-top: 10px
+    li
+      width: 75%
+      margin-bottom: 10px
+  .mail-footer
+    text-align: center
+    margin-top: 25px
+    input
+      width: 80px
+      height: 35px
+  span
+    font-size: 16px
+  .fsize, .mb
+    font-weight: bold
+  .add-doc, .rem-doc
+    border-radius: 3px
+    width: 80px
+  .rem-doc
+    margin-left: 15px
+  .selectize-input
+    height: 100%
+    padding: 5px 10px 5px 10px
+    .item
+      font-size: 14px
+  .option
+    .head, .sub
+      font-size: 14px
+    .head
+      font-weight: bold
+    .sub
+      color: grey

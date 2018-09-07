@@ -1,0 +1,127 @@
+class SearchForMe
+  constructor: ->
+    @nextClick()
+    @prevClick()
+    @submitClick()
+    @formDatepicker()
+
+  nextClick: ->
+    $('.next').click ->
+      parent = $(this).parents('fieldset')
+      current_fs = parent
+      next_fs = parent.next()
+      page_no = parent.find('#page-no').val()
+      if validateForm(page_no, parent)
+        updateProgress(true)
+        current_fs.slideUp('slow', ->
+          next_fs.show('slide', {direction: 'down'}, 1000))
+
+  prevClick: ->
+    $('.prev').click ->
+      parent = $(this).parents('fieldset')
+      current_fs = parent
+      next_fs = parent.prev()
+      if next_fs.find('.form_info_error').length
+        next_fs.find('.form_info_error').remove()
+      updateProgress(false)
+      current_fs.hide('slide', {direction: 'down'},1000, ->
+        next_fs.slideDown('slow'))
+
+  submitClick: (event)->
+    $('.submit').click ->
+      parent = $(this).parents('fieldset')
+      $('#search_me_form').submit (event) ->
+        isValid = verifyPage7(parent)
+        if !isValid
+          if !parent.find('.form_info_error').length
+            parent.find('p').prepend('<div class="form_info_error">*Please enter a valid email</div>')
+          event.preventDefault()
+          $('.submit').removeAttr('data-disable-with')
+
+  updateProgress= (next)->
+    elem = $('#progress-form')
+    curr = elem.attr('aria-valuenow')
+    curr = parseInt(curr)
+    step = 12.5
+    if next
+      val = String(curr + step)
+    else
+      val = String(curr - step)
+    elem.attr('aria-valuenow', val)
+    elem.css('width', val+"%")
+
+  validateForm= (page,parent) ->
+    switch page
+      when "page1" then verifyPage1(parent)
+      when "page3" then verifyPage3(parent)
+      when "page5" then verifyPage5(parent)
+      else true
+
+  verifyPage1= (parent)->
+    name = $('#form_info_name').val()
+    regex = /([A-Za-z])+/g
+    if regex.test(name)
+      return true
+    else
+      if !parent.find('.form_info_error').length
+        parent.find('.button-wrapper').prepend('<div class="form_info_error">*Please enter your name</div>')
+      return false
+
+  verifyPage3= (parent) ->
+    beds = $('#form_info_beds').val()
+    baths = $('#form_info_baths').val()
+    movein = $('#form_info_move_in_date').val().length
+    budget = $('#form_info_budget').val()
+    regex = /^\d+$/
+    flag = true
+    if beds == ""
+      parent.find('.bed-error').show()
+      flag = false
+    else
+      parent.find('.bed-error').hide()
+    if baths == ""
+      parent.find('.bath-error').show()
+      flag = false
+    else
+      parent.find('.bath-error').hide()
+    if movein == 0
+      parent.find('.date-error').show()
+      flag = false
+    else
+      parent.find('.date-error').hide()
+    if !regex.test(budget)
+      parent.find('.budget-error').show()
+      flag = false
+    else
+      parent.find('.budget-error').hide()
+
+    return flag
+
+  verifyPage5= (parent) ->
+    if $('#employed').is(':checked') || $('#student').is(':checked')
+      return true
+    else
+      if !parent.find('.form_info_error').length
+        parent.find('p').prepend('<div class="form_info_error">*Please select one</div>')
+      return false
+
+  verifyPage7= (parent) ->
+    email  = $('#form_info_email').val()
+    regex = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i)
+    return regex.test(email)
+    #return EmailVerifier.check(email)
+    #if regex.test(email)
+    #  $.ajax
+    #    type: "POST"
+    #    url: "/searchforme/email_verifier"
+    #    data: { email: email }
+
+  formDatepicker: ->
+    $('.form-datepicker').pickadate
+      min: new Date(Date.today),
+      format: 'mmm dd, yyyy'
+
+  @setup: ->
+    new SearchForMe
+
+App.SearchForMe = SearchForMe.setup

@@ -1,0 +1,33 @@
+.container#bpage-bimages
+  h3
+    | Add new images for #{@spade_pass.street_address}
+  .existing-img
+    table.table.table-striped
+      thead
+        tr
+          th
+            | Image
+          th
+            | Set Cover
+          th
+            | Delete
+      tbody
+        - if !@spade_pass.spade_pass_images.empty?
+          - @spade_pass.spade_pass_images.each do |p_img|
+            //.row-img
+            tr
+              td = link_to "#{File.basename(p_img.image.path)}", "#{p_img.image.url}", target: "_blank"
+              td
+                = render 'show_images', spade_pass_img: p_img
+
+              td = link_to "Remove", delete_image_admin_spade_pass_path(p_img.id), method: :delete, data: {confirm: 'Are you sure?'}, class: "remove-btn"
+
+  = form_for @spade_pass, url: create_images_admin_spade_pass_path(@spade_pass), method: :post, html:{multipart: true} do |f|
+    .spade_pass-images
+      = f.fields_for :spade_pass_images, SpadePassImage.new do |pimage|
+        = render 'spade_pass_image_fields', f: pimage
+      .links
+        = link_to_add_association 'Add image', f, :spade_pass_images
+
+    .submit-button
+      = f.submit "SAVE"

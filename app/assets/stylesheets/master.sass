@@ -1,0 +1,82 @@
+@import modules
+
+/** 基本的通用样式 **/
+.clear
+  clear: both
+
+.pointer
+  cursor: pointer
+
+/** END **/
+
+/** 自定义组件 **/
+  /** 自定义标题 **/
+.custom-title
+  font-family: "Arial Black", Arial
+  font-weight: bold
+  /* END */
+
+  /* 自定义按钮 */
+.btn-search
+  height: 32px
+
+.btn-custom
+  @include size-color-family(16px,white,Helvetica)
+  height: 40px
+  text-align: center
+  padding: 0 25px
+  background-color: #29bcb8
+  border: none
+  &:hover
+    background-color: #36d2cd
+
+/** END **/
+
+/** 对引用组件的reset**/
+  //富文本编辑器
+.qeditor_preview
+  height: 300px
+
+  //Icons
+.fa-heart
+  color: rgb(234, 234, 234)
+
+  //button group
+.btn-group
+  .sharing
+    margin-right: 8px
+  .btn-wishlist
+    @include size-color-family(18px,#333,Helvetica)
+    height: 35px
+    text-align: center
+    padding: 8px 20px 
+    margin-right: 10px
+    background-color: #fff     
+  .btn-wishlist.current-active
+    background-color: #29bcb8
+    color: #fff
+
+  //分页
+.pagination
+  text-align: center
+  a
+    display: inline-block !important
+    background-color: #fff !important
+    color: #28d8d8!important
+    border-radius: 50% !important
+    font-family: "Renner Book"
+    font-size: 16px !important
+    padding: 0px
+    padding-top: 7px
+    width: 38px
+    height: 38px
+  .active
+    a
+      background-color: #28d8d8 !important
+      color: white !important
+      font-size: 15px !important
+.paginate
+  text-align: center
+  ul
+    padding-left: 0px
+/** END **/

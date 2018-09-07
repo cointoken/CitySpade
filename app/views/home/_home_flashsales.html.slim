@@ -1,0 +1,22 @@
+- if @listings
+  .row.flash-listing-row
+
+    - @listings.each do |listing|
+      .col-sm-6.col-xs-12
+        - if mobile?
+          = render "flashsales/mobile_flashsale", listing: listing
+        - else
+          = render "flashsales/flashsale", listing: listing
+
+
+.flash-see-more.center
+  h3
+    = link_to flashsales_path do
+      | See more Deals
+      i.fa.fa-long-arrow-right
+
+
+coffee:
+  $(document).ready ->
+    if !gon.mobiled
+      App.ListingItemSetup();

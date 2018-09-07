@@ -1,0 +1,26 @@
+.deposit-form.container
+  h2 Deposit Payment
+  .deposit-cal
+    .dep-fields.row
+      = label_tag 'Enter your deposit amount: ', nil, class: 'col-sm-5'
+      .col-sm-5.col-sm-offset-2.dep-input
+        span $
+        = number_field_tag 'dep-amt', '0'
+    .dep-fields.row
+      = label_tag 'Convenience Fee: ', nil, class: 'col-sm-5'
+      .col-sm-6.col-sm-offset-1.dep-input
+        span +
+        span $
+        = text_field_tag 'con-fee', nil, disabled: true
+    .dep-fields.row
+      = label_tag 'You Pay: ', nil, class: 'col-sm-5'
+      .col-sm-5.col-sm-offset-2.dep-input
+        span $
+        = text_field_tag 'final-amt', nil, disabled: true
+    p
+      | *Square charges 2.95% + 10cents per transaction to process credit cards, which will be automatically added to the total amount. Thank you for your cooperation.
+  .hid-dep-form
+    = render 'square_api'
+
+javascript:
+  App.SquareApi();

@@ -1,0 +1,54 @@
+- content_for :banner_wrapper do
+  .hidden-sm.fullwidthbanner-container
+    .search-banner-bg 
+      .row#banner-container.banner-listings
+        .container
+          #banner-search
+            = form_for Listing.new, url: search_url,method: :get, id: 'banner-search-form',\
+            data:{sl: search_path, sr: result_reviews_path} do |f|
+              = render partial: 'search/search_input', locals: {f: f}
+
+- if @dont_match_flag
+  section#sp-dont-match-search
+    .container
+      .row-fuild
+        .pull-right
+          a#close-dont-match-info
+            i.fa.fa-times
+        .dont-match-search
+          div
+            font.font16
+              | Ooops!  
+            | There are currently no listings under your search preference. 
+          div
+            a#miss-match-click-here href=root_path(title: params[:title])
+              | Click here 
+            | to search again
+
+#update-search-listings
+  .search-container
+    #scroll-fixed-content
+      #search-results
+        #search-results-titles
+          h4
+            | #{@listings.total_count} Results Found
+          .filter-btn
+            = link_to "Filter >", "#"
+          .clear
+      #search-sort
+        div.mobile-price-rating
+          = render_mobile_price
+          = render_mobile_rating
+          .clear
+    - if @listings.present?
+      = render 'listings/index', listings: @listings
+    - else
+      #no-result-matched.l-content-margin
+        | No result matched. Please try again.
+    #search_result_sidebar
+      #map-canvas.l-content-margin
+    .clear
+    .listings_content
+      = paginate @listings, window: 2
+.update-container
+  = render "update"

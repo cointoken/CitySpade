@@ -1,0 +1,151 @@
+class SquareApi
+  constructor: ->
+    @paymentForm()
+    @calDeposit()
+
+  paymentForm: ->
+    curr_env = '<%= Rails.env %>'
+    if(curr_env == "development")
+      if gon.deposit
+        app_id = '<%= Settings.square.development.escrow_id %>'
+      else
+        app_id = '<%= Settings.square.development.application_id %>'
+    else
+      if gon.deposit
+        app_id = '<%= Settings.square.production.escrow_id %>'
+      else
+        app_id = '<%= Settings.square.production.application_id %>'
+    paymentForm = new SqPaymentForm
+      applicationId: app_id
+      inputClass: 'sq-input'
+      inputStyles: [ { fontSize: '18px', fontWeight: 'bold', padding: '8px' } ]
+      cardNumber:
+        elementId: 'sq-card-number'
+        placeholder: '•••• •••• •••• ••••'
+      cvv:
+        elementId: 'sq-cvv'
+        placeholder: 'CVV'
+      expirationDate:
+        elementId: 'sq-expiration-date'
+        placeholder: 'MM/YY'
+      postalCode:
+        elementId: 'sq-postal-code'
+        placeholder: 'Zipcode'
+        
+      callbacks:
+        cardNonceResponseReceived: (errors, nonce, cardData) ->
+          if errors
+            console.log 'Encountered errors:'
+            # This logs all errors encountered during nonce generation to the
+            # Javascript console.
+            $('.sq-error').remove()
+            errors.forEach (error) ->
+              if error.field == "cardNumber"
+                $('#sq-card-number').after("<p class='sq-error'>*#{error.message}</p>")
+              else if error.field == "cvv"
+                $('#sq-cvv').after("<p class='sq-error'>*#{error.message}</p>")
+              else if error.field == "postalCode"
+                $('#sq-expiration-date').after("<p class='sq-error'>*#{error.message}</p>")
+              else if error.field == "expirationDate"
+                $('#sq-postal-code').after("<p class='sq-error'>*#{error.message}</p>")
+              else
+                $('.card-errors').append("<p class='sq-error'>*#{error.message}</p>")
+              $('#pay-by-card').attr('disabled', false)
+              return
+            # No errors occurred. Extract the card nonce.
+          else
+            # Delete this line and uncomment the lines below when you're ready
+            # to start submitting nonces to your server.
+            #alert 'Nonce received: ' + nonce
+            id = $('#app_id').val()
+            if gon.deposit
+              amt = $('#final-amt').val()
+              $.ajax
+                type: "PUT"
+                url: "/apply/dep_payment"
+                data: { card_nonce:  nonce, id: id, amt: amt}
+            else if gon.cutedivide
+              name = $('#cutedivide_name').val()
+              email = $('#cutedivide_email').val()
+              phone = $('#cutedivide_phone').val()
+              building = $('#cutedivide_building').val()
+              unit = $('#cutedivide_unit').val()
+              wechat = $('#cutedivide_wechat').val()
+              amt = $('#final-amt').val()
+              $.ajax
+                type: "POST"
+                url: "/cutedividepayment"
+                data: {card_nonce: nonce, client: {name: name, email: email, phone: phone, building: building, unit: unit, wechat: wechat, amount: amt}}
+            else
+              $.ajax
+                type: "POST"
+                url: "/apply/payment"
+                data: { card_nonce:  nonce, id: id}
+
+            ###
+              These lines assign the generated card nonce to a hidden input
+              field, then submit that field to your server.
+              Uncomment them when you're ready to test out submitting nonces.
+
+              You'll also need to set the action attribute of the form element
+              at the bottom of this sample, to correspond to the URL you want to
+              submit the nonce to.
+            ###
+
+            # document.getElementById('card-nonce').value = nonce;
+            # document.getElementById('nonce-form').submit();
+          return
+        unsupportedBrowserDetected: ->
+         # Fill in this callback to alert buyers when their browser is not supported.
+          return
+        inputEventReceived: (inputEvent) ->
+          #switch inputEvent.eventType
+          #  when 'focusClassAdded'
+          #    #console.log 'focusClassAdd'
+          #  when 'focusClassRemoved'
+          #    #console.log 'focusClassRemoved'
+          #  when 'errorClassAdded'
+          #    #console.log 'errorClassAdded'
+          #  when 'errorClassRemoved'
+          #    #console.log 'errorClassRemoved'
+          #  when 'cardBrandChanged'
+          #    #console.log 'cardBrandChanged'
+          #  when 'postalCodeChanged'
+          #    #console.log 'postalCodeChangedChanged'
+          return
+        paymentFormLoaded: ->
+          # Fill in this callback to perform actions after the payment form is
+          # done loading (such as setting the postal code field programmatically).
+          # paymentForm.setPostalCode('94103');
+          return
+  
+    $('#pay-by-card').click (event) ->
+      event.preventDefault()
+      if gon.cutedivide
+        form = $('#new_cutedivide')
+        form.validate({
+          rules:
+            'cutedivide[email]':
+              email: true
+        })
+        if form.valid() == true
+          paymentForm.requestCardNonce()
+        else
+          $('#pay-by-card').attr('disabled', false)
+      else
+        paymentForm.requestCardNonce()
+
+  calDeposit: ->
+    $('#dep-amt').keyup ->
+      amt = $(this).val()
+      fee = ((amt * 0.0295)+0.10).toFixed(2)
+      result = parseFloat(amt) + parseFloat(fee)
+      if(!isNaN(result))
+        $('#con-fee').val(fee)
+        $('#final-amt').val(result)
+
+  @setup: ->
+    new SquareApi
+
+App.SquareApi = SquareApi.setup
+

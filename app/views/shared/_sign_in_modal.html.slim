@@ -1,0 +1,69 @@
+#sign_in.modal.fade.sign style='z-index: 2048' data-backdrop="#{!!page_status_class ? '': true}"
+  .modal-dialog#dialog
+    a.close  data-dismiss="modal"
+      span.glyphicon.glyphicon-remove
+    h3 Sign In
+    .modal-content
+      .modal-header
+        .header_content
+          //.house_img_container.pull-left
+            img src=asset_path('cityspade-facebook.jpg')
+          .sign_up_notice.pull-left
+            - if controller_name == 'reviews'
+              = image_tag "header/Group_505.png", class: 'image-logo'
+
+              //p
+                | Join CitySpade
+              //p
+                | to complete your review
+            - else
+              = image_tag "header/Group_505.png", class: 'image-logo'
+
+              //p
+                | Join CitySpade to save
+              //p
+                | this project to wishlist
+          	//span
+          	  | Not a member yet ?
+              a#to_sign_up href="#sign_up" role="button" data-toggle="modal" data-target="#sign_up" data-dismiss='modal' aria-hidden=true
+
+          	    | &nbsp Sign up →
+
+      .modal-body
+        // = render "devise/registrations/sign_up"
+        //= link_to account_omniauth_authorize_path(:facebook), class: 'signup-facebook' do
+          img src=asset_path('signup_facebook.jpg')
+        //.signup-notice-wrapper
+          h6.signup-notice
+            span or log in using your email
+        //h6.signup-notice-mobile or sign up using your email
+
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name), remote: true) do |f|
+          .sign_in_content
+            = f.email_field :email, :autofocus => true, :placeholder => 'email', class: "text-field"
+            .error_info
+            = f.password_field :password, :placeholder => 'password', class: "text-field"
+            .error_info
+            - if devise_mapping.rememberable?
+              div.row style="padding-left: 5%"
+                = f.check_box :remember_me, class: 'pull-left', checked: "checked"
+                = f.label :remember_me, class: 'pull-left'
+                = link_to 'Forgot password?', new_account_password_path , class: 'pull-right forget-pw modal-forget-pw'
+            = f.submit "Sign In", class: 'btn-custom'
+
+        .signin-span
+          span
+            | Don’t have CitySpade account?
+            a#to_sign_in href="#sign_up" role="button" data-toggle="modal" data-target="#sign_up" data-dismiss='modal' aria-hidden=true
+              | &nbsp Sign Up
+
+  .end-sign-in
+    .row
+      a href="/privacy"
+        | Privacy Policy &nbsp
+      span |
+      a href="/terms"
+        |  &nbsp Terms of Use &nbsp
+      span |
+      a href="/contact"
+        |  &nbsp Contact Support

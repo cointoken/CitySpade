@@ -1,0 +1,194 @@
+@import "modules"
+$fancybox-width: 500px
+$carousel-height: 350px
+
+.listing_img
+  &:hover
+    a.fancybox-preview
+      visibility: visible
+      opacity: 1
+
+  a.fancybox-preview
+    transition: all 0.1s ease-out
+    color: white
+    position: absolute
+    text-align: center
+    top: 25%
+    left: 50%
+    margin-left: -50px
+    width: 100px
+    padding: 5px 10px
+    text-transform: uppercase
+    visibility: hidden
+    opacity: 0
+    background: rgba(47, 205, 201, 0.82)
+    font-weight: bold
+    letter-spacing: 2px
+
+.listing-fancybox
+  max-width: $fancybox-width
+  min-height: 595px
+  width: $fancybox-width
+  position: relative
+
+  .bed-and-bath
+    margin-top: 10px
+
+    span
+      margin-left: 10px
+      margin-right: -5px
+      line-height: 25px
+      font-weight: bold
+
+  .guarantor
+    margin-top: 8px
+  .tooltip
+    opacity: 1
+    .tooltip-inner
+      width: 300px
+      background-color: #f3f3f3
+      border: 1px solid black
+      p
+        font-size: 15px
+        font-family: Avenir
+        color: black
+      a
+        font-size: 16px
+        font-family: Avenir
+        font-weight: bold
+ 
+  .rating-number
+    color: #777777
+    font-size: 2em
+
+  .listing-price
+    position: absolute
+    left: 0
+    top: 75px
+    color: white
+    font-size: 2em
+    padding: 5px 10px
+    background-color: rgba(0,0,0, $filter-opacity)
+    display: inline-block
+
+  .listing-address
+    font-size: 1.3em
+    margin-top: 10px
+    font-weight: bold
+
+  .listing-hood
+    font-size: 1.1em
+    margin-bottom: 10px
+
+  .no-padding
+    padding: 0
+
+  .fancybox-nav
+    width: 60px
+
+  .fancybox-nav span
+    visibility: visible
+    opacity: 0.5
+
+  .fancybox-next
+    right: -60px
+
+  .fancybox-prev
+    left: -60px
+
+  .fancybox-skin
+    background: #ffffff
+
+  .full-listing-link
+    background: $link-color
+    color: white
+    text-align: center
+    padding: 10px
+    display: inline-block
+
+  .listing-no-fee, .listing-cash-back
+    color: white
+    font-family: $body-font
+    font-weight: normal
+    background-color: rgba(0,0,0,$filter-opacity)
+    display: inline-block
+    padding: 0 10px
+    position: absolute
+    top: 15px
+    left: -1px 
+
+  .listing-no-fee
+    line-height: 30px
+    font-size: 15px
+
+  .bottom-link-bar
+    position: absolute
+    width: $fancybox-width
+    bottom: 0
+    left: 15px
+    padding-left: 15px
+    background: #E0E4E6
+    padding: 10px
+    border-radius: 0 0 4px 4px
+
+  #listingFancyboxCarousel
+    margin-left: auto
+    margin-right: auto
+    margin-bottom: 15px
+    display: block
+    height: $carousel-height
+
+    .carousel-indicators
+      margin-left: 0
+      width: $fancybox-width
+      top: auto
+      left: 0
+      text-align: center
+      right: 0
+      pointer-events: none
+
+      li
+        float: none
+        margin: 0
+        background: white
+        border: 1px solid rgba(0, 0, 0, 0.5)
+        opacity: 0.5
+        pointer-events: auto
+
+        &.active
+          height: 10px
+          width: 10px
+          background: $link-color
+          opacity: 1
+
+    .carousel-inner
+      background: #DADFE1
+      width: $fancybox-width
+
+      .item
+        width: $fancybox-width
+
+        img
+          margin-left: auto
+          margin-right: auto
+          display: block
+          height: $carousel-height
+          width: auto
+
+        iframe
+          height: $carousel-height
+          max-width: $fancybox-width
+
+    .carousel-control
+      background: none
+      color: #34495e
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.7)
+      height: 40px
+      border: none
+      opacity: 1
+      top: 45%
+
+      .glyphicon
+        display: inline-block
+        font-size: 35px
+        color: $link-color

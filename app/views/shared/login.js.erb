@@ -1,0 +1,15 @@
+var sign_notices = $(".modal .sign_up_notice,.modal .sign_in_notice");
+<% if controller_name == 'search' %>
+  var sign_notice_1 = "Join CitySpade"
+  var sign_notice_2 = "Express on your way"
+<% else%>
+  var sign_notice_1 = "Log in to CitySpade to add"
+  var sign_notice_2 = "this listing to your wishlist"
+<%end%>
+for(var i = 0; i < sign_notices.length; i ++){
+  sign_notice = $(sign_notices[i]);
+  sign_notice.find('p')[0].innerHTML=sign_notice_1;
+  sign_notice.find('p')[1].innerHTML=sign_notice_2;
+}
+$("#sign_in").modal("toggle");
+

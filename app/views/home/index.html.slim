@@ -1,0 +1,298 @@
+- home_locale = params[:locale].present? && params[:locale] == 'ch' ? "t-cn" : "t-en"
+
+
+.home-banner
+  - if mobile?
+    video autoplay="true" muted="true" loop="true" id="myVideo" style="width: auto"
+      source src="https://s3.amazonaws.com/cityspade-test/Logos/video375.mp4" type="video/mp4"
+  - else
+    video autoplay="true" muted="true" loop="true" id="myVideo"
+      source src="https://s3.amazonaws.com/cityspade-test/Logos/1366Video2.mp4" type="video/mp4"
+  .row.banner-wrap
+    .heading
+      | Find your dream homes here
+    //.heading class='#{home_locale}'
+      | Find your dream homes here
+    //img src=asset_path("header/Group_1583.png") style='margin-top: -150px; margin-right: -790px'
+    .title2
+      | New life starts with CitySpade
+
+    .input-wrapper
+      //input#search-button type='submit'
+      - if mobile?
+        span.fa.fa-search.fa-2x
+        input#search-container type='text' name="search" placeholder='Search...'
+        .search-result
+      - else
+        span.fa.fa-search.fa-2x
+        input#search-container type='text' name="search" placeholder= '#{t('home_page.index.where_live')}' autocomplete="on"
+        .search-result
+      #search-dropdwn
+        button.close-btn.pull-right
+          i class="fa fa-times fa-lg" aria-hidden="true"
+        p EXPLORE CITIES
+        .areas
+          .locn
+            = link_to "New York", building_pages_path(location: "NY")
+          .locn
+            = link_to "Chicago", building_pages_path(location: "Chicago")
+          .locn
+            = link_to "Boston", building_pages_path(location: "Boston")
+          .locn
+            = link_to "Philadelphia", building_pages_path(location: "Philadelphia")
+          .locn
+            = link_to "Los Angeles", building_pages_path(location: "Los Angeles")
+          .locn
+            = link_to "Houston", building_pages_path(location: "Houston")
+        p.sec EXPLORE SCHOOLS
+        .schools
+          ul.nav.nav-pills
+            li
+              a.sch-link id="ny-link" data-toggle="pill" href="#menu1" data-school="/universities?state=NY" New York
+            li
+              a.sch-link data-toggle="pill" href="#menu2" data-school="/universities?state=IL" Chicago
+            li
+              a.sch-link data-toggle="pill" href="#menu3" data-school="/universities?state=PA" Philadelphia
+            li
+              a.sch-link data-toggle="pill" href="#menu4" data-school="/universities?state=TX" Texas
+            li
+              a.sch-link data-toggle="pill" href="#menu5" data-school="/universities?state=DC" DC
+            li
+              a.sch-link data-toggle="pill" href="#menu5" data-school="/universities?state=MD" Maryland
+            li
+              a.sch-link data-toggle="pill" href="#menu6" data-school="/universities?state=CA" California
+            li
+              a.sch-link data-toggle="pill" href="#menu7" data-school="/universities?state=MA" Massachusetts
+
+          .tab-content
+            #menu1.tab-pane.fade.in.active
+            #menu2.tab-pane.fade
+            #menu3.tab-pane.fade
+            #menu4.tab-pane.fade
+            #menu5.tab-pane.fade
+            #menu6.tab-pane.fade
+            #menu7.tab-pane.fade
+            #menu8.tab-pane.fade
+
+
+.home-schools.container-fluid
+  .titlep #{t('home_page.index.schools')}
+  p.title2 Find your dream homes here
+
+  .row.school-row
+    .col-sm-4.col-xs-6
+      = image_tag ("school_img/Group_2128.png"), class: 'school_img'
+      .scname Columbia
+
+    .col-sm-4.col-xs-6
+      = image_tag ("school_img/Group_2129.png"), class: 'school_img'
+      .scname NYU
+
+    .col-sm-4.col-xs-6.img-wrap
+      = image_tag ("school_img/Group_2053.png"), class: 'school_img'
+      .scname PACE
+
+    .col-xs-6.visible-xs.img-wrap
+      = image_tag ("school_img/Group_2131.png"), class: 'school_img'
+      .scname Pratt
+
+    .col-xs-6.visible-xs.img-wrap
+      = image_tag ("school_img/Group_2130.png"), class: 'school_img'
+      .scname SIT
+
+    .col-xs-6.visible-xs.img-wrap
+      = image_tag ("school_img/Group_2051.png"), class: 'school_img'
+      .scname NYU Tandon
+
+  .row.hidden-xs style='margin-top: 80px; padding-left: 12%; padding-right: 12%; padding-bottom: 50px'
+    .col-sm-4.col-xs-6
+      = image_tag ("school_img/Group_2131.png"), class: 'school_img'
+      .scname Pratt
+
+    .col-sm-4.col-xs-6
+      = image_tag ("school_img/Group_2130.png"), class: 'school_img'
+      .scname SIT
+
+    .col-sm-4.col-xs-6
+      = image_tag ("school_img/Group_2051.png"), class: 'school_img'
+      .scname NYU Tandon
+
+  //=link_to 'FIND MORE', new_search_for_me_path, class: "find_more"
+
+.home-services.container-fluid
+  .div1
+    .contain1
+      .service-title What is CitySpade?
+      .service-content
+        .service-content-detail.center
+          p #{t('home_page.index.whatis_detail')}
+
+      =link_to t('home_page.index.learnmore'), aboutus_path, class: "service-learn"
+
+  .contain2
+    .service-title2 How it works.
+
+    .service-title3 We make it easy.
+
+    .row.services-row
+      .col-md-1.hidden-xs
+
+      .col-md-2.col-xs-12
+        .step-title
+          h1 STEP 1
+        .img-content
+          = image_tag ("school_img/Group_2072.png"), class: 'step-img'
+          .content-title #{t('home_page.index.apart_hunt')}
+
+        .content-wrapper
+          .card-title #{t('home_page.index.what_can')}
+
+          .card-content
+            ul
+              li #{t('home_page.index.consult_agent')}
+              li #{t('home_page.index.reserve_online')}
+              li #{t('home_page.index.confirm_apt')}
+
+        //.row style='margin-top: 33px;'
+          = link_to 'Learn more', new_search_for_me_path, class: 'step-learn'
+          = image_tag ("school_img/ic_chevron_left_24px.png"), style: 'margin-left: 10px; margin-top: -5px;'
+
+
+      .col-md-2.hidden-xs
+        = image_tag ("school_img/Group_1248.png"), style: 'margin-bottom: -310px;', class: 'step-wait'
+
+      .col-md-2.col-xs-12.mobile-wrap
+        .step-title
+          h1 STEP 2
+        .img-content
+          = image_tag ("school_img/Group_2071.png"), class: 'step-img'
+
+          .content-title #{t('home_page.index.apart_apply')}
+
+        .content-wrapper
+          .card-title #{t('home_page.index.what_can')}
+
+          .card-content
+            ul
+              li #{t('home_page.index.assist_proc')}
+              li #{t('home_page.index.go_over')}
+              li #{t('home_page.index.pay_fee')}
+
+        //.row style='margin-top: 33px;'
+          = link_to 'Learn more', new_search_for_me_path, class: 'step-learn'
+          = image_tag ("school_img/ic_chevron_left_24px.png"), style: 'margin-left: 10px; margin-top: -5px;'
+
+      .col-md-2.hidden-xs
+        = image_tag ("school_img/Group_1248.png"), style: 'margin-bottom: -310px;', class: 'step-wait'
+
+      .col-md-2.col-xs-12.mobile-wrap
+        .step-title
+          h1 STEP 3
+        .img-content
+          = image_tag ("school_img/Group_2070.png"), class: 'step-img'
+
+          .content-title #{t('home_page.index.enjoy_home')}
+
+        .content-wrapper
+          .card-title #{t('home_page.index.what_can')}
+
+          .card-content
+            ul
+              li #{t('home_page.index.pre_move')}
+              li #{t('home_page.index.space_move')}
+              li #{t('home_page.index.air_pick')}
+              li #{t('home_page.index.room_pair')}
+              li #{t('home_page.index.free_move')}
+
+        //.row style='margin-top: 33px;'
+          = link_to 'Learn more', new_search_for_me_path, class: 'step-learn'
+          = image_tag ("school_img/ic_chevron_left_24px.png"), style: 'margin-left: 10px;  margin-top: -5px;'
+
+      .col-md-1.hidden-xs
+
+    =link_to t('home_page.index.get_quote'), new_search_for_me_path, class: "get-quote"
+
+  .contain3.hidden-xs
+    .row.intro-wrapper
+      .col-md-6.col-xs-6.intro-left
+        .intro-title #{t('home_page.index.save_money')}
+
+        .intro-content
+          p #{t('home_page.index.save_money_detail')}
+
+      .col-md-6.col-xs-6.intro-right
+        = image_tag ("school_img/Group_2137.png"), style: 'margin-left: 100px;'
+
+  .contain4
+    .all-servtitle Why you'll love us
+    .all-2ndtitle Our Services
+
+    .row.services-wrapper
+      .col-xs-12.col-sm-4.service-info
+        = image_tag ('school_img/Group_2133.png'), class: 'service-image'
+
+        .serv-txt
+          h1 #{t('home_page.index.broker_fee')}
+          h2 #{t('home_page.index.instead_of')}
+
+      .col-xs-12.col-sm-4.service-info
+        = image_tag ('school_img/Group_2134.png'), class: 'service-image serv-img'
+
+        .serv-txt
+          h1 #{t('home_page.index.one_on_one')}
+          h2 #{t('home_page.index.one_on_one_detail')}
+
+      .col-xs-12.col-sm-4.service-info
+        = image_tag ('school_img/Group_2135.png'), class: 'service-image'
+
+        .serv-txt
+          h1 #{t('home_page.index.roommate_mat')}
+          h2 #{t('home_page.index.ideal_room')}
+
+    .row.services-wrapper.wrap2
+      .col-xs-12.col-sm-4.service-info
+        = link_to image_tag('school_img/Group_2138.png', class: 'service-image serv-img'), '/services'
+
+        .serv-txt
+          h1 #{t('home_page.index.flat_rate')}
+          h2 #{t('home_page.index.move_team')}
+
+      .col-xs-12.col-sm-4.service-info
+        = link_to image_tag('school_img/Group_2553.png', class: 'service-image'),  '/services'
+
+        .serv-txt
+          h1 #{t('home_page.index.furn_delieve')}
+          h2 #{t('home_page.index.furn_team')}
+
+      .col-xs-12.col-sm-4.service-info
+        = link_to image_tag('school_img/Group_2136.png', class: 'service-image serv-img'), '/services'
+
+        .serv-txt
+          h1 #{t('home_page.index.room_divide')}
+          h2 #{t('home_page.index.room_divide_detail')}
+    //.add-serv-btn
+      =link_to 'ADD SERVICES', new_search_for_me_path, class: 'add-service'
+  .contain5
+
+.home-contact.container-fluid style='background-color: #28d8d8;margin-top: -240px'
+  h1 #{t('home_page.index.rent_quick')}
+
+  h2 Find your dream home in seconds
+
+  .row.contact-row
+    .col-sm-4.col-xs-12
+      h3 #{t('home_page.index.phone_number')}
+      h4 917-923-1739
+
+    .col-sm-4.col-xs-12
+      h3 #{t('home_page.index.wechat_kakao')}
+      h4 #{t('home_page.index.w_k_id')}
+
+    .col-sm-4.col-xs-12
+      h3 Email
+      h4 #{t('home_page.index.en_kr_email')}
+
+  =link_to t('home_page.index.get_quote'), new_search_for_me_path, class: 'quote-link'
+
+javascript:
+  App.HomePage4();

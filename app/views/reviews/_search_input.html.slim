@@ -1,0 +1,14 @@
+.fullwidthbanner-container
+  .review-banner-bg style="background-image: url(#{asset_path('review_show_banner.jpg')})"
+    .row#banner-container.banner-listings
+      .container
+        #banner-search.reviews-banner
+          = form_tag result_reviews_path,method: :get, id: 'banner-search-form' do
+            #review-search
+              #review-input
+                = text_field_tag :address, params[:address] , placeholder: (mobile? ? 'Neighborhood / Street / Zip' : 'ENTER A NEIGHBORHOOD OR STREET'), class: 'input-class large search-base-input'
+                #banner-location
+                  label for='location'
+                    = image_tag 'icons/location.png'
+                  = text_field_tag :location, "#{current_city.name}, #{current_city.state}", class: 'input-calss small search-base-input current-city'
+                = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')

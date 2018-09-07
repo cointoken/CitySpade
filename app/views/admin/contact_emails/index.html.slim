@@ -1,0 +1,30 @@
+.row
+  .box.col-md-12
+    .cell
+      .field.fieldset.center
+        h3 Contact Emails
+
+.row
+  .box.col-md-12
+    .cell
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th
+              | ID
+            th
+              | Email
+            th
+              | Building
+            th
+              | Name
+        tbody
+          -@contacts.each do |contact_email|
+            tr
+              td = best_in_place contact_email, :id, as: :input, url: [:admin, contact_email]
+              td = best_in_place contact_email, :email, as: :input, url: [:admin, contact_email]
+              td = best_in_place contact_email, :building, as: :input, url: [:admin, contact_email]
+              td = best_in_place contact_email, :name, as: :input, url: [:admin, contact_email]
+
+javascript:
+  App.AdminSection();

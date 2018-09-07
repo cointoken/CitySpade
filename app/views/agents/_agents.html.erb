@@ -1,0 +1,83 @@
+<% if !@agents.first_page? %>
+  <div class="left-arrows">
+      <%= image_tag "icons/ag_prev.png", size: "80", alt: "", :data => { :type => "previous" }, class: "agents-arrows hidden-xs", style: "z-index:1002;width:80px;height:80px;cursor:pointer;" %>
+  </div>
+<% end %>
+
+<div class="row agents-row">
+<div class="agents-container row" style="position: relative;margin: auto;">
+<% @agents.each do|agent|%>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="agents-profile">
+            <div class="agents-avatar">
+                <% avatar_url = agent.photo_url.present? ? agent.photo_url(:thumb) : "upload_img.png" %>
+                <%= image_tag avatar_url, size: "100", alt: " ", class: "img-circle"%>
+            </div>
+            <div class="agents-detail">
+                <ul>
+                    <li><span class="name"><%= agent.name %></span></li>
+                    <li><span class="detail">Licensed Real Estate Salesperson</span></li>
+                    <li class="contact-detail">
+                        <label for="">Phone: </label><span class="detail"><%= agent.tel %></span></li>
+                    <li>
+                      <label for="">Email: </label><span class="detail"><%= agent.email %></span></li>
+                </ul>
+            </div>
+            <div class="profile-footer">
+                <%= link_to "View Profile", "/agents/#{agent.to_param}" %>
+            </div>
+        </div>
+    </div>
+<% end %>
+</div>
+<div class="paginate-container">
+    <div class="page-num" data-pagenum="<%= params['page']%>"></div>
+    <% if params[:agent].present? %>
+      <%= paginate  @agents, :params => {
+                                :agent => {
+                                  :name => params[:agent][:name],
+                                  :office_address => params[:agent][:office_address],
+                                  :languages => params[:agent][:languages]
+                                  }
+                              }, :remote => true %>
+    <% else %>
+      <%= paginate  @agents, :remote => true %>
+    <% end %>
+</div>
+</div>
+
+<% if !@agents.last_page? %>
+  <div class="right-arrows">
+      <%= image_tag "icons/ag_next.png", size: "80", alt: "", :data => { :type => "next" }, class: "agents-arrows hidden-xs", style: "z-index:1002;width:80px;height:80px;cursor:pointer;" %>
+  </div>
+<% end %>
+
+<%= javascript_tag do %>
+    $(".agents-arrows").click(function(e) {
+        var arrows_type = e.target.dataset.type
+        var page_num = $(".page-num").data("pagenum") || 1
+        if ((page_num > 1) && (arrows_type == "previous")) {
+            page_num = page_num - 1
+        }
+        if ((page_num >= 1) && (arrows_type == "next")) {
+            page_num = page_num + 1
+        }
+        var agent_name     = $('#agent_name').val();
+        var office_address = $('.chosen-select.office_select').val();
+        var languages      = $('.chosen-select.languages_select').val();
+        var url = "agents"
+        $.ajax({
+            url: "/agents",
+            type: "GET",
+            data: {
+              agent: {
+                name: agent_name,
+                office_address: office_address,
+                languages: languages
+              },
+              page: page_num
+            }
+        })
+    })
+
+<% end %>

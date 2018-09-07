@@ -1,0 +1,3 @@
+<% if @nearby_reviews.present? %>
+  $("#cs-right-bottom").append('<%= j(render("nearby_reviews", :nearby_reviews => @nearby_reviews, :listing => @listing)) %>');
+<% end %>

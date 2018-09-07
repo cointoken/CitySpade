@@ -1,0 +1,239 @@
+/** 主要用于存放sass的variables和@mixin **/
+
+/** variables **/
+
+$link-color: #2fcdc9
+$link-aggravated-color: #00dfd9
+$full-white: #ffffff
+$map-marker-bg: #29bcb8
+$map-marker-color: #ffffff
+$sub-white: #e2e2e2
+$color444: #444
+$color333: #333
+$color777: #777
+$color888: #888
+$color666: #666
+$color999: #999
+$placeholder-color: #666
+$p-comment-white: #BDBDBD
+$selected-color: #29bbbb
+$cancel-color: #c6e6e5
+$bright-red: #ff779f
+$filter-opacity: 0.7
+
+$link-box-height: 40px
+$show-image-height: 198px
+
+$border-color: #dadbde
+$dark-blue: #34459e
+$avenir: Avenir
+$color1e: #1E2A36
+
+/** END **/
+
+
+
+/** @mixin **/
+@mixin input-placeholder-color($color)
+  &:-moz-placeholder
+    color: $color
+  &::-moz-placeholder
+    color: $color
+  &:-ms-input-placeholder
+    color: $color
+  &::-webkit-input-placeholder
+    color: $color
+
+@mixin input-placeholder-padding-left($width)
+  &:-moz-placeholder
+    padding-left: $width
+  &::-moz-placeholder
+    padding-left: $width
+  &:-ms-input-placeholder
+    padding-left: $width
+  &::-webkit-input-placeholder
+    padding-left: $width
+
+
+@mixin reset-font-space
+  margin: 0
+  line-height: 100%
+
+@mixin global-font
+  h2, h4, p, legend
+    font-family: Avenir
+  h2
+    font-size: 26px
+    color: #333
+  h4
+    font-size: 16px
+    color: #333
+  p, legend
+    font-size: 14px
+    color: #444
+@mixin font-color
+  .title, .subtitle
+    color: $full-white
+  .content
+    p
+      color: $p-comment-white
+    // to override css style in present.css
+    //color: $sub-white !important
+    h2, h3, h4, h5, h6
+      color: $sub-white
+  @media (max-width: 767px)
+    .title, .subtitle
+      color: black
+    .content
+      // to override css style in present.css
+        color: black !important
+      h2, h3, h4, h5, h6
+        color: black
+
+@mixin image-bg($bg-url, $full-page: false)
+  background-repeat: no-repeat
+  background-position: center
+  background-image: asset-url($bg-url)
+  @media (max-width: 767px)
+    background-image: none
+  @if $full-page
+    background-attachment: fixed
+    -webkit-background-size: cover
+    -moz-background-size: cover
+    -o-background-size: cover
+    background-size: cover
+
+@mixin box-sizing
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+@mixin border-radius($size)
+  border-radius: $size
+  -webkit-border-radius: $size
+  -moz-border-radius: $size
+@mixin banner-bg($height)
+  height: $height
+  width: 100%
+  z-index: 0
+  background-repeat:  no-repeat
+  background-position: center
+
+@mixin image-bg($bg-url, $full-page: false)
+  background-repeat: no-repeat
+  background-position: center
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), asset-url($bg-url)
+  @media (max-width: 767px)
+    background-image: none
+  @if $full-page
+    background-attachment: fixed
+    -webkit-background-size: cover
+    -moz-background-size: cover
+    -o-background-size: cover
+    background-size: cover
+
+@mixin listing-price($weight)
+  color: $link-color
+  font-family: Avenir
+  font-weight: $weight
+  font-size: 18px
+@mixin review-input
+  border: 1px solid #b2b2b2 !important
+  background: #fff
+  padding: 0 8px
+  height: 30px
+  width: 95%
+@mixin border-gray
+  border: 1px solid #c6c6c6
+@mixin text-area
+  padding: 11px
+  background: #f8f8f8
+  border: 1px solid #c6c6c6
+/** END **/
+
+/** new  @mixin **/
+@mixin size-color($size,$color)
+  font-size: $size
+  color: $color
+@mixin size-color-family($size,$color,$family)
+  font-size: $size
+  color: $color
+  font-family: $family
+
+@mixin width-height($width,$height)
+  width: $width
+  height: $height
+
+@mixin margin-padding($margin,$padding)
+  margin: $margin
+  padding: $padding
+@mixin margin-padding-border($margin,$padding,$border)
+  margin: $margin
+  padding: $padding
+  border: $border
+
+@mixin marginDir-paddingDir($margin,$padding,$dir)
+  margin-#{$dir}: $margin
+  padding-#{$dir}: $padding
+@mixin marginDir-paddingDir-borderDir($margin,$padding,$border,$dir)
+  margin-#{$dir}: $margin
+  padding-#{$dir}: $padding
+  border-#{$dir}: $border
+
+/** logo **/
+@mixin logo($size,$color)
+  font-family: CenturyGothic,Avenir
+  font-size: $size
+  color: $color
+  span
+    color: #29bcb8
+
+/** Respontive **/
+@mixin respon-prop ($width)
+  width: $width
+  height: 42px
+  border: 1px solid !important
+  border-color: #c6c6c6 !important
+  margin-top: 10px
+  padding-left: 10px
+
+/********************* font-family *********************/
+/** review **/
+@mixin review-title
+  font-family: Avenir
+  font-weight: normal
+
+@mixin review-text
+  font-family: "Avenir Book"
+  font-weight: normal
+
+/** body default family **/
+$body-head-font: Avenir
+$body-font: "Avenir Book"
+$body-bold-font: "Avenir Roman"
+
+/** header and footer**/
+$header-menu-font: 'Arial Rounded MT Bold',Arial
+$footer-title-font: Palatino
+$footer-list-font: Helvetica
+
+/** btn **/
+$btn-text-font: Arial
+$btn-font: Helvetica
+
+/** link **/
+$link-font: Helvetica
+
+/** home **/
+$home-component-font: Avenir
+
+/** blog **/
+$blog-content-font: "Avenir Book"
+$blog-time-font: Helvetica
+
+/** listing **/
+$listing-text-font: Avenir
+$listing-show-font: "Avenir Book"
+$listing-title-font: Palatino
+
+

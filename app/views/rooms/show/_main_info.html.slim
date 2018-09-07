@@ -1,0 +1,19 @@
+h1
+  = @room.title
+h4
+  | #{@room.formatted_address}
+
+
+- if @room.price_month
+  span
+    h4.highlight
+      span
+        | #{number_to_currency(@room.price_month, precision: 0)} / month
+
+h4.title
+  | Available for
+  b
+    |  #{distance_of_time_in_words(@room.available_begin_at, @room.available_end_at)}
+  |  starting on
+  b
+    |  #{@room.available_begin_at.strftime("%B %d, %Y")}

@@ -1,0 +1,19 @@
+class Career
+  constructor: ->
+    @showmoreClick()
+
+  showmoreClick: ->
+    $('#showmore').click (e) ->
+      $('.all-positions').show('slow')
+      $('.more-btn').hide()
+    
+    $('.right-link-container').click ->
+      top = $('.career-list-item').first().offset().top
+      $('html, body').animate({
+        scrollTop: top
+      }, 1000)
+
+  @setup: ->
+    new Career
+
+App.Career = Career.setup

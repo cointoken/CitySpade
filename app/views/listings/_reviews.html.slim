@@ -1,0 +1,15 @@
+- building_reviews =  listing.building_reviews.limit(6)
+- neighborhood_reviews = listing.neighborhood_reviews.limit(6).sort_by { \
+   |r| r.distance_to listing \
+  }
+
+#listingReviews
+  - if listing.has_review?
+    = render "building_reviews",
+        building_reviews: building_reviews
+
+  - else
+    = render "neighborhood_reviews",
+        neighborhood_reviews: neighborhood_reviews
+
+  = render "review_modal"

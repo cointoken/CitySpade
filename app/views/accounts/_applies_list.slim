@@ -1,0 +1,18 @@
+.col-md-9.row.wishlist-wrapper
+  .wishlist
+    - @client_applies.each do |client_apply|
+      .row
+        .listing.row
+          .col-md-5
+            h3 Building: #{client_apply.building}
+            h3 Unit: #{client_apply.unit}
+            h3 Retrieve Code: #{client_apply.access_token}
+            //= form_tag apply_edit_path, method: 'post', remote: true do
+              = text_field_tag "token", client_apply.access_token
+              = text_field_tag "dob", client_apply.dob
+              = text_field_tag "email", client_apply.email
+              = submit_tag "Retrieve"
+
+          .col-md-7.listing-content
+            h3
+              = link_to "Retrieve", apply_retrieve_path, target: "_blank"

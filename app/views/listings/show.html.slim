@@ -1,0 +1,226 @@
+- content_for :custom_top
+  .container-fluid.center style="background: black"
+    = render "shared/banner_ad"
+
+- content_for :seo
+  meta [
+    property='og:description'
+    content="#{@listing.display_title}, #{full_neighborhood(@listing)}"
+  ]
+
+  meta [
+    property='og:image'
+    content=listing_image_url(@listing, 'origin', :rand)
+  ]
+
+
+section#sp-listing-expired
+  - if @listing.expired?
+    .container
+      .row
+        .listing-expired
+          | This listing might have expired.
+
+section.listing#sp-main-body-wrapper
+  .container
+    .row#content-body.main-listing
+      #listing-images.hidden-xs
+        = render 'images_carousel', target: :desktop
+
+      #listing-info
+        .row
+          h1
+            = @listing.display_title
+          h2
+            = full_neighborhood(@listing)
+          - if @listing.no_fee
+              span.listing_no_fee
+                | NO-FEE
+          - if @listing.is_flash_sale
+              span.listing_no_fee Special Promotion
+          - if @listing.guarantor
+              = image_tag 'logo/guarantor_logo.png', width: "30px", class: "guarantor-logo"
+
+          .listing-price-no-fee
+            span.listing-price
+             = number_to_currency(@listing.price, precision: 0)
+            /- if @listing.no_fee
+              span.listing_no_fee
+                | NO-FEE
+            /- if @listing.is_flash_sale
+              - if @listing.contact_name == "Newport Rental Towers"
+                span.listing_no_fee $ 300 Move-In Bonus
+              - else
+                span.listing_no_fee $ #{calculate_discount(@listing.price)} Move-In Bonus
+            - if @listing.sq_ft && @listing.sq_ft > 0
+              span.squarefeet
+                = display_sq_ft(@listing)
+              span.squarefeet
+                = display_price_per_sq_ft(@listing)
+
+
+        .row#ratings-and-price
+          .building-review
+            span
+              | Building Reviews
+
+          = render_inline_rating_by( \
+              @listing.review_building, \
+              rating_class: 'pull-left', \
+              target: :listing \
+            )
+
+        #beds-and-baths.row
+          .inline-block.half.center
+            div
+              = image_tag 'sublet/bed.png', title: display_beds(@listing)
+
+            div.bb-info = display_beds(@listing)
+
+          .inline-block.half.center
+            div
+              = image_tag 'sublet/bath.png', title: display_baths(@listing)
+            div.bb-info = display_baths(@listing)
+
+        #score-and-related.row
+          ul
+            li
+              span &nbsp;Cost-Efficiency:&nbsp;
+              strong
+                = display_score(@listing, :score_price)
+
+            li.transit-score
+              span &nbsp;Transportation:&nbsp;
+              strong
+                = display_score(@listing, :score_transport)
+
+        .row.visible-xs
+          = render 'images_carousel', target: :phone
+
+        .openhouse-cap.visible-xs
+          - if @listing.open_houses.present?
+            .openhouse-mobile itemscope='' itemtype="http://schema.org/Event"
+              .open-houses-title
+                i.fa.fa-calendar itemprop= "name" content= "OPEN HOUSE:#{@listing.open_houses.first.open_time}"
+                time itemprop= "startDate" content= "#{@listing.open_houses.first.open_date}"
+                meta itemprop= "location" content= "#{@listing.title} #{full_neighborhood(@listing, :short)}"
+                |  OPEN HOUSES:
+                br
+              - @listing.open_houses.to_a.uniq{|a| a.loop ? "#{a.begin_time.hour}-#{a.end_time.hour}" : a.open_date}[0..1].each do |open_house|
+                .open-house
+                  span.open-time
+                    = open_house.open_time
+                  = render_calendar_link @listing, open_house
+
+        - if @listing.is_flash_sale
+          = render 'flash_sale'
+        - else
+          = render 'contact_detail'
+        - if current_account && current_account.role == "admin"
+          button data-toggle="modal" data-target="#add-video-modal" type="button"
+            | Video
+          = render'shared/add_video'
+  - if @listing.cityspade_exclusive
+    .container#customize_message
+      .row.center
+        p
+          | Apply through CitySpade. No application fee and get $500 upon lease signing.
+      .row.center
+        button data-toggle="modal" data-target="#contact-email-modal"
+          | See This Apartment
+        = render('shared/contact_email', {agent_name: @listing.agent.name, agent_tel: display_tel(@listing),
+                                        agent_id: @listing.agent.id, url: listing_url(@listing),
+                                        listing_id: @listing.id, name: current_account.try(:name),
+                                        email: current_account.try(:email), tel: current_account.try(:phone_tel),
+                                        add_class: 'modal fade', type: 'broker' })
+
+  .container.description-container class="#{mobile? ? nil : 'bg-container'}"
+    #listing-detail
+      .row
+
+        .apart.col-lg-7
+          .title APARTMENT DESCRIPTION
+          hr
+          div style="padding-right: 35px; text-align: justify"
+            -if @listing.amenities.size >= 14
+              p
+                == simple_format @listing.description
+            - else
+              == toggle_comment @listing.description, 700
+
+        .amen.col-lg-4
+          .title AMENITIES
+          hr
+          ul
+            - @listing.amenities.each do |amen|
+              li = amen
+
+  .container.no-border
+    #related-reviews
+      = render 'reviews', listing: @listing
+
+  .container class="#{mobile? ? nil : 'bg-container'}"
+    #transit-and-map
+      .row
+        .col-md-5
+          .title TRANSPORTATION INFO
+          hr
+
+          .detail-info
+            .lines.clearfix
+              .subways
+                h6.subtitle Subway Lines:
+                = content_tag :div, id: 'display-subway-lines', \
+                  class: 'pull-left', \
+                  data: { \
+                    origin: { \
+                      lat: @listing.lat, \
+                      lng: @listing.lng \
+                    } \
+                  } do
+
+                  = render_subway_lines(@listing)
+
+            .spots
+              h6.subtitle Hottest Spots
+              - for spot in @listing.political_area.try(:hottest_spots) || []
+                = render_transport_place(spot)
+
+            .colleges
+              h6.subtitle Colleges
+              - for spot in @listing.political_area.try(:colleges) || []
+                = render_transport_place(spot, type='college')
+
+        .col-md-7
+          ul.nav.nav-tabs
+            li
+              a.inline-block.a-map href="#google-street-view" data-toggle="tab" Street View
+
+            li.active
+              a.inline-block.a-map href="#google-map" data-toggle="tab" Map
+
+          .tab-content#myTabContent
+            .tab-pane#google-map.google-map.active
+              = render 'google_maps'
+
+            .tab-pane#google-street-view.google-street-view
+              = render 'google_street_view'
+
+  - if @listing.is_sale?
+    = render 'mortgage', listing: @listing
+
+  - else
+    .container.costs-container
+      #costs-and-requirements
+        .row
+          = render "costs_and_requirements", listing: @listing
+
+  .container class="#{mobile? ? nil : 'bg-container'}"
+      #nearby-venues.row
+
+  .container
+    div
+      #nearby-apartments.row
+
+javascript:
+  App.Guarantor();

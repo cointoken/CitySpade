@@ -1,0 +1,38 @@
+- partial_path = "rooms/show/%s"
+
+= render partial_path % "ad_and_head"
+
+#fontReset.container-fluid.full-width-container
+
+  .container-fluid.full-width-container.room-carousel-wrapper
+    = render partial_path % 'images_carousel'
+
+  .avatar-and-buttons data-spy="affix" data-offset-top="522"
+    .container-fluid.action-buttons
+      .row.centered-columns
+        .col-sm-2.col-xs-12.avatar-column
+          .poster-avatar
+            = image_tag @room.account.medium_image_url,
+              alt: @room.account.name,
+              title: @room.account.name
+
+          h4.name = @room.account.name.titleize
+
+        = render partial_path % "action_buttons"
+
+  .container-fluid.main-info
+    .row
+      = render partial_path % "main_info"
+
+  .container.room-detail
+    = render partial_path % "room_details"
+
+  .container-fluid.full-width-container
+    = render partial_path % 'google_maps'
+
+  = render "room_search/create_post_tiles"
+
+// Modals
+= render partial_path % "contact_modal"
+.modal#fbModal
+  = render "shared/facebook_modal"

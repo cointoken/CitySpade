@@ -1,0 +1,32 @@
+.container#client_apply
+  .language
+    | Language:
+    = link_to_unless_current "English", locale: "en"
+    |  |
+    = link_to_unless_current "Chinese", locale: "ch"
+
+  - if current_account.nil?
+
+    h1 Please sign in to continue application
+
+    .button_container
+
+      button.sign_in_button data-toggle="modal" data-target= "#sign_in"
+        span Sign In
+  - else
+
+    h1 = t ".apply"
+
+    = form_for @application, url: apply_create_path, html: {class: 'form-horizontal', id: 'client_apply_form', multipart: true} do |f|
+
+      fieldset.form-fields
+        = render 'form', f: f
+
+      fieldset
+        = render 'document_form', f: f
+
+//.container#client_apply_smd.visible-xs.visible-sm
+  h5 This feature is available only on Laptop and Desktop computers.
+
+javascript:
+  App.ClientApply();

@@ -1,0 +1,55 @@
+.home-banner.container-fluid
+  .heading Spot your next move
+
+  #sp-banner-wrapper
+    .row#banner
+      .row#banner-container
+        #banner-search class= "#{search_review? ? 'for-search-review' : 'for-search-listing'}"
+          = form_for Listing.new, url: (search_review? ? result_reviews_path : area_index_search_path(current_area: current_area.long_name.to_url)),\
+          data:{sl: search_path, sr: result_reviews_path},\
+          method: :get, id: 'banner-search-form' do |f|
+            = render partial: 'search/search_input', locals: {f: f }
+
+/.home-flashsales.container
+  /h2.center Daily Deals
+  /.flash-heading.center
+    /= link_to "Daily Deals", flashsales_path
+    /p.center No-fee listings with special promotions through CitySpade!
+  /= render "home_flashsales"
+
+.newhome-flashsales.container
+  .flash-heading.center
+    = link_to "Picks of the Week", flashsales_path
+    p.center No-fee listings with special promotions through CitySpade!
+  = render "newhome1_flashsales"
+
+
+.home-searchforme.container-fluid
+  h1 Let us help you find the best deals.
+  = link_to "GET STARTED", new_search_for_me_path
+
+.home-contact.container-fluid
+  = render "home_contact"
+
+
+
+
+
+.feature-section.container-fluid.center
+  .feature-tiles.container
+    .row
+      .col-xs-12.col-sm-6
+        = link_to "Sublets", new_room_path,
+          class: "tile room-tile"
+
+      .col-xs-12.col-sm-6
+        = link_to "Roommates", new_roommate_path,
+          class: "tile roommate-tile"
+
+      .col-xs-12.col-sm-6
+        = link_to "Reviews", reviews_path,
+          class: "tile review-tile"
+
+      .col-xs-12.col-sm-6
+        = link_to "Open Houses", open_houses_path,
+          class: "tile openhouse-tile"

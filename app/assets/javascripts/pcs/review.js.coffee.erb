@@ -1,0 +1,254 @@
+App.Review =
+  init: ->
+    # @AddPlace()
+    # @Addlaundry()
+    @AssessLevel()
+    @Search()
+    # @GetCurrentCity()
+    @CheckFacebookLogin()
+    @DoLike()
+    @reviewShowShare()
+    # @showReviewMoreInfo()
+    @showReviewImage()
+    @calApartAttrComment()
+
+    # time plugin
+    # $(".ym-picker").datetimepicker({format: 'yyyy-mm',autoclose: true, minView: 3, startView: 3})
+    # mutil select plugin
+    # $('#payment-content select').multipleSelect({width: 138, single: true})
+    $("select[name='review[state]']").selectize()#multipleSelect({single: true,filter: true,width: 138})
+
+    # state: isBeyondMaxPage: true
+    # tab initialization
+    # $(".nav.nav-tabs a:first").tab("show")
+    <%#    $(".nav.nav-tabs a").click ->%>
+      <%#$(this).tab("show")%>
+  DoLike: ->
+    $('a.collect,a.uncollect').click ->
+      <%#sign = $("#sign_in")%>
+      <%#if sign.length > 0%>
+        <%#sign.modal('toggle')%>
+        <%#return false%>
+    $('a.collect,a.uncollect').bind 'ajax:success', (e,data)->
+      self = $(this)
+      i = self.find('.collect-num')
+      i.html(data.collect_num)
+      #heart_num = self.find('.fa-heart')
+      #if heart_num.html() != ''
+      #heart_num.html(data.collect_num)
+      url = self.attr('href')
+      self.attr('href', self.attr('data-reverse-url'))
+      self.attr('data-reverse-url', url)
+      if self.attr('class').indexOf('uncollect') > -1
+        self.removeClass('uncollect')
+        self.addClass('collect')
+        i.removeClass('collected')
+        i.addClass('uncollected')
+      else
+        self.removeClass('collect')
+        self.addClass('uncollect')
+        i.removeClass('uncollected')
+        i.addClass('collected')
+  AddPlace: ->
+    $("#grocery .place img.add").click ->
+      html = $("#tmpl-review-place").tmpl({place_type: 'grocery'})
+      html.appendTo($(".tab-pane.active #grocery")).find("img").attr("src","<%= image_url "remove.png"%>").bind("click",-> $(this).parent().remove())
+    $(".place img.remove").click ->
+      $(this).parent().remove()
+  Addlaundry: ->
+    $("#laundry .place img.add").click ->
+      html = $("#tmpl-review-place").tmpl({place_type: 'laundry'})
+      html.appendTo($(".tab-pane.active #laundry")).find("img").attr("src","<%= image_url "remove.png"%>").bind("click",-> $(this).parent().remove())
+  AssessLevel: ->
+    $(".select-items .fa").click ->
+      that = this
+      current_index = $(this).index()
+      $(this).parent(".select-items").find(".fa").each (index,ele) ->
+        if index > current_index
+          $(ele).removeClass("selected") if $(ele).is(".selected")
+        else
+          $(ele).addClass("selected") unless $(ele).is(".selected")
+      $(this).parent(".select-items").find("input").val(current_index + 1)
+    $(".select-items .fa").mouseover ->
+      that = this
+      current_index = $(this).index()
+      $(this).parent(".select-items").find(".fa").each (index,ele) ->
+        if index > current_index
+          $(ele).removeClass("active").addClass('disactive')
+        else
+          $(ele).addClass("active").removeClass('disactive')
+    $(".select-items .fa").mouseout ->
+      that = this
+      current_index = $(this).index()
+      $(this).parent(".select-items").find(".fa").each (index,ele) ->
+        $(ele).removeClass("active").removeClass('disactive')
+  DeletePhoto: ->
+    $("table.table-striped .template-download.fade").appendTo($(".show-upload-result table"))
+    $(".show-upload-result table").find(".delete .btn").on 'click', (e) ->
+      e.preventDefault()
+      that = this
+      $.ajax(
+        url: $(this).data("url")
+        type: "DELETE"
+        context: that
+      ).done ->
+        del_index = $(this).parents(".template-download.fade").index()
+        $(".show-upload-result table").each (index,ele) ->
+          $(ele).find(".template-download.fade")[del_index].remove()
+  Search: ->
+    $("input#location").keypress (e) ->
+      if e.keyCode  == 13
+        return false
+    $("#review-search #address").autocomplete(
+      serviceUrl: '/api/places/autocomplete'
+      dataType: 'json'
+      minChars: 3
+      lookupFilter: (suggestion, originalQuery, queryLowerCase)->
+        re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi')
+        return re.test(suggestion.value)
+      formatResult: (suggestion, value) ->
+        pattern = '(' + $.Autocomplete.utils.escapeRegExChars(value) + ')'
+        parent  = "<span class='autocomplete-parent'>" + suggestion.parent + "</span><div class='clearfix'></div>"
+        old_result = suggestion.value.replace(new RegExp(pattern, 'gi'), '<strong>$1<\/strong>')
+        return (old_result + parent)
+      onHint: (hint) ->
+        # console.log hint
+      onSelect: (suggestion) ->
+        # console.log suggestion
+        if suggestion.parent
+          $("input#location").val(suggestion.parent.trim())
+    )
+    $("input#location").autocomplete(
+      serviceUrl: '/api/places/cities'
+      dataType: 'json'
+      minChars: 2
+      lookupFilter: (suggestion, originalQuery, queryLowerCase)->
+        re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi')
+        return re.test(suggestion.value)
+      formatResult: (suggestion, value) ->
+        pattern = '(' + $.Autocomplete.utils.escapeRegExChars(value) + ')'
+        parent  = "<span class='autocomplete-parent'>" + suggestion.parent + "</span>"
+        suggest_val = suggestion.value.split(',')[0]
+        old_result = suggest_val.replace(new RegExp(pattern, 'gi'), '<strong>$1<\/strong>')
+        return (old_result + parent)
+      onSelect: (suggestion) ->
+        $.post('/api/places/set_city', {id: suggestion.id})
+        return false
+      onHint: (hint) ->
+        # console.log hint
+    )
+
+  Validate: ->
+    $(".new_review").validate()
+
+  GetCurrentCity: ->
+    $.get '/api/geoip', (res) ->
+      $(".current-city").val(res.name + ", " + res.state)
+  CheckFacebookLogin: ->
+    $(".review-facebook-box, .review-on-facebook-label").click ->
+      logined = false
+      $.get '/account/check_facebook_login', (data, e) ->
+        logined = data.logined
+        if !logined
+          $("#login-facebook").modal()
+          $(".review-facebook-box").attr('checked',false)
+          return logined
+        else
+          return logined
+
+  reviewShowShare: ->
+    if !gon.created_obj
+      reviewShowShare2 = $('#review-show-share2')
+      reviewShowShare3 = $('#review-show-share3')
+      tmpl_base = $('#tmpl-new-review-location')
+      tmpl_comment = $('#tmpl-new-review-comment')
+      $('.review-type-select-tag').click ->
+        $('.review-type-select-tag').removeClass('selected')
+        self = $(this)
+        val  = self.data('val')
+        self.addClass('selected')
+        $('#review_review_type').val(val)
+        $('#new-review-location').html(tmpl_base.tmpl({review_type: parseInt(val)}))
+        $("select[name='review[state]']").selectize()
+      $(".review-lock .contribute-review").click ->
+        $('#new-review-location').html(tmpl_base.tmpl({review_type: 0}))
+        $("select[name='review[state]']").selectize()#multipleSelect({single: true,filter: true,width: 138})
+        reviewShowShare2.modal()
+        <%#reviewShowShare3.hide()%>
+      $("#review-show-btn2").click ->
+        ele = document.getElementById('review_address')
+        if ele.validity && !ele.validity.valid
+          ele.focus()
+          return
+        ele = document.getElementById('review_city')
+        if ele.validity && !ele.validity.valid
+          ele.focus()
+          return
+        type_id = parseInt($('#review_review_type').val())
+        $('#new-review-comment').html(tmpl_comment.tmpl({review_type: type_id}))
+        App.Review.AssessLevel()
+        App.Review.calApartAttrComment()
+        reviewShowShare2.modal('hide')
+        reviewShowShare3.modal('show')
+        <%#reviewShowShare3.attr('style','display:block')%>
+        $("#review-comment").validate()
+      $("#review-show-pre").click ->
+        <%#reviewShowShare2.attr('style','display:block')%>
+        reviewShowShare2.modal('show')
+        reviewShowShare3.modal('hide')
+        <%#reviewShowShare3.attr('style','display:none')%>
+
+    <%#if gon.page_protected%>
+      <%#$('.review-type-select-tag').click ->%>
+        <%#$('.review-type-select-tag').removeClass('selected')%>
+        <%#self = $(this)%>
+        <%#val  = self.data('val')%>
+        <%#self.addClass('selected')%>
+        <%#$('#review_review_type').val(val)%>
+        <%#$('#new-review-location').html(tmpl_base.tmpl({review_type: parseInt(val)}))%>
+        <%#$("select[name='review[state]']").selectize()%>
+      <%#reviewShowShare1 = $('#review-show-share1')%>
+      <%#reviewShowShare2 = $('#review-show-share2')%>
+      <%#reviewShowShare3 = $('#review-show-share3')%>
+      <%#tmpl_base = $('#tmpl-new-review-location')%>
+      <%#tmpl_comment = $('#tmpl-new-review-comment')%>
+      <%#$("#review-show-btn1").click ->%>
+        <%#reviewShowShare1.attr('style','display:none')%>
+        <%#$('#new-review-location').html(tmpl_base.tmpl({review_type: 0}))%>
+        <%#$("select[name='review[state]']").selectize()#multipleSelect({single: true,filter: true,width: 138})%>
+        <%#reviewShowShare2.attr('style','display:block')%>
+        <%#reviewShowShare3.attr('style','display:none')%>
+      <%#$("#review-show-btn2").click ->%>
+        <%#ele = document.getElementById('review_address')%>
+        <%#if ele.validity && !ele.validity.valid%>
+          <%#ele.focus()%>
+          <%#return%>
+        <%#ele = document.getElementById('review_city')%>
+        <%#if ele.validity && !ele.validity.valid%>
+          <%#ele.focus()%>
+          <%#return%>
+        <%#reviewShowShare1.attr('style','display:none')%>
+        <%#reviewShowShare2.attr('style','display:none')%>
+        <%#type_id = parseInt($('#review_review_type').val())%>
+        <%#$('#new-review-comment').html(tmpl_comment.tmpl({review_type: type_id}))%>
+        <%#App.Review.AssessLevel()%>
+        <%#reviewShowShare3.attr('style','display:block')%>
+        <%#App.Review.calApartAttrComment()%>
+        <%#$("#review-comment").validate()%>
+      <%#$("#review-show-pre").click ->%>
+        <%#reviewShowShare1.attr('style','display:none')%>
+        <%#reviewShowShare2.attr('style','display:block')%>
+        <%#reviewShowShare3.attr('style','display:none')%>
+
+  showReviewImage: ->
+    $(".review_show_in_pc .review-img a").bind "click", (e) ->
+      e.preventDefault()
+      imageSrc = $(this).attr("href")
+      $("#building-image-show a").attr("href", imageSrc)
+      $("#building-image-show a img").attr("src", imageSrc)
+
+  calApartAttrComment: ->
+    $("#review_comment").bind "keyup", (e)->
+      e.preventDefault()
+      len = $(this).val().length
+      $(".cal-characters .cal-char").text(len)

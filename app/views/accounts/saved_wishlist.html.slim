@@ -1,0 +1,6 @@
+#profile.global-container.row
+  = render '/accounts/topbar'
+  .container
+    .row
+      //= render partial: '/accounts/sidebar'
+      = render partial: 'wishlist', locals: { buildings: @buildings }

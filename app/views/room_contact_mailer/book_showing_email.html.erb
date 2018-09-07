@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+</head>
+<body>
+<div class="container">
+  <p>Name: <strong><%= @booking.name %></strong></p>
+  <p>Email: <strong><%= @booking.email %></strong></p>
+  <p>Date: <strong><%= @booking.show_date.date %></strong></p>
+  <p>Time: <strong><%= "#{@booking.time_slot.start_time} - #{@booking.time_slot.end_time}" %></strong></p>
+  <ul>
+    <% @listings.each do |listing| %>
+      <li><p><strong><%="#{listing.title} - Unit #{@info[:units][@info[:list_ids].index(listing.id)] }" %></strong></p></li>
+    <% end %>
+  </ul>
+</div>
+</body>
+</html>

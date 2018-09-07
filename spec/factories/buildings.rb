@@ -1,0 +1,73 @@
+# Read about factories at https://github.com/thoughtbot/factory_girl
+
+FactoryGirl.define do
+  factory :building do
+    city "MyString"
+    borough "MyString"
+    block 1
+    lot 1
+    cd 1
+    ct2010 1
+    cb2010 1
+    school_dist 1
+    councli 1
+    zipcode "MyString"
+    fire_comp "MyString"
+    police_prct 1
+    address 1
+    zone_dist1 "MyString"
+    overlay1 "MyString"
+    s_p_dist1 "MyString"
+    all_zoning1 "MyString"
+    allzoning "MyString"
+    split_zone "MyString"
+    bldg_class "MyString"
+    land_use 1
+    easements 1
+    owner_type "MyString"
+    owner_name "MyString"
+    lot_area 1
+    bldg_area 1
+    com_area 1
+    res_area 1
+    office_area "MyString"
+    retail_area 1
+    garage_area 1
+    strge_area 1
+    factry_area 1
+    other_area 1
+    area_source 1
+    num_bldgs 1
+    num_floors 1
+    units_res 1
+    units_total 1
+    lot_front 1
+    lot_depth 1
+    bldg_front 1
+    bldg_depth "MyString"
+    ext "MyString"
+    proxcode 1
+    irr_lot_code "MyString"
+    lot_type "MyString"
+    bsmt_code 1
+    assess_land 1
+    assess_tot 1
+    exempt_land 1
+    exempt_tot 1
+    year_built 1
+    built_code 1
+    year_alter1 1
+    year_alter2 1
+    hist_dist "MyString"
+    land_mark "MyString"
+    built_far 1.5
+    resid_far 1.5
+    comm_far 1.5
+    facil_far 1.5
+    boro_code 1.5
+    bbl "MyString"
+    condo_no 1
+    sanborn "MyString"
+    version "MyString"
+  end
+end

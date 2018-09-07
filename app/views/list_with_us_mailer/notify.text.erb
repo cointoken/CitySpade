@@ -1,0 +1,27 @@
+List With Us
+I am a <%=@list_with_us.identity %>
+
+Listing Type
+<%= "#{@list_with_us.listing_type}" %>
+
+Sydication Service
+<% if @list_with_us.sydication %>
+Yes
+
+Specify:
+<%= @list_with_us.specify%>
+<% else %>
+ No
+ <%end%>
+
+Company Website:
+<%= @list_with_us.company_website%>
+
+List Feed URL:
+<%= @list_with_us.listing_feed_url %>
+
+Email:
+<%= @list_with_us.email %>
+
+Contact Number:
+<%= @list_with_us.contact_number %>

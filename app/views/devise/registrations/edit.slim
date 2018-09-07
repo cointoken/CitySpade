@@ -1,0 +1,69 @@
+#profile.global-container.row
+  = render '/accounts/topbar'
+  .container
+    h1.title Edit Account
+    .row
+      //= render '/accounts/sidebar'
+      .setting-box
+        = form_for(resource, :as => resource_name,
+            :url => registration_path(resource_name),
+            :html => { :method => :put }) do |f|
+
+          .row
+            .col-md-4.col-left
+              .avatar
+                = image_tag current_account.medium_image_url
+              .form-field.avatar-upload
+                .button
+                  = f.file_field :image
+                  span Change Photo
+            .col-md-8.form.normal
+              .main-form
+                h3.title Basic Info:
+                .form-field
+                  = f.label :first_name
+                  = f.text_field :first_name, class: 'textfield'
+                .form-field
+                  = f.label :last_name
+                  = f.text_field :last_name, class: 'textfield'
+                .form-field
+                  = f.label :phone
+                  = f.text_field :first_phone, class: 'textfield first-phone'
+                  span -
+                  = f.text_field :last_phone, class: 'textfield last-phone'
+                - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                  div
+                    | Currently waiting confirmation for:
+                    = resource.unconfirmed_email
+
+
+                .form-field
+                  = f.label :email
+                  = f.text_field :email, class: 'textfield'
+
+                .form.field
+                  .row
+                    = f.fields_for :mail_notify do |mail_settings|
+                      .col-md-6.col-xs-9.recommend-emails
+                        = mail_settings.label :is_recommended,
+                          "Recieve listing recommendation emails?"
+                      .col-md-6.col-xs-3
+                        = mail_settings.check_box :is_recommended, as: :boolean
+                br
+                br
+
+                = render '/accounts/password', f: f
+
+                .submit
+                  = f.submit "Save Changes", class: 'btn-custom profile-edit'
+
+javascript:
+  $('#account_image').on('change', function(e) {
+    fileName = e.target.value
+    if(fileName == '') {
+      fileName = "Change Photo"
+    } else {
+      fileName = fileName.split('\\').pop()
+    }
+    $('#account_image').next().text(fileName)
+  });

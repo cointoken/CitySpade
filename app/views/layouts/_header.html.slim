@@ -1,0 +1,191 @@
+//- home_transparent = current_page?(root_path) ? "transparent" : "white"
+- home_fixed = current_page?(root_path) ? "navbar-realtive-top header-one" : "navbar-realtive-top header-two"
+//- home_font_color = current_page?(root_path) ? "#262d3f" : "#28d8d8"
+
+//- logo_file = current_page?(root_path) ? "logo/B-City-logo2.png" : "logo/City-logo2.png"
+
+- if current_page?(root_path) || current_page?("/")
+  - logo_file = "logo/Group_722.png"
+  - home_font_color = "#262d3f"
+  - nav_style = "background-color: transparent"
+- elsif current_page?(aboutus_path)
+  - logo_file = "logo/Group_1583.png"
+  - home_font_color = "#fff"
+  - nav_style = "background-color: transparent; outline: 0.3px solid rgba(246, 250, 252, 0.5)"
+- else
+  - logo_file = "logo/Group_505.png"
+  - home_font_color = "#28d8d8"
+  - nav_style = "background-color: transparent"
+
+
+//- logo_file =  current_page?(root_path) ? "logo/Group_722.png" : "logo/Group_505.png"
+- home_show = current_page?(root_path) ? "block" : "none"
+
+nav.navbar class="#{home_fixed}" style="#{nav_style}"
+  .container-fluid
+    .navbar-header
+      button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-Navbar"
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to root_path do
+        img src= asset_path(logo_file) style="height: 25px;margin-left: 25px;margin-top: 20px" class="city_logo hidden-xs"
+        img src= asset_path("logo/Group_505.png") style="padding-top: 9px" class="city_logo visible-xs"
+
+      - if !current_account.nil? && (current_account.role?(:admin) || current_account.is_operations? || current_account.is_marketing? || current_account.is_office_account?)
+        = link_to "!", '/admin', class: "admin-link"
+
+      //- if current_account.nil?
+          a.sign-in.visible-xs href='#' data-toggle="modal" data-target= "#sign_in"
+            span
+              span#signinbutton style='color: #28d8d8; border: 1px solid #28d8d8; border-radius: 10px; padding-left: 27px; padding-right: 27px; padding-top: 13px; padding-bottom: 13px; font-size: 18px'
+                | Sign In
+      //- else
+          a.acc-head.visible-xs href=edit_account_path
+            span
+              span#signinbutton style='color: #28d8d8; border: 1px solid #28d8d8; border-radius: 10px; padding-left: 27px; padding-right: 27px; padding-top: 13px; padding-bottom: 13px; font-size: 18px'
+                | My Account
+
+
+    .collapse.navbar-collapse#main-Navbar
+
+      ul.nav.navbar-nav.navbar-right#origin style="color: #{home_font_color}"
+        //li.dropdown.auto-drop.hidden-xs
+          a.dropdown-toggle.current-area href='#' data-toggle="dropdown"
+            span.glyphicon.glyphicon-map-marker style='font-size: 24px; color: #{home_font_color}'
+            span style="color: #{home_font_color}"
+              | &nbsp #{current_area.short_name.titleize}
+            span.glyphicon.glyphicon-triangle-bottom style="color: #{home_font_color}"
+          ul.dropdown-menu
+            li
+              = link_to "New York", root_path(current_area: 'new-york')
+            li
+              = link_to "Philadelphia", root_path(current_area: 'philadelphia')
+            li
+              = link_to "Boston", root_path(current_area: 'boston')
+            li
+              = link_to "Chicago", root_path(current_area: 'chicago')
+        //li
+          = link_to "Reviews", reviews_path, class: 'nav-button'
+        //li
+          = link_to open_houses_path, class: 'nav-button' do
+            | Open Houses
+
+        li.dropdown.auto-drop.hidden-xs
+          a.dropdown-toggle.language href='#' data-toggle="dropdown" style="color: #{home_font_color}"
+            | Language
+          ul.dropdown-menu
+            li
+              = link_to "English", locale: "en"
+            li
+              = link_to "中文", locale: "ch"
+            li
+              = link_to "한국어", locale: "kr"
+
+        li
+          = link_to building_pages_path, class: 'nav-button' do
+            span.hidden-xs style='color: #{home_font_color}'
+              | #{t('header.buildings')}
+            span.visible-xs style='color: #000'
+              | #{t('header.buildings')}
+        li#about_us
+          = link_to aboutus_path, class: 'nav-button' do
+            span.hidden-xs style='color: #{home_font_color}'
+              | #{t('header.about')}
+            span.visible-xs style='color: #000'
+              | #{t('header.about')}
+
+        //li#apartment style="display: #{home_show}"
+          = link_to root_path, class: 'nav-button' do
+            span style='color: #{home_font_color}'
+              | Services
+
+          //span class="nav-button" href='#'
+          //  | APARTMENTS
+
+        //li#neighbourhood style="display: #{home_show}"
+          = link_to root_path, class: 'nav-button' do
+            span style='color: #{home_font_color}'
+              | Agents
+
+        li.visible-xs style="display: #{home_show}"
+          - if current_account.nil?
+            a.nav-button.hidden-xs href='#' data-toggle="modal" data-target= "#sign_in" style='color: #{home_font_color}'
+              | #{t('header.sign_in')}
+            a.nav-button.visible-xs href='#' data-toggle="modal" data-target= "#sign_in" style='color: #000'
+              | #{t('header.sign_in')}
+          - else
+            a.nav-button.hidden-xs href=edit_account_path style='color: #{home_font_color}'
+              | My Account
+            a.nav-button.visible-xs href=edit_account_path style='color: #000'
+              | My Account
+
+
+        - if current_account.nil?
+          li
+            //a.sign-in href=new_session_path(resource_name)
+            a.sign-in.hidden-xs href='#' data-toggle="modal" data-target= "#sign_in"
+              span
+                span#signinbutton style='color: #{home_font_color}; border-style: solid; border-width: 2px; border-radius: 10px; padding-left: 15px; padding-right: 15px; padding-top: 8px; padding-bottom: 8px; font-family: "Renner Bold"'
+                  | Sign In
+        - else
+          li.dropdown.auto-drop.hidden-xs
+            a#profile-bttn.dropdown-toggle style="cursor: pointer"
+              = image_tag current_account.small_image_url,
+                  class: 'circle avatar-40',
+                  alt: current_account.name,
+                  title: current_account.name
+            //ul.dropdown-menu
+              li
+                a href=account_saved_wishlist_path(flag: Settings.listing_flags.rental)
+                  | Wishlist
+              li
+                a href=edit_account_path
+                  | Account Settings
+              li
+                a href=destroy_account_session_path  data-method='delete'
+                  | Logout
+          li.visible-xs
+            a.nav-button href=destroy_account_session_path  data-method='delete' style="color: #000"
+              | Logout
+
+      ul.nav.navbar-nav.navbar-right#new style="display: none"
+        =link_to t('home_page.index.link_learn_more'), new_search_for_me_path, class:"link-right"
+
+- if current_page? (root_path)
+  coffee:
+    $(document).ready ->
+      #height = $('.home-page1').height() * 0.7;
+      #lastst = 0;
+      #$(window).scroll ->
+        #st = $(document).scrollTop();
+        #if $(document).scrollTop() > height && st > lastst
+          #$(".navbar-fixed-top").css("background-color", "#ffffff");
+          ##$(".city_logo").attr('src', "https://s3.amazonaws.com/cityspade-test/Logos/City-logo.png");
+          ##$("#origin").css("display", "none");
+          ##$("#new").css("display", "block");
+          #$("#origin").slideUp('fast', ->
+            #$("#new").show('slide', {direction: 'down'}, 50));
+        #else if $(document).scrollTop() > height && st < lastst
+          #$(".navbar-fixed-top").css("background-color", "#ffffff");
+          ##$(".city_logo").attr('src', "https://s3.amazonaws.com/cityspade-test/Logos/City-logo.png");
+          #$("#new").hide('slide', {direction: 'down'}, 50, ->
+            #$("#origin").slideDown('fast'));
+        #else
+          #$(".navbar-fixed-top").css("background-color", "transparent");
+          ##$(".city_logo").attr('src', "https://s3.amazonaws.com/cityspade-test/Logos/B-City-logo2.png");
+          ##$("#origin").css("display", "block");
+          ##$("#new").css("display", "none");
+          #$("#new").hide('slide', {direction: 'down'}, 50, ->
+            #$("#origin").slideDown('fast'));
+        #lastst = st;
+      $("#apartment").click ->
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: ($("#home-page3").offset().top - 70)
+        }, 2000);
+      $("#neighbourhood").click ->
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: ($("#home-page4").offset().top - 70)
+        }, 2000);

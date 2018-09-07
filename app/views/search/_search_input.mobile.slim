@@ -1,0 +1,48 @@
+.row.listing-flag
+  = radio_button_tag 'flag', Settings.listing_flags.rental, !search_review? && !(session[:listing_flag] == 0), id: 'banner-listing-rentals', data: {url: 'for-rental'}
+  label for='banner-listing-rentals'
+    b
+      i.fa.fa-circle
+      | &nbsp;&nbsp;Rentals
+  = radio_button_tag 'flag', Settings.listing_flags.sale, !search_review? && session[:listing_flag] == 0 , id: 'banner-listing-sales', data: {url: 'for-sale'}
+  / input type='radio' name='flag' value='sales' id='banner-listing-sales' checked="#{session[:listing_flag] == 0 ? true : false}"
+  label for='banner-listing-sales'
+    b
+      i.fa.fa-circle
+      | &nbsp;&nbsp;Sales
+
+  = radio_button_tag 'flag', 'reviews', search_review? , id: 'banner-reviews-radio', data: {type: 'reviews',url: result_reviews_path}
+  label for='banner-reviews-radio'
+    b
+      i.fa.fa-circle
+      | &nbsp;&nbsp;Reviews
+  / input type='radio' name='flag' value='sales' id='banner-listing-sales' checked="#{session[:listing_flag] == 0 ? true : false}"
+#mb-banner-input
+  #mb-home-listings-input style="display: #{search_review? ? 'none': 'block'}"
+    .mb-city-row
+      = f.select :current_area, search_area_options, {selected: params[:current_area]}, multiple: false, class: 'multiple-select input-class select-area', name: 'current_area'
+    = f.text_field :title, placeholder: 'Neighborhood / Street / Zip', class: 'input-class autocomplete-input', name: 'title', value: params[:title] || search_neighborhood_name
+
+    .mb-banner-row
+      = f.select :beds, bed_options ,{ selected: params[:beds] },multiple: true, class:'multiple-select small input-class beds-input', name: 'beds[]'
+      = f.select :baths, bath_options,{ selected: params[:baths] }, multiple: true, class:'multiple-select small input-class baths-input', name: 'baths[]'
+    .mb-banner-row
+      input.small.input-class.min-input type='text' name='price_from' value=params[:price_from]  placeholder='$Min'
+      span.price-to.input-class To
+      input.small.input-class.max-input type='text' name='price_to' value=params[:price_to]  placeholder='$Max'
+
+    = f.submit 'SEARCH', class:'btn input-class btn-search'
+
+    #banner-noFee.mb-banner-row
+      input type="checkbox" name="noFee" id="banner-listing-noFee"
+      label for="banner-listing-noFee"
+        | &nbsp;&nbsp;No-Fee Only
+  .dailydeals
+    = link_to "DAILY DEALS", flashsales_path
+  #mb-home-reviews-input style="display: #{search_review? ? 'block': 'none'}"
+    = text_field_tag :address, params[:address] , placeholder: (mobile? ? 'Neighborhood / Street / Zip' : 'ENTER A NEIGHBORHOOD OR STREET'), class: 'input-class review-autocomplete'
+    .mb-banner-row
+      label for='location'
+        = image_tag 'icons/location.png'
+      = text_field_tag :location, "#{current_city.name}, #{current_city.state}", class: 'input-calss small search-base-input current-city'
+      = f.submit 'SEARCH', class:'btn input-class btn-search'

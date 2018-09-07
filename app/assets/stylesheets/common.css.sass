@@ -1,0 +1,83 @@
+//= require selectize
+@import 'modules'
+#sp-dont-match-search
+  padding-top: 15px
+  padding-left: 10px
+  padding-right: 10px
+  a#close-dont-match-info
+    cursor: pointer
+    margin-right: 5px
+  .dont-match-search
+    @include size-color-family(14px, $link-color,$listing-text-font)
+    border: 1px solid $link-color
+    text-align: center
+    padding: 12px
+    font-weight: bold
+    a#miss-match-click-here
+      text-decoration: underline
+      cursor: pointer
+
+label.error
+  display: list-inline
+  color: red !important
+
+.cursor-not-allow
+  cursor: not-allowed
+.default-border
+  border: 1px solid #b1b1b1
+  padding: 10px
+.rating-all-items
+  margin: 10px 0 0 0
+  i.fa-square-star
+    background: image-url('square-star.png') no-repeat
+    @include width-height(19px,19px)
+    margin-right: 3px
+  i.fa-square-star.selected
+    background: image-url('square-star-ho.png') no-repeat
+  i.fa-square-star.half
+    background: image-url('square-star-half-ho.png') no-repeat
+  i.fa-square-star-big
+    background: image-url('square-star-big.png') no-repeat
+    @include width-height(22px,22px)
+    margin-right: 3px
+  i.fa-square-star-big.selected
+    background: image-url('square-star-big-ho.png') no-repeat
+  i.fa-square-star-big.half
+    background: image-url('square-star-big-half-ho.png') no-repeat
+  i
+    border-radius: 2px
+
+i.fa-star-half
+  width: 17px
+a.aggravated-color:hover
+  color: $link-aggravated-color
+.image-label
+  position: absolute
+  color: $full-white
+  background-color: rgba(0, 0, 0, $filter-opacity)
+  font-size: 15px
+  padding: 3px 5px
+
+.half
+  width: 50%
+.inline-block
+  display: inline-block
+.center
+  text-align: center
+
+.key-color
+  color: $link-color !important
+.display-block
+  display: block !important
+
+@media screen and (max-width: 767px)
+  .contact-links ul li
+    width: 30% !important
+  #neighborhoods .borough ul
+    padding-left: 0px
+  body.responsive
+    .container
+      min-width: 0px
+  #sp-header-fix-header-wrapper
+    .container
+      background: #34373E

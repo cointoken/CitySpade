@@ -1,0 +1,17 @@
+//ul.side-bar.col-md-3
+  - if current_account.present? && (current_account.is_office_account? or current_account.admin?)
+    = nav_link 'My Listings', account_listings_path(Settings.listing_status.actived)
+  = nav_link 'Saved Wishlist', account_saved_wishlist_path(Settings.listing_flags.rental)
+  //= nav_link 'Past Wishlist', account_past_wishlist_path(Settings.listing_flags.rental)
+  - if current_account.has_room_postings?
+    = nav_link 'My Posts', account_myrooms_path
+  //= nav_link 'Saved Posts', account_room_wishlist_path
+  = nav_link 'Account', edit_account_path
+  = nav_link 'Applications', account_applications_path
+  li class="#{controller_name == 'inboxes'?  'current' : nil}"
+    = link_to inboxes_path, class: 'inbox' do
+      | Inbox
+      - if current_account.account_inboxes.unread.any?
+        .inbox-number
+          span.number
+            = current_account.account_inboxes.unread.count

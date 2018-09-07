@@ -1,0 +1,63 @@
+.row
+  .box.col-md-12
+    .cell
+      = form_tag admin_rooms_path, method: :get do
+        .field.fieldset.center
+          legend
+            | Rooms
+          .input-text.triple-input
+            = number_field_tag :id, params[:id], min: 1, placeholder: "ID", class: "col-md-5"
+            = text_field_tag :begin_created_at, params[:begin_created_at], placeholder: 'Begin Created At', class: 'datetimepicker col-md-5'
+            = text_field_tag :end_created_at, params[:end_created_at], placeholder: 'End Created At', class: 'datetimepicker col-md-5'
+            = text_field_tag :begin_updated_at, params[:begin_updated_at], placeholder: 'Begin Updated At', class: 'datetimepicker col-md-5'
+            = text_field_tag :end_updated_at, params[:end_updated_at], placeholder: 'End Updated At', class: 'datetimepicker col-md-5'
+          .searchbtn
+            = image_submit_tag("btn-search.jpg", class: 'input-class btn-search')
+.row
+  .box.col-md-12
+    .cell
+      Strong Rooms
+      .clear
+    .cell
+      table.table.table-striped
+        thead
+          tr
+            th
+              = sortable "id", "ID"
+            th
+              = sortable "street_address", "Address"
+            th Account
+            th Contacted
+            th
+              = sortable "status", "expired"
+            th
+              = sortable "title", "Title"
+            th
+              = sortable "city", "City"
+            th
+              = sortable "state", "State"
+            th
+              = sortable "created_at", "Created"
+        tbody
+          - @rooms.each do |room|
+            tr
+              td
+                = room.id
+              td = room.street_address
+              th = room.account.try :name
+              td = room.contacted
+              td = room.expired?
+              td = room.title
+              td = room.city.long_name unless room.city.nil?
+              th = room.state.long_name unless room.state.nil?
+              th = room.created_at.strftime("%A, %B %d, %Y at %l%p")
+              td = link_to "Edit", edit_admin_room_path(room),class: 'btn btn-info'
+              td = link_to "Expire", expire_admin_room_path(room),
+                  method: :post,
+                  data:{confirm: 'Do you want to expire the room ?'},
+                  class: 'btn btn-info'
+              td = link_to "Delete", admin_room_path(room),
+                  method: :delete,
+                  data:{confirm: 'Do you want to delete the room ?'},
+                  class: 'btn btn-danger'
+    = paginate @rooms

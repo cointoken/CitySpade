@@ -1,0 +1,24 @@
+.container#alldeals.hidden-xs.hidden-sm
+  .header
+    h1 WAIVE THE APPLICATION FEE!
+    p.first-line Book a showing through CitySpade to get your first application fee waived!
+    p
+      | *Valid for the following apartments only. Contact for details.
+  .window
+    h3 
+      | SAVE 
+      span UP TO
+    h3 $100
+
+  .deal-buildings
+    span FREE MONTH DEALS
+
+  = render 'building_deals'
+  = render 'form'
+
+.container#all-deals-mb.visible-xs.visible-sm
+  h2 Check this link on your Laptop or Desktop.
+  h2 We are working on it!
+
+javascript:
+  App.Rentaldeals();

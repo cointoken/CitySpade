@@ -1,0 +1,108 @@
+#new_sublet_form
+  .section-title
+    = image_tag 'listing-new-icon-01.png'
+    | &nbsp
+    .title BASIC INFO
+  .section-1
+    .input
+      = f.label :title, "Address"
+      = f.text_field :title, placeholder: "Address", class: 'large'
+    .input
+      = f.label :unit, "Unit"
+      = f.text_field :unit, placeholder: "Unit", class: 'large'
+    .input
+      = f.label :city
+      = f.text_field :city_name, placeholder: "City"
+      = f.label :state, class: 'state-label'
+      = f.text_field :state_name, placeholder: "State"
+    .input
+      = f.label :zipcode, 'Zip Code'
+      = f.text_field :zipcode, placeholder: "ZipCode"
+    .input
+      = f.label :price, "Rent"
+      i class="fa fa-usd"
+      = f.text_field :price
+      .inline
+          | /Month
+    .input
+      = f.label :no_fee, "Broker Fee"
+        /= f.check_box :no_fee, {}, true, false
+      = f.radio_button :no_fee, "1", id: "no-fee", required: true
+      label for="no-fee" class='radio' No Fee
+      = f.radio_button :no_fee, "0", id: "broker-fee", required: true
+      label for="broker-fee" class='radio' Broker Fee
+    .input.select-input
+      = f.label :beds, 'Bedroom No.'
+      = f.select :beds, options_for_select(bedroom_options), require:true
+    .input.select-input
+      = f.label :baths, 'Bathroom No.'
+      = f.select :baths, options_for_select(bathroom_options),{}, require:true, class: 'selectized'
+    .input
+      = f.label :image_base_url, 'Video Url'
+      = f.text_area :image_base_url, placeholder: "https://www.youtube.com/embed/puQ2Ka0zn9Y" 
+    .input
+      = f.label :featured, 'Featured For'
+      = f.text_field :featured, placeholder: "enter number of days"
+
+  .section-title
+    = image_tag 'listing-new-icon-02.png'
+    | &nbsp
+    .title BASIC FEATURES
+  .section-2
+    = f.fields_for 'listing_detail' do |listing_detail|
+      div
+        .pull-left
+          .sublet-label
+            span Features
+          ul
+            - features = Settings.listing_details["features"]
+            - for feature in features
+              li
+                label
+                  - is_checked = @listing.new_record? ? false : @listing.listing_detail.amenities.include?(feature)
+                  = check_box_tag 'listing[listing_detail_attributes][amenities][]', feature, is_checked
+                  span.features-n-extras
+                    = feature
+        .pull-right
+          .sublet-label
+            span Extras
+          ul
+            - extras = Settings.listing_details["extras"]
+            - for extra in extras
+              li
+                label
+                  - is_checked = @listing.new_record? ? false : @listing.listing_detail.amenities.include?(extra)
+                  = check_box_tag "listing[listing_detail_attributes][amenities][]", extra, is_checked
+                  span.features-n-extras
+                    = extra
+  .section-title
+    = image_tag 'listing-new-icon-03.png'
+    | &nbsp
+    .title DESCRIPTION
+  .section-3
+    = f.fields_for 'listing_detail' do |listing_detail|
+      / .input
+      /   .sublet-label
+      /     = f.label :title
+      /     = f.text_field :title, placeholder: "Please write a title"
+      .input
+        label Description
+        = listing_detail.text_area :description, required: true,
+          placeholder: "Please write a description"
+        .cal-characters.pull-right
+          span.cal-char
+            |0
+          span.characters data-num=500
+            |&nbsp;characters 
+    .input.sublet-image
+      = render 'tmpls/photo'
+      label Upload Photos
+      #form.uploadify
+        #queue
+        input#hide-photo-ids name='photo_ids' type='hidden'
+        input#file_upload name="file_upload" type="file"multiple="true"
+        br.clear
+  div
+    label
+      input type="submit" value="Submit" class='btn-custom'
+

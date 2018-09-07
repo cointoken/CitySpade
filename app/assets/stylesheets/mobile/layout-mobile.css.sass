@@ -1,0 +1,331 @@
+@import "module-mobile"
+
+body
+  padding-left: 0
+  padding-right: 0
+
+.navbar
+  margin-bottom: 0
+  margin-left: 0
+  margin-right: 0
+  .brand
+    width: 48%
+    margin-left: 6px
+    padding-bottom: 5px 
+
+#mb-navbar
+  background-color: #34373E
+  button.navbar-btn
+    background: image-url('bg_drillmenu.png') no-repeat -11px -3px
+    @include width-height(30px,30px)
+    border: 0
+    margin-top: 6px
+    margin-right: 20px
+    box-shadow: none
+  &.navbar-fixed-top
+    position: static
+.navbar-inner
+  background: #34373e
+  border: 0
+  .collapse
+    z-index: 100
+  .navbar-collapse
+    padding: 0px
+    width: 100%
+  .nav
+    margin-bottom: 0
+    a
+      font-family: "Arial Rounded MT Bold", Arial
+      font-size: 19px
+      color: #fff !important
+      text-shadow: 0 !important
+      line-height: 46px
+      padding: 0 15px !important
+
+@media(max-width: 979px)
+  #mb-navbar.navbar-fixed-top
+    .navbar-inner
+      padding: 5px 0px 0px 0px
+  .navbar-inner
+    .nav
+      a
+        //background: image-url('bg_item_drillmenu.png') repeat-x
+        color: #000 !important
+        height: 41px
+        line-height: 41px
+        margin: 0 !important
+        padding: 0 0 0 10px !important
+        font-weight: normal !important
+        font-size: 16px
+        font-family: Avenir
+
+.navbar-collapse
+  background: #fff
+
+.row
+  display: flex
+  .third
+    width: 33%
+    padding: 0.6em 0
+    text-align: center
+    display: inline-block
+    float: left
+    a
+      text-decoration: none
+      @include font
+      color: #949494
+      &.update-active
+        color: #2ba
+  div.third-left
+    border-right: 1px solid #949494
+  div.third-right
+    border-left: 1px solid #949494
+    float: right
+  .half.nearby-search
+    display: inline-block
+    padding: 0.8em 0
+    text-align: center
+    font-size: 16px
+    font-family: Avenir
+    background: #ff779f
+    &:first-child
+      border-right: 1px solid #fff
+      width: 49.5%
+      width: calc(50% - 1px)
+      -webkit-width: calc(50% - 1px)
+      -moz-width: calc(50% - 1px)
+      background: #2ba
+    a
+      color: #fff
+#mb-banner-search
+  width: 100%
+  background-color: #f1f1f1
+
+#mb-banner-search form.new_listing
+  margin: 0
+  width: 100%
+  padding: 25px 0 0 0
+  text-align: center
+  .row.listing-flag
+    display: block
+    margin: 0 auto 5px auto
+    label
+      display: inline-block
+    input
+      visibility: hidden
+    input+label b
+      @include width-height(20px,20px)
+      @include size-color(16px,rgba(106, 106, 106, 0.7))
+      .fa-circle
+        @include size-color(14px,rgba(106, 106, 106, 0.7))
+    input:checked+label b
+      .fa-circle
+        color: rgb(0, 188, 184)
+  #mb-banner-input
+    #banner-noFee
+      visibility: visible
+      text-align: left
+      padding: 0 20px
+      label
+        display: list-inline
+        font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif
+        color: rgba(106, 106, 106, 0.7)
+      input
+        width: 13px
+        height: 13px
+  #banner-search
+    padding: 0 20px 35px
+    #review-search
+      #review-input
+        width: 100%
+        input
+          padding: 8px
+          border-radius: 0
+          font-size: 16px
+          width: 92%
+        #banner-location
+          label
+            position: relative
+            img
+              position: absolute
+              top: 8px
+              left: 4%
+          input
+            width: 80%
+            padding-left: 40px
+        .btn-search
+          @include size-color-family(16px,#fff,$font-family)
+          height: 40px
+          background: #2ba
+          margin-top: 5px
+          border: 1px solid #2ba
+          width: 98%
+
+
+
+#mb-banner-input
+  text-align: center
+  padding-bottom: 15px
+  input
+    @include width-height(88%,38px)
+    margin-bottom: 10px
+    padding: 5px 8px
+    padding-top: 8px
+    box-sizing: border-box
+    border: 1px solid #aeaeae
+    border-radius: 0
+    font-size: 16px
+    padding-top: 9px
+  .mb-city-row, .mb-banner-row
+    width: 88%
+    margin: 0 auto
+    margin-bottom: 5px
+    display: inline-block
+  .mb-city-row
+    select
+      @include font
+      @include width-height(100%, 35px)
+      margin: 0 auto
+      padding: 5px 0
+    .ms-parent
+      width: 100%
+      span
+        vertical-align: middle
+        height: 40px
+        line-height: 40px
+  .mb-banner-row
+    //---------
+    span
+      vertical-align: middle
+      height: 40px
+      line-height: 40px
+    select
+      @include font
+      @include width-height(43%,35px)
+      margin: 0 auto
+      padding: 5px 0px
+    .beds-input
+      float: left
+    .baths-input
+      float: right
+    //---------
+    input
+      @include font
+      width: 45%
+      margin: 0 auto
+    .min-input
+      float: left
+    .max-input
+      float: right
+    .ms-parent
+      width: 45%
+      button
+        span
+          padding-left: 8px
+    //---------
+  .btn-search
+    @include size-color-family(16px,#fff,$font-family)
+    height: 40px
+    background: #2ba
+    margin-top: 5px
+    border: 1px solid #2ba
+    width: 88%
+
+#mb-reviews
+  width: 88%
+  margin: 0 auto
+  text-align: center
+  a.btn-reviews
+    @include width-height(100%,40px)
+    display: block
+    color: #fff
+    background: #ff779f
+    margin-top: 20px
+    span.btn-reviews-title
+      @include font
+      @include width-height(100,40px)
+      line-height: 44px
+      font-size: 18px
+  a.btn-reviews:hover
+    text-decoration: none
+
+#mb-reviews-list
+  text-align: left
+  h4
+    margin: 15px 0
+  div.reviews-lists
+    display: block
+    border: 1px solid #ececec
+    div.review-list
+      text-align: left
+      padding: 0 10px
+      .info-details
+        padding: 10px 0
+        .list-inline a
+          @include size-color(17.5px,#45bbbd)
+          @include review-title
+      .clearfix.loc-time
+        @include review-text
+        @include size-color(14px,#888)
+  .type
+    @include review-text
+    @include size-color(15px,#333)
+    width: 100%
+    margin-bottom: 10px
+    text-align: right
+  .user-info
+    width: 100%
+    .share
+      display: inline-block
+#mb-footer
+  background: #34373e
+  padding: 30px 0
+  .mb-footer-link
+    a
+      @include size-color-family(14px,#999,Helvetica)
+      display: block
+      line-height: 24px
+  p,em
+    @include size-color(12px,#fff)
+    font-family: 'Open Sans', sans-serif
+    margin: 0
+    line-height: 26px
+  em
+    color: #939393
+    display: block
+  h3
+    @include size-color-family(20px,#e2e2e2,Palatino)
+    margin-top: 20px
+  h3,p,a,em
+    text-align: center
+  .brand
+    width: 48%
+  .mb-footer-icon
+    border-top: 1px solid #4b4d52
+    margin-top: 30px
+    padding-top: 30px
+    text-align: center
+    .jmsocials_items
+      margin-left: 0
+      li
+        margin: 0 14px !important
+        display: inline-block
+      a
+        @include size-color(18px,#42d6d2)
+      a:hover
+        color: #96e8e6
+#mb-banner-input .ms-parent
+  label, input, button, select, textarea
+    font-size: 16px
+
+.dailydeals
+  font-size: 16px
+  width: 175px
+  background: #2fcdc9
+  padding: 7px
+  margin: 0 auto
+  a
+    color: white
+    font-weight: bold
+    letter-spacing: 0.03em
+

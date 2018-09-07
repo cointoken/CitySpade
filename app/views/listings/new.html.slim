@@ -1,0 +1,9 @@
+#new-listing-wrapper
+  .sublet-header
+    h2 CitySpade Exclusive listing
+
+  = form_for @listing do |f|
+    = hidden_field_tag 'current_step', params[:current_step]
+    = render "#{params[:current_step].present? ? params[:current_step] : 'form'}", :f => f
+
+  = link_to 'Back', listings_path

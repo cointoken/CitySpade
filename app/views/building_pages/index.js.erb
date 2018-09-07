@@ -1,0 +1,21 @@
+//var funcOne = function() {
+//  console.log("func one");
+//  $('#building-list').html('<%= escape_javascript(raw(render 'index')) %>');
+//};
+//
+//var funcTwo = function() {
+//  console.log("func two");
+//};
+
+function loadMap() {
+  window.Maps.buildingIndex();
+}
+
+function renderPage(doc, callback) {
+  doc.html('<%= escape_javascript(raw(render 'index')) %>');
+  callback();
+
+}
+
+renderPage($('#building-list'), loadMap);
+$('.dropdown-price').hide();

@@ -1,0 +1,24 @@
+.row.wishlist-wrapper
+  //.btn-group
+    = render_wishlist_link
+  .wishlist
+    - @buildings.each_slice(3) do |building_arr|
+      .row
+        - building_arr.each do |building|
+          .col-sm-4
+            .listing
+              .img
+                = building_thumb building.building_images
+                //.listing_img  style="background-image: url(#{img.image_url(:thumb)})"
+              .listing-content
+                h3
+                  | #{building.name}
+                  //= building.formatted_addres
+                .full-addr
+                  = render_address(building.formatted_address)
+                - arr = get_floorplans(building)
+                = render_bedrooms(arr) 
+
+                = link_to "View Details", building_page_path(building)
+                br
+ 
